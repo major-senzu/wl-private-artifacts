@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PwC案件 課題マップ</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --card: #ffffff;
+    --text: #1a2332;
+    --text-sub: #5a6878;
+    --border: #e3e7ee;
+    --accent: #1f4e8c;
+    --accent-light: #e8eff8;
+    --green: #2d8659;
+    --green-light: #e6f4ec;
+    --amber: #b87614;
+    --amber-light: #fdf3e0;
+    --red: #b03030;
+    --red-light: #fbeaea;
+    --purple: #6b3fa0;
+    --purple-light: #f0eafa;
+    --gray: #6b7280;
+    --gray-light: #f1f3f5;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-lg: 0 4px 12px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+  header.page-header { margin-bottom: 24px; }
+  header.page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+  }
+  header.page-header .subtitle {
+    color: var(--text-sub);
+    font-size: 14px;
+    margin: 0;
+  }
+  .meta-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--text-sub);
+  }
+  .meta-row span strong { color: var(--text); font-weight: 600; }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-sub);
+    margin: 28px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .section-title .count {
+    font-size: 12px;
+    background: var(--gray-light);
+    color: var(--text-sub);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+
+  /* Overall next steps */
+  .overall-next {
+    background: linear-gradient(135deg, #1f4e8c 0%, #2a5f9e 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow-lg);
+  }
+  .overall-next h2 {
+    margin: 0 0 16px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .overall-next .timeline-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 14px;
+    padding: 10px 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    align-items: start;
+  }
+  .overall-next .timeline-row:first-of-type { border-top: none; padding-top: 0; }
+  .overall-next .timeline-row .when {
+    font-weight: 700;
+    font-size: 13px;
+    color: #b8d4f0;
+    padding-top: 1px;
+  }
+  .overall-next .timeline-row .what {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .overall-next .timeline-row .what strong { color: #ffd966; font-weight: 700; }
+
+  /* Status badges */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .badge.status-before  { background: var(--gray-light);   color: var(--gray); }
+  .badge.status-during  { background: var(--amber-light);  color: var(--amber); }
+  .badge.status-preprop { background: var(--accent-light); color: var(--accent); }
+  .badge.status-postprop{ background: var(--green-light);  color: var(--green); }
+  .badge.flag-long      { background: #f3eafa; color: #6b3fa0; border: 1px solid #e0cef0; }
+  .badge.flag-short     { background: #fbeaea; color: #b03030; border: 1px solid #f0caca; }
+  .badge.flag-high      { background: #fdf3e0; color: #b87614; border: 1px solid #f0d8a8; }
+
+  /* Meeting link */
+  .mtg-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+    background: var(--accent-light);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  .mtg-link:hover { text-decoration: underline; }
+  .mtg-link-note {
+    display: inline-block;
+    font-size: 11px;
+    color: var(--text-sub);
+    background: var(--gray-light);
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* Contract card (highlighted) */
+  .contract-card {
+    background: var(--card);
+    border: 2px solid var(--green);
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    margin-bottom: 12px;
+  }
+  .contract-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(45,134,89,0.18);
+  }
+  .contract-card .top-row {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap;
+  }
+  .contract-card .id-num {
+    color: var(--text-sub); font-size: 12px; font-weight: 600; letter-spacing: 0.05em;
+  }
+  .contract-card h3 {
+    font-size: 18px; font-weight: 700; margin: 4px 0 8px; color: var(--accent);
+  }
+  .contract-card h3:hover { text-decoration: underline; }
+  .contract-card .next-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px 24px; font-size: 13px;
+    color: var(--text-sub);
+  }
+  .contract-card .next-grid .lbl {
+    font-size: 10px; color: var(--text-sub); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px;
+  }
+  .contract-card .next-grid .val { color: var(--text); font-weight: 500; }
+
+  /* Filter/sort bar */
+  .table-controls {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 12px 0 14px;
+    align-items: center;
+  }
+  .table-controls .ctl-group {
+    display: flex;
+    gap: 4px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 3px;
+    flex-wrap: wrap;
+  }
+  .table-controls button {
+    background: transparent;
+    border: none;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: var(--text-sub);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.15s;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .table-controls button:hover { background: var(--gray-light); color: var(--text); }
+  .table-controls button.active { background: var(--accent); color: white; }
+  .table-controls .ctl-label {
+    font-size: 11px;
+    color: var(--text-sub);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Table */
+  .issue-table-wrap {
+    background: var(--card);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  table.issue-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  table.issue-table thead th {
+    background: #fafbfc;
+    color: var(--text-sub);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: left;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  table.issue-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+    cursor: pointer;
+  }
+  table.issue-table tbody tr:last-child { border-bottom: none; }
+  table.issue-table tbody tr:hover { background: #fafbfc; }
+  table.issue-table td {
+    padding: 14px;
+    vertical-align: top;
+    font-size: 13px;
+  }
+  table.issue-table td.col-num {
+    width: 40px;
+    color: var(--text-sub);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+  table.issue-table td.col-title {
+    font-weight: 600;
+    color: var(--accent);
+    min-width: 200px;
+  }
+  table.issue-table td.col-title .flag-row {
+    margin-top: 4px;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  table.issue-table td.col-title:hover .title-text { text-decoration: underline; }
+  table.issue-table td.col-people, table.issue-table td.col-team {
+    color: var(--text-sub);
+  }
+  table.issue-table td.col-status { white-space: nowrap; }
+  table.issue-table td.col-date {
+    color: var(--text-sub);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  table.issue-table td.col-next .when {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+  table.issue-table td.col-next .phase {
+    font-size: 12px;
+    color: var(--text-sub);
+    line-height: 1.4;
+  }
+
+  /* Detail view */
+  .detail-header {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--card); color: var(--accent);
+    border: 1px solid var(--border); padding: 8px 14px;
+    border-radius: 8px; cursor: pointer;
+    font-size: 13px; font-weight: 500;
+    transition: all 0.15s; font-family: inherit;
+  }
+  .back-btn:hover { background: var(--accent-light); border-color: var(--accent); }
+  .detail-title {
+    font-size: 24px; font-weight: 700; margin: 12px 0 8px; line-height: 1.4;
+  }
+  .detail-num { color: var(--text-sub); font-size: 14px; font-weight: 500; }
+  .detail-badges { margin-bottom: 4px; display: flex; gap: 6px; flex-wrap: wrap; }
+
+  .detail-next-action {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin: 16px 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 12px 24px;
+  }
+  .detail-next-action .label {
+    font-size: 11px; color: var(--accent); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;
+  }
+  .detail-next-action .value {
+    font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.5;
+  }
+  .section {
+    background: var(--card);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+  .section h2 {
+    font-size: 14px; font-weight: 700; color: var(--text-sub);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 0 0 16px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section p { margin: 0 0 12px; }
+  .section p:last-child { margin-bottom: 0; }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px 32px;
+  }
+  .meta-item .label {
+    font-size: 11px; color: var(--text-sub); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;
+  }
+  .meta-item .value { font-size: 14px; color: var(--text); line-height: 1.5; }
+  .meeting-list { list-style: none; padding: 0; margin: 0; }
+  .meeting-list li {
+    border-left: 3px solid var(--accent-light);
+    padding: 4px 0 14px 16px;
+    margin-bottom: 4px;
+    position: relative;
+  }
+  .meeting-list li::before {
+    content: '';
+    position: absolute;
+    left: -7px; top: 8px;
+    width: 11px; height: 11px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid var(--card);
+  }
+  .meeting-list .mtg-date {
+    font-weight: 600; color: var(--accent); font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+  .meeting-list .mtg-title { font-weight: 600; margin: 2px 0 4px; font-size: 14px; }
+  .meeting-list .mtg-content {
+    font-size: 13px; color: var(--text-sub); line-height: 1.6;
+  }
+  ul.simple { margin: 0; padding-left: 20px; }
+  ul.simple li { margin-bottom: 6px; font-size: 14px; }
+  .todo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .todo-block .label {
+    font-size: 12px; font-weight: 700; color: var(--text-sub);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 8px; padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+  }
+  .todo-block.wl .label { color: var(--accent); border-color: var(--accent-light); }
+  .todo-block.pwc .label { color: var(--green); border-color: var(--green-light); }
+  .hidden { display: none; }
+
+  @media (max-width: 760px) {
+    table.issue-table thead { display: none; }
+    table.issue-table tbody tr { display: block; padding: 14px; border-bottom: 1px solid var(--border); }
+    table.issue-table td { display: block; padding: 3px 0; }
+    table.issue-table td.col-num { display: inline; margin-right: 8px; }
+    table.issue-table td.col-title { display: inline; }
+    .todo-grid { grid-template-columns: 1fr; }
+    .meta-grid { grid-template-columns: 1fr; }
+    .overall-next .timeline-row { grid-template-columns: 1fr; gap: 4px; }
+    .contract-card .next-grid { grid-template-columns: 1fr; }
+    .detail-next-action { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ===== HOME VIEW ===== -->
+  <div id="home" class="view">
+    <header class="page-header">
+      <h1>PwC案件 課題マップ</h1>
+      <p class="subtitle">STDOで取り組み中・候補となっている8課題の進捗とネクストステップを一覧化</p>
+      <div class="meta-row">
+        <span><strong>クライアント</strong>　PwC Japan合同会社 / STDO</span>
+        <span><strong>更新日</strong>　2026-05-16</span>
+        <span><strong>議事録ソース</strong>　Notion 28件</span>
+      </div>
+    </header>
+
+    <!-- 全体ネクストステップ -->
+    <div class="overall-next">
+      <h2>PwC案件 全体ネクストステップ</h2>
+      <div class="timeline-row">
+        <div class="when">〜 6月末</div>
+        <div class="what"><strong>質問票PoC（課題1）に集中</strong>。Phase 1〜4を完走し、6/30検収完了まで走り切る。並行して既ヒアリング済の候補（課題3・6・8）の宿題回収と論点整理を進める。</div>
+      </div>
+      <div class="timeline-row">
+        <div class="when">2026年7月以降</div>
+        <div class="what"><strong>短期本命=吉田和樹さん案件（課題5）の具体ヒアリング開始</strong>。質問票PoCの実績を持って提案フェーズへ。</div>
+      </div>
+      <div class="timeline-row">
+        <div class="when">並行（今〜）</div>
+        <div class="what">課題3（磯貝・依田）は宿題回収待ち、課題6（山倉PDF）は先方の社内調整待ち、課題7・8はヒアリングを進める。</div>
+      </div>
+      <div class="timeline-row">
+        <div class="when">中長期</div>
+        <div class="what">課題2（Risk Committee）・課題4（IFS/U-Bot）は機会あれば再着手のテーマとして温める。</div>
+      </div>
+      <div class="timeline-row">
+        <div class="when">未着手</div>
+        <div class="what">山梨愛さん（GL）のチームからは未ヒアリング。吉田真理子さん経由で課題シート記入状況の確認余地あり。</div>
+      </div>
+    </div>
+
+    <!-- 契約中 -->
+    <div class="section-title">
+      契約中 — 進行中の本丸案件
+      <span class="count">1件</span>
+    </div>
+    <div id="contract-area"></div>
+
+    <!-- 課題候補 -->
+    <div class="section-title">
+      課題候補 — 並行ヒアリング・候補整理
+      <span class="count" id="candidate-count">7件</span>
+    </div>
+
+    <div class="table-controls">
+      <span class="ctl-label">並び順</span>
+      <div class="ctl-group" id="sort-group">
+        <button data-sort="priority" class="active">優先度</button>
+        <button data-sort="date">最終MTG日</button>
+        <button data-sort="id">課題ID</button>
+        <button data-sort="status">ステータス</button>
+      </div>
+      <span class="ctl-label">絞り込み</span>
+      <div class="ctl-group" id="filter-group">
+        <button data-filter="all" class="active">全て</button>
+        <button data-filter="before-hearing">具体ヒアリング前</button>
+        <button data-filter="in-hearing">具体ヒアリング中</button>
+        <button data-filter="pre-proposal">ヒアリング完了・提案前</button>
+        <button data-filter="exclude-long">中長期保留を除く</button>
+      </div>
+    </div>
+
+    <div class="issue-table-wrap">
+      <table class="issue-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>課題名</th>
+            <th>担当（先方）</th>
+            <th>ステータス</th>
+            <th>ネクストアクション</th>
+            <th>最終MTG</th>
+          </tr>
+        </thead>
+        <tbody id="issue-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== DETAIL VIEW ===== -->
+  <div id="detail" class="view hidden">
+    <div class="detail-header">
+      <button class="back-btn" onclick="showHome()">← 一覧に戻る</button>
+    </div>
+    <div id="detail-content"></div>
+  </div>
+
+</div>
+
+<script>
+// 4-level funnel status
+const STATUSES = {
+  "before-hearing": { label: "具体ヒアリング前",        cls: "status-before",   order: 1 },
+  "in-hearing":     { label: "具体ヒアリング中",        cls: "status-during",   order: 2 },
+  "pre-proposal":   { label: "ヒアリング完了・提案前",  cls: "status-preprop",  order: 3 },
+  "post-proposal":  { label: "WL提案完了",              cls: "status-postprop", order: 4 }
+};
+
+const issues = [
+  {
+    id: 1,
+    title: "クライアントセキュリティ質問票 自動回答システム",
+    status: "post-proposal",
+    isContract: true,
+    isShortTermPriority: false,
+    isHighPriority: false,
+    isLongTerm: false,
+    team: "鈴木みほさんチーム / ガバナンスコア",
+    peopleSummary: "増子さん・古川さん（実務）",
+    lastMeeting: "2026-05-15",
+    lastMeetingLink: null,
+    nextActionWhen: "2026-05-21 〜 2026-06-30",
+    nextActionPhase: "Phase 2 Azure移行準備 → Phase 3 本番デプロイ → Phase 4 検収完了",
+    people: [
+      { role: "実務担当", value: "増子さん、古川さん" },
+      { role: "メイン窓口", value: "吉田真理子さん、真子亮太さん" },
+      { role: "決裁権", value: "守屋さん" },
+      { role: "5/12対面参加", value: "外村さん、戸根さん、鈴木みほさん" }
+    ],
+    overview: "PwCセキュリティ部門が手作業で回答している「クライアントからのセキュリティ質問票（Excel、年間約600件、年間1,800万円工数）」をAIで自動回答するシステムを開発するPoC。契約済の本丸案件。",
+    detail: [
+      "契約: 750万円（税抜）/ 準委任 / 2026年4月〜6月（3ヶ月）",
+      "対象データ: 標準回答集（Excel）、社内規定（PDF/Word、ローカル200ページ+グローバル200ページ超）、過去回答履歴（Excel）、質問票サンプル5種",
+      "4象限分類で進行: A=過去フォーマットあり×シンプル（最優先）/ B=過去あり×複雑 / C=過去なし×シンプル / D=PoC対象外",
+      "守屋さん期待値: 「答えられる場所は100%確信を持って回答できる形」、過去のAC上海オフショア失敗を踏まえた差別化が必須",
+      "外村さん論点（5/12対面）: 中長期目線の汎用性、ランニングコスト、PoC後の契約形態（人月 or 請負）、過去フォーマットのアップデート対応"
+    ],
+    hearings: [
+      { date: "2026-03-10", title: "#1 初回ヒアリング", content: "Yoshida真理子さん・Ogawa参加。セキュリティチーム業務効率化の課題候補6〜7個を共有、テーマ選定からスタート。" },
+      { date: "2026-03-12", title: "#2 課題候補整理・予算感", content: "8課題候補を整理、質問票自動回答（課題5）に絞り込み。予算560万〜1,000万、Q1スコープで議論。" },
+      { date: "2026-03-25", title: "#3 精度・運用・セキュリティ詳細", content: "AI確信度・運用工数・PwC PC環境の議論。あいみつ1社あり、最短4/6スタート。" },
+      { date: "2026-03-25", title: "0325 ご提案書", content: "松竹梅プラン提示（480/720/960万）、MVPアーキテクチャ案、ROI試算共有。" },
+      { date: "2026-03-29", title: "#4 新プラン整理", content: "現状工数（年1,800万円、業務委託140h/月）・質問票4象限分類・サンプル5種AI精度試算。プランを450/600/960万に再編。" },
+      { date: "2026-03-29", title: "0330 ご提案書v2", content: "UIイメージ・検証アプリ・進め方4Stepを提示。" },
+      { date: "2026-03-30", title: "#5 過去失敗(AC上海)説明", content: "稟議突破ポイント整理。0.5/1/0.5ヶ月の進め方提示、最初の2週間でデータ精査して可否判断。" },
+      { date: "2026-03-31", title: "#6 守屋さん初参加", content: "セキュリティガバナンスチームリーダーとして期待値共有。100%確信回答が必須。Step1でROI見込めない場合の成果物（レポート等）を合意。" },
+      { date: "2026-04-02", title: "#7 契約合意・組織図共有", content: "750万円で進行決定。守屋発言で全体予算枠2,300万円の余地あり。Yoshida-sanが課題シートを各リーダーに配布する流れ。STDOセキュリティチーム約30名の組織図共有。" },
+      { date: "2026-04-06", title: "WL内部sync", content: "案件概要・スケジュール感を社内で共有。林さんがキックオフまでにキャッチアップ。" },
+      { date: "2026-04-07", title: "WL内部 提案アプローチ整理", content: "4プランから2択（デュアルトラック or AIアシスト型）に絞り込み、過去フォーマット有無を重要変数として追加。" },
+      { date: "2026-04-14", title: "Kickoff（対面）", content: "情報持ち出し禁止・PwC関与の対外公開ルール・コミュニケーションチャネル（Teams+SPO）周知。4象限スコープ提示。PwC PC調達2週間、Azure環境構築申請に約1ヶ月。" },
+      { date: "2026-04-14", title: "#10 STDO組織理解・成果発信戦略", content: "出澤社長まで含む組織構造、ASMでの成果発表機会、過去取り組み（AC上海・社内Chatbot）の整理。" },
+      { date: "2026-04-23", title: "#12 プランA/B評価", content: "WL提案のプランA（RAG横展開）・プランB（Claude Codeで付随業務自動化）ともに鈴木さん・増子さんから「厳しい」と評価。方針を「フォーマット構造化から段階的に」へ仕切り直し。" },
+      { date: "2026-04-24", title: "#13 録画方式・STDO優先度", content: "STDO優先度（HH→H→MH→M→XX）の整理、U-Bot/IFS Chatbot・Risk Committee・申請手続き等の課題候補議論。" },
+      { date: "2026-04-28", title: "#15 アーキテクチャ", content: "先方が気にしている観点の整理、アーキテクチャ図共有依頼。岡田・森・飯野・植山が参加。" },
+      { date: "2026-04-28", title: "PoC週次進捗報告", content: "貸与PCローカル処理方針確定、OpenAI APIキー連携、5/8初版モック共有予定。Codex CLI・Docker利用打診。" },
+      { date: "2026-05-08", title: "資料摺合せMTG", content: "5/12対面で利用する資料の摺合せ。文章を端的に、会社の想い・特徴を出す方向に。金融系・通信系を優先する方針。" },
+      { date: "2026-05-12", title: "#17 対面MTG", content: "外村さん・守屋さん・鈴木さん・吉田さん・増子さん・戸根さん参加。外村さん論点: 中長期目線（汎用性・PwCセキュリティ専用モデル）、開発後のランニングコスト、PoC後の契約形態。" },
+      { date: "2026-05-15", title: "5/15 PwCクライアントセキュリティ回答 定例", content: "マイルストーン共有、UI/UX摺合せ（モックアップURL: web-ebon-xi-48.vercel.app）、インフラ制約摺合せ（SSO=Entra ID、IP制限=PwC社内ネットワーク限定）、契約継続合意。Docker申請2-3日完了見込み。" }
+    ],
+    currentStatus: [
+      "Phase 1 PoC開発（4/24〜5/20）進行中、5/8初版モック共有済、5/15契約継続合意",
+      "貸与PCで開発中、OpenAI API疎通確認済",
+      "Docker環境申請進行中（2-3日で完了見込み）、Codex CLI利用可否は申請中",
+      "象限A・B優先で開発、5/8時点で20-30個目標、金融系優先で進行",
+      "今後: Phase 2 Azure移行準備(5/21〜6/7) → Phase 3 本番デプロイ(〜6/18) → Phase 4 検収(〜6/30)"
+    ],
+    nextSteps: [
+      "次回定例: 開発進捗共有・納品仕様摺合せ",
+      "運用面のヒアリング（スコープ外だが設計に反映）",
+      "Docker・Codex CLI利用可否の結果回収",
+      "完成Excel仕様の摺合せ（5/15から持ち越し）"
+    ],
+    todos: {
+      wl: [
+        "アーキテクチャ図の共有",
+        "開発推進（森エンジニア中心）",
+        "進捗報告少ない回での勉強会企画（Codexなど）",
+        "過去フォーマットのアップデート設計"
+      ],
+      pwc: [
+        "Docker等コンテナ環境の利用可否回答",
+        "OpenAI Codex CLI利用可否回答",
+        "ServiceNow API連携の調整窓口確定",
+        "Entra ID SSO・IP制限の最終設定確認"
+      ]
+    }
+  },
+
+  {
+    id: 5,
+    title: "開発等における申請手続きの工数削減 Chatbot",
+    status: "before-hearing",
+    isContract: false,
+    isShortTermPriority: true,
+    isHighPriority: false,
+    isLongTerm: false,
+    team: "STDO",
+    peopleSummary: "吉田和樹さん",
+    lastMeeting: "2026-04-24",
+    lastMeetingLink: "https://tldv.io/app/meetings/69eb15054338410013a5bd81",
+    nextActionWhen: "2026年7月以降",
+    nextActionPhase: "質問票PoC完走後に具体ヒアリング開始 → 提案フェーズへ",
+    people: [
+      { role: "担当", value: "吉田和樹さん（吉田真理子さんとは別人物）" },
+      { role: "窓口", value: "吉田真理子さん（紹介者）" }
+    ],
+    overview: "Azure や Google の PwC 開発環境を使用する際の申請手続きを各PJ担当者が実施。PJごとに必要な手続きが異なり、情報も大量にあるため、実施内容の整理に工数を要する。タスクリスト提案Chatbotで効率化したい。",
+    detail: [
+      "業務フロー: ①タスクリスト（見通し）を立てる → ②必要な情報を実際に記入し、申請",
+      "申請からリリースまでの流れは、社内用システムと外販用システムごとに異なる",
+      "データソース: SharePoint上の【ALL】 PwC JP - GHS Support Site の Raw data が .md で存在",
+      "対象ユーザー: 社内で開発をしたい、SaaSを使用したい人（STDO外も含む）",
+      "ソリューションイメージ: PJ概要を入れるとタスクリスト（注意点等もTipsとして記載）と回答参照に活用した過去事例を返すChatbot"
+    ],
+    hearings: [
+      { date: "2026-04-24", title: "#13 課題候補として議論・吉田和樹さんMTGセット決定", content: "Risk Committee と並ぶ取り組み候補2点からこちらが本命に絞り込み済。吉田和樹さんとのミーティングをセットする方針を決定。情報セキュリティ関連の先方Todo（現場の人が抱えている課題、ROI=古川さんの削減できる工数・やれてないことができるようになるプレミアム）も整理。具体ヒアリングは質問票PoC成功後の7月以降に予定。" },
+      { date: "2026-05-11", title: "#16 吉田和樹さん ヒアリング（実施せず）", content: "予定されていたが実施されず。Notion上にはソリューションイメージ・データ格納場所等の整理メモが残されているが、これは過去の議論ベースの資料であり実MTGの議事録ではない。" }
+    ],
+    currentStatus: [
+      "Risk Committee と並ぶ取り組み候補2点からこちらが本命に絞り込み済",
+      "ソリューションイメージ（タスクリスト提案Chatbot）・データ格納場所（SharePoint .md）・対象ユーザー（STDO外含む）まで概要レベルで把握済",
+      "5/11に予定していた吉田和樹さんとの具体ヒアリングは未実施、7月以降に再設定予定",
+      "質問票PoC（〜6月末）の成功を待って、7月以降に具体ヒアリングを開始する想定"
+    ],
+    nextSteps: [
+      "2026年7月: 具体ヒアリングを設定（質問票PoCの実績を持って提案フェーズへ）",
+      "ROI試算（対象ユーザー数・1件あたり削減時間の見立て）",
+      "技術検証（SharePoint .mdのRAG化、過去事例検索の精度）",
+      "PoC期間中は接触を保ちつつ、深掘りは7月から"
+    ],
+    todos: {
+      wl: [
+        "質問票PoC完走後（7月）に具体ヒアリング設定・提案資料作成",
+        "ROI試算・スコープ設計の準備"
+      ],
+      pwc: [
+        "対象ユーザー規模・利用頻度の整理",
+        "現状申請にかかる工数の実態確認"
+      ]
+    }
+  },
+
+  {
+    id: 3,
+    title: "アプリケーションのミティゲート自動化",
+    status: "in-hearing",
+    isContract: false,
+    isShortTermPriority: false,
+    isHighPriority: false,
+    isLongTerm: false,
+    team: "サイバーセキュリティ（PwC Global配下）",
+    peopleSummary: "磯貝さん・依田さん",
+    lastMeeting: "2026-05-13",
+    lastMeetingLink: null,
+    lastMeetingLinkNote: "不明（先方から動画をもらう必要あり）",
+    nextActionWhen: "〜2026年5月末",
+    nextActionPhase: "先方の宿題回収（業務フロー・カラム情報・データソース・アクション偏り）→ 6月以降に追加ヒアリング・提案",
+    people: [
+      { role: "リーダー", value: "磯貝徹さん（GL）" },
+      { role: "実務", value: "依田さん（グローバルイニシアチブ推進）" },
+      { role: "窓口", value: "吉田真理子さん" }
+    ],
+    overview: "MITER ATT&CKベースで対象アプリケーション（約200個）の脆弱性ミティゲーション評価をAIで自動化したい。現在は手作業で重要度高い20件のみ。5月末で人手フェーズ完了、6月経営報告後にAIで規模拡大予定。",
+    detail: [
+      "言葉の定義: MITER = 脆弱性対策として攻撃ポイントを一覧化したフレームワーク",
+      "今回対象: イニシャルアクセス（ユーザー認証等、最初のフェーズのリスク）",
+      "現フロー: MITERのシナリオを人間がディスカッションで選定 → 攻撃フェーズを要約・抜粋・追記 → 該当ミティゲーションを記載",
+      "対象アプリ約200個、現在は重要度高い20件のみに絞って手作業",
+      "拡大軸: 縦軸=対象インベントリ数（20→90+）、横軸=MITERフェーズ拡充",
+      "ゴール: Excelを埋める / 質問30個程度想定 / 頻度未定",
+      "WLのスタンス: サイバーセキュリティの本場アルゴリズムは受けない方針、AIレイヤーの業務改善に集中"
+    ],
+    hearings: [
+      { date: "2026-04-08", title: "#8 磯貝さん初対面", content: "鈴木さん経由で紹介。データリスク評価PJの背景共有。人手フェーズで観点を固めた後にAIでスケール拡大する方針。WLはサイバーセキュリティの専門知識はなく、AI観点での業務改善に集中する立場を表明。" },
+      { date: "2026-05-13", title: "#18 磯貝・依田 ディープヒアリング", content: "現フローの詳細・データソース（Power BIダッシュボード、ServiceNow APM情報・ARR）・拡大軸を整理。先方の宿題として「業務フロー」「カラム情報」「データソース」「アクションの偏り」の整理を依頼。" }
+    ],
+    currentStatus: [
+      "課題ヒアリング進行中、5/13で具体ヒアリング実施",
+      "先方の宿題（業務フロー等4点）の整理待ち",
+      "5月末で人手フェーズ完了、6月経営報告に盛り込みのスケジュール"
+    ],
+    nextSteps: [
+      "〜5月末: 先方からの宿題回収（業務フロー、カラム情報、データソース、アクションの偏り）",
+      "6月以降: 回収後の追加ヒアリング・AI自動化可能ポイント整理 → 提案フェーズへ"
+    ],
+    todos: {
+      wl: [
+        "人間が回答するためのアクション整理（動詞含む）",
+        "MITERフレームワーク・イニシャルアクセスの知見整理"
+      ],
+      pwc: [
+        "業務のフロー（リスクシナリオMITER抜粋、サマリExcel上部記載含む順番）",
+        "各テーブルのカラム情報（カラム名称と概要）",
+        "引っ張ってきているデータソース",
+        "記入工程のアクション偏り（回答方法の偏り Yes/No or 自由記述、質問の意味的カテゴリ分け、よく参照するドキュメント等）"
+      ]
+    }
+  },
+
+  {
+    id: 6,
+    title: "PDF抽出立て直し（企業情報抽出・名寄せ）",
+    status: "before-hearing",
+    isContract: false,
+    isShortTermPriority: false,
+    isHighPriority: true,
+    isLongTerm: false,
+    team: "デジタル&AI（山倉さんチーム）",
+    peopleSummary: "山倉さん（以前は山梨さんチーム）",
+    lastMeeting: "2026-04-16",
+    lastMeetingLink: "https://tldv.io/app/meetings/69e065c005306600136d724b",
+    nextActionWhen: "山倉さん社内調整完了後（時期未定、今〜随時）",
+    nextActionPhase: "声掛けあり次第ディスカッション設定 → 具体ヒアリング → スコープ設計",
+    people: [
+      { role: "現リーダー", value: "山倉さん（GL / デジタル&AI）" },
+      { role: "以前の担当", value: "山梨さんチーム（精度が出ず頓挫、山倉さんチームが引き取り）" },
+      { role: "紹介者", value: "守屋さん、吉田真理子さん" },
+      { role: "STDO推奨", value: "外村さんがこの課題を推奨する発言あり" }
+    ],
+    overview: "PDFから企業情報を抽出して名寄せするPJ。元々は山梨さんチームで取り組んでいたが、半年以上の期間と相応のコストをかけても精度が出ず頓挫。現在は山倉さんチームが引き取って立て直しを図っている。Delivery上で精度を出す必要があり緊急度高め。外村さんもこの課題を推奨しており、STDOチームとしての優先度は高い。",
+    detail: [
+      "経緯: 元々は山梨さんチームで取り組み → 半年以上+相応のコストをかけても精度が出ず頓挫 → 山倉さんチームが引き取り",
+      "緊急度: Delivery上で精度を出す必要があるため緊急度高め",
+      "STDO優先度: 外村さんもこの課題がいいんじゃないかという発言、STDOチームとしての優先度は高い",
+      "原因（山倉さん見立て）: 前PJでは生成AIの適用範囲が広すぎた",
+      "改善方針: 従来のアプリケーション導入部分とは別に、PDF読み込み→構造化データ生成にスコープを絞ればスマートになる",
+      "ベンダー選定: コンサルフェーズはWL、デリバリーは別ベンダーも検討の可能性。理由は価格でなく実績の有無",
+      "山倉さんは質問票PoCで実績が出れば継続依頼の可能性も示唆",
+      "山倉さんの方針: フェーズを小さく切ってスコープを絞りながら1つずつステップアップ"
+    ],
+    hearings: [
+      { date: "2026-04-16", title: "#11 山倉さん初回ヒアリング", content: "山倉さんの所属（STDO デジタル&AI）、業務（BIツール・AI活用）、課題候補2つを共有。①PDF抽出立て直し（山梨さんチームから引き取った頓挫案件、着手すべきものが明確で早く動ける）、②BIツールInsight。①の方を優先する方向で一致。NDAはバックキャストで締結済、正式契約書手続き中。WLは事例資料を後日メール送付。" }
+    ],
+    currentStatus: [
+      "山梨さんチームから山倉さんチームに引き取られた立て直し案件",
+      "Delivery上で精度を出す必要があり緊急度高め、外村さんも推奨でSTDO優先度高",
+      "山倉さん側で社内調整中、社内調整完了後にディスカッションの場を設ける予定",
+      "質問票PoCの実績が出れば、デリバリーまで継続の可能性"
+    ],
+    nextSteps: [
+      "山倉さん社内調整完了次第: 具体ヒアリング設定",
+      "ヒアリング後: スコープ・マイルストーン設計（Delivery精度の出し方が焦点）",
+      "外村さんが推奨する課題のため、STDO全体への成果アピールにもつながりやすい",
+      "質問票PoCでの実績作りが本案件への波及効果あり"
+    ],
+    todos: {
+      wl: [
+        "事例資料・スライド資料の送付（4/16時点のNext Actionとして実行済）",
+        "山倉さんからの連絡を待つ・接触を保つ"
+      ],
+      pwc: [
+        "山倉さん側で社内調整",
+        "方向性等定まり次第WLに声掛け"
+      ]
+    }
+  },
+
+  {
+    id: 8,
+    title: "セキュリティアセスメント対応",
+    status: "before-hearing",
+    isContract: false,
+    isShortTermPriority: false,
+    isHighPriority: false,
+    isLongTerm: false,
+    team: "鈴木みほさんチーム / 田中さん配下",
+    peopleSummary: "古川さん・山倉さん連携",
+    lastMeeting: "2026-04-14",
+    lastMeetingLink: "https://tldv.io/app/meetings/69dda69f19247f0013264615",
+    nextActionWhen: "今〜随時（古川・山倉のExcel記入後）",
+    nextActionPhase: "山倉さん経由でアセスメント領域詳細化 → 古川さん側の具体ヒアリング",
+    people: [
+      { role: "メイン担当", value: "古川さん（10月入社、半年）" },
+      { role: "連携", value: "山倉さん（アセスメント領域詳細確認）" },
+      { role: "上司", value: "田中さん（リーダー）、鈴木みほさん（GL）" }
+    ],
+    overview: "年3〜4回（3-4月/9月頃）の社内セキュリティアセスメント対応。グローバルPwC準拠確認と国内グループ内コンサル領域確認の2種類がメイン。直近分はちょうど終わりかけの状況。",
+    detail: [
+      "頻度: 年3〜4回（3-4月 or 9月頃実施）",
+      "種類: ①グローバルPwC準拠確認、②国内グループ内コンサル領域確認",
+      "登場人物（対応側）: 古川さんチーム、吉田真理子さん",
+      "データ: QSMC（Quality and Sustainability Management Committee関連？）等",
+      "AI適用イメージ: 「ドキュメント検索→自動回答」型で質問票PoCと同型構造",
+      "懸念（真子さん発言）: QMSはエビデンス提出ベースのため、AI自動回答のイメージが湧きにくい。エビデンス格納場所を教えておけばコピー作業は代替できる可能性あり",
+      "吉田真理子さん見解: 各担当者の工数を合算するとそれなりの規模、AI活用に前向き"
+    ],
+    hearings: [
+      { date: "2026-04-14", title: "#9 古川・増子ヒアリング（アセスメント部分）", content: "古川さんの業務内訳に「定期的（四半期に一度くらい）の社内セキュリティチェック」が含まれることを確認。アセスメント領域の詳細は山倉さんへのヒアリングで深掘り予定。" }
+    ],
+    currentStatus: [
+      "候補整理段階、まだ具体ヒアリングは不足",
+      "古川担当部分のみ概要確認済、山倉さん経由でアセスメント全体像を深掘り予定"
+    ],
+    nextSteps: [
+      "古川さん・山倉さん側でAI化候補タスクをExcelシートに書き出してもらう（4/14のNext Actionとして記載）",
+      "書き出し後: 山倉さん経由でアセスメント領域の詳細確認",
+      "具体案件で成功の目処が立った場合、古川さんの具体業務ディープヒアリング"
+    ],
+    todos: {
+      wl: [
+        "山倉さん側ヒアリングでアセスメント領域詳細化",
+        "古川さん書き出し後の優先度付け・提案"
+      ],
+      pwc: [
+        "古川さん・山倉さんがAI化候補タスクをExcelシートに書き出す",
+        "SharePoint内のデータが参照データとなる自動回答タスクを整理"
+      ]
+    }
+  },
+
+  {
+    id: 7,
+    title: "BIツールデータからのInsight創出",
+    status: "before-hearing",
+    isContract: false,
+    isShortTermPriority: false,
+    isHighPriority: false,
+    isLongTerm: false,
+    team: "デジタル&AI（山倉さんチーム）",
+    peopleSummary: "山倉さん",
+    lastMeeting: "2026-04-16",
+    lastMeetingLink: "https://tldv.io/app/meetings/69e065c005306600136d724b",
+    nextActionWhen: "課題6と並行・山倉さんイメージ具体化後",
+    nextActionPhase: "山倉さんが何を作りたいか具体化 → コンサル提案・具体ヒアリング",
+    people: [
+      { role: "リーダー", value: "山倉さん（GL / デジタル&AI）" }
+    ],
+    overview: "山倉さんが内製したBIツールのデータベースを活用して、新しいInsightを出したい。何を作るかのイメージはまだ固まっていない状態で、コンサルフェーズからじっくり進める必要がある。",
+    detail: [
+      "対象データ: 山倉さんが自社で内製した BIツールのデータベース",
+      "目的: 既存データから新しいInsightを出す",
+      "現状: 何を作るかのイメージがまだ固まっていない",
+      "進め方: コンサルフェーズから入り、課題を具体化していく必要がある",
+      "優先順位: 同じ4/16ヒアリングで挙がった①PDF抽出立て直しが先行（着手すべきものが明確なため）"
+    ],
+    hearings: [
+      { date: "2026-04-16", title: "#11 山倉さん 頭出しのみ", content: "課題①PDF抽出立て直しと並ぶ2候補の1つとして提示。山倉さん自身も「何を作るというところがまだイメージ湧いていない」と発言、コンサルフェーズからじっくりやる必要があるとの認識。①を先行させる方針。" }
+    ],
+    currentStatus: [
+      "何を作るかイメージ未固定",
+      "①PDF抽出立て直しが先行、こちらは後続で検討"
+    ],
+    nextSteps: [
+      "課題6（PDF抽出）の進行とセットで議論",
+      "山倉さんがBIツールでやりたいことのイメージ具体化を待つ",
+      "コンサルフェーズから入る前提でアプローチ"
+    ],
+    todos: {
+      wl: [
+        "①PDF抽出と並行 or 後続で提案検討",
+        "コンサル提案の準備"
+      ],
+      pwc: [
+        "山倉さんが何を作りたいかのイメージ具体化",
+        "BIツールのデータベース構造・カバー範囲の整理"
+      ]
+    }
+  },
+
+  {
+    id: 2,
+    title: "Risk Committee 定例資料作成の工数削減",
+    status: "in-hearing",
+    isContract: false,
+    isShortTermPriority: false,
+    isHighPriority: false,
+    isLongTerm: true,
+    team: "鈴木みほさんチーム / ガバナンスコア",
+    peopleSummary: "鈴木みほさん",
+    lastMeeting: "2026-04-27",
+    lastMeetingLink: "https://tldv.io/app/meetings/69ef026b1eb7900013e666ca",
+    nextActionWhen: "中長期（時期未定）",
+    nextActionPhase: "機会あれば壁打ちChatbotのソリューション案を提案 → 再着手検討",
+    people: [
+      { role: "メイン", value: "鈴木みほさん（GL）" },
+      { role: "報告対象", value: "守屋さん・外村さん（報告者）、CRO・BOTのトップ10数人（受け手）" }
+    ],
+    overview: "月1回の経営層向けリスク報告（Risk Committee）の定例資料作成効率化。準備工数35h/回で、特に鈴木さんのレビュー（4回程度）がボトルネック。",
+    detail: [
+      "頻度: 月1回",
+      "登場人物: 守屋・外村が報告、リスク関連の経営層10数人（CRO、BOTのトップ等）が対象",
+      "時間: 報告10-20min、準備時間は均すと35h/回",
+      "報告内容: インシデント報告（必ず、定常化）、セキュリティ施策の成果、経営層が知るべき幅広い内容",
+      "突発的な経営層向けMTGもRC資料ベースで作られる",
+      "鈴木さん発言: 「数値は大まかに出しているが、上層部に正確に伝わっているわけではない。それよりも実のある取り組みを重視してほしい」",
+      "守屋さんはHR的に「視座を上げろ」とよく言う、グローバル交渉に時間がかかる"
+    ],
+    hearings: [
+      { date: "2026-04-24", title: "#13 鈴木さん課題ヒアリング", content: "Risk Committee効率化の概念整理。各チームの報告収集が理想だが、報告がないためこちらが探る必要がある。LOS（Line of Service）連携の課題も論点。" },
+      { date: "2026-04-27", title: "#14 鈴木さんディープヒアリング", content: "RCの頻度・登場人物・時間・準備工数（均し35h）の整理。1st reviewで校閲時間がかかってる。突発的な経営層向けMTGも同じ資料ベース。鈴木さんは定常業務が好きで効率化余地多い。" }
+    ],
+    currentStatus: [
+      "ヒアリングは完了、ソリューション提案手前で短期保留",
+      "5/11 #16で「中長期的な構想となるため、短期間での成果が求められる現タイミングには適さない」と判断",
+      "中長期テーマとして案件リストに残す方針"
+    ],
+    nextSteps: [
+      "中長期で機会あれば壁打ちChatbotの提案を作成",
+      "鈴木さんのレビュー前段階のソリューション案を温める"
+    ],
+    todos: {
+      wl: [
+        "中長期で温める（短期アクションなし）"
+      ],
+      pwc: [
+        "年間でかかっている工数の整理（4/24で先方TODOとして挙がっていたもの）"
+      ]
+    }
+  },
+
+  {
+    id: 4,
+    title: "IFS Chatbot / U-Bot の精度改善",
+    status: "before-hearing",
+    isContract: false,
+    isShortTermPriority: false,
+    isHighPriority: false,
+    isLongTerm: true,
+    team: "外村さんチーム / IT部門連携",
+    peopleSummary: "外村さんチーム",
+    lastMeeting: "2026-04-24",
+    lastMeetingLink: "https://tldv.io/app/meetings/69eb15054338410013a5bd81",
+    nextActionWhen: "中長期（時期未定）",
+    nextActionPhase: "機会あれば外村さん経由で具体ヒアリング設定",
+    people: [
+      { role: "経営層", value: "外村さん（STDOトップ層）" },
+      { role: "管轄", value: "IT部門（STDO外）" }
+    ],
+    overview: "2年前くらいに社内ITチームが作った既存社内Chatbot（IFS Chatbot、U-Bot）の精度改善。現在は正答率がどれくらいかという観点に着目されておらず、精度がイマイチな状態。",
+    detail: [
+      "既存システム: IFS Chatbot、U-Bot（社内向け）",
+      "開発元: 社内ITチーム、2年前くらいに構築",
+      "課題: 正答率の観点に着目されていない、精度がイマイチ",
+      "Chatbotの管理画面が存在することは確認済",
+      "管轄がIT部門のためSTDOから動かしづらい構造"
+    ],
+    hearings: [
+      { date: "2026-04-24", title: "#13 課題候補として言及のみ", content: "「IT部門管轄」「良い案件なのでタネを置いておく」とコメント。STDO優先度ではHH→H→MH→M→XXのうちMH程度の位置づけ。具体ヒアリング未実施。" }
+    ],
+    currentStatus: [
+      "種としてリストに残している状態、具体ヒアリング未実施",
+      "短期では動かさない、中長期テーマとして保持",
+      "IT部門との調整が必要なペンディング案件"
+    ],
+    nextSteps: [
+      "中長期で機会あれば外村さん経由で具体ヒアリング設定",
+      "質問票PoCで実績を出した上でSTDO全体への横展開議論時に俎上に載せる"
+    ],
+    todos: {
+      wl: [
+        "中長期で温める（短期アクションなし）"
+      ],
+      pwc: [
+        "外村さんからの直接ヒアリング機会の調整（必要に応じて）",
+        "IT部門との調整（PwC側内部論点）"
+      ]
+    }
+  }
+];
+
+// Priority order (default sort)
+// 1. 短期本命 (isShortTermPriority)
+// 2. status order (in-hearing > pre-proposal > before-hearing > post-proposal)
+//   but 中長期保留 (isLongTerm) goes to bottom
+function priorityRank(iss) {
+  if (iss.isShortTermPriority) return 0;
+  if (iss.isHighPriority) return 5;
+  if (iss.isLongTerm) return 100 + STATUSES[iss.status].order;
+  const map = { "in-hearing": 1, "before-hearing": 2, "pre-proposal": 3, "post-proposal": 4 };
+  return 10 + (map[iss.status] || 99);
+}
+
+// Render contract card
+const contractIssue = issues.find(i => i.isContract);
+const contractArea = document.getElementById("contract-area");
+if (contractIssue) {
+  const card = document.createElement("div");
+  card.className = "contract-card";
+  card.onclick = () => showDetail(contractIssue.id);
+  card.innerHTML = `
+    <div class="top-row">
+      <span class="id-num">課題 ${String(contractIssue.id).padStart(2, '0')}</span>
+      <span class="badge ${STATUSES[contractIssue.status].cls}">${STATUSES[contractIssue.status].label}</span>
+      <span class="badge flag-short">契約中</span>
+    </div>
+    <h3>${contractIssue.title}</h3>
+    <div class="next-grid">
+      <div>
+        <div class="lbl">担当（先方）</div>
+        <div class="val">${contractIssue.peopleSummary}</div>
+      </div>
+      <div>
+        <div class="lbl">ネクストアクション 時期</div>
+        <div class="val">${contractIssue.nextActionWhen}</div>
+      </div>
+      <div>
+        <div class="lbl">ネクストアクション フェーズ</div>
+        <div class="val">${contractIssue.nextActionPhase}</div>
+      </div>
+    </div>
+  `;
+  contractArea.appendChild(card);
+}
+
+// Candidates (non-contract)
+const candidates = issues.filter(i => !i.isContract);
+let currentSort = "priority";
+let currentFilter = "all";
+
+function renderCandidates() {
+  const tbody = document.getElementById("issue-table-body");
+  tbody.innerHTML = "";
+  let list = [...candidates];
+
+  // Filter
+  if (currentFilter === "exclude-long") {
+    list = list.filter(i => !i.isLongTerm);
+  } else if (currentFilter !== "all") {
+    list = list.filter(i => i.status === currentFilter);
+  }
+
+  // Sort
+  if (currentSort === "priority") {
+    list.sort((a, b) => priorityRank(a) - priorityRank(b) || a.id - b.id);
+  } else if (currentSort === "date") {
+    list.sort((a, b) => b.lastMeeting.localeCompare(a.lastMeeting));
+  } else if (currentSort === "id") {
+    list.sort((a, b) => a.id - b.id);
+  } else if (currentSort === "status") {
+    list.sort((a, b) => STATUSES[a.status].order - STATUSES[b.status].order || a.id - b.id);
+  }
+
+  document.getElementById("candidate-count").textContent = `${list.length}件`;
+
+  list.forEach(iss => {
+    const flags = [];
+    if (iss.isShortTermPriority) flags.push('<span class="badge flag-short">短期本命</span>');
+    if (iss.isHighPriority) flags.push('<span class="badge flag-high">STDO優先度高</span>');
+    if (iss.isLongTerm) flags.push('<span class="badge flag-long">中長期保留</span>');
+
+    let linkHTML = '';
+    if (iss.lastMeetingLink) {
+      linkHTML = `<a href="${iss.lastMeetingLink}" target="_blank" class="mtg-link" onclick="event.stopPropagation();">▶ MTG動画</a>`;
+    } else if (iss.lastMeetingLinkNote) {
+      linkHTML = `<span class="mtg-link-note">${iss.lastMeetingLinkNote}</span>`;
+    }
+
+    const tr = document.createElement("tr");
+    tr.onclick = () => showDetail(iss.id);
+    tr.innerHTML = `
+      <td class="col-num">${String(iss.id).padStart(2, '0')}</td>
+      <td class="col-title">
+        <span class="title-text">${iss.title}</span>
+        ${flags.length ? `<div class="flag-row">${flags.join('')}</div>` : ''}
+      </td>
+      <td class="col-people">${iss.peopleSummary}</td>
+      <td class="col-status"><span class="badge ${STATUSES[iss.status].cls}">${STATUSES[iss.status].label}</span></td>
+      <td class="col-next">
+        <div class="when">${iss.nextActionWhen}</div>
+        <div class="phase">${iss.nextActionPhase}</div>
+      </td>
+      <td class="col-date">${iss.lastMeeting}${linkHTML ? '<br>' + linkHTML : ''}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Sort buttons
+document.querySelectorAll("#sort-group button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("#sort-group button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentSort = btn.dataset.sort;
+    renderCandidates();
+  });
+});
+
+// Filter buttons
+document.querySelectorAll("#filter-group button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("#filter-group button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentFilter = btn.dataset.filter;
+    renderCandidates();
+  });
+});
+
+renderCandidates();
+
+function showDetail(id) {
+  const iss = issues.find(i => i.id === id);
+  if (!iss) return;
+  const flags = [];
+  if (iss.isContract) flags.push('<span class="badge flag-short">契約中</span>');
+  if (iss.isShortTermPriority) flags.push('<span class="badge flag-short">短期本命</span>');
+  if (iss.isHighPriority) flags.push('<span class="badge flag-high">STDO優先度高</span>');
+  if (iss.isLongTerm) flags.push('<span class="badge flag-long">中長期保留</span>');
+
+  let mtgLinkBlock = '';
+  if (iss.lastMeetingLink) {
+    mtgLinkBlock = `<a href="${iss.lastMeetingLink}" target="_blank" class="mtg-link" style="font-size:13px; padding:4px 12px;">▶ 最終MTG動画 (${iss.lastMeeting})</a>`;
+  } else if (iss.lastMeetingLinkNote) {
+    mtgLinkBlock = `<span class="mtg-link-note" style="font-size:13px; padding:4px 12px;">最終MTG動画: ${iss.lastMeetingLinkNote}</span>`;
+  }
+
+  const detailHTML = `
+    <div class="detail-num">課題 ${String(iss.id).padStart(2, '0')}</div>
+    <h1 class="detail-title">${iss.title}</h1>
+    <div class="detail-badges">
+      <span class="badge ${STATUSES[iss.status].cls}">${STATUSES[iss.status].label}</span>
+      ${flags.join('')}
+    </div>
+    ${mtgLinkBlock ? `<div style="margin: 10px 0 4px;">${mtgLinkBlock}</div>` : ''}
+
+    <div class="detail-next-action">
+      <div>
+        <div class="label">ネクストアクション 時期</div>
+        <div class="value">${iss.nextActionWhen}</div>
+      </div>
+      <div>
+        <div class="label">ネクストアクション フェーズ</div>
+        <div class="value">${iss.nextActionPhase}</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>担当者・チーム</h2>
+      <div class="meta-grid">
+        ${iss.people.map(p => `
+          <div class="meta-item">
+            <div class="label">${p.role}</div>
+            <div class="value">${p.value}</div>
+          </div>
+        `).join('')}
+        <div class="meta-item">
+          <div class="label">管轄チーム</div>
+          <div class="value">${iss.team}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>課題の概要</h2>
+      <p>${iss.overview}</p>
+    </div>
+
+    <div class="section">
+      <h2>課題詳細・ヒアリング内容</h2>
+      <ul class="simple">
+        ${iss.detail.map(d => `<li>${d}</li>`).join('')}
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>ミーティング履歴</h2>
+      <ul class="meeting-list">
+        ${iss.hearings.map(h => `
+          <li>
+            <div class="mtg-date">${h.date}</div>
+            <div class="mtg-title">${h.title}</div>
+            <div class="mtg-content">${h.content}</div>
+          </li>
+        `).join('')}
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>現状ステータス</h2>
+      <ul class="simple">
+        ${iss.currentStatus.map(s => `<li>${s}</li>`).join('')}
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>ネクストステップ</h2>
+      <ul class="simple">
+        ${iss.nextSteps.map(s => `<li>${s}</li>`).join('')}
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>TODO</h2>
+      <div class="todo-grid">
+        <div class="todo-block wl">
+          <div class="label">Wanderlust 側</div>
+          <ul class="simple">
+            ${iss.todos.wl.map(t => `<li>${t}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="todo-block pwc">
+          <div class="label">PwC 側</div>
+          <ul class="simple">
+            ${iss.todos.pwc.map(t => `<li>${t}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById("detail-content").innerHTML = detailHTML;
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("detail").classList.remove("hidden");
+  window.scrollTo({ top: 0, behavior: "instant" });
+  history.pushState({ id }, "", `#issue-${id}`);
+}
+
+function showHome() {
+  document.getElementById("detail").classList.add("hidden");
+  document.getElementById("home").classList.remove("hidden");
+  window.scrollTo({ top: 0, behavior: "instant" });
+  history.pushState(null, "", window.location.pathname);
+}
+
+window.addEventListener("popstate", (e) => {
+  if (e.state && e.state.id) showDetail(e.state.id);
+  else showHome();
+});
+
+const hash = window.location.hash;
+if (hash.startsWith("#issue-")) {
+  const id = parseInt(hash.replace("#issue-", ""), 10);
+  if (!isNaN(id)) showDetail(id);
+}
+</script>
+</body>
+</html>
