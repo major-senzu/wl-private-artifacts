@@ -1,7 +1,16 @@
-# WL Private Artifacts
+# WL Artifacts
 
-Wanderlust 内部用の成果物置き場（**Private リポジトリ**）。
-機密情報（クライアント名・社員名・契約金額・戦略情報など）を含む成果物を格納する。
+Wanderlust 内部用の成果物置き場。
+
+> ⚠️ **このリポジトリは Public です**。GitHub Pages を使うために当初 Private から Public に変更しました。
+> 機密情報（クライアント名・社員名・契約金額・戦略情報など）を含むため、**URL を不用意に共有しないこと**。
+> 命名「wl-private-artifacts」は当初 Private で作成した経緯のままです（リネームすると公開URLが変わるため保持）。
+
+## URL
+
+- GitHub: https://github.com/major-senzu/wl-private-artifacts
+- Pages トップ: https://major-senzu.github.io/wl-private-artifacts/
+- PwC 課題マップ: https://major-senzu.github.io/wl-private-artifacts/pwc/issue-map.html
 
 ## 構成
 
@@ -13,11 +22,21 @@ wl-private-artifacts/
 └── （将来）optage/, panasonic-homes/ など
 ```
 
-## 機密扱いに関するルール
+## ルール
 
-- このリポジトリは **Private**。Public に切り替える前に必ず内容を匿名化すること
-- 公開可能な成果物は `claude-artifacts`（Public）に置く
-- 人名・契約金額・戦略情報などはこちらに格納
+- このリポジトリは Public だが、 **URL を不用意に共有しないこと**
+- 公開可能な成果物は `claude-artifacts` に置く
+- 業務トラッカー・社内向け資料はこちらに格納
+
+## 更新方法
+
+```bash
+cd /Users/major/Documents/wl-private-artifacts
+# ファイル更新後...
+git add -A
+git commit -m "Update: ..."
+git push
+```
 
 ## ローカル閲覧
 
