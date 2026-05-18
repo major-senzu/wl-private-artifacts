@@ -138,6 +138,11 @@
   .badge.flag-long      { background: #f3eafa; color: #6b3fa0; border: 1px solid #e0cef0; }
   .badge.flag-short     { background: #fbeaea; color: #b03030; border: 1px solid #f0caca; }
   .badge.flag-high      { background: #fdf3e0; color: #b87614; border: 1px solid #f0d8a8; }
+  .badge.flag-pending   { background: #f1f3f5; color: #6b7280; border: 1px solid #d8dde2; }
+  .badge.flag-new       { background: #e6f4ec; color: #2d8659; border: 1px solid #b5dbc4; }
+  .badge.status-closed  { background: #f1f3f5; color: #6b7280; border: 1px solid #d8dde2; }
+  .closed-row { opacity: 0.55; }
+  .closed-row td.col-title .title-text { text-decoration: line-through; }
 
   /* Meeting link */
   .mtg-link {
@@ -436,36 +441,40 @@
   <div id="home" class="view">
     <header class="page-header">
       <h1>PwC案件 課題マップ</h1>
-      <p class="subtitle">STDOで取り組み中・候補となっている8課題の進捗とネクストステップを一覧化</p>
+      <p class="subtitle">STDOで取り組み中・候補となっている9課題の進捗とネクストステップを一覧化</p>
       <div class="meta-row">
         <span><strong>クライアント</strong>　PwC Japan合同会社 / STDO</span>
-        <span><strong>更新日</strong>　2026-05-16</span>
-        <span><strong>議事録ソース</strong>　Notion 28件</span>
+        <span><strong>更新日</strong>　2026-05-18（PwC返信反映）</span>
+        <span><strong>議事録ソース</strong>　Notion 28件 + 5/18メール</span>
       </div>
     </header>
 
     <!-- 全体ネクストステップ -->
     <div class="overall-next">
-      <h2>PwC案件 全体ネクストステップ</h2>
+      <h2>PwC案件 全体ネクストステップ（5/18 PwC返信反映）</h2>
+      <div class="timeline-row">
+        <div class="when">5月19日（明日）</div>
+        <div class="what"><strong>定例MTGで詳細相談</strong>。課題3の宿題状況確認 + 課題9（新ネタ）の業務概要ヒアリング。</div>
+      </div>
+      <div class="timeline-row">
+        <div class="when">5月中</div>
+        <div class="what"><strong>6月中の小粒案件候補=課題3 or 課題9のいずれか</strong>を絞り込み。課題3はPwC側で内部議論中（磯貝・依田から状況確認）、課題9は5/19MTGで詳細相談。</div>
+      </div>
       <div class="timeline-row">
         <div class="when">〜 6月末</div>
-        <div class="what"><strong>質問票PoC（課題1）に集中</strong>。Phase 1〜4を完走し、6/30検収完了まで走り切る。並行して既ヒアリング済の候補（課題3・6・8）の宿題回収と論点整理を進める。</div>
+        <div class="what"><strong>質問票PoC（課題1）に集中</strong>し検収完了まで走り切る。十分な成果を出して実用化に向けて動くことが先方ゴール。並行で課題3 or 課題9のいずれかを進められる可能性あり。</div>
       </div>
       <div class="timeline-row">
         <div class="when">2026年7月以降</div>
-        <div class="what"><strong>短期本命=吉田和樹さん案件（課題5）の具体ヒアリング開始</strong>。質問票PoCの実績を持って提案フェーズへ。</div>
-      </div>
-      <div class="timeline-row">
-        <div class="when">並行（今〜）</div>
-        <div class="what">課題3（磯貝・依田）は宿題回収待ち、課題6（山倉PDF）は先方の社内調整待ち、課題7・8はヒアリングを進める。</div>
+        <div class="what">課題5・7・8 はPwC側で <strong>Pending中</strong>（6月末まで時間が取れず）。質問票PoCの成果を踏まえて再度始動。</div>
       </div>
       <div class="timeline-row">
         <div class="when">中長期</div>
-        <div class="what">課題2（Risk Committee）・課題4（IFS/U-Bot）は機会あれば再着手のテーマとして温める。</div>
+        <div class="what">課題2（Risk Committee）・課題4（IFS/U-Bot）は機会あれば再着手。</div>
       </div>
       <div class="timeline-row">
-        <div class="when">未着手</div>
-        <div class="what">山梨愛さん（GL）のチームからは未ヒアリング。吉田真理子さん経由で課題シート記入状況の確認余地あり。</div>
+        <div class="when">クローズ</div>
+        <div class="what">課題6（PDF抽出立て直し）は他社PoCに決定したため <strong>クローズ</strong>。</div>
       </div>
     </div>
 
@@ -478,8 +487,8 @@
 
     <!-- 課題候補 -->
     <div class="section-title">
-      課題候補 — 並行ヒアリング・候補整理
-      <span class="count" id="candidate-count">7件</span>
+      課題候補 — 並行ヒアリング・候補整理・クローズ
+      <span class="count" id="candidate-count">8件</span>
     </div>
 
     <div class="table-controls">
@@ -493,10 +502,12 @@
       <span class="ctl-label">絞り込み</span>
       <div class="ctl-group" id="filter-group">
         <button data-filter="all" class="active">全て</button>
+        <button data-filter="active">アクティブのみ</button>
         <button data-filter="before-hearing">具体ヒアリング前</button>
         <button data-filter="in-hearing">具体ヒアリング中</button>
-        <button data-filter="pre-proposal">ヒアリング完了・提案前</button>
-        <button data-filter="exclude-long">中長期保留を除く</button>
+        <button data-filter="pending">Pending</button>
+        <button data-filter="longterm">中長期保留</button>
+        <button data-filter="closed">クローズ</button>
       </div>
     </div>
 
@@ -528,12 +539,13 @@
 </div>
 
 <script>
-// 4-level funnel status
+// 5-level funnel status (+ closed)
 const STATUSES = {
   "before-hearing": { label: "具体ヒアリング前",        cls: "status-before",   order: 1 },
   "in-hearing":     { label: "具体ヒアリング中",        cls: "status-during",   order: 2 },
   "pre-proposal":   { label: "ヒアリング完了・提案前",  cls: "status-preprop",  order: 3 },
-  "post-proposal":  { label: "WL提案完了",              cls: "status-postprop", order: 4 }
+  "post-proposal":  { label: "WL提案完了",              cls: "status-postprop", order: 4 },
+  "closed":         { label: "クローズ",                cls: "status-closed",   order: 99 }
 };
 
 const issues = [
@@ -544,6 +556,7 @@ const issues = [
     isContract: true,
     isShortTermPriority: false,
     isHighPriority: false,
+    isPending: false,
     isLongTerm: false,
     team: "鈴木みほさんチーム / ガバナンスコア",
     peopleSummary: "増子さん・古川さん（実務）",
@@ -621,15 +634,16 @@ const issues = [
     title: "開発等における申請手続きの工数削減 Chatbot",
     status: "before-hearing",
     isContract: false,
-    isShortTermPriority: true,
+    isShortTermPriority: false,
     isHighPriority: false,
+    isPending: true,
     isLongTerm: false,
     team: "STDO",
     peopleSummary: "吉田和樹さん",
     lastMeeting: "2026-04-24",
     lastMeetingLink: "https://tldv.io/app/meetings/69eb15054338410013a5bd81",
     nextActionWhen: "2026年7月以降",
-    nextActionPhase: "質問票PoC完走後に具体ヒアリング開始 → 提案フェーズへ",
+    nextActionPhase: "PwC側でPending中（吉田和樹さんの時間が取れず）。質問票PoC成果を踏まえ7月以降に再度始動。",
     people: [
       { role: "担当", value: "吉田和樹さん（吉田真理子さんとは別人物）" },
       { role: "窓口", value: "吉田真理子さん（紹介者）" }
@@ -647,25 +661,23 @@ const issues = [
       { date: "2026-05-11", title: "#16 吉田和樹さん ヒアリング（実施せず）", content: "予定されていたが実施されず。Notion上にはソリューションイメージ・データ格納場所等の整理メモが残されているが、これは過去の議論ベースの資料であり実MTGの議事録ではない。" }
     ],
     currentStatus: [
-      "Risk Committee と並ぶ取り組み候補2点からこちらが本命に絞り込み済",
+      "Risk Committee と並ぶ取り組み候補2点からこちらが本命に絞り込み済 → 5/18 PwC返信で Pending に変更",
+      "PwC側コメント（5/18）: 吉田和樹さん・古川さんの対象業務全体ボリュームが大きく、6月末まで時間が取れない。7月以降であれば何かあるかもしれないが急ぎではないため、吉田真理子さんの判断で一旦 Pending",
       "ソリューションイメージ（タスクリスト提案Chatbot）・データ格納場所（SharePoint .md）・対象ユーザー（STDO外含む）まで概要レベルで把握済",
-      "5/11に予定していた吉田和樹さんとの具体ヒアリングは未実施、7月以降に再設定予定",
-      "質問票PoC（〜6月末）の成功を待って、7月以降に具体ヒアリングを開始する想定"
+      "5/11に予定していた吉田和樹さんとの具体ヒアリングは未実施"
     ],
     nextSteps: [
-      "2026年7月: 具体ヒアリングを設定（質問票PoCの実績を持って提案フェーズへ）",
-      "ROI試算（対象ユーザー数・1件あたり削減時間の見立て）",
-      "技術検証（SharePoint .mdのRAG化、過去事例検索の精度）",
-      "PoC期間中は接触を保ちつつ、深掘りは7月から"
+      "2026年7月以降: 質問票PoCの成果を踏まえつつ再度始動",
+      "PoC実用化の動きの中で、関連業務として再浮上する可能性も視野",
+      "それまでは接触を保ちつつ深追いしない"
     ],
     todos: {
       wl: [
-        "質問票PoC完走後（7月）に具体ヒアリング設定・提案資料作成",
-        "ROI試算・スコープ設計の準備"
+        "7月以降に再開する想定で待機",
+        "質問票PoC完走に集中"
       ],
       pwc: [
-        "対象ユーザー規模・利用頻度の整理",
-        "現状申請にかかる工数の実態確認"
+        "（現時点で短期TODOなし、7月以降に時間を確保いただく）"
       ]
     }
   },
@@ -675,16 +687,17 @@ const issues = [
     title: "アプリケーションのミティゲート自動化",
     status: "in-hearing",
     isContract: false,
-    isShortTermPriority: false,
+    isShortTermPriority: true,
     isHighPriority: false,
+    isPending: false,
     isLongTerm: false,
     team: "サイバーセキュリティ（PwC Global配下）",
     peopleSummary: "磯貝さん・依田さん",
     lastMeeting: "2026-05-13",
     lastMeetingLink: null,
     lastMeetingLinkNote: "不明（先方から動画をもらう必要あり）",
-    nextActionWhen: "〜2026年5月末",
-    nextActionPhase: "先方の宿題回収（業務フロー・カラム情報・データソース・アクション偏り）→ 6月以降に追加ヒアリング・提案",
+    nextActionWhen: "5月19日（明日）",
+    nextActionPhase: "PwC側で内部議論（5/19）→ 磯貝・依田の状況確認 → 6月中の小粒案件候補として課題9と比較検討",
     people: [
       { role: "リーダー", value: "磯貝徹さん（GL）" },
       { role: "実務", value: "依田さん（グローバルイニシアチブ推進）" },
@@ -702,16 +715,19 @@ const issues = [
     ],
     hearings: [
       { date: "2026-04-08", title: "#8 磯貝さん初対面", content: "鈴木さん経由で紹介。データリスク評価PJの背景共有。人手フェーズで観点を固めた後にAIでスケール拡大する方針。WLはサイバーセキュリティの専門知識はなく、AI観点での業務改善に集中する立場を表明。" },
-      { date: "2026-05-13", title: "#18 磯貝・依田 ディープヒアリング", content: "現フローの詳細・データソース（Power BIダッシュボード、ServiceNow APM情報・ARR）・拡大軸を整理。先方の宿題として「業務フロー」「カラム情報」「データソース」「アクションの偏り」の整理を依頼。" }
+      { date: "2026-05-13", title: "#18 磯貝・依田 ディープヒアリング", content: "現フローの詳細・データソース（Power BIダッシュボード、ServiceNow APM情報・ARR）・拡大軸を整理。先方の宿題として「業務フロー」「カラム情報」「データソース」「アクションの偏り」の整理を依頼。" },
+      { date: "2026-05-18", title: "メール返信（吉田真理子さん）", content: "「明日（5/19）内部で議論する」「磯貝・依田から状況を確認し、ご連絡します」と回答。6月中の小粒案件候補（① 課題3 / ② 新ネタ=課題9）のうちの1つとして位置付けられた。" }
     ],
     currentStatus: [
-      "課題ヒアリング進行中、5/13で具体ヒアリング実施",
-      "先方の宿題（業務フロー等4点）の整理待ち",
-      "5月末で人手フェーズ完了、6月経営報告に盛り込みのスケジュール"
+      "PwC側で5/19に内部議論予定、その後磯貝・依田の状況を吉田真理子さんから連絡を受ける",
+      "6月中の小粒案件候補（課題9と並ぶ2候補）として浮上",
+      "5月末で人手フェーズ完了、6月経営報告に盛り込みのスケジュールは継続"
     ],
     nextSteps: [
-      "〜5月末: 先方からの宿題回収（業務フロー、カラム情報、データソース、アクションの偏り）",
-      "6月以降: 回収後の追加ヒアリング・AI自動化可能ポイント整理 → 提案フェーズへ"
+      "5月19日: PwC側で内部議論",
+      "5月19日以降: 吉田真理子さんから磯貝・依田の状況確認結果を受領",
+      "受領後: 課題9と比較し、6月中に進めるかを判断",
+      "進める場合: 宿題回収（業務フロー等4点）→ 追加ヒアリング → 提案フェーズへ"
     ],
     todos: {
       wl: [
@@ -730,17 +746,18 @@ const issues = [
   {
     id: 6,
     title: "PDF抽出立て直し（企業情報抽出・名寄せ）",
-    status: "before-hearing",
+    status: "closed",
     isContract: false,
     isShortTermPriority: false,
-    isHighPriority: true,
+    isHighPriority: false,
+    isPending: false,
     isLongTerm: false,
     team: "デジタル&AI（山倉さんチーム）",
     peopleSummary: "山倉さん（以前は山梨さんチーム）",
     lastMeeting: "2026-04-16",
     lastMeetingLink: "https://tldv.io/app/meetings/69e065c005306600136d724b",
-    nextActionWhen: "山倉さん社内調整完了後（時期未定、今〜随時）",
-    nextActionPhase: "声掛けあり次第ディスカッション設定 → 具体ヒアリング → スコープ設計",
+    nextActionWhen: "—（クローズ）",
+    nextActionPhase: "他社PoCに決定（5/18 PwC返信）。WLとしてはクローズ。",
     people: [
       { role: "現リーダー", value: "山倉さん（GL / デジタル&AI）" },
       { role: "以前の担当", value: "山梨さんチーム（精度が出ず頓挫、山倉さんチームが引き取り）" },
@@ -762,25 +779,19 @@ const issues = [
       { date: "2026-04-16", title: "#11 山倉さん初回ヒアリング", content: "山倉さんの所属（STDO デジタル&AI）、業務（BIツール・AI活用）、課題候補2つを共有。①PDF抽出立て直し（山梨さんチームから引き取った頓挫案件、着手すべきものが明確で早く動ける）、②BIツールInsight。①の方を優先する方向で一致。NDAはバックキャストで締結済、正式契約書手続き中。WLは事例資料を後日メール送付。" }
     ],
     currentStatus: [
-      "山梨さんチームから山倉さんチームに引き取られた立て直し案件",
-      "Delivery上で精度を出す必要があり緊急度高め、外村さんも推奨でSTDO優先度高",
-      "山倉さん側で社内調整中、社内調整完了後にディスカッションの場を設ける予定",
-      "質問票PoCの実績が出れば、デリバリーまで継続の可能性"
+      "5/18 PwC返信: 「他社とPoC中、対象外」と連絡を受領",
+      "PwC側コメント: 「社会的な信頼と、ミーティングで守屋の信頼を勝ち取れたということがあり、今、他社とPoCをしている」",
+      "WLとしてはクローズ。本案件にリソースを割かない方針"
     ],
     nextSteps: [
-      "山倉さん社内調整完了次第: 具体ヒアリング設定",
-      "ヒアリング後: スコープ・マイルストーン設計（Delivery精度の出し方が焦点）",
-      "外村さんが推奨する課題のため、STDO全体への成果アピールにもつながりやすい",
-      "質問票PoCでの実績作りが本案件への波及効果あり"
+      "本案件はクローズ。他のSTDO案件（課題3・課題9等）にリソースを集中"
     ],
     todos: {
       wl: [
-        "事例資料・スライド資料の送付（4/16時点のNext Actionとして実行済）",
-        "山倉さんからの連絡を待つ・接触を保つ"
+        "（クローズのためTODOなし）"
       ],
       pwc: [
-        "山倉さん側で社内調整",
-        "方向性等定まり次第WLに声掛け"
+        "（クローズのためTODOなし）"
       ]
     }
   },
@@ -792,13 +803,14 @@ const issues = [
     isContract: false,
     isShortTermPriority: false,
     isHighPriority: false,
+    isPending: true,
     isLongTerm: false,
     team: "鈴木みほさんチーム / 田中さん配下",
     peopleSummary: "古川さん・山倉さん連携",
     lastMeeting: "2026-04-14",
     lastMeetingLink: "https://tldv.io/app/meetings/69dda69f19247f0013264615",
-    nextActionWhen: "今〜随時（古川・山倉のExcel記入後）",
-    nextActionPhase: "山倉さん経由でアセスメント領域詳細化 → 古川さん側の具体ヒアリング",
+    nextActionWhen: "2026年7月以降",
+    nextActionPhase: "PwC側でPending中（古川さんの時間が取れず）。質問票PoC成果を踏まえ7月以降に再度始動。",
     people: [
       { role: "メイン担当", value: "古川さん（10月入社、半年）" },
       { role: "連携", value: "山倉さん（アセスメント領域詳細確認）" },
@@ -818,22 +830,21 @@ const issues = [
       { date: "2026-04-14", title: "#9 古川・増子ヒアリング（アセスメント部分）", content: "古川さんの業務内訳に「定期的（四半期に一度くらい）の社内セキュリティチェック」が含まれることを確認。アセスメント領域の詳細は山倉さんへのヒアリングで深掘り予定。" }
     ],
     currentStatus: [
-      "候補整理段階、まだ具体ヒアリングは不足",
-      "古川担当部分のみ概要確認済、山倉さん経由でアセスメント全体像を深掘り予定"
+      "候補整理段階、まだ具体ヒアリングは不足 → 5/18 PwC返信で Pending に変更",
+      "PwC側コメント（5/18）: 古川さん・吉田和樹さんの対象業務全体ボリュームが大きく、6月末まで時間が取れない。7月以降であれば何かあるかもしれないが、急ぎではない",
+      "古川担当部分のみ概要確認済、深掘りは7月以降"
     ],
     nextSteps: [
-      "古川さん・山倉さん側でAI化候補タスクをExcelシートに書き出してもらう（4/14のNext Actionとして記載）",
-      "書き出し後: 山倉さん経由でアセスメント領域の詳細確認",
-      "具体案件で成功の目処が立った場合、古川さんの具体業務ディープヒアリング"
+      "2026年7月以降: 質問票PoCの成果を踏まえつつ再度始動",
+      "それまでは深追いせず接触を保つ"
     ],
     todos: {
       wl: [
-        "山倉さん側ヒアリングでアセスメント領域詳細化",
-        "古川さん書き出し後の優先度付け・提案"
+        "7月以降に再開する想定で待機",
+        "質問票PoC完走に集中"
       ],
       pwc: [
-        "古川さん・山倉さんがAI化候補タスクをExcelシートに書き出す",
-        "SharePoint内のデータが参照データとなる自動回答タスクを整理"
+        "（現時点で短期TODOなし、7月以降に時間を確保いただく）"
       ]
     }
   },
@@ -845,13 +856,14 @@ const issues = [
     isContract: false,
     isShortTermPriority: false,
     isHighPriority: false,
+    isPending: true,
     isLongTerm: false,
     team: "デジタル&AI（山倉さんチーム）",
     peopleSummary: "山倉さん",
     lastMeeting: "2026-04-16",
     lastMeetingLink: "https://tldv.io/app/meetings/69e065c005306600136d724b",
-    nextActionWhen: "課題6と並行・山倉さんイメージ具体化後",
-    nextActionPhase: "山倉さんが何を作りたいか具体化 → コンサル提案・具体ヒアリング",
+    nextActionWhen: "2026年7月以降",
+    nextActionPhase: "PwC側でPending中（山倉さんのイメージ未固定）。質問票PoC成果を踏まえ7月以降に再度始動。",
     people: [
       { role: "リーダー", value: "山倉さん（GL / デジタル&AI）" }
     ],
@@ -867,22 +879,21 @@ const issues = [
       { date: "2026-04-16", title: "#11 山倉さん 頭出しのみ", content: "課題①PDF抽出立て直しと並ぶ2候補の1つとして提示。山倉さん自身も「何を作るというところがまだイメージ湧いていない」と発言、コンサルフェーズからじっくりやる必要があるとの認識。①を先行させる方針。" }
     ],
     currentStatus: [
-      "何を作るかイメージ未固定",
-      "①PDF抽出立て直しが先行、こちらは後続で検討"
+      "何を作るかイメージ未固定 → 5/18 PwC返信で Pending に変更",
+      "PwC側コメント（5/18）: 「課題7は、まだ山倉のなかでふわふわしているので、6月末までに何かというのは厳しいように思います」",
+      "課題6がクローズしたため、山倉さんチーム関連はこの課題のみが残る"
     ],
     nextSteps: [
-      "課題6（PDF抽出）の進行とセットで議論",
-      "山倉さんがBIツールでやりたいことのイメージ具体化を待つ",
-      "コンサルフェーズから入る前提でアプローチ"
+      "2026年7月以降: 山倉さんのイメージ固まり次第ディスカッション",
+      "それまでは深追いせず接触を保つ"
     ],
     todos: {
       wl: [
-        "①PDF抽出と並行 or 後続で提案検討",
-        "コンサル提案の準備"
+        "7月以降に再開する想定で待機",
+        "質問票PoC完走に集中"
       ],
       pwc: [
-        "山倉さんが何を作りたいかのイメージ具体化",
-        "BIツールのデータベース構造・カバー範囲の整理"
+        "山倉さんが何を作りたいかのイメージ具体化（時期未定）"
       ]
     }
   },
@@ -894,6 +905,7 @@ const issues = [
     isContract: false,
     isShortTermPriority: false,
     isHighPriority: false,
+    isPending: false,
     isLongTerm: true,
     team: "鈴木みほさんチーム / ガバナンスコア",
     peopleSummary: "鈴木みほさん",
@@ -945,6 +957,7 @@ const issues = [
     isContract: false,
     isShortTermPriority: false,
     isHighPriority: false,
+    isPending: false,
     isLongTerm: true,
     team: "外村さんチーム / IT部門連携",
     peopleSummary: "外村さんチーム",
@@ -985,6 +998,63 @@ const issues = [
         "IT部門との調整（PwC側内部論点）"
       ]
     }
+  },
+
+  {
+    id: 9,
+    title: "PwC Global ニュースまとめ STDO レポートのAI化",
+    status: "before-hearing",
+    isContract: false,
+    isShortTermPriority: true,
+    isHighPriority: false,
+    isPending: false,
+    isLongTerm: false,
+    isNew: true,
+    team: "STDO（特定チーム）",
+    peopleSummary: "未確認（吉田真理子さん経由で5/18提案）",
+    lastMeeting: "2026-05-18",
+    lastMeetingLink: null,
+    lastMeetingLinkNote: "メールでの提案受領（5/18）",
+    nextActionWhen: "5月19日（明日）",
+    nextActionPhase: "定例MTGで詳細相談（業務概要・対象データ範囲・成果物イメージ・工数）",
+    people: [
+      { role: "提案元", value: "吉田真理子さん（5/18メールで新ネタとして提案）" },
+      { role: "対象業務", value: "STDOの特定チーム（現在は社員が0.5人月程度で月2回レポート作成中）" }
+    ],
+    overview: "PwC GlobalのSharePoint上にあるIT/セキュリティ関連ニュースから、STDOの特定チームに関係する内容を社員がピックアップして月2回レポート化している作業をAIで効率化する。現状約0.5人月の工数。",
+    detail: [
+      "現状: PwC GlobalのSharePoint上のニュースを社員が0.5人月程度でピックアップ",
+      "頻度: 月2回のレポート作成",
+      "対象: STDOの特定チームに関係する内容",
+      "サンプル資料: FY26_Newsletter_vol.20.pdf（吉田真理子さんから共有予定）",
+      "提案経緯: 5/18メールにて、6月中の小粒案件 or 次につながるPoCの選択肢として吉田真理子さんから提案",
+      "比較対象: 課題3（磯貝・依田）のミティゲート自動化と並ぶ6月中候補"
+    ],
+    hearings: [
+      { date: "2026-05-18", title: "新ネタとして提案受領（メール）", content: "吉田真理子さんから「6月中にもう1つ何か小粒のもの、または、何か次につながるPoCができるとしたら、以下のいずれかだと考えています。① 課題3 ② 新ネタ（本課題）」の選択肢として提案。サンプル資料 FY26_Newsletter_vol.20.pdf も共有予定。詳細は5/19のMTGで相談。" }
+    ],
+    currentStatus: [
+      "5/18 吉田真理子さんから新ネタとして提案受領",
+      "明日（5/19）の定例MTGで詳細相談予定",
+      "課題3と並ぶ6月中の小粒案件候補の1つ"
+    ],
+    nextSteps: [
+      "5月19日: 定例MTGで詳細ヒアリング（業務概要・対象データ範囲・成果物イメージ・工数）",
+      "サンプル資料（FY26_Newsletter_vol.20.pdf）のレビュー",
+      "課題3との比較で6月中に進めるかどうか判断",
+      "進める場合: スコープ・マイルストーン設計"
+    ],
+    todos: {
+      wl: [
+        "5/19 MTGで詳細ヒアリング・論点整理",
+        "サンプル資料（FY26_Newsletter_vol.20.pdf）の入手・レビュー",
+        "課題3との比較・6月中の取り組み判断"
+      ],
+      pwc: [
+        "サンプル資料（FY26_Newsletter_vol.20.pdf）の共有",
+        "業務詳細・現状工数の整理"
+      ]
+    }
   }
 ];
 
@@ -993,8 +1063,10 @@ const issues = [
 // 2. status order (in-hearing > pre-proposal > before-hearing > post-proposal)
 //   but 中長期保留 (isLongTerm) goes to bottom
 function priorityRank(iss) {
+  if (iss.status === "closed") return 999;
   if (iss.isShortTermPriority) return 0;
   if (iss.isHighPriority) return 5;
+  if (iss.isPending) return 50;
   if (iss.isLongTerm) return 100 + STATUSES[iss.status].order;
   const map = { "in-hearing": 1, "before-hearing": 2, "pre-proposal": 3, "post-proposal": 4 };
   return 10 + (map[iss.status] || 99);
@@ -1043,8 +1115,14 @@ function renderCandidates() {
   let list = [...candidates];
 
   // Filter
-  if (currentFilter === "exclude-long") {
-    list = list.filter(i => !i.isLongTerm);
+  if (currentFilter === "active") {
+    list = list.filter(i => i.status !== "closed" && !i.isLongTerm && !i.isPending);
+  } else if (currentFilter === "pending") {
+    list = list.filter(i => i.isPending);
+  } else if (currentFilter === "longterm") {
+    list = list.filter(i => i.isLongTerm);
+  } else if (currentFilter === "closed") {
+    list = list.filter(i => i.status === "closed");
   } else if (currentFilter !== "all") {
     list = list.filter(i => i.status === currentFilter);
   }
@@ -1064,8 +1142,10 @@ function renderCandidates() {
 
   list.forEach(iss => {
     const flags = [];
-    if (iss.isShortTermPriority) flags.push('<span class="badge flag-short">短期本命</span>');
+    if (iss.isNew) flags.push('<span class="badge flag-new">新ネタ</span>');
+    if (iss.isShortTermPriority) flags.push('<span class="badge flag-short">6月中候補</span>');
     if (iss.isHighPriority) flags.push('<span class="badge flag-high">STDO優先度高</span>');
+    if (iss.isPending) flags.push('<span class="badge flag-pending">Pending</span>');
     if (iss.isLongTerm) flags.push('<span class="badge flag-long">中長期保留</span>');
 
     let linkHTML = '';
@@ -1076,6 +1156,7 @@ function renderCandidates() {
     }
 
     const tr = document.createElement("tr");
+    if (iss.status === "closed") tr.classList.add("closed-row");
     tr.onclick = () => showDetail(iss.id);
     tr.innerHTML = `
       <td class="col-num">${String(iss.id).padStart(2, '0')}</td>
@@ -1122,8 +1203,10 @@ function showDetail(id) {
   if (!iss) return;
   const flags = [];
   if (iss.isContract) flags.push('<span class="badge flag-short">契約中</span>');
-  if (iss.isShortTermPriority) flags.push('<span class="badge flag-short">短期本命</span>');
+  if (iss.isNew) flags.push('<span class="badge flag-new">新ネタ</span>');
+  if (iss.isShortTermPriority) flags.push('<span class="badge flag-short">6月中候補</span>');
   if (iss.isHighPriority) flags.push('<span class="badge flag-high">STDO優先度高</span>');
+  if (iss.isPending) flags.push('<span class="badge flag-pending">Pending</span>');
   if (iss.isLongTerm) flags.push('<span class="badge flag-long">中長期保留</span>');
 
   let mtgLinkBlock = '';
