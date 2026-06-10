@@ -11,6 +11,7 @@ Wanderlust 内部用の成果物置き場。
 - GitHub: https://github.com/major-senzu/wl-private-artifacts
 - Pages トップ: https://major-senzu.github.io/wl-private-artifacts/
 - PwC 課題マップ: https://major-senzu.github.io/wl-private-artifacts/pwc/issue-map.html
+- Fulmark アプリUI: https://major-senzu.github.io/wl-private-artifacts/fulmark/
 
 ## 構成
 
@@ -19,7 +20,11 @@ wl-private-artifacts/
 ├── pwc/                    PwC関連
 │   ├── issue-map.html      課題マップ（8課題の進捗トラッカー）
 │   └── 課題マップ.html     同上（日本語ファイル名）
-└── （将来）optage/, panasonic-homes/ など
+├── optage/                 Optage関連（org-chart.html）
+├── fulmark/                Fulmark（CCG ENTERTAINMENT）関連
+│   ├── index.html          プロジェクトページ（成果物一覧）
+│   └── app-ui.html         簡易アプリケーションUI（ポスター自動生成プロトタイプ）
+└── （将来）panasonic-homes/ など
 ```
 
 ## ルール
