@@ -441,7 +441,7 @@
   <div id="home" class="view">
     <header class="page-header">
       <h1>PwC案件 課題マップ</h1>
-      <p class="subtitle">STDOで取り組み中・候補となっている9課題の進捗とネクストステップを一覧化</p>
+      <p class="subtitle">STDOで取り組み中・候補となっている10課題の進捗とネクストステップを一覧化</p>
       <div class="meta-row">
         <span><strong>クライアント</strong>　PwC Japan合同会社 / STDO</span>
         <span><strong>更新日</strong>　2026-05-18（PwC返信反映）</span>
@@ -959,33 +959,37 @@ const issues = [
     isHighPriority: false,
     isPending: false,
     isLongTerm: true,
-    team: "外村さんチーム / IT部門連携",
-    peopleSummary: "外村さんチーム",
+    team: "外村さん管轄 / IT部門連携",
+    peopleSummary: "外村さん（管轄）／ IT部門（開発）",
     lastMeeting: "2026-04-24",
     lastMeetingLink: "https://tldv.io/app/meetings/69eb15054338410013a5bd81",
     nextActionWhen: "中長期（時期未定）",
-    nextActionPhase: "機会あれば外村さん経由で具体ヒアリング設定",
+    nextActionPhase: "まずIT部門の現状（開発体制・既存Chatbotの実態）を整理。機会あれば外村さん経由で具体ヒアリング設定。",
     people: [
-      { role: "経営層", value: "外村さん（STDOトップ層）" },
-      { role: "管轄", value: "IT部門（STDO外）" }
+      { role: "管轄", value: "外村さん（STDOトップ層）" },
+      { role: "開発", value: "IT部門（STDO外）" }
     ],
-    overview: "2年前くらいに社内ITチームが作った既存社内Chatbot（IFS Chatbot、U-Bot）の精度改善。現在は正答率がどれくらいかという観点に着目されておらず、精度がイマイチな状態。",
+    overview: "社内の経理・セキュリティ・人事に関する問い合わせに答える社内向け問い合わせチャットボット（IFS Chatbot、U-Bot）の精度改善。ITが開発しているシステムで、現在は正答率がどれくらいかという観点に着目されておらず、精度がイマイチな状態。外村さん管轄。",
     detail: [
-      "既存システム: IFS Chatbot、U-Bot（社内向け）",
-      "開発元: 社内ITチーム、2年前くらいに構築",
+      "既存システム: IFS Chatbot、U-Bot（社内向け問い合わせチャットボット）",
+      "対象領域: 社内の経理・セキュリティ・人事に関する問い合わせ対応",
+      "開発元: 社内ITチームが開発（2年前くらいに構築）",
+      "管轄: 外村さん管轄。開発主体はIT部門（STDO外）",
       "課題: 正答率の観点に着目されていない、精度がイマイチ",
       "Chatbotの管理画面が存在することは確認済",
-      "管轄がIT部門のためSTDOから動かしづらい構造"
+      "まず着手すべきこと: ITの現状（開発体制・既存Chatbotの実態）を整理する"
     ],
     hearings: [
       { date: "2026-04-24", title: "#13 課題候補として言及のみ", content: "「IT部門管轄」「良い案件なのでタネを置いておく」とコメント。STDO優先度ではHH→H→MH→M→XXのうちMH程度の位置づけ。具体ヒアリング未実施。" }
     ],
     currentStatus: [
       "種としてリストに残している状態、具体ヒアリング未実施",
+      "社内経理・セキュリティ・人事の問い合わせ対応チャットボット。ITが開発、外村さん管轄",
       "短期では動かさない、中長期テーマとして保持",
       "IT部門との調整が必要なペンディング案件"
     ],
     nextSteps: [
+      "ITの現状（開発体制・既存IFS Chatbot/U-Botの実態・精度）を整理する",
       "中長期で機会あれば外村さん経由で具体ヒアリング設定",
       "質問票PoCで実績を出した上でSTDO全体への横展開議論時に俎上に載せる"
     ],
@@ -1074,6 +1078,55 @@ const issues = [
         "吉田さん: ボリュームと時間軸の確認・連絡",
         "大谷さんとのヒアリング日程セット",
         "ITやリスク管理部門とのヒアリング機会の手配"
+      ]
+    }
+  },
+
+  {
+    id: 10,
+    title: "PwC × 事業会社 共同での解答フォーマット作成",
+    status: "before-hearing",
+    isContract: false,
+    isShortTermPriority: false,
+    isHighPriority: false,
+    isPending: false,
+    isLongTerm: true,
+    isNew: true,
+    team: "PwC × 事業会社（共同検討）",
+    peopleSummary: "（推進候補）MUFG 島野さん 等",
+    lastMeeting: null,
+    lastMeetingLink: null,
+    nextActionWhen: "中長期（時期未定）",
+    nextActionPhase: "ステークホルダーが多く実現可能性は低め。MUFG島野さん等のAI推進に積極的なキーパーソンを巻き込めると前進の可能性。",
+    people: [
+      { role: "推進候補キーパーソン", value: "MUFG 島野さん（AI促進に積極的）" },
+      { role: "想定座組", value: "PwC + 事業会社の共同体制" }
+    ],
+    overview: "PwCとどこかの事業会社が共同で、解答フォーマット（標準的な回答テンプレート/型）を作成する構想。複数組織をまたぐ取り組みのためステークホルダーが多く、実現可能性は現時点では低め。",
+    detail: [
+      "座組: PwC × 事業会社（相手企業は未確定）",
+      "実現可能性: 低（ステークホルダーが多く、合意形成のハードルが高い）",
+      "推進の鍵: AI促進に積極的なキーパーソンを巻き込めるか",
+      "巻き込み候補: MUFGの島野さん（AI促進に積極的）等を絡めて推進していけると良い"
+    ],
+    hearings: [],
+    currentStatus: [
+      "種としてリストに残している状態、具体ヒアリング未実施",
+      "ステークホルダーが多く、実現可能性は現時点で低め",
+      "AI推進に前向きなキーパーソン（MUFG島野さん等）を起点に進められると良い"
+    ],
+    nextSteps: [
+      "MUFG島野さん等、AI促進に積極的なキーパーソンとの接点を探る",
+      "共同で解答フォーマットを作成する座組・相手企業の具体化",
+      "ステークホルダーマップを整理し、巻き込み順序を設計"
+    ],
+    todos: {
+      wl: [
+        "中長期で温める（短期アクションなし）",
+        "MUFG島野さん等のキーパーソンへのアプローチ機会を探る"
+      ],
+      pwc: [
+        "共同検討の相手企業・座組の方向性整理（PwC側内部論点）"
       ]
     }
   }
