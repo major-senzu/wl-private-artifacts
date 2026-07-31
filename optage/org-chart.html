@@ -1,0 +1,2050 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>オプテージ ホームページ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f7f7f5;
+  --surface: #ffffff;
+  --border: #d4d4d4;
+  --border-light: #e8e8e8;
+  --text: #111111;
+  --text-muted: #444444;
+  --text-dim: #999999;
+  --line: #c0c0c0;
+  --line-w: 1.5px;
+  --v-gap: 26px;
+  --hl-main: #d97706;
+  --hl-main-bg: #fffbeb;
+  --hl-poc1: #2563eb;
+  --hl-poc1-bg: #eff6ff;
+  --hl-poc2: #059669;
+  --hl-poc2-bg: #ecfdf5;
+  --hl-study: #7c3aed;
+  --hl-study-bg: #f5f3ff;
+  --nav-height: 56px;
+  --bottom-nav-height: 60px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-top: var(--nav-height);
+}
+
+/* ===== Top Nav (Desktop) ===== */
+.top-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-height);
+  background: #fff;
+  border-bottom: 1px solid var(--border-light);
+  z-index: 1000;
+  display: flex; align-items: center;
+  padding: 0 20px;
+  gap: 4px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.top-nav::-webkit-scrollbar { display: none; }
+.top-nav .nav-brand {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  color: var(--text);
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+.top-nav .nav-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 13px;
+  border: none; background: transparent;
+  border-radius: 6px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 12px; font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+.top-nav .nav-btn:hover { background: #f0f0f0; }
+.top-nav .nav-btn.active {
+  background: #111; color: #fff;
+}
+.top-nav .nav-btn .nav-icon {
+  font-size: 14px; line-height: 1;
+}
+
+/* ===== Bottom Nav (Mobile) ===== */
+.bottom-nav {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: var(--bottom-nav-height);
+  background: #fff;
+  border-top: 1px solid var(--border-light);
+  z-index: 1000;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 4px;
+}
+.bottom-nav-inner {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-width: max-content;
+  gap: 2px;
+  padding: 0 4px;
+}
+.bottom-nav::-webkit-scrollbar { display: none; }
+.bottom-nav .bnav-btn {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border: none; background: transparent;
+  border-radius: 8px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 9px; font-weight: 500;
+  color: var(--text-dim);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+  min-width: 56px;
+}
+.bottom-nav .bnav-btn .bnav-icon { font-size: 18px; margin-bottom: 2px; }
+.bottom-nav .bnav-btn.active { background: #111; color: #fff; }
+.bottom-nav .bnav-btn:active { background: #e0e0e0; }
+
+/* ===== Sections / Pages ===== */
+.page {
+  display: none;
+  padding: 28px 20px 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: fadeIn 0.2s ease;
+}
+.page.page-wide {
+  max-width: 100%;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+.page.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Portal (トップ分岐) ===== */
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  max-width: 940px;
+  margin: 0 auto;
+}
+.portal-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 32px 26px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.12s;
+}
+.portal-card:hover {
+  border-color: #999;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+  transform: translateY(-2px);
+}
+.portal-card .pc-icon { font-size: 24px; margin-bottom: 10px; color: #333; }
+.portal-card .pc-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.portal-card .pc-desc { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+
+/* ===== People page lock（人物DBパスワード保護） ===== */
+.people-lock {
+  max-width: 420px; margin: 60px auto; text-align: center;
+  background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 36px 28px;
+}
+.people-lock .lock-icon { font-size: 30px; margin-bottom: 10px; }
+.people-lock .lock-text { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.7; }
+.lock-form { display: flex; gap: 8px; justify-content: center; }
+.lock-form input {
+  flex: 1; max-width: 220px; padding: 9px 12px;
+  border: 1.5px solid var(--border); border-radius: 8px; font-size: 13px;
+}
+.lock-form button {
+  padding: 9px 18px; border: none; border-radius: 8px;
+  background: #111; color: #fff; font-size: 13px; font-weight: 600; cursor: pointer;
+}
+.lock-form button:active { background: #333; }
+.lock-error { color: #c0392b; font-size: 12px; margin-top: 10px; min-height: 1em; }
+
+/* ===== Home Cards ===== */
+.home-header {
+  text-align: center;
+  margin-bottom: 36px;
+  padding-top: 12px;
+}
+.home-header .label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 8px;
+}
+.home-header h1 { font-size: 22px; font-weight: 700; }
+.home-header .meta {
+  margin-top: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px; color: var(--text-dim);
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.home-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.12s;
+}
+.home-card:hover {
+  border-color: #999;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+.home-card:active { transform: translateY(0); }
+.home-card .hc-icon { font-size: 24px; margin-bottom: 8px; }
+.home-card .hc-pill {
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 8px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 3px;
+  margin-bottom: 8px;
+}
+.home-card .hc-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.home-card .hc-desc { font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+
+.pill-ov { background: #1a1a1a; color: #fff; }
+.pill-dt { background: #e6e6e6; color: #444; border: 1px solid #ccc; }
+.pill-ot { background: #f0f0f0; color: #555; border: 1px solid #ddd; }
+.pill-wg { background: var(--hl-poc1); color: #fff; }
+.pill-dp { background: var(--hl-study); color: #fff; }
+.pill-pp { background: #333; color: #fff; }
+
+/* ===== Page Header ===== */
+.page-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.page-header .back-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  font-size: 12px; color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.page-header .back-btn:hover { background: #f0f0f0; }
+.page-header h2 {
+  font-size: 17px; font-weight: 700;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.page-header .pill {
+  font-family: 'Poppins', sans-serif;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 4px;
+  white-space: nowrap;
+}
+.pill.overview { background: #1a1a1a; color: #fff; }
+.pill.detail { background: #e6e6e6; color: #444; border: 1px solid #ccc; }
+.pill.other { background: #f0f0f0; color: #555; border: 1px solid #ddd; }
+
+/* ===== Tree Scrollable Container ===== */
+.tree-viewport {
+  position: relative;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 28px 24px;
+  margin-bottom: 24px;
+}
+.tree-viewport .tree-inner {
+  display: inline-block;
+  min-width: max-content;
+}
+.tree-viewport::-webkit-scrollbar { height: 6px; width: 6px; }
+.tree-viewport::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
+.swipe-hint {
+  display: none;
+  text-align: center;
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-top: -16px;
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+
+/* ===== Cards ===== */
+.card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 17px;
+  min-width: 124px;
+  text-align: center;
+  white-space: nowrap;
+}
+.card .badge {
+  font-family: 'Poppins', sans-serif;
+  font-size: 8px; font-weight: 600;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 3px;
+}
+.card .name { font-size: 13px; font-weight: 700; line-height: 1.3; }
+.card .sub { margin-top: 3px; font-size: 10px; color: #777; line-height: 1.4; }
+
+.card.board { border: 2.5px solid #111; min-width: 180px; padding: 14px 22px; }
+.card.board .name { font-size: 14px; }
+.card.ceo { border: 2.5px solid #111; min-width: 220px; padding: 16px 24px; }
+.card.ceo .name { font-size: 20px; }
+.card.director { border: 2px solid #111; min-width: 196px; padding: 15px 22px; }
+.card.director .badge { font-size: 9px; color: var(--text-muted); }
+.card.director .name { font-size: 18px; }
+.card.exec { border: 2px solid #333; min-width: 170px; padding: 13px 20px; }
+.card.exec .name { font-size: 16px; }
+.card.dept { border-color: #555; min-width: 155px; background: #f9f9f8; padding: 12px 16px; }
+.card.dept .name { font-size: 13px; }
+.card.team { border-color: #999; min-width: 130px; background: #fafafa; padding: 10px 14px; }
+.card.team .name { font-size: 12px; font-weight: 500; }
+.card.member { border-color: var(--border-light); background: #f9f9f8; min-width: 116px; }
+.card.member .name { font-size: 12px; font-weight: 500; }
+.card.division { border: 2px solid #444; min-width: 180px; padding: 13px 18px; background: #fafaf9; }
+.card.division .name { font-size: 14px; font-weight: 700; }
+.card.compact { min-width: 100px; padding: 7px 10px; }
+.card.compact .name { font-size: 11px; }
+.card.compact .sub { font-size: 9px; }
+.card.compact .badge { font-size: 7px; }
+
+/* Highlight cards */
+.card.hl-main { border-color: var(--hl-main); border-width: 2.5px; background: var(--hl-main-bg); }
+.card.hl-poc1 { border-color: var(--hl-poc1); border-width: 2.5px; background: var(--hl-poc1-bg); }
+.card.hl-poc2 { border-color: var(--hl-poc2); border-width: 2.5px; background: var(--hl-poc2-bg); }
+.card.hl-study { border-color: var(--hl-study); border-width: 2.5px; background: var(--hl-study-bg); }
+
+.hl-tag {
+  display: inline-block; margin-top: 5px;
+  padding: 2px 8px; border-radius: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 7.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #fff;
+}
+.hl-tag.main { background: var(--hl-main); }
+.hl-tag.poc1 { background: var(--hl-poc1); }
+.hl-tag.poc2 { background: var(--hl-poc2); }
+.hl-tag.study { background: var(--hl-study); }
+
+.key-badge {
+  display: inline-block; margin-top: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 7.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #111; border: 1px solid #111; border-radius: 3px; padding: 1px 7px;
+}
+
+/* ===== Tree Engine ===== */
+.tree-node {
+  display: flex; flex-direction: column; align-items: center;
+}
+.tree-node > .tree-children {
+  position: relative;
+  display: flex; flex-direction: row; align-items: flex-start;
+  padding-top: var(--v-gap);
+}
+.tree-node > .tree-children::before {
+  content: '';
+  position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: var(--line-w); height: var(--v-gap);
+  background: var(--line);
+}
+.tree-child {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  padding: var(--v-gap) 14px 0;
+}
+.tree-child::before {
+  content: '';
+  position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: var(--line-w); height: var(--v-gap);
+  background: var(--line);
+}
+.tree-child::after {
+  content: '';
+  position: absolute; top: 0;
+  height: var(--line-w); background: var(--line);
+}
+.tree-child:first-child:last-child::after { display: none; }
+.tree-child:first-child:not(:last-child)::after { left: 50%; right: 0; }
+.tree-child:last-child:not(:first-child)::after { left: 0; right: 50%; }
+.tree-child:not(:first-child):not(:last-child)::after { left: 0; right: 0; }
+
+.section-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+}
+
+/* ===== Grid layout for many siblings ===== */
+.dept-grid {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  justify-content: center;
+  margin-top: 14px;
+  max-width: 900px;
+}
+.dept-grid .card { min-width: 150px; max-width: 220px; flex: 0 1 auto; }
+
+/* ===== Detail sections ===== */
+.detail-section {
+  max-width: 1200px;
+  margin: 0 auto 36px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 28px 32px;
+}
+.detail-section h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.detail-section .subtitle { font-size: 11px; color: var(--text-dim); margin-bottom: 20px; }
+
+.vice-heads {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 20px; justify-content: center;
+}
+.vice-head-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 12px;
+  border: 1.5px solid #888; border-radius: 6px;
+  font-size: 12px; font-weight: 500; background: #fafafa;
+}
+.vice-head-chip .role {
+  font-family: 'Poppins', sans-serif;
+  font-size: 7px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-dim); margin-right: 2px;
+}
+
+.division-block {
+  margin: 20px 0; padding: 18px 20px;
+  border: 1.5px solid var(--border); border-radius: 10px; background: #fcfcfb;
+}
+.division-block h4 {
+  font-size: 13px; font-weight: 700;
+  margin-bottom: 14px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.info-note {
+  margin-top: 10px; background: #f0f0f0;
+  border: 1px dashed #bbb; border-radius: 6px;
+  padding: 8px 16px; font-size: 9px; color: #666;
+  text-align: center; line-height: 1.5; max-width: 300px;
+}
+
+.members-list {
+  margin-top: 6px; font-size: 11px;
+  color: var(--text-muted); line-height: 1.6;
+}
+
+/* ===== Note boxes (部署役割) ===== */
+.note-box {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 16px 20px; margin-bottom: 12px;
+}
+.note-box h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.note-box p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+.note-box .hl-tag { margin-top: 0; margin-right: 6px; vertical-align: middle; }
+
+.note-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 12px; max-width: 1100px; margin: 0 auto;
+}
+
+/* ===== Person DB table ===== */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.person-table {
+  width: 100%; max-width: 1100px; margin: 0 auto;
+  border-collapse: collapse; font-size: 12px;
+}
+.person-table th {
+  background: #f0f0f0; padding: 8px 12px;
+  text-align: left; font-weight: 600; font-size: 11px;
+  border-bottom: 2px solid #ddd;
+  position: sticky; top: 0; z-index: 1;
+}
+.person-table td {
+  padding: 7px 12px; border-bottom: 1px solid var(--border-light);
+  vertical-align: top; line-height: 1.6;
+}
+.person-table td.bio { font-size: 11px; color: var(--text-muted); max-width: 480px; white-space: normal; }
+.person-table tr:hover { background: #fafafa; }
+
+/* ===== Legend ===== */
+.legend {
+  margin: 32px auto 0; max-width: 720px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 8px; padding: 18px 24px;
+}
+.legend h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 13px;
+}
+.legend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 28px; }
+.legend-item { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--text-muted); }
+.lb { width: 30px; height: 18px; border-radius: 3px; border: 1.5px solid; flex-shrink: 0; }
+.lb.board-l { border-color: #111; border-width: 2.5px; }
+.lb.exec-l { border-color: #333; border-width: 2px; }
+.lb.dept-l { border-color: #555; background: #f9f9f8; }
+.lb.team-l { border-color: #999; background: #fafafa; }
+.lb.main-l { border-color: var(--hl-main); border-width: 2.5px; background: var(--hl-main-bg); }
+.lb.poc1-l { border-color: var(--hl-poc1); border-width: 2.5px; background: var(--hl-poc1-bg); }
+.lb.poc2-l { border-color: var(--hl-poc2); border-width: 2.5px; background: var(--hl-poc2-bg); }
+.lb.study-l { border-color: var(--hl-study); border-width: 2.5px; background: var(--hl-study-bg); }
+
+/* ===== Responsive ===== */
+/* ===== Sector map（セクター整理） ===== */
+.sector-scroll {
+  max-width: 1200px; margin: 0 auto 28px;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  padding-bottom: 6px;
+}
+.sector-map {
+  min-width: 880px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.sec-head {
+  border-radius: 8px; padding: 14px 12px; text-align: center;
+  color: #fff; font-weight: 700; font-size: 15px;
+}
+.sec-head span { display: block; font-weight: 400; font-size: 11px; opacity: 0.85; margin-top: 4px; }
+.sh-tokutei { background: #333d4d; }
+.sh-product { background: #5b7191; }
+.sh-ax { background: #8f68ab; }
+.sec-belt {
+  border-radius: 8px; padding: 14px 16px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.sec-belt .belt-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.sec-belt .belt-desc { font-size: 11.5px; line-height: 1.65; color: var(--text-muted); }
+.belt-fde { border: 2px solid #c9662a; background: #fdf3ea; }
+.belt-fde .belt-title { color: #c9662a; }
+.belt-service { border: 2px solid #2f5fa8; background: #eef2fa; }
+.belt-service .belt-title { color: #2f5fa8; }
+.belt-none { border: 1.5px dashed #bbb; background: #fafafa; }
+.belt-none .belt-desc { color: var(--text-dim); text-align: center; }
+.sec-item {
+  background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: 8px; padding: 12px 14px;
+}
+.sec-item .si-title { font-weight: 700; font-size: 12.5px; margin-bottom: 4px; }
+.sec-item .si-sub { font-size: 11px; color: var(--text-muted); line-height: 1.6; }
+.belt-owner { font-size: 11px; font-weight: 700; margin-top: 7px; }
+.belt-fde .belt-owner { color: #c9662a; }
+.belt-service .belt-owner { color: #2f5fa8; }
+.belt-strategy { border: 1.5px solid #9aa3af; background: #f4f6f8; flex-direction: row; align-items: center; gap: 14px; flex-wrap: wrap; }
+.belt-strategy .belt-title { color: #333d4d; margin-bottom: 0; }
+.belt-strategy .belt-desc { flex: 1; min-width: 200px; }
+.belt-strategy .belt-owner { color: #333d4d; margin-top: 0; }
+
+/* ===== Simulation table（売上目標フォーマット） ===== */
+.sim-h4 { max-width: 1100px; margin: 22px auto 8px; font-size: 13px; font-weight: 700; }
+.sim-wrap { max-width: 1100px; margin: 0 auto 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.sim-table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 12px; }
+.sim-table th {
+  background: #f0f0f0; padding: 8px 10px; text-align: left;
+  font-weight: 600; font-size: 11px; border-bottom: 2px solid #ddd; white-space: nowrap;
+}
+.sim-table td { padding: 7px 10px; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.6; }
+.sim-table td.num, .sim-table td.memo {
+  background: #fbfaf5; border: 1px dashed #d8d4c8; border-radius: 4px; color: #999;
+}
+.sim-table td.num { min-width: 90px; text-align: center; }
+.sim-table td.memo { min-width: 200px; }
+.sim-table tr.agg-sector td { background: #f7f8fa; font-weight: 600; }
+.sim-table tr.agg-sector td.num { background: #f1f3f6; }
+.sim-table tr.agg-fde td { background: #fdf3ea; font-weight: 700; }
+.sim-table tr.agg-fde td.num { background: #fbe9d8; }
+.sim-table tr.agg-total td { background: #333d4d; color: #fff; font-weight: 700; border-bottom: none; }
+.sim-table tr.agg-total td.num { background: #414c5e; color: #ddd; border-color: #5a6577; }
+.sim-table tr td.num:focus, .sim-table tr td.memo:focus { outline: 2px solid #c9662a; outline-offset: -2px; background: #fff; color: #222; }
+.sim-note { max-width: 1100px; margin: 6px auto 0; font-size: 11px; color: var(--text-dim); line-height: 1.7; }
+
+@media (max-width: 768px) {
+  body { padding-top: var(--nav-height); padding-bottom: var(--bottom-nav-height); }
+  .top-nav { display: none; }
+  .bottom-nav { display: flex; }
+  .page { padding: 20px 12px 80px; }
+  .home-header h1 { font-size: 18px; }
+  .home-grid { grid-template-columns: 1fr; gap: 10px; }
+  .home-card { padding: 16px 18px; }
+
+  .swipe-hint { display: block; }
+
+  .page.page-wide { padding-left: 12px; padding-right: 12px; }
+
+  .tree-viewport {
+    padding: 16px 12px;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tree-viewport .tree-inner {
+    width: max-content;
+    padding-right: 20px;
+  }
+
+  /* Shrink cards naturally on mobile */
+  .tree-viewport .card { padding: 8px 12px; min-width: 100px; }
+  .tree-viewport .card .name { font-size: 11px; }
+  .tree-viewport .card .sub { font-size: 9px; }
+  .tree-viewport .card .badge { font-size: 7px; }
+  .tree-viewport .card.board, .tree-viewport .card.ceo, .tree-viewport .card.director {
+    min-width: 140px; padding: 10px 14px;
+  }
+  .tree-viewport .card.board .name, .tree-viewport .card.ceo .name, .tree-viewport .card.director .name {
+    font-size: 13px;
+  }
+  .tree-viewport .card.exec { min-width: 120px; padding: 9px 12px; }
+  .tree-viewport .card.exec .name { font-size: 12px; }
+  .tree-viewport .card.dept { min-width: 115px; padding: 8px 11px; }
+  .tree-viewport .card.team { min-width: 100px; padding: 7px 10px; }
+  .tree-viewport .card.compact { min-width: 85px; padding: 6px 8px; }
+  .tree-viewport .card.compact .name { font-size: 10px; }
+  .tree-viewport .card.division { min-width: 130px; padding: 9px 12px; }
+  .tree-viewport .card.division .name { font-size: 12px; }
+  .tree-viewport .hl-tag { font-size: 6.5px; padding: 1px 5px; }
+  .tree-viewport .members-list { font-size: 9px; }
+
+  .detail-section { padding: 16px 12px; margin: 0 0 24px; }
+  .division-block { padding: 14px 12px; }
+  .vice-heads { gap: 6px; }
+  .vice-head-chip { font-size: 11px; padding: 3px 8px; }
+
+  .page-header h2 { font-size: 14px; }
+  .page-header { margin-bottom: 20px; }
+
+  .note-grid { grid-template-columns: 1fr; }
+  .legend-grid { grid-template-columns: 1fr; }
+  .legend { padding: 14px 16px; }
+
+  .dept-grid { flex-direction: column; align-items: center; }
+  .dept-grid .card { max-width: 100%; width: 100%; }
+
+  .person-table { font-size: 11px; }
+  .person-table th, .person-table td { padding: 6px 8px; }
+  .person-table td.bio { max-width: 260px; font-size: 10px; }
+}
+
+@media (max-width: 480px) {
+  .page { padding: 16px 8px 80px; }
+  .home-header h1 { font-size: 16px; }
+
+  /* 480px: even smaller cards */
+  .tree-viewport .card { padding: 6px 9px; min-width: 85px; }
+  .tree-viewport .card .name { font-size: 10px; }
+  .tree-viewport .card .sub { font-size: 8px; }
+  .tree-viewport .card.compact { min-width: 72px; padding: 5px 7px; }
+  .tree-viewport .card.compact .name { font-size: 9px; }
+
+  .note-box { padding: 12px 14px; }
+  .note-box h4 { font-size: 12px; }
+  .note-box p { font-size: 11px; }
+
+  .person-table th, .person-table td { padding: 5px 6px; font-size: 10px; }
+  .person-table td.bio { max-width: 200px; font-size: 9px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Top Navigation (Desktop) ===== -->
+<nav class="top-nav" id="topNav">
+  <span class="nav-brand">Optage Home</span>
+  <button class="nav-btn active" onclick="navigateTo('home')"><span class="nav-icon">&#9632;</span> ホーム</button>
+  <button class="nav-btn" onclick="navigateTo('orghome')"><span class="nav-icon">&#9670;</span> 組織図</button>
+  <button class="nav-btn" onclick="navigateTo('sector')"><span class="nav-icon">&#9635;</span> セクター整理</button>
+  <button class="nav-btn" onclick="navigateTo('meetings')"><span class="nav-icon">&#9202;</span> 会議リスト</button>
+</nav>
+
+<!-- ===== Bottom Navigation (Mobile) ===== -->
+<nav class="bottom-nav" id="bottomNav">
+  <div class="bottom-nav-inner">
+    <button class="bnav-btn active" onclick="navigateTo('home')"><span class="bnav-icon">&#9632;</span>ホーム</button>
+    <button class="bnav-btn" onclick="navigateTo('orghome')"><span class="bnav-icon">&#9670;</span>組織図</button>
+    <button class="bnav-btn" onclick="navigateTo('sector')"><span class="bnav-icon">&#9635;</span>セクター</button>
+    <button class="bnav-btn" onclick="navigateTo('meetings')"><span class="bnav-icon">&#9202;</span>会議</button>
+  </div>
+</nav>
+
+
+<!-- ================================================================ -->
+<!-- PAGE: ホーム                                                      -->
+<!-- ================================================================ -->
+<div class="page active" id="page-home">
+  <div class="home-header">
+    <div class="label">Optage Inc. / Home</div>
+    <h1>オプテージ ホームページ</h1>
+    <p class="meta">2026.07.31 Updated&nbsp;/&nbsp; Wanderlust案件関連の組織・事業・会議情報を集約</p>
+  </div>
+
+  <div class="portal-grid">
+    <div class="portal-card" onclick="navigateTo('orghome')">
+      <div class="pc-icon">&#9670;</div>
+      <div class="pc-title">組織図</div>
+      <div class="pc-desc">全社組織ツリー・本部別詳細・AI-WG・部署役割・人物データベース</div>
+    </div>
+    <div class="portal-card" onclick="navigateTo('sector')">
+      <div class="pc-icon">&#9635;</div>
+      <div class="pc-title">セクター整理</div>
+      <div class="pc-desc">3セクター×事業区分の全体像（FDE化対象／自社サービスの範囲）と売上目標シミュレーション</div>
+    </div>
+    <div class="portal-card" onclick="navigateTo('meetings')">
+      <div class="pc-icon">&#9202;</div>
+      <div class="pc-title">会議リスト</div>
+      <div class="pc-desc">各会議の参加者リスト・趣旨・実施内容・備考</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================================ -->
+<!-- PAGE: 組織図ホーム                                                -->
+<!-- ================================================================ -->
+<div class="page" id="page-orghome">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigateTo('home')">&#8592; ホーム</button>
+    <h2><span class="pill overview">Org</span> 組織図</h2>
+  </div>
+
+  <div class="home-header">
+    <div class="label">Optage Inc. / Organization Chart</div>
+    <h1>株式会社オプテージ 組織図</h1>
+    <p class="meta">2026.07.31 Updated（担当分担・菅野部長 反映 / SI&amp;AXビジネス推進部 名称修正）&nbsp;/&nbsp; Wanderlust案件関連部署を中心に構成</p>
+  </div>
+
+  <div class="home-grid">
+    <div class="home-card" onclick="navigateTo('overview')">
+      <span class="hc-pill pill-ov">Overview</span>
+      <div class="hc-title">全社組織概要</div>
+      <div class="hc-desc">社長 → 本部レベルのトップレベルツリー</div>
+    </div>
+    <div class="home-card" onclick="navigateTo('kawada')">
+      <span class="hc-pill pill-dt">Detail</span>
+      <div class="hc-title">河田本部長 管轄</div>
+      <div class="hc-desc">戦略・コンサル・NW・DC・クラウド。篠原本部長は河田本部長の直下</div>
+    </div>
+    <div class="home-card" onclick="navigateTo('shinohara')">
+      <span class="hc-pill pill-dt">Detail</span>
+      <div class="hc-title">篠原本部長 管轄</div>
+      <div class="hc-desc">営業・SI&amp;AX・電力。POC1のSI第1/2部、WLメイン窓口（AXソリューション推進T）を含む</div>
+    </div>
+    <div class="home-card" onclick="navigateTo('other')">
+      <span class="hc-pill pill-ot">Other Key</span>
+      <div class="hc-title">その他重要部署</div>
+      <div class="hc-desc">コンシューマ（POC2）、技術本部（勉強会）、経営本部</div>
+    </div>
+    <div class="home-card" onclick="navigateTo('aiwg')">
+      <span class="hc-pill pill-wg">AI-WG</span>
+      <div class="hc-title">AI ワーキンググループ</div>
+      <div class="hc-desc">AI推進者・AIメンター一覧。合計約1人月/月</div>
+    </div>
+    <div class="home-card" onclick="navigateTo('deptinfo')">
+      <span class="hc-pill pill-dp">Dept Info</span>
+      <div class="hc-title">部署役割</div>
+      <div class="hc-desc">各部署の名称・業務内容・開発環境</div>
+    </div>
+    <div class="home-card" onclick="navigateTo('people')">
+      <span class="hc-pill pill-pp">People</span>
+      <div class="hc-title">人物データベース</div>
+      <div class="hc-desc">登場人物の役職・所属・備考一覧（パスワード保護）</div>
+    </div>
+  </div>
+
+  <!-- Legend on org home -->
+  <div class="legend">
+    <h2>Legend</h2>
+    <div class="legend-grid">
+      <div class="legend-item"><div class="lb board-l"></div>取締役会 / 社長</div>
+      <div class="legend-item"><div class="lb exec-l"></div>本部 / 本部長</div>
+      <div class="legend-item"><div class="lb dept-l"></div>部署</div>
+      <div class="legend-item"><div class="lb team-l"></div>チーム</div>
+      <div class="legend-item"><div class="lb main-l"></div>WLメイン窓口（AXソリューション推進T）</div>
+      <div class="legend-item"><div class="lb poc1-l"></div>POC1 対象（SI第1部 / SI第2部）</div>
+      <div class="legend-item"><div class="lb poc2-l"></div>POC2 対象（お客様サポート部 / AXソリューション部）</div>
+      <div class="legend-item"><div class="lb study-l"></div>勉強会参加メンバー所属</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================================ -->
+<!-- PAGE: 全社組織概要                                                -->
+<!-- ================================================================ -->
+<div class="page page-wide" id="page-overview">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigateTo('orghome')">&#8592; 組織図ホーム</button>
+    <h2><span class="pill overview">Overview</span> 全社組織概要</h2>
+  </div>
+
+  <div class="tree-viewport">
+<div class="tree-inner">
+    <div class="tree-node">
+      <div class="card board" style="min-width:160px; padding:12px 18px;">
+        <div class="badge">代表取締役社長</div>
+        <div class="name" style="font-size:16px;">名部社長</div>
+      </div>
+
+      <div class="tree-children">
+        <!-- 1. ソリューション事業推進本部 -->
+        <div class="tree-child">
+          <div class="tree-node">
+            <div class="card director" style="min-width:170px; padding:12px 16px;">
+              <div class="badge">河田本部長 統括（篠原本部長は直下）</div>
+              <div class="name" style="font-size:14px;">ソリューション事業推進本部</div>
+            </div>
+            <div class="tree-children">
+              <!-- 河田管轄 -->
+              <div class="tree-child">
+                <div class="tree-node">
+                  <div class="card exec" style="min-width:140px; padding:9px 12px;">
+                    <div class="badge">河田本部長 管轄</div>
+                    <div class="name" style="font-size:11px;">戦略・コンサル・NW・DC・クラウド</div>
+                  </div>
+                  <div class="tree-children">
+                    <!-- ソリューション事業戦略部 -->
+                    <div class="tree-child">
+                      <div class="tree-node">
+                        <div class="card compact"><div class="name">ソリューション事業戦略部</div><div class="sub">福智副本部長 管下<br>南部部長 / 伴部長</div></div>
+                        <div class="tree-children">
+                          <div class="tree-child">
+                            <div class="card compact">
+                              <div class="name">ソリューション事業企画開発チーム</div>
+                              <div class="sub">挑戦領域（セキュリティ）<br>森さん・内海さん・白川さんはAX推進Tへ移管</div>
+                            </div>
+                          </div>
+                          <div class="tree-child">
+                            <div class="card compact"><div class="name">ソリューション事業戦略チーム</div><div class="sub">田淵TM</div></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- ビジネスコンサルティング部 -->
+                    <div class="tree-child">
+                      <div class="tree-node">
+                        <div class="card compact"><div class="name">ビジネスコンサルティング部</div><div class="sub">下司副本部長 管下<br>林口部長</div></div>
+                        <div class="tree-children">
+                          <div class="tree-child">
+                            <div class="card compact"><div class="name">テクノロジー&amp;デザインチーム</div><div class="sub">鵜飼TM</div></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tree-child"><div class="card compact"><div class="name">ネットワーク<br>ビジネス推進部</div></div></div>
+                    <div class="tree-child"><div class="card compact"><div class="name">データセンター<br>ビジネス推進部</div></div></div>
+                    <div class="tree-child"><div class="card compact"><div class="name">クラウド<br>ビジネス推進部</div></div></div>
+                    <div class="tree-child"><div class="card compact"><div class="name">クラウドサービス<br>最適化PG</div></div></div>
+                    <div class="tree-child"><div class="card compact"><div class="name">キャリア部</div></div></div>
+                    <div class="tree-child"><div class="card compact"><div class="name">ビジネス推進部</div></div></div>
+                    <div class="tree-child"><div class="card compact"><div class="name">Web3ビジネスPG</div></div></div>
+                  </div>
+                </div>
+              </div>
+              <!-- 篠原管轄 -->
+              <div class="tree-child">
+                <div class="tree-node">
+                  <div class="card exec" style="min-width:140px; padding:9px 12px;">
+                    <div class="badge">篠原本部長 管轄（河田本部長 直下）</div>
+                    <div class="name" style="font-size:11px;">営業・SI&amp;AX・電力<br>佐伯副本部長・百々副本部長 管下</div>
+                  </div>
+                  <div class="tree-children">
+                    <!-- ソリューション部門 -->
+                    <div class="tree-child">
+                      <div class="tree-node">
+                        <div class="card compact"><div class="name">ソリューション部門</div></div>
+                        <div class="tree-children">
+                          <div class="tree-child"><div class="card compact"><div class="name">営業推進本部</div></div></div>
+                          <div class="tree-child"><div class="card compact"><div class="name">営業サポート部</div></div></div>
+                          <div class="tree-child"><div class="card compact"><div class="name">パートナーズ<br>営業部</div></div></div>
+                          <div class="tree-child"><div class="card compact"><div class="name">営業第1部</div><div class="sub" style="color:#7c3aed;">AI SIチーム<br>PM・コンサル候補</div></div></div>
+                          <div class="tree-child"><div class="card compact"><div class="name">営業第2部</div><div class="sub" style="color:#7c3aed;">AI SIチーム<br>PM・コンサル候補</div></div></div>
+                          <div class="tree-child"><div class="card compact"><div class="name">公共営業部</div><div class="sub" style="color:#7c3aed;">AI SIチーム<br>PM・コンサル候補</div></div></div>
+                          <div class="tree-child"><div class="card compact"><div class="name">医療<br>ソリューション部</div></div></div>
+                          <div class="tree-child"><div class="card compact"><div class="name">ICT<br>ソリューション部</div></div></div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- SI&AXビジネス部門 -->
+                    <div class="tree-child">
+                      <div class="tree-node">
+                        <div class="card compact hl-poc1"><div class="name">SI&amp;AXビジネス部門</div><div class="sub">佐伯・百々副本部長 管下</div><div class="hl-tag poc1" style="font-size:6px;">POC1</div></div>
+                        <div class="tree-children">
+                          <!-- SI&AXビジネス推進部 -->
+                          <div class="tree-child">
+                            <div class="tree-node">
+                              <div class="card compact"><div class="name">SI&amp;AXビジネス<br>推進部</div><div class="sub">大谷部長</div></div>
+                              <div class="tree-children">
+                                <div class="tree-child"><div class="card compact"><div class="name">SIビジネス<br>戦略チーム</div><div class="sub">大井川TM</div></div></div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- SI第1部 -->
+                          <div class="tree-child">
+                            <div class="tree-node">
+                              <div class="card compact hl-poc1"><div class="name">SI第1部</div><div class="sub" style="color:#0369a1;">Ohtaka部長<br>AI SIチーム<br>エンジニア候補</div><div class="hl-tag poc1" style="font-size:6px;">POC1</div></div>
+                              <div class="tree-children">
+                                <div class="tree-child"><div class="card compact hl-poc1"><div class="name">法人システム<br>第1T</div><div class="sub">中島さん（AI推進者）</div></div></div>
+                                <div class="tree-child"><div class="card compact hl-poc1"><div class="name">法人システム<br>第3T</div><div class="sub">山下さん / 花光さん</div></div></div>
+                                <div class="tree-child"><div class="card compact hl-poc1"><div class="name">法人システム<br>第4T</div><div class="sub">三根さん</div></div></div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- SI第2部 -->
+                          <div class="tree-child">
+                            <div class="tree-node">
+                              <div class="card compact hl-poc1"><div class="name">SI第2部</div><div class="sub" style="color:#0369a1;">AI SIチーム<br>エンジニア候補</div><div class="hl-tag poc1" style="font-size:6px;">POC1</div></div>
+                              <div class="tree-children">
+                                <div class="tree-child"><div class="card compact hl-poc1"><div class="name">公益システム<br>第1T</div><div class="sub">佐藤さん / 三谷さん</div></div></div>
+                                <div class="tree-child"><div class="card compact hl-poc1"><div class="name">公益システム<br>第2T</div><div class="sub">松浦さん（AI-WGリーダー）<br>廣井さん / 古和さん</div></div></div>
+                                <div class="tree-child"><div class="card compact hl-poc1"><div class="name">公益システム<br>第3T</div><div class="sub">張さん / 河原さん</div></div></div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- プロダクトソリューション部 -->
+                          <div class="tree-child">
+                            <div class="card compact"><div class="name">プロダクト<br>ソリューション部</div></div>
+                          </div>
+                          <!-- AXソリューション部（旧DXソリューション部） -->
+                          <div class="tree-child">
+                            <div class="tree-node">
+                              <div class="card compact hl-poc2"><div class="name">AX<br>ソリューション部</div><div class="sub">菅野部長<br>旧DXソリューション部</div><div class="hl-tag poc2" style="font-size:6px;">POC2連携</div></div>
+                              <div class="tree-children">
+                                <div class="tree-child"><div class="card compact hl-main"><div class="name">AXソリューション<br>推進T</div><div class="sub">AIビジネス検討<br>森TM・白川さん・内海さん他<br>大野さん（兼務）・寺崎さん<br>高見さん・要さん・服部さん（新）</div><div class="hl-tag main" style="font-size:6px;">WL Main</div></div></div>
+                                <div class="tree-child"><div class="card compact"><div class="name">AXソリューション<br>第1T</div><div class="sub">平山さん（ENOUR企画開発）<br>エンジニア / 維持運用</div></div></div>
+                                <div class="tree-child"><div class="card compact"><div class="name">AXソリューション<br>第2T</div><div class="sub">ハオディーさん<br>エンジニア / 維持運用</div></div></div>
+                                <div class="tree-child"><div class="card compact"><div class="name">AXソリューション<br>第3T</div><div class="sub">小林さん<br>エンジニア / 維持運用</div></div></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 電力ビジネス部門 -->
+                    <div class="tree-child">
+                      <div class="tree-node">
+                        <div class="card compact"><div class="name">電力ビジネス部門</div></div>
+                        <div class="tree-children">
+                          <div class="tree-child"><div class="card compact"><div class="name">電力ビジネス<br>推進部</div></div></div>
+                          <div class="tree-child"><div class="card compact"><div class="name">電力IT<br>ソリューション部</div></div></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. コンシューマ -->
+        <div class="tree-child">
+          <div class="tree-node">
+            <div class="card exec" style="min-width:120px; padding:9px 12px;">
+              <div class="badge">Consumer</div>
+              <div class="name" style="font-size:11px;">コンシューマ<br>事業推進本部</div>
+            </div>
+            <div class="tree-children">
+              <div class="tree-child">
+                <div class="card compact hl-poc2"><div class="name">お客様サポート部</div><div class="sub">コールセンターDX化</div><div class="hl-tag poc2" style="font-size:6px;">POC2</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. モバイル -->
+        <div class="tree-child">
+          <div class="card exec" style="min-width:90px; padding:9px 10px;">
+            <div class="badge">Mobile</div>
+            <div class="name" style="font-size:11px;">モバイル<br>事業推進本部</div>
+          </div>
+        </div>
+
+        <!-- 4. 技術本部 -->
+        <div class="tree-child">
+          <div class="tree-node">
+            <div class="card exec" style="min-width:100px; padding:9px 12px;">
+              <div class="badge">Technology</div>
+              <div class="name" style="font-size:11px;">技術本部</div>
+              <div class="sub">楠 本部長</div>
+            </div>
+            <div class="tree-children">
+              <div class="tree-child">
+                <div class="card compact hl-poc2"><div class="name">技術イノベーション部</div><div class="sub">たちさん（育休中）<br>鈴木さん</div><div class="hl-tag poc2" style="font-size:6px;">前回POC2</div></div>
+              </div>
+              <div class="tree-child">
+                <div class="tree-node">
+                  <div class="card compact hl-study">
+                    <div class="name">プラットフォーム技術部</div>
+                    <div class="sub">アジャイル開発 / PF整備</div>
+                    <div class="hl-tag study" style="font-size:6px;">勉強会</div>
+                  </div>
+                  <div class="tree-children">
+                    <div class="tree-child">
+                      <div class="card compact hl-study"><div class="name">サービスシステム<br>チーム</div><div class="sub">松田TM / 大野MGR（AX推進T兼務）<br>夏原さん<br><span style="color:#888;">寺崎さんはAX推進Tへ移動</span></div></div>
+                    </div>
+                    <div class="tree-child">
+                      <div class="card compact hl-study"><div class="name">プラットフォーム<br>技術計画チーム</div><div class="sub">安藤さん</div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. 経営本部 -->
+        <div class="tree-child">
+          <div class="tree-node">
+            <div class="card exec" style="min-width:100px; padding:9px 12px;">
+              <div class="badge">Management</div>
+              <div class="name" style="font-size:11px;">経営本部</div>
+              <div class="sub">西岡 本部長</div>
+            </div>
+            <div class="tree-children">
+              <div class="tree-child"><div class="card compact"><div class="name">経営戦略部</div><div class="sub">全社AI統括<br>メガコン参入</div></div></div>
+              <div class="tree-child"><div class="card compact"><div class="name">コーポレート<br>ITシステム部</div><div class="sub">AX戦略（社内業務効率化）<br>各本部の旗振り役 / オプチャット所轄</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6&7 -->
+        <div class="tree-child"><div class="card compact"><div class="name">総務室</div></div></div>
+        <div class="tree-child"><div class="card compact"><div class="name">経営監査室</div></div></div>
+
+      </div><!-- /tree-children -->
+    </div><!-- /tree-node -->
+  </div>
+</div><!-- /tree-viewport -->
+  <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+</div>
+
+
+<!-- ================================================================ -->
+<!-- PAGE: 河田本部長 管轄                                             -->
+<!-- ================================================================ -->
+<div class="page page-wide" id="page-kawada">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigateTo('orghome')">&#8592; 組織図ホーム</button>
+    <h2><span class="pill detail">Detail</span> ソリューション事業推進本部 ― 河田本部長 管轄</h2>
+  </div>
+
+  <div class="detail-section">
+    <h3>河田本部長 管轄</h3>
+    <div class="subtitle">ソリューション事業戦略・コンサルティング・ネットワーク・DC・クラウド等を統括</div>
+
+    <!-- 副本部長 -->
+    <div class="vice-heads">
+      <div class="vice-head-chip"><span class="role">副本部長</span> 福智さん</div>
+      <div class="vice-head-chip"><span class="role">副本部長</span> 下司さん</div>
+    </div>
+
+    <!-- ソリューション事業戦略部 -->
+    <div class="division-block">
+      <h4>ソリューション事業戦略部 <span style="font-size:11px; color:#777; font-weight:400;">(福智さん 管下 / 百々さんはSI&amp;AXビジネス部門へ異動)</span></h4>
+
+      <div style="display:flex; gap:8px; justify-content:center; margin-bottom:16px;">
+        <div class="vice-head-chip"><span class="role">部長</span> 南部さん</div>
+        <div class="vice-head-chip"><span class="role">部長</span> 伴さん</div>
+      </div>
+
+      <div class="tree-viewport" style="border:none; padding:16px 12px;">
+<div class="tree-inner">
+        <div class="tree-node">
+          <div class="card dept">
+            <div class="badge">Department</div>
+            <div class="name">ソリューション事業戦略部</div>
+          </div>
+
+          <div class="tree-children">
+            <!-- 戦略チーム -->
+            <div class="tree-child">
+              <div class="card team">
+                <div class="badge">Team</div>
+                <div class="name">ソリューション事業戦略チーム</div>
+                <div class="sub">本部の統括 / 教育計画策定</div>
+                <div class="members-list">TM: 田淵さん</div>
+              </div>
+            </div>
+
+            <!-- 企画開発チーム -->
+            <div class="tree-child">
+              <div class="section-wrap">
+                <div class="card team">
+                  <div class="badge">Team</div>
+                  <div class="name">ソリューション事業企画開発チーム</div>
+                  <div class="sub">挑戦領域（セキュリティ）</div>
+                  <div class="members-list" style="color:#888;">※ AI事業検討機能はAXソリューション推進Tへ融合。<br>森 俊洋さん・内海 稔さん・白川 元貴さんは当チームから完全に異動。</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+      <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+    </div>
+
+    <!-- ビジネスコンサルティング部 -->
+    <div class="division-block">
+      <h4>ビジネスコンサルティング部 <span style="font-size:11px; color:#777; font-weight:400;">(下司さん 管下)</span></h4>
+
+      <div style="display:flex; gap:8px; justify-content:center; margin-bottom:16px;">
+        <div class="vice-head-chip"><span class="role">部長</span> 林口さん</div>
+      </div>
+
+      <div class="tree-viewport" style="border:none; padding:16px 12px;">
+<div class="tree-inner">
+        <div class="tree-node">
+          <div class="card dept">
+            <div class="badge">Department</div>
+            <div class="name">ビジネスコンサルティング部</div>
+          </div>
+          <div class="tree-children">
+            <div class="tree-child">
+              <div class="card team">
+                <div class="badge">Team</div>
+                <div class="name">テクノロジー&amp;デザインチーム</div>
+                <div class="sub">コンサルティング部門</div>
+                <div class="members-list">TM: 鵜飼さん</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+      <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+    </div>
+
+    <!-- その他部署 -->
+    <div class="division-block">
+      <h4>その他の部署</h4>
+      <div class="dept-grid">
+        <div class="card dept"><div class="name">ネットワーク<br>ビジネス推進部</div></div>
+        <div class="card dept"><div class="name">データセンター<br>ビジネス推進部</div></div>
+        <div class="card dept"><div class="name">クラウド<br>ビジネス推進部</div></div>
+        <div class="card dept"><div class="name">クラウドサービス<br>最適化PG</div></div>
+        <div class="card dept"><div class="name">キャリア部</div></div>
+        <div class="card dept"><div class="name">ビジネス推進部</div></div>
+        <div class="card dept"><div class="name">Web3ビジネス<br>PG</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================================ -->
+<!-- PAGE: 篠原本部長 管轄                                             -->
+<!-- ================================================================ -->
+<div class="page page-wide" id="page-shinohara">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigateTo('orghome')">&#8592; 組織図ホーム</button>
+    <h2><span class="pill detail">Detail</span> ソリューション事業推進本部 ― 篠原本部長 管轄</h2>
+  </div>
+
+  <div class="detail-section">
+    <h3>篠原本部長 管轄 <span style="font-size:12px; color:#777; font-weight:400;">— 河田本部長 直下</span></h3>
+    <div class="subtitle">ソリューション営業・SI&amp;AX・電力ビジネスの3部門を統括（レポートライン上は河田本部長の下）</div>
+
+    <div class="vice-heads">
+      <div class="vice-head-chip"><span class="role">副本部長</span> 佐伯さん</div>
+      <div class="vice-head-chip"><span class="role">副本部長</span> 百々さん</div>
+    </div>
+
+    <!-- ソリューション部門 -->
+    <div class="division-block">
+      <h4>ソリューション部門</h4>
+      <div class="dept-grid">
+        <div class="card dept"><div class="name">営業推進本部</div></div>
+        <div class="card dept"><div class="name">営業サポート部</div></div>
+        <div class="card dept"><div class="name">パートナーズ営業部</div></div>
+        <div class="card dept"><div class="name">営業第1部</div><div class="sub" style="color:#7c3aed;">AI SIチーム PM・コンサル候補</div></div>
+        <div class="card dept"><div class="name">営業第2部</div><div class="sub" style="color:#7c3aed;">AI SIチーム PM・コンサル候補</div></div>
+        <div class="card dept"><div class="name">公共営業部</div><div class="sub" style="color:#7c3aed;">AI SIチーム PM・コンサル候補</div></div>
+        <div class="card dept"><div class="name">医療ソリューション部</div></div>
+        <div class="card dept"><div class="name">ICTソリューション部</div></div>
+      </div>
+    </div>
+
+    <!-- SI&AXビジネス部門 -->
+    <div class="division-block">
+      <h4>SI&amp;AXビジネス部門 <span style="font-size:11px; color:#777; font-weight:400;">(佐伯さん・百々さん 管下) — 旧 SI&amp;DXビジネス部門</span></h4>
+
+      <div class="tree-viewport" style="border:none; padding:16px 12px;">
+<div class="tree-inner">
+        <div class="tree-node">
+          <div class="card division">
+            <div class="badge">Division</div>
+            <div class="name">SI&amp;AXビジネス部門</div>
+          </div>
+
+          <div class="tree-children">
+            <!-- SI&AXビジネス推進部 -->
+            <div class="tree-child">
+              <div class="tree-node">
+                <div class="card dept">
+                  <div class="badge">Department</div>
+                  <div class="name">SI&amp;AXビジネス推進部</div>
+                  <div class="sub">部長: 大谷さん</div>
+                </div>
+                <div class="tree-children">
+                  <div class="tree-child">
+                    <div class="card team">
+                      <div class="badge">Team</div>
+                      <div class="name">SIビジネス戦略チーム</div>
+                      <div class="sub">SI事業統括部門</div>
+                      <div class="members-list">TM: 大井川さん</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SI第1部 -->
+            <div class="tree-child">
+              <div class="tree-node">
+                <div class="card dept hl-poc1">
+                  <div class="badge">Department</div>
+                  <div class="name">SI第1部</div>
+                  <div class="sub">部長: Ohtakaさん（40名規模）</div>
+                  <div class="sub" style="color:#0369a1;">AI SIチーム エンジニア候補</div>
+                  <div class="hl-tag poc1">POC1</div>
+                </div>
+                <div class="tree-children">
+                  <div class="tree-child">
+                    <div class="card team hl-poc1">
+                      <div class="badge">Team</div>
+                      <div class="name">法人システム第1T</div>
+                      <div class="members-list"><strong>AI推進者:</strong> 中島 勇太 Ex/TM<br><span style="font-size:9px;color:#888;">0.2人月</span></div>
+                    </div>
+                  </div>
+                  <div class="tree-child">
+                    <div class="card team hl-poc1">
+                      <div class="badge">Team</div>
+                      <div class="name">法人システム第3T</div>
+                      <div class="members-list"><strong>AIメンター:</strong><br>山下 雄亮さん / 花光 大輔さん<br><span style="font-size:9px;color:#888;">各0.2人月</span></div>
+                      <div class="hl-tag poc1">勉強会参加</div>
+                    </div>
+                  </div>
+                  <div class="tree-child">
+                    <div class="card team hl-poc1">
+                      <div class="badge">Team</div>
+                      <div class="name">法人システム第4T</div>
+                      <div class="members-list"><strong>AIメンター:</strong> 三根 尚之さん<br><span style="font-size:9px;color:#888;">0.2人月</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SI第2部 -->
+            <div class="tree-child">
+              <div class="tree-node">
+                <div class="card dept hl-poc1">
+                  <div class="badge">Department</div>
+                  <div class="name">SI第2部</div>
+                  <div class="sub" style="color:#0369a1;">AI SIチーム エンジニア候補</div>
+                  <div class="hl-tag poc1">POC1</div>
+                </div>
+                <div class="tree-children">
+                  <div class="tree-child">
+                    <div class="card team hl-poc1">
+                      <div class="badge">Team</div>
+                      <div class="name">公益システム第1T</div>
+                      <div class="members-list"><strong>AIメンター:</strong><br>佐藤 佳織さん / 三谷 逸星さん<br><span style="font-size:9px;color:#888;">各0.2人月</span></div>
+                    </div>
+                  </div>
+                  <div class="tree-child">
+                    <div class="card team hl-poc1">
+                      <div class="badge">Team</div>
+                      <div class="name">公益システム第2T</div>
+                      <div class="members-list"><strong>AI推進者:</strong> 松浦 来稀さん<br><strong>AIメンター:</strong> 廣井 裕紀さん / 古和 大貴さん<br><span style="font-size:9px;color:#888;">松浦さん1.0人月（AI-WG全体）/ 廣井さん0.1 / 古和さん0.1人月</span></div>
+                      <div class="hl-tag poc1">勉強会参加</div>
+                    </div>
+                  </div>
+                  <div class="tree-child">
+                    <div class="card team hl-poc1">
+                      <div class="badge">Team</div>
+                      <div class="name">公益システム第3T</div>
+                      <div class="members-list"><strong>AI推進者:</strong> 張 承敏 Ex/TM<br><strong>AIメンター:</strong> 河原 優真さん<br><span style="font-size:9px;color:#888;">張0.1 / 河原さん0.1人月</span></div>
+                      <div class="hl-tag poc1">勉強会参加</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- プロダクトソリューション部 -->
+            <div class="tree-child">
+              <div class="card dept">
+                <div class="badge">Department</div>
+                <div class="name">プロダクト<br>ソリューション部</div>
+                <div class="sub">44名・デリバリー中心（粗利10〜15%）</div>
+                <div class="members-list" style="font-size:9px;">ERP（Infor CloudSuite）<br>RPA（D365 / Power Platform）<br>MSソリューション（UiPath 10名程度・M365 Copilotあり）</div>
+              </div>
+            </div>
+
+            <!-- AXソリューション部（旧DXソリューション部） -->
+            <div class="tree-child">
+              <div class="tree-node">
+                <div class="card dept hl-poc2">
+                  <div class="badge">Department — 旧DXソリューション部</div>
+                  <div class="name">AXソリューション部</div>
+                  <div class="sub">部長: 菅野さん<br>PoC2 お客様サポート連携窓口<br>AI-SIer事業検証 ×　SIビジネスAI活用</div>
+                  <div class="hl-tag poc2">POC2連携</div>
+                </div>
+                <div class="tree-children">
+                  <!-- 推進T（旧DX推進T／企画開発Tの機能を融合） -->
+                  <div class="tree-child">
+                    <div class="card team hl-main">
+                      <div class="badge">Team</div>
+                      <div class="name">AXソリューション推進T</div>
+                      <div class="sub">AIビジネス検討（企画開発Tの機能を融合）<br>2ライン構成</div>
+                      <div class="hl-tag main">WL Main Contact</div>
+                      <div class="members-list"><strong>森さんライン（AIビジネス検討）:</strong><br>TM: 森 俊洋さん / SM: 内海 稔さん / 白川 元貴さん<br><span style="font-size:9px;color:#888;">企画開発Tから完全異動</span><br><strong>エナーチームライン（PoC2コールセンター/エナー）:</strong><br>大野 敦司さん（PF技術部 兼務）<br>寺崎 みな美さん（PF技術部から完全異動）他<br><strong>新規メンバー（2026.06）:</strong><br>高見さん（元ERP・AI専攻／7月兼務→8月）<br>要さん（マネジメント・育成）<br>服部さん</div>
+                    </div>
+                  </div>
+                  <!-- 第1T -->
+                  <div class="tree-child">
+                    <div class="card team">
+                      <div class="badge">Team</div>
+                      <div class="name">AXソリューション第1T</div>
+                      <div class="members-list">平山さん（30歳後半・ENOURの企画開発者）<br>エンジニアチーム<br><span style="font-size:9px;color:#888;">維持運用等</span></div>
+                    </div>
+                  </div>
+                  <!-- 第2T -->
+                  <div class="tree-child">
+                    <div class="card team">
+                      <div class="badge">Team</div>
+                      <div class="name">AXソリューション第2T</div>
+                      <div class="members-list">ハオディーさん<br><span style="font-size:9px;color:#888;">エンジニア / 維持運用（Drupal CMS）</span></div>
+                      <div class="hl-tag study">勉強会参加</div>
+                    </div>
+                  </div>
+                  <!-- 第3T -->
+                  <div class="tree-child">
+                    <div class="card team">
+                      <div class="badge">Team</div>
+                      <div class="name">AXソリューション第3T</div>
+                      <div class="members-list">小林 侑司さん<br><span style="font-size:9px;color:#888;">エンジニア / 維持運用（AIエージェント開発）</span></div>
+                      <div class="hl-tag study">勉強会参加</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /tree-children SI&AX -->
+        </div><!-- /tree-node SI&AX -->
+      </div>
+</div><!-- /tree-viewport -->
+      <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+    </div>
+
+    <!-- 電力ビジネス部門 -->
+    <div class="division-block">
+      <h4>電力ビジネス部門</h4>
+      <div class="dept-grid">
+        <div class="card dept"><div class="name">電力ビジネス推進部</div></div>
+        <div class="card dept"><div class="name">電力ITソリューション部</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================================ -->
+<!-- PAGE: その他重要部署                                               -->
+<!-- ================================================================ -->
+<div class="page page-wide" id="page-other">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigateTo('orghome')">&#8592; 組織図ホーム</button>
+    <h2><span class="pill other">Other Key</span> その他重要部署</h2>
+  </div>
+
+  <!-- コンシューマ事業推進本部 -->
+  <div class="detail-section">
+    <h3>コンシューマ事業推進本部</h3>
+    <div class="subtitle">POC2対象部署を含む</div>
+
+    <div class="tree-viewport" style="border:none; padding:16px 12px;">
+<div class="tree-inner">
+      <div class="tree-node">
+        <div class="card exec">
+          <div class="badge">Consumer Business</div>
+          <div class="name">コンシューマ事業推進本部</div>
+        </div>
+        <div class="tree-children">
+          <div class="tree-child">
+            <div class="card dept hl-poc2">
+              <div class="badge">Department</div>
+              <div class="name">お客様サポート部</div>
+              <div class="sub">コールセンターDX化（10部門・IVR振り分け）<br>昨年RAG実験→精度不足で失敗<br>今年度は既製品パッケージ選定に注力<br>PoC2協力は最低限の見込み</div>
+              <div class="hl-tag poc2">POC2 Target</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+    <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+  </div>
+
+  <!-- 技術本部 -->
+  <div class="detail-section">
+    <h3>技術本部 <span style="font-size:12px; color:#777; font-weight:400;">— 楠 本部長</span></h3>
+    <div class="subtitle">技術イノベーション &amp; プラットフォーム技術 — 勉強会参加メンバー所属</div>
+
+    <div class="tree-viewport" style="border:none; padding:16px 12px;">
+<div class="tree-inner">
+      <div class="tree-node">
+        <div class="card exec">
+          <div class="badge">Technology</div>
+          <div class="name">技術本部</div>
+          <div class="sub">楠 本部長</div>
+        </div>
+
+        <div class="tree-children">
+          <!-- 技術イノベーション部 -->
+          <div class="tree-child">
+            <div class="card dept hl-poc2">
+              <div class="badge">Department</div>
+              <div class="name">技術イノベーション部</div>
+              <div class="sub">新規技術探索部門</div>
+              <div class="hl-tag poc2">前回POC2担当</div>
+              <div class="members-list">たちさん（育休中）/ 鈴木さん<br><span style="font-size:9px;color:#888;">Dify+マニュアルでRAG実装→精度不足で失敗</span></div>
+            </div>
+          </div>
+
+          <!-- プラットフォーム技術部 -->
+          <div class="tree-child">
+            <div class="tree-node">
+              <div class="card dept hl-study">
+                <div class="badge">Department</div>
+                <div class="name">プラットフォーム技術部</div>
+                <div class="sub">アジャイル開発 / PF整備 / エンジニア育成<br>PoC1・2共通の基盤環境構築候補（調整中）</div>
+                <div class="hl-tag study">勉強会参加</div>
+                <div class="hl-tag poc1" style="margin-left:2px;">PoC基盤候補</div>
+              </div>
+
+              <div class="tree-children">
+                <div class="tree-child">
+                  <div class="card team hl-study">
+                    <div class="badge">Team</div>
+                    <div class="name">サービスシステムチーム</div>
+                    <div class="members-list">TM: 松田さん<br>MGR: 大野 敦司さん<span style="font-size:9px;color:#888;">（AX推進T 兼務）</span><br>夏原 明日香さん<br><span style="font-size:9px;color:#888;">寺崎 みな美さんはAXソリューション推進Tへ完全異動</span></div>
+                    <div class="hl-tag study">勉強会参加</div>
+                  </div>
+                </div>
+                <div class="tree-child">
+                  <div class="card team hl-study">
+                    <div class="badge">Team</div>
+                    <div class="name">プラットフォーム技術計画チーム</div>
+                    <div class="members-list">安藤 大稀さん</div>
+                    <div class="hl-tag study">勉強会参加</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+    <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+  </div>
+
+  <!-- 経営本部 -->
+  <div class="detail-section">
+    <h3>経営本部 <span style="font-size:12px; color:#777; font-weight:400;">— 西岡 本部長</span></h3>
+    <div class="subtitle">全社経営統括 &amp; 社内ITシステム</div>
+
+    <div class="tree-viewport" style="border:none; padding:16px 12px;">
+<div class="tree-inner">
+      <div class="tree-node">
+        <div class="card exec">
+          <div class="badge">Management</div>
+          <div class="name">経営本部</div>
+          <div class="sub">西岡 本部長</div>
+        </div>
+
+        <div class="tree-children">
+          <div class="tree-child">
+            <div class="card dept">
+              <div class="badge">Department</div>
+              <div class="name">経営戦略部</div>
+              <div class="sub">全社経営統括部門<br>全社AIの取り組みを統括</div>
+              <div class="info-note" style="display:inline-block; margin-top:8px;">メガコンが入っているため<br>WLとしては入らない方が良い</div>
+            </div>
+          </div>
+
+          <div class="tree-child">
+            <div class="card dept">
+              <div class="badge">Department</div>
+              <div class="name">コーポレートITシステム部</div>
+              <div class="sub">社内IT運用部門 / AI全体戦略の検討<br>AX戦略（社内業務効率化）を推進中<br>RAG・Dify等の社内生成AI環境を構築<br>各本部への旗振り役・AIコンサルリソース配分<br>オプチャット所轄</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+    <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+  </div>
+</div>
+
+
+<!-- ================================================================ -->
+<!-- PAGE: AI-WG                                                      -->
+<!-- ================================================================ -->
+<div class="page" id="page-aiwg">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigateTo('orghome')">&#8592; 組織図ホーム</button>
+    <h2><span class="pill detail">AI-WG</span> SI部 AI ワーキンググループ</h2>
+  </div>
+
+  <div class="detail-section">
+    <h3>AI推進者 / AIメンター 一覧 <span style="font-size:12px; color:#777; font-weight:400;">— 合計 約1人月/月（松浦さん主導）</span></h3>
+    <div class="subtitle">POC1の実行部隊。AI推進者がリード、AIメンターが各チームで実践</div>
+
+    <div class="table-wrap">
+    <table class="person-table">
+      <thead>
+        <tr>
+          <th style="width:80px;">分類</th>
+          <th style="width:70px;">所属</th>
+          <th style="width:120px;">チーム</th>
+          <th style="width:110px;">氏名</th>
+          <th style="width:60px;">工数</th>
+          <th>役職</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#eff6ff;"><td><strong>AI推進者</strong></td><td>SI第1部</td><td>法人システム第1T</td><td><strong>中島 勇太さん</strong></td><td>0.2</td><td>Ex／TM</td></tr>
+        <tr style="background:#eff6ff;"><td></td><td>SI第2部</td><td>公益システム第3T</td><td><strong>張 承敏さん</strong></td><td>0.1</td><td>Ex／TM</td></tr>
+        <tr style="background:#eff6ff;"><td></td><td></td><td>公益システム第2T</td><td><strong>松浦 来稀さん</strong></td><td>1.0</td><td>AI-WG進行リーダー</td></tr>
+        <tr><td><strong>AIメンター</strong></td><td>SI第1部</td><td>法人システム第3T</td><td><strong>山下 雄亮さん</strong></td><td>0.2</td><td></td></tr>
+        <tr><td></td><td></td><td>法人システム第3T</td><td><strong>花光 大輔さん</strong></td><td>0.2</td><td></td></tr>
+        <tr><td></td><td></td><td>法人システム第4T</td><td><strong>三根 尚之さん</strong></td><td>0.2</td><td></td></tr>
+        <tr><td></td><td>SI第2部</td><td>公益システム第1T</td><td><strong>佐藤 佳織さん</strong></td><td>0.2</td><td></td></tr>
+        <tr><td></td><td></td><td>公益システム第1T</td><td><strong>三谷 逸星さん</strong></td><td>0.2</td><td></td></tr>
+        <tr><td></td><td></td><td>公益システム第2T</td><td><strong>廣井 裕紀さん</strong></td><td>0.1</td><td></td></tr>
+        <tr><td></td><td></td><td>公益システム第2T</td><td><strong>古和 大貴さん</strong></td><td>0.1</td><td></td></tr>
+        <tr><td></td><td></td><td>公益システム第3T</td><td><strong>河原 優真さん</strong></td><td>0.1</td><td></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================================ -->
+<!-- PAGE: 部署役割                                                    -->
+<!-- ================================================================ -->
+<div class="page" id="page-deptinfo">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigateTo('orghome')">&#8592; 組織図ホーム</button>
+    <h2><span class="pill other">Dept Info</span> 部署の名称と役割</h2>
+  </div>
+
+  <div class="note-grid">
+    <div class="note-box">
+      <h4><span class="hl-tag main">WL Main</span> AXソリューション推進T <span style="font-size:11px; color:#777; font-weight:400;">— SI&amp;AXビジネス部門 / AXソリューション部</span></h4>
+      <p><strong>組織改正（2026.06）:</strong> 旧ソリューション事業企画開発Tが担っていたAI事業検討機能を、AXソリューション部（旧DXソリューション部）へ融合し新設。<strong>Wanderlustのメイン窓口。</strong><br>森 俊洋さんが統括し、内海 稔さん・白川 元貴さんがソリューション事業企画開発Tから完全異動して所属。大野 敦司さん（PF技術部 兼務）・寺崎 みな美さん（PF技術部から完全異動）も参画。<br><strong>2ライン構成:</strong> ①森さんライン（AIビジネス検討・AI-SIer事業検証） ②エナーチームライン（PoC2コールセンター=エナー関連）。<br><strong>担当分担（7/31整理）:</strong> 寺崎さん＝全体戦略（FDEサブ）／白川さん＝FDE（PoC1メイン）／内海さん＝自社サービス（PoC2）。詳細はセクター整理ページ参照。</p>
+    </div>
+
+    <div class="note-box">
+      <h4>ソリューション事業企画開発チーム <span style="font-size:11px; color:#777; font-weight:400;">— ソリューション事業戦略部内（河田管轄）</span></h4>
+      <p>組織改正後も存続。今後は<strong>挑戦領域（セキュリティ）</strong>を担当。<br>AI事業検討機能とメンバー（森さん・内海さん・白川さん）はAXソリューション推進Tへ移管・異動済み。</p>
+    </div>
+
+    <div class="note-box">
+      <h4>AX定例会 <span style="font-size:11px; color:#777; font-weight:400;">— 隔週 / 主要役員参加（旧称: AI定例会）／次回 2026/8/4</span></h4>
+      <p><strong>6/4 第6回MTG:</strong> 2週に1回開催。主要役員が参加し、WLとの取り組み進捗共有と今後の動きをディスカッションする場。<br>
+      <strong>ファシリ・全体共有:</strong> 森さん<br>
+      <strong>PoC1報告:</strong> 白川さん／<strong>PoC2報告:</strong> 内海さん<br>
+      <strong>必須出席者:</strong> 河田本部長 / 篠原本部長 / 百々副本部長 / 菅野部長 / AXソリューションT<br>
+      <strong>任意出席者:</strong><br>
+      ・コンサル: 下司副本部長 / 鳥飼TM（下司さんの弟）<br>
+      ・GPU・AI-DC: 津田副本部長<br>
+      ・NaaS（Network as a Service）: 福智本部長<br>
+      ・SI戦略: 大谷部長</p>
+    </div>
+
+    <div class="note-box">
+      <h4><span class="hl-tag main">AI SI MTG</span> AI SIミーティングで実施したい内容</h4>
+      <p>オプテージの悩み・壁打ちしたい内容を<strong>週1で実施</strong>したい。<br>
+      <strong>方針:</strong> 見えるところから片付ける／AI-SIの解像度を上げ、how to を作っていく。</p>
+    </div>
+
+    <div class="note-box">
+      <h4><span class="hl-tag main">構想</span> 企画チームのAI SI事業化ロードマップ</h4>
+      <p><strong>6/4 第6回MTG:</strong> 森さんのソリューション事業企画開発チームが主導する中長期構想。<br>
+      <strong>ボトルネック:</strong> 技術・コンサル人材をAI SIに集めきれていない。リスキリングをやり切ってもAI SI単体の売上規模は小さいというリスク。<br>
+      <strong>解決策:</strong> SI部だけでなく他部署からも人材を集める。社内各部署のDXを実施することで、嫌味なく他部署から人材を取り込む。<br>
+      <strong>ロードマップ:</strong> 中間=「内部DX促進チーム」発足 → 長期=「AI SIチーム」発足。<br>
+      <strong>人材候補:</strong> SI部内のDX関連部署、技術本部（運用保守・インフラ人材）の精鋭化・囲い込み。<br>
+      <strong>PoC3以降の種:</strong> 売上向上に直結する社内DX（例: 保守運用チームの設備構成図を用いた問い合わせ対応）、社内AI ops領域、ローカルLLM等。<br>
+      <strong>定数/変数:</strong> AI関連への取り組みとレポートライン（本部長）は当面不変。ただし企画チームが担うAI関連業務が別部署へ移管される可能性あり。</p>
+    </div>
+
+    <div class="note-box">
+      <h4>技術本部（運用保守・インフラ）<span style="font-size:11px; color:#777; font-weight:400;"> — AI SI人材プール候補</span></h4>
+      <p><strong>6/4 第6回MTG:</strong> 運用保守等を担う技術本部はインフラ関連人材が多く、業務モチベーションの維持が課題。この人材層を精鋭化・育成して囲い込み、将来のAI SI／内部DX人材として取り込む構想。SI部内のDX関連部署（負荷の高い部署）も同様の人材プール候補。</p>
+    </div>
+
+    <div class="note-box">
+      <h4><span class="hl-tag study">勉強会</span> サービスシステムチーム</h4>
+      <p><strong>業務:</strong> スクラムチーム立ち上げ・運営。開発者向け壁打ち・改善支援。社内アプリ技術支援。新規事業の技術サポート。<br>
+      <strong>環境:</strong> ChatGPT Enterprise、Copilot系、Python、FastAPI、AWS、Docker<br>
+      <strong>特徴:</strong> 横断的に各部署の困りごとの改善や新規実装を行う役割。</p>
+    </div>
+
+    <div class="note-box">
+      <h4><span class="hl-tag poc1">POC1</span> SI第1部（法人システム）</h4>
+      <p><strong>業務:</strong> 法人企業向け業務システムのスクラッチ開発・保守。<br>
+      <strong>環境:</strong> Eclipse、独自クラウド、オプチャット<br>
+      <strong>特徴:</strong> 部署全体で「AIを入れて業務を変えていこう」という取り組みがあり、AI資格学習やGitHub Copilot導入が進行中。</p>
+    </div>
+
+    <div class="note-box">
+      <h4><span class="hl-tag poc1">POC1</span> SI第2部（公益システム）</h4>
+      <p><strong>業務:</strong> 通信事業者等の公益領域のシステム受託開発。アプリ領域の開発・保守。<br>
+      <strong>環境:</strong> Java、チャットフロー等（個別Copilotは全社標準なし）<br>
+      <strong>特徴:</strong> 顧客リソースのAI利用に非常に大きな許諾パワーが必要。セキュリティ制約が強い。</p>
+    </div>
+
+    <div class="note-box">
+      <h4><span class="hl-tag study">勉強会</span> <span class="hl-tag poc2">POC2連携</span> AXソリューション部 <span style="font-size:11px; color:#777; font-weight:400;">— 旧DXソリューション部</span></h4>
+      <p><strong>部長:</strong> 菅野さん<br>
+      <strong>組織改正（2026.06）:</strong> DXソリューション部から改称。SI&amp;AXビジネス部門配下。AI-SIerとしての事業検証とSIビジネスにおけるAI活用を連動。<br>
+      <strong>推進T:</strong> AIビジネス検討（旧企画開発Tの機能を融合）。エナー（コールセンターAIソリューション）も推進。<br>
+      <strong>第1T／第2T／第3T:</strong> エンジニアチーム。維持運用等を担当。第2T=ハオディーさん（Drupal CMS・TypeScript）、第3T=小林さん（AIエージェント開発）<br>
+      <strong>環境:</strong> オプチャット（ChatGPT/Claude選択可）、RAG、SDSモデル、Dify<br>
+      <strong>4/14追加:</strong> PoC2のお客さまサポートとの連絡はAXソリューション部の方が担当</p>
+    </div>
+
+    <div class="note-box">
+      <h4><span class="hl-tag poc2">POC2</span> お客様サポート部</h4>
+      <p>コンシューマ事業推進本部内。WanderlustがPOC2としてコールセンターDX化に取り組む対象部門。</p>
+    </div>
+
+    <div class="note-box">
+      <h4>SI&amp;AXビジネス推進部</h4>
+      <p>SI事業統括部門。大谷さんが統括。<br>SIビジネス戦略チーム（大井川さん）がSI事業全体の戦略を策定。</p>
+    </div>
+
+    <div class="note-box">
+      <h4>ビジネスコンサルティング部</h4>
+      <p>下司さん管下。林口さんが統括。<br>テクノロジー&amp;デザインチーム（鵜飼さん）がコンサルティングを担当。</p>
+    </div>
+
+    <div class="note-box">
+      <h4>経営戦略部</h4>
+      <p>経営本部内。全社経営統括部門として全社AIの取り組みを統括。<br>メガコン（大手コンサル）が入っており、WLとしては入らない方がよい領域。</p>
+    </div>
+
+    <div class="note-box">
+      <h4>コーポレートITシステム部</h4>
+      <p>経営本部内。社内IT運用部門。AI全体戦略の検討を実施。<br>オプチャット（社内チャットツール）の所轄部門。<br>
+      <strong>6/4 第6回MTG:</strong> 全社の<strong>AX戦略（社内業務効率化）</strong>を主導。RAG・Dify等の社内生成AI環境を構築し、各本部への旗振り役を担う。大型案件については、当部門に入っているAIコンサルのリソースを他部署にも配分している。</p>
+    </div>
+
+    <div class="note-box">
+      <h4><span class="hl-tag main">役員会方針</span> SI戦略の方向性（百々副本部長 → 森さん）</h4>
+      <p><strong>百々さんが森さんに求めること:</strong> SI全体をどうしていくか、<strong>SI戦略を立てる</strong>こと。SIチーム全体の売上向上が役員会からのお題。<br>
+      <strong>売上の目標感:</strong> 特定顧客の売上を10億に下げてもよいので、<strong>AX（DX）による売上を50億にしたい</strong>。<br>
+      <strong>承認/レポートライン:</strong> AI関連の取り組みとレポートライン（本部長）は当面不変。</p>
+    </div>
+
+    <div class="note-box">
+      <h4><span class="hl-tag main">森さん構想</span> 新規事業創出（ストック型）への問題意識</h4>
+      <p><strong>懸念:</strong> AI-SIer事業は人がいないため、すべて<strong>労働集約</strong>になってしまう。労働集約から抜け出せないので、AI-SIer事業だけでなく<strong>新規事業創出（ストック型ビジネス）</strong>が必要では、との問題意識。<br>
+      <strong>候補:</strong> データセンターチームが構想する<strong>Private AI関連</strong>等。ただし未確定。<br>
+      <strong>やりたいこと:</strong> 新規事業創出。<strong>営利50億・売上500億</strong>を作るにはこれが必要との認識。AI社内実装はやるべきだが「やりたいこと」ではない（社内で原価低減の動きは起こりにくい）。AI-SIer事業も今すぐやりたいわけではない。<br>
+      <strong>人材の所在:</strong> SI人材はほぼ<strong>関電システムソリューション</strong>、インフラ人材はほぼ<strong>Kopt</strong>。ここを一体感を持って進めたい。</p>
+    </div>
+
+    <div class="note-box">
+      <h4>SIチーム構成（ユニット単位 / 百々副本部長 以下）</h4>
+      <p><strong>SI（SI第1部: 40名 / SI第2部: 40名）</strong><br>
+      ・<strong>特定顧客</strong>（Pureなシステム開発・粗利ほぼ出ず）: 大型顧客対応（SG・グループ会社・新規）／公益企業ターゲット（CTC・東邦ガス・BIPROGY）／ローコード開発（楽々FW）<br>
+      ・<strong>プロダクト</strong>（プロダクトソリューション部・44名／デリバリーのみ・粗利10〜15%）: ERP（Infor CloudSuite）／RPA（D365・Power Platform）／MSソリューション（UiPath 10名程度・M365 Copilotあり）<br>
+      <strong>AX</strong><br>
+      ・コンタクトソリューション: ENOUR・停電応答<br>
+      ・AI<br>
+      <span style="font-size:11px;color:#777;">※ AXソリューション部のコストはSI部のPLに反映されない。</span></p>
+    </div>
+
+    <div class="note-box">
+      <h4>SIチーム 売上構想（FY26 → FY30）</h4>
+      <p><strong>FY26: 44.3億 → FY30: 60億</strong>（内訳: 特定顧客22 / プロダクト20 / AX18）<br>
+      ・特定顧客: FY30に向けて<strong>売上維持</strong><br>
+      ・プロダクト: FY26比 <strong>約1.5倍</strong><br>
+      ・DX（AX）: <strong>2倍</strong>まで拡大</p>
+    </div>
+
+    <div class="note-box">
+      <h4>人材供給元・HR戦略</h4>
+      <p><strong>供給元:</strong> 基本は特定顧客部隊。プロダクト部隊のローコードチームもあり。MS支援部隊・コンサル部隊を用いてAI-SIer事業を伸ばす捉え方も。<br>
+      <strong>重要論点:</strong> 特定顧客チームの優秀なAI-WGメンバーを<strong>どこにアサインするか</strong>。<br>
+      <strong>HR戦略:</strong> 百々さんが担当。新卒をここに入れる等。</p>
+    </div>
+
+    <div class="note-box">
+      <h4>プロダクト戦略について</h4>
+      <p>従来のインフラ企業としてのプロダクトは<strong>営利10%</strong>が一つの閾値（ネットワーク関連は労働集約だがストック性あり）。<br>
+      AI関連のプロダクトだと<strong>営利25%程度</strong>が普通。GPU×コンサル 等。</p>
+    </div>
+
+    <div class="note-box">
+      <h4>次回PoCの位置づけ / ENOUR / PNJグループ</h4>
+      <p><strong>次回PoC:</strong> 「社内と社外、次はどちらで始めるか」という論点。<br>
+      <strong>ENOUR（エナー）:</strong> 導入 3〜4社。<strong>平山さん</strong>（AXソリューション第1T・30歳後半）が企画開発し作り上げた。<br>
+      <strong>PNJグループ:</strong> 九州電力における「キューピーネット」的な位置づけ。</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================================ -->
+<!-- PAGE: セクター整理                                                -->
+<!-- ================================================================ -->
+<div class="page" id="page-sector">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigateTo('home')">&#8592; ホーム</button>
+    <h2><span class="pill other">Sector</span> セクター整理 ― FDE化対象と自社サービスの範囲</h2>
+  </div>
+
+  <div class="detail-section">
+    <h3>3セクター × 事業区分</h3>
+    <p class="subtitle">2026.07.31 時点の整理。FDE化対象＝特定顧客の全体＋プロダクト（M365）のみ／自社サービス＝AXソリューション部 配下のみ</p>
+
+    <div class="sector-scroll">
+      <div class="sector-map">
+        <!-- 第0行: 全体戦略（3セクター横断） -->
+        <div class="sec-belt belt-strategy" style="grid-column: 1 / 6;">
+          <div class="belt-title">全体戦略</div>
+          <div class="belt-desc">3セクター横断の戦略検討・目標設計</div>
+          <div class="belt-owner">担当: 寺崎さん（メイン）</div>
+        </div>
+
+        <!-- 第1行: セクター -->
+        <div class="sec-head sh-tokutei" style="grid-column: 1 / 2;">特定顧客<span>SI第1部・SI第2部</span></div>
+        <div class="sec-head sh-product" style="grid-column: 2 / 4;">プロダクト<span>プロダクトソリューション部</span></div>
+        <div class="sec-head sh-ax" style="grid-column: 4 / 6;">AX<span>AXソリューション部</span></div>
+
+        <!-- 第2行: FDE / 自社サービスの範囲 -->
+        <div class="sec-belt belt-fde" style="grid-column: 1 / 3;">
+          <div class="belt-title">FDE</div>
+          <div class="belt-desc">顧客の現場に入り込み、AIを組み込んだシステムをAI駆動開発で構築・伴走する事業領域。<strong>特定顧客の全体 ＋ プロダクト（M365）のみ</strong>が対象</div>
+          <div class="belt-owner">担当: 白川さん（メイン）・寺崎さん（サブ）／PoC1</div>
+        </div>
+        <div class="sec-belt belt-none" style="grid-column: 3 / 4;">
+          <div class="belt-desc">FDE・自社サービスの<br>いずれにも含まれない<br>（通常のプロダクト事業）</div>
+        </div>
+        <div class="sec-belt belt-service" style="grid-column: 4 / 6;">
+          <div class="belt-title">自社サービス</div>
+          <div class="belt-desc">自社が企画・保有するサービスを複数顧客に展開する事業（ストック型）。<strong>AXソリューション部 配下のみ</strong>が該当</div>
+          <div class="belt-owner">担当: 内海さん（メイン）／PoC2（ENOUR関連）</div>
+        </div>
+
+        <!-- 第3行: 事業区分 -->
+        <div class="sec-item"><div class="si-title">特定顧客へのSI事業</div><div class="si-sub">AI機能を含むシステム開発（大型顧客・公益企業）。特定顧客セクターはこの1事業のみ</div></div>
+        <div class="sec-item"><div class="si-title">プロダクト（M365）</div><div class="si-sub">M365 Copilot 関連の展開支援</div></div>
+        <div class="sec-item"><div class="si-title">プロダクト（M365以外）</div><div class="si-sub">ERP・RPA・UiPath 等</div></div>
+        <div class="sec-item"><div class="si-title">既存自社サービス</div><div class="si-sub">ENOUR（エナー）のみ</div></div>
+        <div class="sec-item"><div class="si-title">探索中のサービス</div><div class="si-sub">新規領域の探索</div></div>
+      </div>
+    </div>
+    <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+
+    <h4 class="sim-h4">担当分担（AXソリューション推進T）</h4>
+    <div class="sim-wrap">
+      <table class="sim-table">
+        <tr><th>担当者</th><th>メイン担当</th><th>あわせて担当しているもの</th></tr>
+        <tr><td><strong>寺崎さん</strong></td><td>全体戦略（FDEはサブで担当）</td><td>AIエンジニア研修の整備（高見さんと）／PoC1・PoC2のキャッチアップ</td></tr>
+        <tr><td><strong>白川さん</strong></td><td>FDE</td><td>PoC1（FDE領域のPoC）のメイン担当／AI-WGの方向づけ（AI駆動開発・システム開発プロセスの検討）</td></tr>
+        <tr><td><strong>内海さん</strong></td><td>自社サービス</td><td>PoC2（ENOUR関連のPoC）の担当</td></tr>
+      </table>
+    </div>
+    <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+  </div>
+
+  <div class="detail-section">
+    <h3>売上目標シミュレーション（入力用フォーマット）</h3>
+    <p class="subtitle">数値は議論前のためすべて空欄。点線のセルはクリック（タップ）でその場に入力できます — ページを再読み込みすると消えるため、確定値は別途記録</p>
+
+    <h4 class="sim-h4">① 事業区分別（入力の最小単位）</h4>
+    <div class="sim-wrap">
+      <table class="sim-table">
+        <tr><th>セクター</th><th>事業区分</th><th>現在の売上実績</th><th>FY26 目標</th><th>FY30 目標</th><th>成長ストーリー・前提メモ</th></tr>
+        <tr><td>特定顧客</td><td>特定顧客へのSI事業</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td class="memo" contenteditable="true">—</td></tr>
+        <tr><td>プロダクト</td><td>(a) プロダクト（M365）</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td class="memo" contenteditable="true">—</td></tr>
+        <tr><td>プロダクト</td><td>(b) プロダクト（M365以外: ERP・RPA・UiPath等）</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td class="memo" contenteditable="true">—</td></tr>
+        <tr><td>AX</td><td>(a) 既存自社サービス（ENOUR）</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td class="memo" contenteditable="true">—</td></tr>
+        <tr><td>AX</td><td>(b) 探索中のサービス（新規領域）</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td class="memo" contenteditable="true">—</td></tr>
+      </table>
+    </div>
+    <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+
+    <h4 class="sim-h4">② 集計軸（上表から集計）</h4>
+    <div class="sim-wrap">
+      <table class="sim-table">
+        <tr><th>集計軸</th><th>現在</th><th>FY26</th><th>FY30</th><th>突き合わせ・備考</th></tr>
+        <tr class="agg-sector"><td>特定顧客 計</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td>公式計画: FY30 22億円（維持）</td></tr>
+        <tr class="agg-sector"><td>プロダクト 計</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td>公式計画: FY30 20億円（うちM365分の切り分けが要確認）</td></tr>
+        <tr class="agg-sector"><td>AX 計</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td>公式計画: FY30 18億円</td></tr>
+        <tr class="agg-fde"><td>FDE化対象 計（特定顧客 ＋ プロダクトM365）</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td>FDE化構想のゴール定数と突き合わせる行</td></tr>
+        <tr class="agg-total"><td>全体合計</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td class="num" contenteditable="true">[ ]</td><td>公式計画: FY26 44.3億円 → FY30 60億円</td></tr>
+      </table>
+    </div>
+    <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+    <p class="sim-note">入力の順番の目安: ① 現在の売上実績（事実）→ ② FY26目標（公式計画の事業区分への割付）→ ③ FY30目標（成長ストーリーとセットで議論）。プロダクト計のうちM365分がいくらかが決まらないとFDE化対象計が定まらないため、最初に確認する。</p>
+  </div>
+</div>
+
+
+<!-- ================================================================ -->
+<!-- PAGE: 会議リスト                                                  -->
+<!-- ================================================================ -->
+<div class="page" id="page-meetings">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigateTo('home')">&#8592; ホーム</button>
+    <h2><span class="pill other">Meetings</span> 会議リスト</h2>
+  </div>
+
+  <div class="detail-section">
+    <h3>定例・意思決定の会議体</h3>
+    <p class="subtitle">2026.07.31 時点</p>
+
+    <div class="table-wrap">
+      <table class="person-table">
+        <thead>
+          <tr><th>会議名</th><th>参加者リスト</th><th>趣旨</th><th>実施内容</th><th>備考</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>AX定例会</strong></td>
+            <td style="min-width:220px;"><strong>必須出席者:</strong><br>
+            ・河田本部長<br>
+            ・篠原本部長<br>
+            ・百々副本部長<br>
+            ・菅野部長（AXソリューション部）<br>
+            ・AXソリューションT<br>
+            <strong>任意出席者:</strong><br>
+            ・コンサル: 下司副本部長 / 鳥飼TM（下司さんの弟）<br>
+            ・GPU・AI-DC: 津田副本部長<br>
+            ・NaaS（Network as a Service）: 福智本部長<br>
+            ・SI戦略: 大谷部長</td>
+            <td style="min-width:150px;">定点的な活動報告と、決裁等の承認</td>
+            <td style="min-width:180px;">ファシリ・全体共有: 森さん<br>PoC1報告: 白川さん<br>PoC2報告: 内海さん<br>WLとの取り組み進捗の共有と今後の動きのディスカッション</td>
+            <td style="min-width:130px;">隔週開催<br>次回: 2026/8/4<br>旧称: AI定例会</td>
+          </tr>
+          <tr>
+            <td><strong>社長報告会</strong></td>
+            <td>社長 ほか（要確認）</td>
+            <td>社長への四半期に1回の進捗報告</td>
+            <td>要確認</td>
+            <td>四半期に1回</td>
+          </tr>
+          <tr>
+            <td><strong>役員会</strong></td>
+            <td>要確認</td>
+            <td>要確認</td>
+            <td>要確認</td>
+            <td>次回: 2026年9月末</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+  </div>
+</div>
+
+
+<!-- ================================================================ -->
+<!-- PAGE: 人物DB                                                     -->
+<!-- ================================================================ -->
+<div class="page" id="page-people">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigateTo('orghome')">&#8592; 組織図ホーム</button>
+    <h2><span class="pill other">People</span> 登場人物データベース</h2>
+  </div>
+
+  
+  <div class="people-lock" id="peopleLock">
+    <div class="lock-icon">&#128274;</div>
+    <p class="lock-text">このページには個人情報が含まれるため、パスワードで保護されています。</p>
+    <div class="lock-form">
+      <input type="password" id="peoplePw" placeholder="パスワード" onkeydown="if(event.key==='Enter'){unlockPeople();}">
+      <button onclick="unlockPeople()">表示</button>
+    </div>
+    <p class="lock-error" id="peopleLockError"></p>
+  </div>
+  <div id="peopleContent" style="display:none;"></div>
+  <script type="application/json" id="peopleEnc">{"s":"dpJnqTjkd5OcYzBo2P9qNA==","i":"G3i0JfSt74csxxxP","d":"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"}</script>
+
+</div>
+
+
+<!-- ================================================================ -->
+<!-- JavaScript: SPA Navigation                                       -->
+<!-- ================================================================ -->
+<script>
+(function() {
+  const pages = ['home','orghome','sector','meetings','overview','kawada','shinohara','other','aiwg','deptinfo','people'];
+
+  function navigateTo(pageId) {
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(function(p) {
+      p.classList.remove('active');
+    });
+
+    // Show target page
+    var target = document.getElementById('page-' + pageId);
+    if (target) {
+      target.classList.add('active');
+    }
+
+    // Update top nav buttons
+    document.querySelectorAll('.top-nav .nav-btn').forEach(function(btn, i) {
+      btn.classList.toggle('active', pages[i] === pageId);
+    });
+
+    // Update bottom nav buttons
+    document.querySelectorAll('.bottom-nav .bnav-btn').forEach(function(btn, i) {
+      btn.classList.toggle('active', pages[i] === pageId);
+    });
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+
+    // Update hash
+    if (history.pushState) {
+      history.pushState({ page: pageId }, '', '#' + pageId);
+    } else {
+      location.hash = '#' + pageId;
+    }
+  }
+
+  // Handle back/forward
+  window.addEventListener('popstate', function(e) {
+    if (e.state && e.state.page) {
+      navigateToSilent(e.state.page);
+    } else {
+      var hash = location.hash.replace('#', '');
+      navigateToSilent(hash || 'home');
+    }
+  });
+
+  function navigateToSilent(pageId) {
+    document.querySelectorAll('.page').forEach(function(p) {
+      p.classList.remove('active');
+    });
+    var target = document.getElementById('page-' + pageId);
+    if (target) {
+      target.classList.add('active');
+    }
+    document.querySelectorAll('.top-nav .nav-btn').forEach(function(btn, i) {
+      btn.classList.toggle('active', pages[i] === pageId);
+    });
+    document.querySelectorAll('.bottom-nav .bnav-btn').forEach(function(btn, i) {
+      btn.classList.toggle('active', pages[i] === pageId);
+    });
+    window.scrollTo(0, 0);
+  }
+
+  // On load, check hash
+  var initialHash = location.hash.replace('#', '');
+  if (initialHash && pages.indexOf(initialHash) !== -1) {
+    navigateTo(initialHash);
+  }
+
+  // Expose globally
+  window.navigateTo = navigateTo;
+})();
+</script>
+
+<!-- 人物DB パスワード復号（暗号化データはデプロイ版のみに存在。ソース版では何もしない） -->
+<script>
+async function unlockPeople() {
+  var err = document.getElementById('peopleLockError');
+  var pwEl = document.getElementById('peoplePw');
+  var encEl = document.getElementById('peopleEnc');
+  if (!err || !pwEl || !encEl) return;
+  err.textContent = '';
+  if (!window.crypto || !crypto.subtle) {
+    err.textContent = 'このブラウザ/表示方法では復号できません。https のURLからアクセスしてください。';
+    return;
+  }
+  try {
+    var meta = JSON.parse(encEl.textContent);
+    var b64 = function(s) { return Uint8Array.from(atob(s), function(c) { return c.charCodeAt(0); }); };
+    var keyMaterial = await crypto.subtle.importKey('raw', new TextEncoder().encode(pwEl.value), 'PBKDF2', false, ['deriveKey']);
+    var key = await crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt: b64(meta.s), iterations: 200000, hash: 'SHA-256' },
+      keyMaterial, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+    var plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(meta.i) }, key, b64(meta.d));
+    var container = document.getElementById('peopleContent');
+    container.innerHTML = new TextDecoder().decode(plain);
+    container.style.display = '';
+    document.getElementById('peopleLock').style.display = 'none';
+  } catch (e) {
+    err.textContent = 'パスワードが違います';
+  }
+}
+window.unlockPeople = unlockPeople;
+</script>
+
+</body>
+</html>
