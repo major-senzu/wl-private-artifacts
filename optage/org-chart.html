@@ -633,6 +633,327 @@ body {
   padding: 5px 9px; border-radius: 6px; white-space: nowrap;
 }
 
+/* ===== Business Model Map（ビジネスモデル地図） ===== */
+.bm-intro {
+  max-width: 1100px; margin: 0 auto 18px;
+  background: var(--surface); border: 1px solid var(--border-light);
+  border-radius: 10px; padding: 18px 22px;
+  font-size: 12px; color: var(--text-muted); line-height: 1.9;
+}
+.bm-intro strong { color: var(--text); }
+.bm-intro .bmi-h {
+  font-family: 'Poppins', sans-serif; font-size: 9px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dim);
+  margin-bottom: 8px;
+}
+
+/* 出所タグ */
+.src {
+  display: inline-block; font-family: 'Poppins', sans-serif;
+  font-size: 8px; font-weight: 700; letter-spacing: 0.06em;
+  padding: 1px 5px; border-radius: 3px; white-space: nowrap;
+  vertical-align: 1px; margin-left: 3px;
+}
+.src-pub { background: #e8f0fb; color: #2f5fa8; border: 1px solid #b9cdea; }
+.src-int { background: #eaf3ec; color: #2f7d4a; border: 1px solid #bcd9c4; }
+.src-hyp { background: #fdf0e6; color: #c9662a; border: 1px solid #efc9ab; }
+.src-na  { background: #f2f2f2; color: #888;    border: 1px solid #dcdcdc; }
+
+.bm-legend {
+  max-width: 1100px; margin: 0 auto 22px;
+  display: flex; flex-wrap: wrap; gap: 6px 18px;
+  font-size: 11px; color: var(--text-muted);
+}
+
+/* レイヤー */
+.bm-layer {
+  max-width: 1100px; margin: 0 auto;
+  background: var(--surface); border: 1px solid var(--border-light);
+  border-radius: 12px; padding: 16px 18px 18px;
+}
+.bm-layer.bm-layer-focus { border: 1.5px solid #c9662a; background: #fffdfa; }
+/* レイヤー全体像インデックス */
+.bm-index {
+  max-width: 1100px; margin: 0 auto 22px;
+  background: #333d4d; border-radius: 12px; padding: 16px 18px;
+}
+.bm-index .bi-h {
+  font-family: 'Poppins', sans-serif; font-size: 9px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; color: #9fb0c6; margin-bottom: 12px;
+}
+.bm-index ol { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.bm-index li { display: grid; grid-template-columns: 64px 1fr; gap: 10px; align-items: start; }
+.bm-index .il {
+  font-family: 'Poppins', sans-serif; font-size: 8.5px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: #fff;
+  background: #4b5769; border-radius: 3px; padding: 3px 0; text-align: center;
+}
+.bm-index li.cur .il { background: #c9662a; }
+.bm-index .it { font-size: 11.5px; color: #dfe5ec; line-height: 1.65; }
+.bm-index .it b { color: #fff; }
+.bm-index .it .arw { color: #f0b27a; font-weight: 700; }
+
+.bm-layer-head {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px 12px;
+  padding-bottom: 10px; margin-bottom: 14px;
+  border-bottom: 1px solid var(--border-light);
+}
+.bm-lparent {
+  font-size: 10px; font-weight: 700; color: #a8501c;
+  background: #fdf3ea; border: 1px solid #efc9ab;
+  border-radius: 4px; padding: 2px 8px; white-space: nowrap;
+}
+.bm-lnum {
+  font-family: 'Poppins', sans-serif; font-size: 8.5px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #fff; background: #333d4d; padding: 3px 8px; border-radius: 3px;
+}
+.bm-layer-focus .bm-lnum { background: #c9662a; }
+.bm-ltitle { font-size: 14.5px; font-weight: 700; }
+.bm-lmeta { font-size: 11px; color: var(--text-muted); }
+.bm-lnote { flex-basis: 100%; font-size: 11px; color: var(--text-dim); line-height: 1.7; }
+
+/* カード */
+.bm-cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
+  gap: 10px; align-items: stretch;
+}
+.bm-cards.bm-cards-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+/* 事業グループ（Layer3で3事業を並列に展開する箱） */
+.bm-group {
+  border: 1px solid var(--border-light); border-radius: 10px;
+  background: #fbfbfa; padding: 12px; margin-bottom: 12px;
+}
+.bm-group:last-child { margin-bottom: 0; }
+.bm-group.bg-focus { border: 1.5px solid #c9662a; background: #fffdfa; }
+.bm-group .bg-head {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 3px 10px;
+  margin-bottom: 10px;
+}
+.bm-group .bg-head .bg-from {
+  font-size: 9px; font-weight: 700; color: #fff; background: #8d97a5;
+  border-radius: 3px; padding: 2px 7px; white-space: nowrap;
+}
+.bm-group.bg-focus .bg-head .bg-from { background: #c9662a; }
+.bm-group .bg-head .bg-name { font-size: 12.5px; font-weight: 700; }
+.bm-group .bg-head .bg-meta { font-size: 10.5px; color: var(--text-muted); }
+.bm-card {
+  border: 1.5px solid var(--border); border-radius: 9px;
+  background: #fcfcfb; padding: 12px 14px;
+  display: flex; flex-direction: column;
+}
+.bm-card.bm-dim { background: #fafafa; border-style: dashed; border-color: #cfcfcf; }
+.bm-card.bm-focus { border-color: #c9662a; border-width: 2px; background: #fdf3ea; }
+.bm-card.bm-clickable { cursor: pointer; transition: border-color .15s, box-shadow .15s, transform .12s; }
+.bm-card.bm-clickable:hover { border-color: #111; box-shadow: 0 2px 12px rgba(0,0,0,.07); transform: translateY(-2px); }
+.bm-card.bm-focus.bm-clickable:hover { border-color: #a8501c; }
+.bmc-top { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+.bmc-name { font-size: 13px; font-weight: 700; line-height: 1.35; }
+.bm-focus .bmc-name { color: #a8501c; }
+.bmc-tag {
+  font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 3px;
+  background: #333d4d; color: #fff; white-space: nowrap;
+}
+.bmc-tag.tag-flow { background: #5b7191; }
+.bmc-tag.tag-stock { background: #2f7d4a; }
+.bmc-tag.tag-fde { background: #c9662a; }
+/* 事業概要 */
+.bmc-ov {
+  font-size: 10.5px; color: var(--text-muted); line-height: 1.7;
+  padding-bottom: 9px; margin-bottom: 9px;
+  border-bottom: 1px dashed var(--border);
+}
+.bmc-ov strong { color: var(--text); }
+
+/* 数値行（全カード共通の並び） */
+.bmc-rows { display: flex; flex-direction: column; margin-bottom: 10px; }
+.bmc-rows .row {
+  display: grid; grid-template-columns: 66px 1fr; gap: 6px;
+  font-size: 10.5px; line-height: 1.65; padding: 1.5px 0;
+}
+.bmc-rows .k { color: var(--text-dim); white-space: nowrap; }
+.bmc-rows .v { font-weight: 700; color: var(--text); }
+.bmc-rows .v.hi { color: #c9662a; }
+.bmc-rows .v.warn { color: #b03030; }
+.bmc-rows .v.na { color: #aaa; font-weight: 500; }
+.bmc-rows .v small { display: block; font-size: 9.5px; font-weight: 500; color: var(--text-dim); }
+
+/* 売上構造の式 / コスト構造の式 */
+.bmc-eq { margin-top: auto; display: flex; flex-direction: column; gap: 5px; }
+.bmc-eq .eq { background: #f2f4f6; border-radius: 5px; padding: 6px 8px; }
+.bm-focus .bmc-eq .eq { background: #fbeee2; }
+.bmc-eq .eql {
+  display: block; font-family: 'Poppins', sans-serif;
+  font-size: 8px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #7a828d; margin-bottom: 2px;
+}
+.bm-focus .bmc-eq .eql { color: #b3743f; }
+.bmc-eq .eqv { display: block; font-size: 10px; line-height: 1.6; color: var(--text); }
+.bmc-eq .eqv b { color: #a8501c; }
+
+.bmc-desc { font-size: 10.5px; color: var(--text-muted); line-height: 1.65; }
+.bm-foot {
+  max-width: 1100px; margin: 10px auto 0;
+  font-size: 10.5px; color: var(--text-dim); line-height: 1.75;
+}
+.bmc-go {
+  margin-top: 9px; padding-top: 8px; border-top: 1px dashed var(--border);
+  font-size: 10.5px; font-weight: 700; color: #c9662a;
+}
+.bmc-go.go-wip { color: #999; font-weight: 500; }
+
+/* レイヤー間コネクタ */
+.bm-drill {
+  max-width: 1100px; margin: 0 auto; padding: 8px 0;
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+}
+.bm-drill .dl { width: 1.5px; height: 12px; background: var(--line); }
+.bm-drill .dchip {
+  font-size: 10.5px; font-weight: 700; color: #a8501c;
+  background: #fdf3ea; border: 1px solid #efc9ab; border-radius: 20px;
+  padding: 5px 16px; text-align: center; line-height: 1.6;
+  max-width: 100%; white-space: normal;
+}
+.bm-drill .dchip .dnum { font-weight: 400; color: var(--text-muted); }
+
+/* 二分岐（SI部の中の分岐） */
+.bm-split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.bm-split-col {
+  border-radius: 10px; padding: 12px 12px 14px;
+}
+.bm-split-col.col-flow { border: 1.5px solid #5b7191; background: #f3f6fa; }
+.bm-split-col.col-stock { border: 1.5px solid #2f7d4a; background: #f2f8f4; }
+.bm-split-head { margin-bottom: 10px; }
+.bm-split-head .sh-kind {
+  font-family: 'Poppins', sans-serif; font-size: 8px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: #fff;
+  padding: 2px 7px; border-radius: 3px;
+}
+.col-flow .sh-kind { background: #5b7191; }
+.col-stock .sh-kind { background: #2f7d4a; }
+.bm-split-head .sh-name { font-size: 13.5px; font-weight: 700; margin-top: 6px; }
+.col-flow .sh-name { color: #3d5675; }
+.col-stock .sh-name { color: #226138; }
+.bm-split-head .sh-model { font-size: 10.5px; color: var(--text-muted); line-height: 1.65; margin-top: 4px; }
+.bm-split-col .bm-cards { grid-template-columns: 1fr; }
+
+/* FDE帯（横断オーバーレイ） */
+.bm-belt-overlay {
+  max-width: 1100px; margin: 12px auto 0;
+  border: 2px dashed #c9662a; background: #fdf3ea;
+  border-radius: 10px; padding: 12px 16px;
+  font-size: 11.5px; color: var(--text-muted); line-height: 1.75;
+}
+.bm-belt-overlay .bo-title { font-size: 12.5px; font-weight: 700; color: #c9662a; margin-bottom: 5px; }
+
+/* ===== PL構造（セクター詳細ページ共通部品） ===== */
+.pl-formula {
+  max-width: 1100px; margin: 0 auto 16px;
+  background: #333d4d; color: #fff; border-radius: 10px;
+  padding: 16px 20px; font-size: 13.5px; font-weight: 700; line-height: 2;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+}
+.pl-formula .fl { display: block; white-space: nowrap; }
+.pl-formula .op { color: #9fb0c6; font-weight: 400; margin: 0 4px; }
+.pl-formula .hlq { color: #f0b27a; }
+.pl-formula .fnote { display: block; font-size: 10.5px; font-weight: 400; color: #b9c4d2; margin-top: 6px; white-space: normal; line-height: 1.7; }
+
+.factor-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 10px; max-width: 1100px; margin: 0 auto 8px;
+}
+.factor-card {
+  border: 1.5px solid var(--border); border-radius: 9px;
+  background: var(--surface); padding: 13px 15px;
+}
+.factor-card .fc-k {
+  font-family: 'Poppins', sans-serif; font-size: 8px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim);
+}
+.factor-card .fc-name { font-size: 13px; font-weight: 700; margin: 4px 0 9px; }
+.factor-card .fc-row { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; line-height: 1.7; }
+.factor-card .fc-row .l { color: var(--text-dim); white-space: nowrap; }
+.factor-card .fc-row .r { font-weight: 700; text-align: right; }
+.factor-card .fc-row .r.now { color: #b03030; }
+.factor-card .fc-row .r.goal { color: #c9662a; }
+.factor-card .fc-row .r.na { color: #aaa; font-weight: 500; }
+.factor-card .fc-issue {
+  margin-top: 9px; padding-top: 8px; border-top: 1px dashed var(--border);
+  font-size: 10.5px; color: var(--text-muted); line-height: 1.65;
+}
+.factor-card .fc-issue b { color: #c9662a; }
+
+/* PLブリッジ */
+.pl-bridges {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 14px; max-width: 1100px; margin: 0 auto 10px;
+}
+.pl-bridge {
+  border: 1.5px solid var(--border); border-radius: 10px;
+  background: var(--surface); padding: 15px 16px 14px;
+}
+.pl-bridge > h5 { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+.pl-bridge > .pb-sub { font-size: 10.5px; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6; }
+.plb-row {
+  display: grid; grid-template-columns: 1fr 90px;
+  gap: 4px 8px; align-items: center;
+  padding: 5px 0;
+}
+.plb-lab { font-size: 11.5px; line-height: 1.5; }
+.plb-lab .sign { display: inline-block; width: 12px; color: var(--text-dim); font-weight: 700; }
+.plb-lab .nm { font-weight: 700; }
+.plb-lab .in { display: block; margin-left: 12px; font-size: 10px; color: var(--text-dim); line-height: 1.55; margin-top: 2px; }
+.plb-val { font-size: 12px; font-weight: 700; text-align: right; white-space: nowrap; }
+.plb-val span { display: block; font-size: 10px; font-weight: 500; color: var(--text-dim); }
+.plb-bar { grid-column: 1 / 3; height: 7px; border-radius: 4px; background: #eee; overflow: hidden; }
+.plb-bar i { display: block; height: 100%; border-radius: 4px; }
+.plb-row.r-rev .plb-bar i { background: #333d4d; }
+.plb-row.r-cost .plb-bar i { background: #c98b8b; }
+.plb-row.r-gross .plb-bar i { background: #7b93b5; }
+.plb-row.r-sga .plb-bar i { background: #ddb98f; }
+.plb-row.r-op .plb-bar i { background: #c9662a; }
+.plb-row.r-ord .plb-bar i { background: #a8501c; }
+.plb-row.r-op, .plb-row.r-ord { background: #fdf9f5; margin: 0 -8px; padding: 6px 8px; border-radius: 6px; }
+.plb-row.r-op .plb-val, .plb-row.r-ord .plb-val { color: #a8501c; }
+.plb-row.r-na .plb-val { color: #aaa; }
+.plb-sep { height: 1px; background: var(--border-light); margin: 6px 0; }
+.pl-bridge .pb-foot { margin-top: 10px; font-size: 10.5px; color: var(--text-muted); line-height: 1.7; }
+
+.cost-notes {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px; max-width: 1100px; margin: 0 auto;
+}
+.cost-note {
+  border: 1px solid var(--border-light); border-radius: 9px;
+  background: #fcfcfb; padding: 13px 15px;
+}
+.cost-note h5 { font-size: 12px; font-weight: 700; margin-bottom: 5px; }
+.cost-note p { font-size: 11px; color: var(--text-muted); line-height: 1.75; }
+.cost-note.cn-key { border-color: #c9662a; background: #fdf3ea; }
+.cost-note.cn-key h5 { color: #a8501c; }
+
+/* ベンチマーク表の行装飾 */
+.sim-table tr.bm-row-self td { background: #fdf3ea; font-weight: 600; }
+.sim-table tr.bm-row-goal td { background: #333d4d; color: #fff; font-weight: 700; }
+.sim-table td.c { text-align: center; white-space: nowrap; }
+.sim-table td.wide { min-width: 240px; }
+
+/* 準備中ページ */
+.wip-box {
+  max-width: 620px; margin: 50px auto; text-align: center;
+  background: var(--surface); border: 1.5px dashed var(--border);
+  border-radius: 12px; padding: 40px 28px;
+}
+.wip-box .wip-icon { font-size: 28px; margin-bottom: 12px; color: #bbb; }
+.wip-box h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.wip-box p { font-size: 12px; color: var(--text-muted); line-height: 1.9; }
+.wip-box .wip-plan {
+  margin-top: 18px; text-align: left; background: #fafafa;
+  border: 1px solid var(--border-light); border-radius: 8px;
+  padding: 14px 18px; font-size: 11.5px; color: var(--text-muted); line-height: 1.85;
+}
+
 @media (max-width: 768px) {
   body { padding-top: var(--nav-height); padding-bottom: var(--bottom-nav-height); }
   .top-nav { display: none; }
@@ -697,6 +1018,18 @@ body {
   .person-table { font-size: 11px; }
   .person-table th, .person-table td { padding: 6px 8px; }
   .person-table td.bio { max-width: 260px; font-size: 10px; }
+
+  /* Business Model Map: mobile */
+  .bm-intro { padding: 14px 15px; }
+  .bm-layer { padding: 13px 13px 15px; border-radius: 10px; }
+  .bm-cards, .bm-cards.bm-cards-2 { grid-template-columns: 1fr; }
+  .bm-split { grid-template-columns: 1fr; }
+  .bm-ltitle { font-size: 13px; }
+  .pl-formula { font-size: 12px; padding: 14px 15px; }
+  .factor-grid { grid-template-columns: 1fr; }
+  .pl-bridges { grid-template-columns: 1fr; }
+  .cost-notes { grid-template-columns: 1fr; }
+  .wip-box { margin: 30px auto; padding: 28px 18px; }
 }
 
 @media (max-width: 480px) {
@@ -727,6 +1060,7 @@ body {
   <button class="nav-btn active" onclick="navigateTo('home')"><span class="nav-icon">&#9632;</span> ホーム</button>
   <button class="nav-btn" onclick="navigateTo('orghome')"><span class="nav-icon">&#9670;</span> 組織図</button>
   <button class="nav-btn" onclick="navigateTo('sector')"><span class="nav-icon">&#9635;</span> セクター整理</button>
+  <button class="nav-btn" onclick="navigateTo('bizmodel')"><span class="nav-icon">&#9650;</span> ビジネスモデル地図</button>
   <button class="nav-btn" onclick="navigateTo('meetings')"><span class="nav-icon">&#9202;</span> 会議リスト</button>
 </nav>
 
@@ -736,6 +1070,7 @@ body {
     <button class="bnav-btn active" onclick="navigateTo('home')"><span class="bnav-icon">&#9632;</span>ホーム</button>
     <button class="bnav-btn" onclick="navigateTo('orghome')"><span class="bnav-icon">&#9670;</span>組織図</button>
     <button class="bnav-btn" onclick="navigateTo('sector')"><span class="bnav-icon">&#9635;</span>セクター</button>
+    <button class="bnav-btn" onclick="navigateTo('bizmodel')"><span class="bnav-icon">&#9650;</span>BM地図</button>
     <button class="bnav-btn" onclick="navigateTo('meetings')"><span class="bnav-icon">&#9202;</span>会議</button>
   </div>
 </nav>
@@ -748,7 +1083,7 @@ body {
   <div class="home-header">
     <div class="label">Optage Inc. / Home</div>
     <h1>オプテージ ホームページ</h1>
-    <p class="meta">2026.07.31 Updated&nbsp;/&nbsp; Wanderlust案件関連の組織・事業・会議情報を集約</p>
+    <p class="meta">2026.08.01 Updated（ビジネスモデル地図を追加）&nbsp;/&nbsp; Wanderlust案件関連の組織・事業・会議情報を集約</p>
   </div>
 
   <div class="portal-grid">
@@ -762,13 +1097,13 @@ body {
       <div class="pc-title">セクター整理</div>
       <div class="pc-desc">3セクター×事業区分の全体像（FDE化対象／自社サービスの範囲）と売上目標シミュレーション</div>
     </div>
-    <div class="portal-card" onclick="navigateTo('meetings')">
-      <div class="pc-icon">&#9202;</div>
-      <div class="pc-title">会議リスト</div>
-      <div class="pc-desc">各会議の参加者リスト・趣旨・実施内容・備考</div>
+    <div class="portal-card" onclick="navigateTo('bizmodel')">
+      <div class="pc-icon">&#9650;</div>
+      <div class="pc-title">ビジネスモデル地図</div>
+      <div class="pc-desc">関西電力グループ → オプテージ → 3事業 → SI＆AX → FDE の5階層地図。全セクターを「事業概要・売上・営利・営利率・純利・成長率・売上構造の式・コスト構造の式」の同じ枠で並べる</div>
     </div>
     <div class="portal-card" onclick="location.href='fde-goal-paper.html'">
-      <div class="pc-icon">&#9650;</div>
+      <div class="pc-icon">&#9670;</div>
       <div class="pc-title">FDE化 ゴール仮説ペーパー</div>
       <div class="pc-desc">特定顧客／プロダクト（M365）チームのFDE化による売上・粗利改善計画（v1）— PL構造・論点・PoC</div>
     </div>
@@ -776,6 +1111,11 @@ body {
       <div class="pc-icon">&#9654;</div>
       <div class="pc-title">FDE化 8-9月ロードマップ</div>
       <div class="pc-desc">FY26下期 進行計画・詳細版 — フェーズ定義・週次マイルストーン・常駐2週間のデイリープラン</div>
+    </div>
+    <div class="portal-card" onclick="navigateTo('meetings')">
+      <div class="pc-icon">&#9202;</div>
+      <div class="pc-title">会議リスト</div>
+      <div class="pc-desc">各会議の参加者リスト・趣旨・実施内容・備考</div>
     </div>
   </div>
 </div>
@@ -1983,8 +2323,944 @@ body {
     <p class="lock-error" id="peopleLockError"></p>
   </div>
   <div id="peopleContent" style="display:none;"></div>
-  <script type="application/json" id="peopleEnc">{"s":"WduWzKgDjt23d6sEiWKODw==","i":"fFQ6OtNm+2lrWToy","d":"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"}</script>
+  <script type="application/json" id="peopleEnc">{"s":"4DIlq92Tiyj5XpcRTV+3vg==","i":"XqghgOMotwc145th","d":"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"}</script>
 
+</div>
+
+
+<!-- ================================================================ -->
+<!-- PAGE: ビジネスモデル地図（トップ）                                 -->
+<!-- ================================================================ -->
+<div class="page" id="page-bizmodel">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigateTo('home')">&#8592; ホーム</button>
+    <h2><span class="pill overview">Biz Model</span> ビジネスモデル地図 ― 関西電力グループ → FDE までの5階層</h2>
+  </div>
+
+  <div class="bm-intro">
+    <div class="bmi-h">この地図の読み方</div>
+    <p><strong>すべてのカードを同じ枠で書いている。</strong>「事業概要 ／ 売上 ／ 営業利益 ／ 営業利益率 ／ 当期純利益 ／ 成長率 ／ <strong>売上構造の式</strong> ／ <strong>コスト構造の式</strong>」。
+    どの階層のどのセクターでも<strong>「何を掛け算すると売上になるか」「何にコストがかかるか」「結果いくらの利益率か」</strong>を同じ形で比べられるようにしてある。</p>
+    <p style="margin-top:8px;">各カードの<strong>「この中を展開 →」</strong>で1つ下の階層に、<strong>「詳細ページへ →」</strong>でそのセクターの売上・コスト・PLを深掘りしたページに飛ぶ。<strong>現在は FDE（AI SI）セクターのみ詳細ページ作成済み</strong>。</p>
+  </div>
+
+  <div class="bm-index">
+    <div class="bi-h">Layer Structure</div>
+    <ol>
+      <li><span class="il">Layer 1</span><span class="it"><b>関西電力グループ（連結）</b> ― 4セグメント。<span class="arw">そのうち「情報通信事業」を展開 →</span></span></li>
+      <li><span class="il">Layer 2</span><span class="it"><b>株式会社オプテージ</b> ― 3事業（コンシューマー／モバイル／ビジネスソリューション）。<span class="arw">3事業すべてを展開 →</span></span></li>
+      <li><span class="il">Layer 3</span><span class="it"><b>3事業それぞれの中身</b> ― eo光・eo電気／mineo／ネットワーク・DC・クラウド・<b>SI＆AXビジネス推進部</b>。<span class="arw">SI＆AXを展開 →</span></span></li>
+      <li><span class="il">Layer 4</span><span class="it"><b>SI＆AXビジネス推進部</b> ― <b>受託SI型（フロー）</b>と<b>プロダクト・自社サービス型（ストック）</b>の2分岐。<span class="arw">FDEを展開 →</span></span></li>
+      <li class="cur"><span class="il">Layer 5</span><span class="it"><b>セクター横断の最上位分岐</b> ― <b>FDE</b>／<b>自社サービス</b>。FDEが本PJの対象</span></li>
+    </ol>
+  </div>
+
+  <div class="bm-legend">
+    <span><span class="src src-pub">公開</span> 公開情報（IR・決算資料）</span>
+    <span><span class="src src-int">社内</span> オプテージ社内で共有された情報</span>
+    <span><span class="src src-hyp">仮置き</span> WL側の仮説・仮置きの数字</span>
+    <span><span class="src src-na">未確認</span> まだ数字を持っていない（常駐2週間で埋める）</span>
+  </div>
+
+  <!-- ============================= Layer 1 ============================= -->
+  <div class="bm-layer">
+    <div class="bm-layer-head">
+      <span class="bm-lnum">Layer 1</span>
+      <span class="bm-ltitle">関西電力グループ（連結）</span>
+      <span class="bm-lmeta">2025年度（2026年3月期）: 売上 4兆566億円（前期比 &minus;6.5%）／営業利益 4,375億円（<strong>10.8%</strong>・&minus;6.7%）／当期純利益 3,800億円（<strong>9.4%</strong>・&minus;9.6%）<span class="src src-pub">公開</span></span>
+      <span class="bm-lnote"><strong>グループのビジネスモデル</strong>: 売上＝<strong>販売電力量 × 料金単価 ＋ 託送料金 ＋ 非電気事業</strong>／コスト＝<strong>燃料費・購入電力料（変動費）＋ 発電・送配電設備の減価償却・修繕費（巨大固定費）＋ 人件費</strong>。電気事業が売上の8割を占める設備集約・長期投資回収型。その周辺に<strong>情報通信</strong>と<strong>生活・ビジネスソリューション</strong>という高利益率の非電気セグメントが置かれている。<br>※金額は外販売上高ベース（セグメント間内部取引を除く）</span>
+    </div>
+    <div class="bm-cards">
+
+      <div class="bm-card">
+        <div class="bmc-top"><span class="bmc-name">エネルギー事業</span></div>
+        <div class="bmc-ov">発電（原子力・火力・水力・再エネ）と電気・ガスの小売。<strong>グループ利益の約7割</strong>。燃料価格と原子力稼働率で利益が大きく振れる</div>
+        <div class="bmc-rows">
+          <div class="row"><span class="k">売上</span><span class="v">32,613億円</span></div>
+          <div class="row"><span class="k">営業利益</span><span class="v na">未開示 <span style="font-weight:400;">（セグメント利益 3,773億円<sup>※1</sup>）</span></span></div>
+          <div class="row"><span class="k">利益率</span><span class="v">11.6%<sup>※1</sup></span></div>
+          <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+          <div class="row"><span class="k">成長率</span><span class="v warn">前期比 &minus;7.9%</span></div>
+        </div>
+        <div class="bmc-eq">
+          <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>販売電力量 × 料金単価</b>（燃料費調整込み）＋ 卸電力売上 ＋ ガス小売</span></div>
+          <div class="eq"><span class="eql">コスト構造</span><span class="eqv">燃料費（LNG・石炭）＋ 購入電力料 ＋ 発電設備の減価償却・修繕費 ＋ 人件費</span></div>
+        </div>
+      </div>
+
+      <div class="bm-card">
+        <div class="bmc-top"><span class="bmc-name">送配電事業</span></div>
+        <div class="bmc-ov">関西電力送配電（法的分離）。<strong>託送料金による規制ビジネス</strong>。レートベース（投資資産）× 報酬率で収入が決まるため最も安定</div>
+        <div class="bmc-rows">
+          <div class="row"><span class="k">売上</span><span class="v">3,862億円</span></div>
+          <div class="row"><span class="k">営業利益</span><span class="v na">未開示 <span style="font-weight:400;">（セグメント利益 630億円<sup>※1</sup>）</span></span></div>
+          <div class="row"><span class="k">利益率</span><span class="v">16.3%<sup>※1</sup></span></div>
+          <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+          <div class="row"><span class="k">成長率</span><span class="v">前期比 &minus;0.7%（利益 +13.0%）</span></div>
+        </div>
+        <div class="bmc-eq">
+          <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>託送料金単価 × 送電量</b>（レートベース × 報酬率で規制認可）</span></div>
+          <div class="eq"><span class="eql">コスト構造</span><span class="eqv">送配電設備の減価償却 ＋ 保守・修繕費 ＋ 人件費（ほぼ全額が固定費）</span></div>
+        </div>
+      </div>
+
+      <div class="bm-card bm-focus bm-clickable" onclick="document.getElementById('bm-l2').scrollIntoView({behavior:'smooth',block:'start'});">
+        <div class="bmc-top"><span class="bmc-name">情報通信事業</span><span class="bmc-tag">オプテージ</span></div>
+        <div class="bmc-ov">中核会社＝<strong>株式会社オプテージ</strong>（100%子会社）。<strong>グループで最も利益率が高いセグメント（21.2%）</strong>。光ファイバ網というインフラ資産の上に月額課金を乗せる構造</div>
+        <div class="bmc-rows">
+          <div class="row"><span class="k">売上</span><span class="v">2,221億円</span></div>
+          <div class="row"><span class="k">営業利益</span><span class="v na">未開示 <span style="font-weight:400;">（セグメント利益 470億円<sup>※1</sup>）</span></span></div>
+          <div class="row"><span class="k">利益率</span><span class="v hi">21.2%<sup>※1</sup></span></div>
+          <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+          <div class="row"><span class="k">成長率</span><span class="v">前期比 &minus;0.6%（利益 +0.3%）</span></div>
+        </div>
+        <div class="bmc-eq">
+          <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>契約数 × 月額単価 × 12ヶ月</b>（個人・法人のストック）＋ 法人ソリューションの受注</span></div>
+          <div class="eq"><span class="eql">コスト構造</span><span class="eqv">光ファイバ網・DCの減価償却 ＋ 回線接続料 ＋ 顧客獲得費 ＋ 人件費</span></div>
+        </div>
+        <div class="bmc-go">この中を展開 &darr;</div>
+      </div>
+
+      <div class="bm-card">
+        <div class="bmc-top"><span class="bmc-name">生活・ビジネスソリューション事業</span></div>
+        <div class="bmc-ov">関電不動産開発・くらしサポート等。<strong>不動産の開発・分譲・賃貸</strong>が中心。利益率は情報通信に次ぐ水準（20.9%）</div>
+        <div class="bmc-rows">
+          <div class="row"><span class="k">売上</span><span class="v">1,868億円</span></div>
+          <div class="row"><span class="k">営業利益</span><span class="v na">未開示 <span style="font-weight:400;">（セグメント利益 390億円<sup>※1</sup>）</span></span></div>
+          <div class="row"><span class="k">利益率</span><span class="v">20.9%<sup>※1</sup></span></div>
+          <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+          <div class="row"><span class="k">成長率</span><span class="v hi">前期比 +1.7%（利益 <strong>+49.0%</strong>）</span></div>
+        </div>
+        <div class="bmc-eq">
+          <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>分譲売上（物件数 × 単価）＋ 賃料収入（面積 × 賃料 × 稼働率）</b>＋ くらしサービス</span></div>
+          <div class="eq"><span class="eql">コスト構造</span><span class="eqv">開発原価（用地・建築費）＋ 保有物件の減価償却 ＋ 人件費</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="bm-foot"><sup>※1</sup> 関西電力のセグメント別利益は<strong>営業利益ではなく経常段階での開示値</strong>（営業外損益を含む）。営業利益のセグメント別開示はないため、セグメント間の比較用にこの数字を使っている。<br>
+    <sup>※3</sup> 当期純利益は<strong>法人単位でのみ計上される</strong>（法人税等を引いた後の数字）ため、セグメント・事業単位では算出されない。</p>
+  </div>
+
+  <div class="bm-drill">
+    <div class="dl"></div>
+    <div class="dchip">Layer 1 の「情報通信事業」を展開 &rarr; <strong>Layer 2</strong> <span class="dnum">／ 売上2,221億・セグメント利益470億</span></div>
+    <div class="dl"></div>
+  </div>
+
+  <!-- ============================= Layer 2 ============================= -->
+  <div class="bm-layer" id="bm-l2">
+    <div class="bm-layer-head">
+      <span class="bm-lnum">Layer 2</span>
+      <span class="bm-lparent">&#8593; Layer 1「情報通信事業」の中身</span>
+      <span class="bm-ltitle">株式会社オプテージ ― 3事業</span>
+      <span class="bm-lmeta">単体（2024年3月期）: 売上 2,587.9億円／営業利益 335.6億円（<strong>13.0%</strong>）／当期純利益 <span style="color:#aaa;">未確認</span><span class="src src-pub">公開</span></span>
+      <span class="bm-lnote"><strong>会社のビジネスモデル</strong>: 関西圏の<strong>自社光ファイバ網という設備資産に、個人・法人の月額課金（ストック）を乗せる通信事業者</strong>。設備投資が先に立ち、契約が積み上がるほど利益率が上がる。<br>
+      <strong>ビジョン2035</strong>: 売上<strong>4,300億円以上</strong>・利益<strong>750億円以上</strong><sup>※2</sup>（＝利益率 約17.4%）。<strong>増収のほぼ全量を法人（ビジネスソリューション）で作る計画</strong>。以下3事業の数字は<strong>ビジョン2035の「現在 → 2035年目標」</strong>。</span>
+    </div>
+    <div class="bm-cards">
+
+      <div class="bm-card">
+        <div class="bmc-top"><span class="bmc-name">コンシューマー事業</span><span class="bmc-tag tag-stock">ストック</span></div>
+        <div class="bmc-ov">eo光（FTTH: ネット・TV・電話）・eo電気など<strong>個人向け</strong>。関西圏で契約基盤が概ね出来上がっており<strong>成熟・維持フェーズ</strong></div>
+        <div class="bmc-rows">
+          <div class="row"><span class="k">売上</span><span class="v">約1,345億円 <small>2035年目標 約1,505億円</small></span></div>
+          <div class="row"><span class="k">営業利益</span><span class="v na">未開示<sup>※4</sup></span></div>
+          <div class="row"><span class="k">営業利益率</span><span class="v na">未開示<sup>※4</sup></span></div>
+          <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+          <div class="row"><span class="k">成長率</span><span class="v">約1.1倍（2035年まで）</span></div>
+        </div>
+        <div class="bmc-eq">
+          <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>契約数 × 月額単価 × 12ヶ月</b>（解約率が低いほど積み上がる）</span></div>
+          <div class="eq"><span class="eql">コスト構造</span><span class="eqv">光ファイバ網の減価償却・保守（固定費）＋ 顧客獲得費（CAC）＋ コールセンター運営</span></div>
+        </div>
+      </div>
+
+      <div class="bm-card">
+        <div class="bmc-top"><span class="bmc-name">モバイル事業（mineo）</span><span class="bmc-tag tag-stock">ストック</span></div>
+        <div class="bmc-ov"><strong>MVNO</strong>（大手キャリアの回線を借りて再販）。自社設備を持たない代わりに、<strong>コストの主体が回線接続料＝変動費</strong>になる</div>
+        <div class="bmc-rows">
+          <div class="row"><span class="k">売上</span><span class="v">約284億円 <small>2035年目標 645億円以上</small></span></div>
+          <div class="row"><span class="k">営業利益</span><span class="v na">未開示<sup>※4</sup></span></div>
+          <div class="row"><span class="k">営業利益率</span><span class="v na">未開示<sup>※4</sup></span></div>
+          <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+          <div class="row"><span class="k">成長率</span><span class="v hi">約2.3倍（2035年まで）</span></div>
+        </div>
+        <div class="bmc-eq">
+          <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>回線数 × 月額単価 × 12ヶ月</b></span></div>
+          <div class="eq"><span class="eql">コスト構造</span><span class="eqv"><b>MNOへの回線接続料（データ量連動＝変動費）</b>＋ 端末原価 ＋ 広告宣伝費</span></div>
+        </div>
+      </div>
+
+      <div class="bm-card bm-focus bm-clickable" onclick="document.getElementById('bm-l3').scrollIntoView({behavior:'smooth',block:'start'});">
+        <div class="bmc-top"><span class="bmc-name">ビジネスソリューション事業</span><span class="bmc-tag">法人</span></div>
+        <div class="bmc-ov"><strong>ビジョン2035の成長ドライバー</strong>。増加額 約1,236億円は全社増収のほぼ全量。<strong>設備ストック型（NW・DC）と人月フロー型（SI）が同居</strong>している</div>
+        <div class="bmc-rows">
+          <div class="row"><span class="k">売上</span><span class="v hi">約914億円 <small>2035年目標 2,150億円</small></span></div>
+          <div class="row"><span class="k">営業利益</span><span class="v na">未開示<sup>※4</sup></span></div>
+          <div class="row"><span class="k">営業利益率</span><span class="v na">未開示<sup>※4</sup></span></div>
+          <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+          <div class="row"><span class="k">成長率</span><span class="v hi">約2.4倍（2035年まで）</span></div>
+        </div>
+        <div class="bmc-eq">
+          <div class="eq"><span class="eql">売上構造</span><span class="eqv">法人ストック（<b>回線数・ラック数 × 月額単価</b>）＋ SI・ソリューションの受注（<b>単価 × 稼働率 × 人数</b>）</span></div>
+          <div class="eq"><span class="eql">コスト構造</span><span class="eqv">DC・自社網の減価償却 ＋ <b>人件費</b> ＋ グループ会社への外注費 ＋ ライセンス仕入</span></div>
+        </div>
+        <div class="bmc-go">この中を展開 &darr;</div>
+      </div>
+    </div>
+    <p class="bm-foot"><sup>※2</sup> ビジョン2035の利益目標750億円以上も経常段階での開示値。<br>
+    <sup>※4</sup> オプテージは非上場（関西電力100%子会社）のため<strong>事業別の利益は開示されていない</strong>。会社全体の営業利益335.6億円（13.0%）から、設備ストック型のコンシューマー／モバイルが利益の主体と推定されるが、事業別の内訳は未確認。</p>
+  </div>
+
+  <div class="bm-drill">
+    <div class="dl"></div>
+    <div class="dchip">Layer 2 の<strong>3事業すべて</strong>を展開 &rarr; <strong>Layer 3</strong></div>
+    <div class="dl"></div>
+  </div>
+
+  <!-- ============================= Layer 3 ============================= -->
+  <div class="bm-layer" id="bm-l3">
+    <div class="bm-layer-head">
+      <span class="bm-lnum">Layer 3</span>
+      <span class="bm-lparent">&#8593; Layer 2「3事業」それぞれの中身</span>
+      <span class="bm-ltitle">オプテージ 3事業の内訳</span>
+      <span class="bm-lnote">3事業それぞれを1段掘る。<strong>ここで初めて「設備ストック型」「変動費型」「人月フロー型」という3種類のコスト構造が並ぶ</strong>のが要点。<br>※事業内の売上内訳は非開示のため、金額はSI＆AXビジネス推進部（社内共有）以外は未確認。<strong>式は事業モデルから確度高く書ける</strong>ため、比較は式で行う</span>
+    </div>
+
+    <!-- Group A: コンシューマー -->
+    <div class="bm-group">
+      <div class="bg-head">
+        <span class="bg-from">&#8593; コンシューマー事業</span>
+        <span class="bg-name">の中身</span>
+        <span class="bg-meta">約1,345億円 → 2035年 約1,505億円<span class="src src-pub">公開</span>／内訳は非開示</span>
+      </div>
+      <div class="bm-cards">
+        <div class="bm-card">
+          <div class="bmc-top"><span class="bmc-name">eo光（FTTH）</span><span class="bmc-tag tag-stock">設備ストック</span></div>
+          <div class="bmc-ov">個人住宅向けのネット・TV・電話。<strong>自社光ファイバ網を敷いて月額課金する</strong>典型的な設備ストック型。契約が積み上がるほど利益率が上がる</div>
+          <div class="bmc-rows">
+            <div class="row"><span class="k">売上</span><span class="v na">非開示<sup>※5</sup></span></div>
+            <div class="row"><span class="k">営業利益</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">営業利益率</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+            <div class="row"><span class="k">成長率</span><span class="v">維持フェーズ</span></div>
+          </div>
+          <div class="bmc-eq">
+            <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>契約数 × 月額単価 × 12ヶ月</b> ＋ 工事費・初期費用</span></div>
+            <div class="eq"><span class="eql">コスト構造</span><span class="eqv"><b>光ファイバ網の減価償却（巨大固定費）</b>＋ 保守・工事 ＋ 顧客獲得費（CAC）＋ コールセンター</span></div>
+          </div>
+        </div>
+        <div class="bm-card">
+          <div class="bmc-top"><span class="bmc-name">eo電気（電力小売）</span><span class="bmc-tag tag-flow">変動費型</span></div>
+          <div class="bmc-ov">eo光の顧客基盤に電力をセット販売。<strong>コストのほぼ全額が電力調達費＝変動費</strong>のため、卸価格の変動が直接利益に効く</div>
+          <div class="bmc-rows">
+            <div class="row"><span class="k">売上</span><span class="v na">非開示<sup>※5</sup></span></div>
+            <div class="row"><span class="k">営業利益</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">営業利益率</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+            <div class="row"><span class="k">成長率</span><span class="v na">未確認</span></div>
+          </div>
+          <div class="bmc-eq">
+            <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>需要家数 × 使用量 × 料金単価</b></span></div>
+            <div class="eq"><span class="eql">コスト構造</span><span class="eqv"><b>電力調達費（卸市場・グループ内調達）が大半＝変動費</b>＋ 請求・顧客対応</span></div>
+          </div>
+        </div>
+        <div class="bm-card bm-dim">
+          <div class="bmc-top"><span class="bmc-name">付加サービス</span><span class="bmc-tag tag-stock">ストック</span></div>
+          <div class="bmc-ov">セキュリティ・サポート等のオプション。<strong>既存契約へのアップセル</strong>＝獲得コストがかからず利益率が高い</div>
+          <div class="bmc-rows">
+            <div class="row"><span class="k">売上</span><span class="v na">非開示<sup>※5</sup></span></div>
+            <div class="row"><span class="k">営業利益</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">営業利益率</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+            <div class="row"><span class="k">成長率</span><span class="v na">未確認</span></div>
+          </div>
+          <div class="bmc-eq">
+            <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>既存契約数 × オプション加入率 × 月額単価</b></span></div>
+            <div class="eq"><span class="eql">コスト構造</span><span class="eqv">ライセンス仕入 ＋ サポート人件費（追加設備投資が不要）</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group B: モバイル -->
+    <div class="bm-group">
+      <div class="bg-head">
+        <span class="bg-from">&#8593; モバイル事業（mineo）</span>
+        <span class="bg-name">の中身</span>
+        <span class="bg-meta">約284億円 → 2035年 645億円以上<span class="src src-pub">公開</span>／内訳は非開示</span>
+      </div>
+      <div class="bm-cards">
+        <div class="bm-card">
+          <div class="bmc-top"><span class="bmc-name">mineo（個人向けMVNO）</span><span class="bmc-tag tag-flow">変動費型</span></div>
+          <div class="bmc-ov">大手キャリアの回線を借りて個人に再販。<strong>設備を持たないので固定費が軽い代わりに、回線接続料という変動費が粗利の天井を決める</strong></div>
+          <div class="bmc-rows">
+            <div class="row"><span class="k">売上</span><span class="v na">非開示<sup>※5</sup></span></div>
+            <div class="row"><span class="k">営業利益</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">営業利益率</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+            <div class="row"><span class="k">成長率</span><span class="v hi">2035年まで約2.3倍</span></div>
+          </div>
+          <div class="bmc-eq">
+            <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>回線数 × 月額単価 × 12ヶ月</b> ＋ 端末販売</span></div>
+            <div class="eq"><span class="eql">コスト構造</span><span class="eqv"><b>MNOへの回線接続料（データ量連動＝変動費）</b>＋ 端末原価 ＋ 広告宣伝費 ＋ サポート</span></div>
+          </div>
+        </div>
+        <div class="bm-card bm-dim">
+          <div class="bmc-top"><span class="bmc-name">mineo BiZ・法人回線／IoT</span><span class="bmc-tag tag-stock">ストック</span></div>
+          <div class="bmc-ov">法人・パートナー経由の回線提供。<strong>1契約あたりの回線数が多く解約率が低い</strong>ため、個人向けより収益が安定する</div>
+          <div class="bmc-rows">
+            <div class="row"><span class="k">売上</span><span class="v na">非開示<sup>※5</sup></span></div>
+            <div class="row"><span class="k">営業利益</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">営業利益率</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+            <div class="row"><span class="k">成長率</span><span class="v na">未確認</span></div>
+          </div>
+          <div class="bmc-eq">
+            <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>法人契約数 × 契約あたり回線数 × 月額単価</b></span></div>
+            <div class="eq"><span class="eql">コスト構造</span><span class="eqv">回線接続料（変動費）＋ 法人サポート・パートナー手数料</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group C: ビジネスソリューション -->
+    <div class="bm-group bg-focus">
+      <div class="bg-head">
+        <span class="bg-from">&#8593; ビジネスソリューション事業</span>
+        <span class="bg-name">の中身 ― ここに SI＆AX が入る</span>
+        <span class="bg-meta">約914億円 → 2035年 2,150億円<span class="src src-pub">公開</span>／部門別内訳は非開示（SI＆AXのみ社内共有あり）</span>
+      </div>
+      <div class="bm-cards">
+        <div class="bm-card">
+          <div class="bmc-top"><span class="bmc-name">ネットワーク（法人光・専用線・NaaS）</span><span class="bmc-tag tag-stock">設備ストック</span></div>
+          <div class="bmc-ov">法人向けの回線・専用線・Network as a Service。<strong>自社網の上の月額課金＝高利益率</strong>。福智本部長ライン</div>
+          <div class="bmc-rows">
+            <div class="row"><span class="k">売上</span><span class="v na">非開示<sup>※5</sup></span></div>
+            <div class="row"><span class="k">営業利益</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">営業利益率</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+            <div class="row"><span class="k">成長率</span><span class="v na">未確認</span></div>
+          </div>
+          <div class="bmc-eq">
+            <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>法人契約数 × 回線単価 × 12ヶ月</b> ＋ 構築の初期費用</span></div>
+            <div class="eq"><span class="eql">コスト構造</span><span class="eqv"><b>自社網の減価償却（既存資産の追加活用）</b>＋ 保守 ＋ 人件費</span></div>
+          </div>
+        </div>
+        <div class="bm-card">
+          <div class="bmc-top"><span class="bmc-name">データセンター・GPU（AI-DC）</span><span class="bmc-tag tag-stock">設備ストック</span></div>
+          <div class="bmc-ov">都市型DC・AI-DC。<strong>2035年まで3,000億円投資</strong>する成長の本命。<strong>Private AI構想はこのライン</strong>（津田副本部長）</div>
+          <div class="bmc-rows">
+            <div class="row"><span class="k">売上</span><span class="v na">非開示<sup>※5</sup></span></div>
+            <div class="row"><span class="k">営業利益</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">営業利益率</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+            <div class="row"><span class="k">投資計画</span><span class="v hi">3,000億円（2035年まで）</span></div>
+          </div>
+          <div class="bmc-eq">
+            <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>ラック数（GPU時間）× 単価 × 稼働率</b>（設備を埋めた分だけ売上になる）</span></div>
+            <div class="eq"><span class="eql">コスト構造</span><span class="eqv"><b>建物・電源・GPUの減価償却（巨大固定費）</b>＋ 電力費 ＋ 運用人件費。<b>稼働率が利益に直結</b></span></div>
+          </div>
+        </div>
+        <div class="bm-card bm-dim">
+          <div class="bmc-top"><span class="bmc-name">クラウド・セキュリティ等</span><span class="bmc-tag tag-flow">再販＋人月</span></div>
+          <div class="bmc-ov">クラウド・セキュリティ製品の再販と構築・運用。河田本部長ライン（戦略・コンサル・クラウド・DC）</div>
+          <div class="bmc-rows">
+            <div class="row"><span class="k">売上</span><span class="v na">非開示<sup>※5</sup></span></div>
+            <div class="row"><span class="k">営業利益</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">営業利益率</span><span class="v na">非開示</span></div>
+            <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+            <div class="row"><span class="k">成長率</span><span class="v na">未確認</span></div>
+          </div>
+          <div class="bmc-eq">
+            <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>ライセンス再販額 ＋ 構築・運用の受注（人月）</b></span></div>
+            <div class="eq"><span class="eql">コスト構造</span><span class="eqv"><b>ライセンス仕入原価（粗利率が構造的に低い）</b>＋ 人件費</span></div>
+          </div>
+        </div>
+        <div class="bm-card bm-focus bm-clickable" onclick="document.getElementById('bm-l4').scrollIntoView({behavior:'smooth',block:'start'});">
+          <div class="bmc-top"><span class="bmc-name">SI＆AXビジネス推進部</span><span class="bmc-tag tag-fde">本PJの対象</span></div>
+          <div class="bmc-ov"><strong>ここがFDE化構想の舞台</strong>。ビジネスソリューション事業（914億）の<strong>約5%規模</strong>だが、AI・DXの入口として戦略的な位置。篠原本部長／百々副本部長ライン</div>
+          <div class="bmc-rows">
+            <div class="row"><span class="k">売上</span><span class="v">FY26 44.3億円 <small>FY30計画 60億円</small></span></div>
+            <div class="row"><span class="k">営業利益</span><span class="v na">未確認</span></div>
+            <div class="row"><span class="k">営業利益率</span><span class="v warn">特定顧客は粗利ほぼゼロ</span></div>
+            <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+            <div class="row"><span class="k">成長率</span><span class="v hi">約1.35倍（FY26→FY30）</span></div>
+          </div>
+          <div class="bmc-eq">
+            <div class="eq"><span class="eql">売上構造</span><span class="eqv">受託SI（<b>単価 × 稼働率 × 人数 × 12ヶ月</b>）＋ プロダクト・自社サービス（<b>顧客数 × 単価</b>）</span></div>
+            <div class="eq"><span class="eql">コスト構造</span><span class="eqv"><b>人件費（ほぼ固定費）</b>＋ グループ会社への外注費 ＋ ライセンス仕入 ＋ 育成投資</span></div>
+          </div>
+          <div class="bmc-go">この中を展開 &darr;</div>
+        </div>
+      </div>
+    </div>
+    <p class="bm-foot"><sup>※5</sup> オプテージは非上場のため事業内の売上・利益の内訳は開示されていない。<strong>金額は常駐2週間で先方に確認する対象</strong>（少なくともSI＆AXとその配下は確認可能）。式はビジネスモデルから確度高く書けるため、まず式で構造を掴む。</p>
+  </div>
+
+  <div class="bm-drill">
+    <div class="dl"></div>
+    <div class="dchip">Layer 3 の「SI＆AXビジネス推進部」を2つのビジネスモデルに分解 &rarr; <strong>Layer 4</strong> <span class="dnum">／ FY26 44.3億 → FY30 60億</span></div>
+    <div class="dl"></div>
+  </div>
+
+  <!-- ============================= Layer 4 ============================= -->
+  <div class="bm-layer bm-layer-focus" id="bm-l4">
+    <div class="bm-layer-head">
+      <span class="bm-lnum">Layer 4</span>
+      <span class="bm-lparent">&#8593; Layer 3「SI＆AXビジネス推進部」の中身</span>
+      <span class="bm-ltitle">3セクター／2つのビジネスモデル</span>
+      <span class="bm-lmeta">FY26 44.3億円 → FY30 60億円（特定顧客22／プロダクト20／AX18）<span class="src src-int">社内</span></span>
+      <span class="bm-lnote"><strong>ここが「SIと呼ばれるところ」と「自社プロダクトと呼ばれるところ」の分岐点。</strong>同じ部の中に、<strong>売上の式・コストの置き方・利益率の天井がまったく違う2つのビジネスモデル</strong>が同居している。<br>
+      ※百々副本部長の真意は「<strong>特定顧客を10億に下げてもいいからAXを50億に</strong>」＝公式計画（22／18）とはポートフォリオ入れ替えの度合いが3倍近く違う。<strong>ゴール像が役員レベルで未収束</strong><span class="src src-int">社内</span></span>
+    </div>
+
+    <div class="bm-split">
+      <!-- 受託SI型 -->
+      <div class="bm-split-col col-flow">
+        <div class="bm-split-head">
+          <span class="sh-kind">Flow / 人月</span>
+          <div class="sh-name">受託SI型（＝「SI」と呼ばれる方）</div>
+          <div class="sh-model">売上＝<strong>単価 × 稼働率 × 人数 × 12ヶ月</strong>。人を張った分だけ売上が立つ。<strong>売上の上限＝人数 × 稼働率</strong>で、人件費は稼働率に関係なく発生するため<strong>空き稼働がそのまま損失</strong>。利益率の天井が低い</div>
+        </div>
+        <div class="bm-cards">
+          <div class="bm-card bm-clickable" onclick="bmWip('特定顧客セクター（SI第1部・第2部）','・SI第1部40名／第2部40名の案件ポートフォリオと単価・稼働率の実数\n・粗利がほぼゼロになっている原価構造の分解（人件費／グループ会社への外注／不採算案件）\n・関電システムソリューション・Koptとの取引単価\n・従来型受託SIの業界相場（営業利益率・純利益率）との比較')">
+            <div class="bmc-top"><span class="bmc-name">特定顧客セクター</span><span class="bmc-tag tag-flow">SI第1部・第2部</span></div>
+            <div class="bmc-ov">大型顧客（SG・グループ会社・新規）／公益企業（ctc・東邦ガス・BIPROGY）／ローコード開発（楽々FW）。<strong>Pureなシステム開発で粗利ほぼゼロ</strong>。実働の多くは関電システムソリューション</div>
+            <div class="bmc-rows">
+              <div class="row"><span class="k">売上</span><span class="v">約22億円 <small>FY30計画 22億円（維持）</small></span></div>
+              <div class="row"><span class="k">営業利益</span><span class="v warn">実質ゼロ〜▲</span></div>
+              <div class="row"><span class="k">営業利益率</span><span class="v warn">粗利ほぼゼロ<span class="src src-int">社内</span></span></div>
+              <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+              <div class="row"><span class="k">成長率</span><span class="v">1.0倍（維持ライン）</span></div>
+            </div>
+            <div class="bmc-eq">
+              <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>単価120〜150万円 × 稼働率 × 80名 × 12ヶ月</b></span></div>
+              <div class="eq"><span class="eql">コスト構造</span><span class="eqv">人件費 ＋ <b>グループ会社（関電システムソリューション・Kopt）への外注費</b>。<b>原価が単価を食い切っている</b></span></div>
+            </div>
+            <div class="bmc-go go-wip">詳細ページ 準備中</div>
+          </div>
+
+          <div class="bm-card bm-focus bm-clickable" onclick="navigateTo('bm-fde')">
+            <div class="bmc-top"><span class="bmc-name">FDE（AI SI）</span><span class="bmc-tag tag-fde">作成済</span></div>
+            <div class="bmc-ov"><strong>本PJが作ろうとしているセクター。</strong>特定顧客の受託SIを、上流伴走 × AI機能実装 × AI駆動開発で<strong>単価2倍超・営利25%</strong>の形に組み替える構想</div>
+            <div class="bmc-rows">
+              <div class="row"><span class="k">売上</span><span class="v hi">FY30 7.2億円 <small>FY27 約0.6億円（3名）→ FY30 25名</small></span></div>
+              <div class="row"><span class="k">営業利益</span><span class="v hi">FY30 1.8億円 <small>FY27 ▲0.1億円（投資期）</small></span></div>
+              <div class="row"><span class="k">営業利益率</span><span class="v hi">25.0%<span class="src src-hyp">仮置き</span></span></div>
+              <div class="row"><span class="k">当期純利益</span><span class="v">約1.26億円（17.5%）<small>実効税率30%で試算<span class="src src-hyp">仮置き</span></small></span></div>
+              <div class="row"><span class="k">成長率</span><span class="v hi">約12倍（FY27→FY30）</span></div>
+            </div>
+            <div class="bmc-eq">
+              <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>単価320万円 × 稼働率75% × 25名 × 12ヶ月</b>（一人当たり売上2,880万円/年）</span></div>
+              <div class="eq"><span class="eql">コスト構造</span><span class="eqv"><b>人件費 4.0億（1,600万円 × 25名）</b>＋ その他 1.4億（育成投資・WL支援・販管費）</span></div>
+            </div>
+            <div class="bmc-go">詳細ページへ（売上・コスト・営利／純利） &rarr;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- プロダクト／自社サービス型 -->
+      <div class="bm-split-col col-stock">
+        <div class="bm-split-head">
+          <span class="sh-kind">Stock / プロダクト</span>
+          <div class="sh-name">プロダクト・自社サービス型（＝「自社プロダクト」と呼ばれる方）</div>
+          <div class="sh-model">売上＝<strong>顧客数 × 単価（初期＋月額）</strong>。作ったものを<strong>横展開するたびに追加原価が小さくなる</strong>ため顧客数が増えるほど利益率が上がる。ただし<strong>立ち上げ期は先行投資で赤字</strong>。現状はデリバリー（導入支援）比率が高く人月型に近い</div>
+        </div>
+        <div class="bm-cards">
+          <div class="bm-card bm-clickable" onclick="bmWip('プロダクトセクター（プロダクトソリューション部）','・M365／M365以外（ERP・RPA・UiPath）の売上・粗利の切り分け\n・「粗利10〜15%（デリバリーのみ）」の内訳＝ライセンス再販とデリバリーの比率\n・M365部隊の売上・粗利（FDE化対象。ゴール仮説ペーパーv1の空欄）\n・ライセンス再販型ビジネスの業界相場（営業利益率・純利益率）')">
+            <div class="bmc-top"><span class="bmc-name">プロダクトセクター</span><span class="bmc-tag tag-stock">44名</span></div>
+            <div class="bmc-ov">ERP（Infor CloudSuite）／RPA（D365・Power Platform）／MSソリューション（UiPath約10名・<strong>M365 Copilot</strong>）。<strong>M365部隊はFDE化対象</strong></div>
+            <div class="bmc-rows">
+              <div class="row"><span class="k">売上</span><span class="v">FY30計画 20億円</span></div>
+              <div class="row"><span class="k">営業利益</span><span class="v na">未確認</span></div>
+              <div class="row"><span class="k">営業利益率</span><span class="v">粗利10〜15%<small>デリバリーのみの数字<span class="src src-int">社内</span></small></span></div>
+              <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+              <div class="row"><span class="k">成長率</span><span class="v">1.5倍（FY30まで）</span></div>
+            </div>
+            <div class="bmc-eq">
+              <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>ライセンス再販額 ＋ 導入・保守デリバリー（人月）</b></span></div>
+              <div class="eq"><span class="eql">コスト構造</span><span class="eqv"><b>ライセンス仕入原価（粗利率の天井を決める）</b>＋ 人件費</span></div>
+            </div>
+            <div class="bmc-go go-wip">詳細ページ 準備中</div>
+          </div>
+
+          <div class="bm-card bm-clickable" onclick="bmWip('AXセクター（AXソリューション部・自社サービス）','・ENOUR（導入3〜4社）の売上・粗利・単価モデル（初期費用／月額）\n・自社サービス型の売上構造＝顧客数 × 単価 の実数と、横展開時の追加原価\n・「AI関連プロダクトは営利25%が普通」（森さん相場観）の裏付け\n・国内SaaS／自社プロダクト事業の営業利益率・純利益率ベンチマークと、立ち上げ期の赤字許容期間\n※ここが最終的に解像度を上げたい対象')">
+            <div class="bmc-top"><span class="bmc-name">AXセクター（自社サービス）</span><span class="bmc-tag tag-stock">ストック</span></div>
+            <div class="bmc-ov">①<strong>既存自社サービス＝ENOUR</strong>（導入3〜4社。平山さんが作り上げた社内唯一の現場発サービス化の成功例）②<strong>探索中のサービス</strong>（停電応答・AI等）。菅野部長／内海さんライン</div>
+            <div class="bmc-rows">
+              <div class="row"><span class="k">売上</span><span class="v">FY30計画 18億円 <small>百々副本部長の真意では 50億円</small></span></div>
+              <div class="row"><span class="k">営業利益</span><span class="v na">未確認</span></div>
+              <div class="row"><span class="k">営業利益率</span><span class="v hi">AI関連プロダクト相場 25%<span class="src src-int">社内</span></span></div>
+              <div class="row"><span class="k">当期純利益</span><span class="v na">—<sup>※3</sup></span></div>
+              <div class="row"><span class="k">成長率</span><span class="v hi">2倍（真意ベースでは約2.8倍）</span></div>
+            </div>
+            <div class="bmc-eq">
+              <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>顧客数 × 単価（初期費用 ＋ 月額）</b>。人数ではなく<b>顧客数で売上が伸びる</b>のが受託SIとの決定的な違い</span></div>
+              <div class="eq"><span class="eql">コスト構造</span><span class="eqv"><b>開発投資（先行・固定費）</b>＋ 運用人件費 ＋ インフラ費。<b>横展開時の追加原価が小さい＝顧客数増で利益率が上がる</b></span></div>
+            </div>
+            <div class="bmc-go go-wip">詳細ページ 準備中</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 5 -->
+    <div class="bm-belt-overlay" id="bm-l5">
+      <div class="bo-title">Layer 5: セクター横断の最上位分岐 ― FDE ／ 自社サービス</div>
+      <p>3セクターとは<strong>別軸</strong>で、事業モデル上の最上位分岐が引かれている。この2つは<strong>Layer 4 のセクターの境界をまたぐ</strong>ため、上の枠とは一致しない。</p>
+      <div class="bm-cards bm-cards-2" style="margin-top:10px;">
+        <div class="bm-card bm-focus bm-clickable" onclick="navigateTo('bm-fde')">
+          <div class="bmc-top"><span class="bmc-name">FDE</span><span class="bmc-tag tag-fde">特定顧客 全体 ＋ プロダクトのM365</span></div>
+          <div class="bmc-ov">顧客の現場に入り込み、AIを組み込んだシステムをAI駆動開発で構築・伴走する領域。<strong>担当: 白川さん（メイン）・寺崎さん（サブ）／PoC1</strong></div>
+          <div class="bmc-eq">
+            <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>単価 × 稼働率 × 人数 × 12ヶ月</b>（人月フロー）</span></div>
+            <div class="eq"><span class="eql">コスト構造</span><span class="eqv">人件費（固定費）＋ 育成投資</span></div>
+          </div>
+          <div class="bmc-go">詳細ページへ &rarr;</div>
+        </div>
+        <div class="bm-card bm-clickable" onclick="bmWip('自社サービス（AXのみ）','・ENOUR の売上・コスト・利益構造（自社サービス型PLの実例）\n・「探索中のサービス」の候補と、探索コストの置き場所\n・自社サービス型と受託SI型でPLの形がどう違うかの対比\n※FDEの出口としてのストック化（森さんの「労働集約から抜け出したい」への答え）をここで描く')">
+          <div class="bmc-top"><span class="bmc-name">自社サービス</span><span class="bmc-tag tag-stock">AXのみ</span></div>
+          <div class="bmc-ov">自社が企画・保有するサービスを複数顧客に展開（ストック型）。①ENOUR ②探索中のサービス。<strong>担当: 内海さん（メイン）／PoC2</strong>。<strong>プロダクト（M365以外: ERP・RPA・UiPath）はどちらにも属さない</strong></div>
+          <div class="bmc-eq">
+            <div class="eq"><span class="eql">売上構造</span><span class="eqv"><b>顧客数 × 単価</b>（ストック）</span></div>
+            <div class="eq"><span class="eql">コスト構造</span><span class="eqv">開発投資（先行・固定費）＋ 運用人件費</span></div>
+          </div>
+          <div class="bmc-go go-wip">詳細ページ 準備中</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bm-intro" style="margin-top:24px;">
+    <div class="bmi-h">この地図から見えること</div>
+    <p><strong>①上に行くほど「設備を持って月額で回収する」モデル、下に行くほど「人を張って売る」モデルになる。</strong>関西電力・オプテージという上流は設備ストック型で利益率20%前後。ところが Layer 4 の受託SI型だけが<strong>人月フロー型＝利益率の天井が低いモデル</strong>で、実際に特定顧客SIは粗利ほぼゼロ。<strong>グループ全体の中で最も利益率が低い場所に、本PJの対象がある</strong>。</p>
+    <p style="margin-top:8px;"><strong>②だからFDE化の狙いは2段ある。</strong>第1段＝人月フロー型のまま<strong>単価と粗利を取り直す</strong>（＝FDE、営利25%）。第2段＝FDEが現場で発見した課題を<strong>プロダクト／自社サービス（ストック型）に出す</strong>（＝ENOURモデル）。<strong>上流の関西電力・オプテージが得意なのは後者のモデル</strong>であり、森さんの「労働集約から抜け出したい」もここに一致する。</p>
+    <p style="margin-top:8px;"><strong>③一方で、Layer 3 で最も投資が集まっているのはデータセンター（3,000億円）。</strong>FDEが「AI-DCの上に乗るAIソリューションを作る部隊」として位置づけられれば、会社の最大の投資と直結する。<strong>Private AI構想（津田副本部長）との接続はここで説明できる</strong>。</p>
+  </div>
+
+  <div class="bm-intro">
+    <div class="bmi-h">出所</div>
+    <p><span class="src src-pub">公開</span> 関西電力 2026年3月期決算（連結: 売上4兆566億・営業利益4,375億・当期純利益3,800億／セグメント別）／オプテージ 単体決算（2024年3月期: 売上2,587.9億・営業利益335.6億）／オプテージ ビジョン2035（売上4,300億以上・利益750億以上、事業別の現在→2035年目標、DC投資3,000億）<br>
+    <span class="src src-int">社内</span> 2026-07-31 目線合わせ（森さん・白川さん・寺崎さんからの共有情報）: FY26 44.3億→FY30 60億、粗利ほぼゼロ、粗利10〜15%、AI関連プロダクト営利25%、百々副本部長の真意<br>
+    <span class="src src-hyp">仮置き</span> FDE化ゴール仮説ペーパー v1（2026-08-01）: FDEのFY27〜FY30 PL<br>
+    <span class="src src-na">未確認</span> オプテージの事業別・部門別の利益、Layer 3 の売上内訳（非開示のため常駐2週間で確認）</p>
+  </div>
+</div>
+
+
+<!-- ================================================================ -->
+<!-- PAGE: FDEセクター詳細（売上・コスト・営利／純利）                    -->
+<!-- ================================================================ -->
+<div class="page" id="page-bm-fde">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigateTo('bizmodel')">&#8592; ビジネスモデル地図</button>
+    <h2><span class="pill overview">Sector Detail</span> FDE（AI SI）― 売上構造・コスト構造・営業利益／当期純利益</h2>
+  </div>
+
+  <!-- 0. このセクターは何か -->
+  <div class="detail-section">
+    <h3>0. このセクターの定義と位置</h3>
+    <p class="subtitle">Layer 4「受託SI型（フロー・人月）」の中の新セクター ／ 対象範囲は Layer 5 の FDE 帯と一致</p>
+    <div class="cost-notes">
+      <div class="cost-note cn-key">
+        <h5>何をする事業か</h5>
+        <p>顧客の現場に入り込み、<strong>①上流から下流までの伴走</strong>・<strong>③AI機能を含んだシステム開発</strong>・<strong>④AI駆動開発による工数削減</strong>・<strong>⑥業務成果へのコミット</strong>を担う。FDEの6特徴のうちこの4つを採用（②自社プロダクト導入・⑤リバースドメインモデリングは採用しない）<span class="src src-hyp">仮置き</span></p>
+      </div>
+      <div class="cost-note">
+        <h5>対象範囲</h5>
+        <p><strong>特定顧客の全体（SI第1部・第2部）＋ プロダクトのうちM365部隊</strong>のみ。プロダクト（M365以外: ERP・RPA・UiPath）とAXは対象外<span class="src src-int">社内</span></p>
+      </div>
+      <div class="cost-note">
+        <h5>担当・体制</h5>
+        <p>白川さん（メイン）・寺崎さん（サブ）／PoC1がこの領域のPoC。AXソリューション部のコストは<strong>SI部のPLに反映されない</strong>（改革推進コストが現場PLを傷めない構造）<span class="src src-int">社内</span></p>
+      </div>
+      <div class="cost-note">
+        <h5>なぜFDE化するのか</h5>
+        <p>特定顧客SIは<strong>売上約22億で粗利ほぼゼロ</strong>。従来型受託のままではFY30の22億維持すら難しい。AI SIに組み替えて単価と粗利を取り直すのがこのセクターの存在理由<span class="src src-int">社内</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. 売上構造 -->
+  <div class="detail-section">
+    <h3>1. 売上の構造 ― 何を掛け算すると売上になるか</h3>
+    <p class="subtitle">コンサル／人月型ビジネスの売上は、独立した4つの因数の積で決まる。どの因数が動くと売上がどう動くかが見える形に置く</p>
+
+    <div class="pl-formula">
+      <span class="fl">売上 <span class="op">＝</span> <span class="hlq">単価（人月）</span> <span class="op">×</span> <span class="hlq">稼働率</span> <span class="op">×</span> <span class="hlq">人数</span> <span class="op">×</span> 12ヶ月</span>
+      <span class="fnote">FY30ゴール: 320万円 × 75% × 25名 × 12ヶ月 ＝ <strong>7.2億円</strong>（一人当たり売上 2,880万円/年）</span>
+    </div>
+
+    <div class="factor-grid">
+      <div class="factor-card">
+        <div class="fc-k">Factor 1</div>
+        <div class="fc-name">単価（人月）</div>
+        <div class="fc-row"><span class="l">現状（特定顧客SI）</span><span class="r now">120〜150万円</span></div>
+        <div class="fc-row"><span class="l">FY27 → FY30</span><span class="r goal">250 → 320万円</span></div>
+        <div class="fc-row"><span class="l">WL実績</span><span class="r">320万円</span></div>
+        <div class="fc-issue"><b>論点S-1</b>: 単価を2倍超にできるか。効率化分の値下げ要求で相殺されないか → <strong>PoC-1（実顧客との見積もり・契約交渉）でしか閉じない</strong></div>
+      </div>
+      <div class="factor-card">
+        <div class="fc-k">Factor 2</div>
+        <div class="fc-name">稼働率</div>
+        <div class="fc-row"><span class="l">現状</span><span class="r na">未把握</span></div>
+        <div class="fc-row"><span class="l">FY27 → FY30</span><span class="r goal">70% → 75%</span></div>
+        <div class="fc-issue"><b>論点S-3</b>: 人が揃った上で75%は現実的か → <strong>リサーチで閉じる</strong>（WL・同業ファームの稼働率実績と比較）</div>
+      </div>
+      <div class="factor-card">
+        <div class="fc-k">Factor 3</div>
+        <div class="fc-name">人数（ロール構成）</div>
+        <div class="fc-row"><span class="l">FY27</span><span class="r goal">3名（C1/P1/E1）＋WL伴走</span></div>
+        <div class="fc-row"><span class="l">FY28 / FY29</span><span class="r goal">8名 / 15名</span></div>
+        <div class="fc-row"><span class="l">FY30</span><span class="r goal">25名（C5/P7/E13）</span></div>
+        <div class="fc-issue"><b>論点H-1</b>: 社内調整でこの人数を連れて来られるか。<strong>コンサルは社内に不在</strong> → PoCでもリサーチでもなく<strong>組織協議</strong>で決着</div>
+      </div>
+      <div class="factor-card">
+        <div class="fc-k">Factor 4</div>
+        <div class="fc-name">案件需要（＝稼働の受け皿）</div>
+        <div class="fc-row"><span class="l">FY27</span><span class="r goal">上流3・PoC1・開発1本</span></div>
+        <div class="fc-row"><span class="l">FY30</span><span class="r goal">上流24・PoC14・開発12本</span></div>
+        <div class="fc-issue"><b>論点S-4</b>: 既存顧客だけで年12本規模のAI案件需要が実在するか → <strong>リサーチで閉じる</strong>（顧客別AIニーズ・パイプライン棚卸し）</div>
+      </div>
+    </div>
+
+    <h4 class="sim-h4">単価はどう積み上がるか ― 案件タイプ別テンプレート（1本あたり）</h4>
+    <p class="sim-note" style="margin-bottom:8px;">「人月単価320万円」は単一の値札ではなく、<strong>4タイプの案件を組み合わせた結果の平均</strong>。上流案件が高単価・短期間、開発案件が大型・長期という構成</p>
+    <div class="sim-wrap">
+      <table class="sim-table">
+        <tr><th>案件タイプ</th><th>規模・期間</th><th>体制（人月/月）</th><th>月次按分</th><th>FDEの中での役割</th></tr>
+        <tr><td><strong>上流案件</strong>（ヒアリング〜提案）</td><td class="c">450万円・1.5ヶ月</td><td class="c">コンサル 0.9</td><td class="c">約290万円</td><td class="wide">課題を発見して有償で売る入口。<strong>この本数が案件パイプラインの上限を決める</strong></td></tr>
+        <tr><td><strong>PoC案件</strong>（技術検証）</td><td class="c">850万円・2ヶ月</td><td class="c">E 0.8＋P 0.4＋C 0.1</td><td class="c">約420万円</td><td class="wide">技術リスクを落として開発案件に繋ぐ</td></tr>
+        <tr><td><strong>開発案件</strong>（要件定義〜リリース）</td><td class="c">3,800〜4,000万円・5ヶ月</td><td class="c">P 0.8＋E 1.5＋C 0.1</td><td class="c">約770万円</td><td class="wide">売上の主体。<strong>AI駆動開発の効率化が効くのはここ</strong></td></tr>
+        <tr><td><strong>保守案件</strong>（運用保守）</td><td class="c">月額100万円</td><td class="c">P 0.1＋E 0.2</td><td class="c">100万円</td><td class="wide">ストック収益。ただし基本は移管前提</td></tr>
+      </table>
+    </div>
+    <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+    <p class="sim-note">※人員は固定チームではなく「役割プール × 上記テンプレ」で案件にアサインする。<span class="src src-hyp">仮置き</span>（本数・工数は年間ベースの仮置き。テンプレ × 本数の積み上げで算出）</p>
+  </div>
+
+  <!-- 2. コスト構造 -->
+  <div class="detail-section">
+    <h3>2. コストの構造 ― どこにいくらかかるか</h3>
+    <p class="subtitle">人月型ビジネスのコストは、ほぼ全額が人。設備も在庫も仕入もない代わりに、<strong>人を抱えた瞬間に固定費化する</strong></p>
+
+    <div class="pl-formula">
+      <span class="fl">コスト <span class="op">＝</span> <span class="hlq">人件費</span>（一人当たり1,600万円/年 × 人数） <span class="op">＋</span> <span class="hlq">その他</span>（育成投資・WL支援・販管費）</span>
+      <span class="fnote">FY30ゴール: 4.0億円（人件費 25名分） ＋ 1.4億円（その他） ＝ <strong>5.4億円</strong>／売上比 75%</span>
+    </div>
+
+    <div class="cost-notes">
+      <div class="cost-note cn-key">
+        <h5>特徴①: コストの約7割が人件費（＝ほぼ固定費）</h5>
+        <p>設備投資・在庫・ライセンス仕入がない。代わりに<strong>人件費は稼働率に関係なく発生する</strong>ため、<strong>空き稼働がそのまま損失</strong>になる。稼働率75%という前提が崩れると、売上だけが落ちてコストは落ちない構造</p>
+      </div>
+      <div class="cost-note">
+        <h5>特徴②: 一人当たり1,600万円/年の中身</h5>
+        <p>給与＋法定福利費＋間接費込みの想定<span class="src src-hyp">仮置き</span>。<strong>論点C-1</strong>: この水準は妥当か。AI人材の獲得競争の中でこの給与水準で人が残るか → 現状人件費・グループ会社取引単価・AI人材の市場給与相場のリサーチで閉じる</p>
+      </div>
+      <div class="cost-note">
+        <h5>特徴③: 「その他」に育成投資が入っている</h5>
+        <p>FY27 0.2億 → FY30 1.4億。<strong>FDE化の本質的なコストは育成投資</strong>（FDE経験者ゼロ・カリキュラム未整備からのスタート）。<strong>論点H-5</strong>: この見積もりは妥当か → WL支援費・研修相場・カリキュラム設計からの積算で閉じる</p>
+      </div>
+      <div class="cost-note">
+        <h5>特徴④: 原価と販管費の切り分けが未確認</h5>
+        <p>本ページでは<strong>稼働人員の人件費＝売上原価</strong>、<strong>育成投資・WL支援・管理費＝販管費</strong>として置いている。実際のオプテージの配賦ルール（本社費・部門共通費の乗せ方）は未確認<span class="src src-na">未確認</span>。ここが変わると粗利率の見え方が変わる</p>
+      </div>
+      <div class="cost-note">
+        <h5>特徴⑤: 現状の「粗利ほぼゼロ」の要因は未分解</h5>
+        <p>特定顧客SI 22億の原価構造がまだ分解されていない。<strong>人件費／グループ会社（関電システムソリューション・Kopt）への外注／不採算案件</strong>のどれが主因かで、FDE化で改善できる幅が変わる。<strong>論点P-1</strong>の前提作業<span class="src src-na">未確認</span></p>
+      </div>
+      <div class="cost-note">
+        <h5>特徴⑥: AXソリューション部のコストは乗らない</h5>
+        <p>改革を推進するAXソリューション部のコストは<strong>SI部のPLに反映されない</strong><span class="src src-int">社内</span>。＝現場PLを傷めずに改革を進められる構造だが、逆に<strong>FDE化の全社的な投資額はSI部のPLだけ見ていると見えない</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. PLブリッジ -->
+  <div class="detail-section">
+    <h3>3. 営業利益・当期純利益 ― 売上からどう削られて残るか</h3>
+    <p class="subtitle">売上 → 売上原価 → 売上総利益（粗利） → 販管費 → <strong>営業利益</strong> → 法人税等 → <strong>当期純利益</strong> の各段でどれだけ削られるかを、<strong>現状</strong>と<strong>FY30ゴール</strong>で並べる</p>
+
+    <div class="pl-bridges">
+      <div class="pl-bridge">
+        <h5>現状: 特定顧客SI（従来型受託）</h5>
+        <div class="pb-sub">売上 約22億円<span class="src src-int">社内</span>／内訳の実数は常駐2週間で埋める</div>
+
+        <div class="plb-row r-rev">
+          <div class="plb-lab"><span class="sign">&nbsp;</span><span class="nm">売上高</span></div>
+          <div class="plb-val">約22億<span>100%</span></div>
+          <div class="plb-bar"><i style="width:100%"></i></div>
+        </div>
+        <div class="plb-row r-cost">
+          <div class="plb-lab"><span class="sign">&minus;</span><span class="nm">売上原価</span><span class="in">稼働人員の人件費＋グループ会社への外注費</span></div>
+          <div class="plb-val">約22億<span>ほぼ100%</span></div>
+          <div class="plb-bar"><i style="width:98%"></i></div>
+        </div>
+        <div class="plb-row r-gross">
+          <div class="plb-lab"><span class="sign">＝</span><span class="nm">売上総利益（粗利）</span></div>
+          <div class="plb-val">ほぼゼロ<span>約0%</span></div>
+          <div class="plb-bar"><i style="width:2%"></i></div>
+        </div>
+        <div class="plb-sep"></div>
+        <div class="plb-row r-sga r-na">
+          <div class="plb-lab"><span class="sign">&minus;</span><span class="nm">販管費</span><span class="in">本社費・部門共通費の配賦</span></div>
+          <div class="plb-val">未確認<span>&mdash;</span></div>
+          <div class="plb-bar"><i style="width:0%"></i></div>
+        </div>
+        <div class="plb-row r-op">
+          <div class="plb-lab"><span class="sign">＝</span><span class="nm">営業利益</span></div>
+          <div class="plb-val">実質ゼロ〜▲<span>要確認</span></div>
+          <div class="plb-bar"><i style="width:1%"></i></div>
+        </div>
+        <div class="plb-row r-sga r-na">
+          <div class="plb-lab"><span class="sign">&minus;</span><span class="nm">法人税等</span><span class="in">利益が出ていなければ発生しない</span></div>
+          <div class="plb-val">—<span>&mdash;</span></div>
+          <div class="plb-bar"><i style="width:0%"></i></div>
+        </div>
+        <div class="plb-row r-ord r-na">
+          <div class="plb-lab"><span class="sign">＝</span><span class="nm">当期純利益</span><span class="in">純利益は会社単位で計上。セクター単位では営業利益から実効税率で試算する</span></div>
+          <div class="plb-val">実質ゼロ<span>要確認</span></div>
+          <div class="plb-bar"><i style="width:1%"></i></div>
+        </div>
+        <p class="pb-foot"><strong>読み方</strong>: 粗利がほぼゼロ＝<strong>売った金額と、それを作るのにかかった人のコストがほぼ同じ</strong>。販管費を引く前の段階で既に利益が残っていないため、販管費の実数が判明した時点で営業利益はマイナスに振れる可能性がある。<strong>単価が原価に対して低すぎる</strong>のが構造的な原因</p>
+      </div>
+
+      <div class="pl-bridge">
+        <h5>FY30ゴール: FDE（AI SI）</h5>
+        <div class="pb-sub">売上 7.2億円<span class="src src-hyp">仮置き</span>／25名・単価320万円・稼働率75%の前提</div>
+
+        <div class="plb-row r-rev">
+          <div class="plb-lab"><span class="sign">&nbsp;</span><span class="nm">売上高</span></div>
+          <div class="plb-val">7.2億<span>100%</span></div>
+          <div class="plb-bar"><i style="width:100%"></i></div>
+        </div>
+        <div class="plb-row r-cost">
+          <div class="plb-lab"><span class="sign">&minus;</span><span class="nm">売上原価</span><span class="in">稼働人員の人件費（1,600万円 × 25名）</span></div>
+          <div class="plb-val">4.0億<span>55.6%</span></div>
+          <div class="plb-bar"><i style="width:55.6%"></i></div>
+        </div>
+        <div class="plb-row r-gross">
+          <div class="plb-lab"><span class="sign">＝</span><span class="nm">売上総利益（粗利）</span></div>
+          <div class="plb-val">3.2億<span>44.4%</span></div>
+          <div class="plb-bar"><i style="width:44.4%"></i></div>
+        </div>
+        <div class="plb-sep"></div>
+        <div class="plb-row r-sga">
+          <div class="plb-lab"><span class="sign">&minus;</span><span class="nm">販管費</span><span class="in">育成投資・WL支援・販管費（「その他」）</span></div>
+          <div class="plb-val">1.4億<span>19.4%</span></div>
+          <div class="plb-bar"><i style="width:19.4%"></i></div>
+        </div>
+        <div class="plb-row r-op">
+          <div class="plb-lab"><span class="sign">＝</span><span class="nm">営業利益</span></div>
+          <div class="plb-val">1.8億<span>25.0%</span></div>
+          <div class="plb-bar"><i style="width:25%"></i></div>
+        </div>
+        <div class="plb-row r-sga">
+          <div class="plb-lab"><span class="sign">&minus;</span><span class="nm">法人税等</span><span class="in">実効税率 約30%で試算（仮置き）</span></div>
+          <div class="plb-val">約0.54億<span>7.5%</span></div>
+          <div class="plb-bar"><i style="width:7.5%"></i></div>
+        </div>
+        <div class="plb-row r-ord">
+          <div class="plb-lab"><span class="sign">＝</span><span class="nm">当期純利益（試算）</span><span class="in">純利益は会社単位で計上されるため、セクター単位では実効税率からの試算値</span></div>
+          <div class="plb-val">約1.26億<span>約17.5%</span></div>
+          <div class="plb-bar"><i style="width:17.5%"></i></div>
+        </div>
+        <p class="pb-foot"><strong>読み方</strong>: 単価320万円に対して人件費が1,600万円/年（＝月133万円）なので、<strong>稼働1人月あたり約187万円の粗利が出る</strong>という前提。この構造が成立するかは、<strong>単価（S-1）と稼働率（S-3）と人件費（C-1）の3つ</strong>にすべて依存する</p>
+      </div>
+    </div>
+
+    <div class="cost-notes" style="margin-top:16px;">
+      <div class="cost-note cn-key">
+        <h5>営業利益と当期純利益、このセクターではどう使い分けるか</h5>
+        <p><strong>セクター単位で管理できるのは営業利益まで。</strong>当期純利益は法人税等を引いた後の数字で<strong>会社単位でしか計上されない</strong>ため、セクターでは<strong>実効税率（約30%）からの試算値</strong>にしかならない。<br>
+        → <strong>使い分けの結論</strong>: <strong>セクター内の議論（本PJ）は営業利益率で管理する。</strong>純利益は「会社の利益にどれだけ貢献するか」を役員会で語るときの換算値として使う（FDE FY30の営利1.8億 ≒ 純利益1.26億／17.5%）。<br>
+        参考: 関西電力グループ 営業利益率 <strong>10.8%</strong>・当期純利益率 <strong>9.4%</strong><span class="src src-pub">公開</span>／オプテージ単体 営業利益率 <strong>13.0%</strong><span class="src src-pub">公開</span>。<strong>FDEの営利25%は、親会社・自社の全社水準をいずれも大きく上回る設定</strong>になっている点は説明の武器になる（同時に「本当に出るのか」と問われる理由でもある）</p>
+      </div>
+      <div class="cost-note cn-key">
+        <h5>要注意: この粗利率44%は「受託SI」ではなく「コンサルファーム」の形</h5>
+        <p>大手受託SIの売上総利益率は概ね<strong>20〜30%台</strong>、営業利益率は<strong>10〜12%</strong>。一方でコンサルファームは粗利率40〜50%台・営利率が高い。<strong>FY30ゴールのPL（粗利44%・営利25%）は受託SIの相場ではなくコンサルファームの相場に近い</strong>。<br>これは「単価320万円・稼働率75%」という前提がコンサル水準だから当然の帰結だが、<strong>役員会では「なぜSIなのにコンサルの利益率が出るのか」を問われる</strong>。答えは「①上流案件を有償で売る（＝コンサルの売り方）②AI駆動開発で開発工数を7割に落とす」の2点セット。ここが崩れると粗利率44%は成立しない<span class="src src-hyp">要精査</span></p>
+      </div>
+      <div class="cost-note">
+        <h5>要確認: 7.2億円と22億円の関係</h5>
+        <p>FY30の「FDE売上7.2億円」と「特定顧客22億円（維持）」の関係が未定義。<strong>①22億の一部が7.2億に置き換わる</strong>のか、<strong>②22億の維持のために別建てで7.2億を作る</strong>のか、<strong>③22億＋M365を含む合計の中でのAI SI部分が7.2億</strong>なのか。<strong>どれかで役員会の意味がまったく変わる</strong>ため、常駐初日の確認事項<span class="src src-na">未確認</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 業界ベンチマーク -->
+  <div class="detail-section">
+    <h3>4. 業界一般の営業利益率・当期純利益率 ― この25%はどのくらいの難易度か</h3>
+    <p class="subtitle">FDEのゴール（営利25%）を、隣接する業態の実績値と並べる。<strong>FDEは「受託SIの相場」ではなく「コンサル／プロダクトの相場」を狙っている</strong>ことが一目で分かる形に置く</p>
+
+    <div class="sim-wrap">
+      <table class="sim-table">
+        <tr><th>業態</th><th>代表例</th><th>売上総利益率（粗利）</th><th>営業利益率</th><th>当期純利益率</th><th>ビジネスモデル上の理由</th></tr>
+        <tr>
+          <td><strong>SES・常駐型</strong></td><td>中堅SES各社</td>
+          <td class="c">15〜25%<span class="src src-hyp">要精査</span></td><td class="c">5〜8%<span class="src src-hyp">要精査</span></td><td class="c">3〜6%<sup>※6</sup></td>
+          <td class="wide">工数に対価が払われる。単価が市場で決まり、値上げ余地が小さい</td>
+        </tr>
+        <tr class="bm-row-self">
+          <td><strong>特定顧客SI（現状）</strong></td><td>オプテージ SI第1・2部</td>
+          <td class="c">ほぼゼロ<span class="src src-int">社内</span></td><td class="c">実質ゼロ〜▲</td><td class="c">実質ゼロ〜▲</td>
+          <td class="wide">Pureなシステム開発。実働の多くをグループ会社に出しており、単価が原価を賄えていない</td>
+        </tr>
+        <tr>
+          <td><strong>受託SI大手</strong></td><td>TIS</td>
+          <td class="c">約25〜30%<span class="src src-hyp">要精査</span></td><td class="c">12.1%<span class="src src-pub">公開</span></td><td class="c">約8〜9%<sup>※6</sup></td>
+          <td class="wide">2025年3月期。前期比0.3pt改善。業界内で最も高い水準</td>
+        </tr>
+        <tr>
+          <td><strong>受託SI大手</strong></td><td>NTTデータグループ</td>
+          <td class="c">&mdash;</td><td class="c">11.4%<span class="src src-pub">公開</span></td><td class="c">約8%<sup>※6</sup></td>
+          <td class="wide">2026年3月期第2四半期。海外SIは苦戦、国内SIは堅調</td>
+        </tr>
+        <tr>
+          <td><strong>受託SI大手</strong></td><td>SCSK</td>
+          <td class="c">約24%<span class="src src-hyp">要精査</span></td><td class="c">約11.1%<span class="src src-pub">公開</span></td><td class="c">約8%<sup>※6</sup></td>
+          <td class="wide">2025年3月期。売上5,960億／営業利益661億。過去最高</td>
+        </tr>
+        <tr>
+          <td><strong>受託SI大手</strong></td><td>伊藤忠テクノソリューションズ（CTC）</td>
+          <td class="c">&mdash;</td><td class="c">10.1%<span class="src src-pub">公開</span></td><td class="c">約7%<sup>※6</sup></td>
+          <td class="wide">2025年3月期。前年9.3%から改善</td>
+        </tr>
+        <tr>
+          <td><strong>インフラ企業のプロダクト</strong></td><td>&mdash;（社内相場観）</td>
+          <td class="c">&mdash;</td><td class="c">10%が閾値<span class="src src-int">社内</span></td><td class="c">&mdash;</td>
+          <td class="wide">ネットワーク関連は労働集約だがストック性あり。「営利10%を超えていれば合格」という社内の目線</td>
+        </tr>
+        <tr>
+          <td><strong>プロダクトセクター（現状）</strong></td><td>オプテージ プロダクトソリューション部</td>
+          <td class="c">10〜15%<span class="src src-int">社内</span></td><td class="c">未確認</td><td class="c">&mdash;</td>
+          <td class="wide">ERP・RPA・M365。粗利10〜15%は<strong>デリバリーのみ</strong>の数字</td>
+        </tr>
+        <tr>
+          <td><strong>親会社（参考）</strong></td><td>関西電力グループ（連結）</td>
+          <td class="c">&mdash;</td><td class="c">10.8%<span class="src src-pub">公開</span></td><td class="c">9.4%<span class="src src-pub">公開</span></td>
+          <td class="wide">2026年3月期。売上4兆566億／営業利益4,375億／当期純利益3,800億。<strong>グループとしての利益水準</strong></td>
+        </tr>
+        <tr>
+          <td><strong>自社（参考）</strong></td><td>株式会社オプテージ（単体）</td>
+          <td class="c">&mdash;</td><td class="c">13.0%<span class="src src-pub">公開</span></td><td class="c">未確認</td>
+          <td class="wide">2024年3月期。売上2,587.9億／営業利益335.6億。<strong>会社として期待される利益水準</strong></td>
+        </tr>
+        <tr>
+          <td><strong>ビジョン2035（参考）</strong></td><td>株式会社オプテージ</td>
+          <td class="c">&mdash;</td><td class="c">&mdash;</td><td class="c">&mdash;</td>
+          <td class="wide">売上4,300億円以上・利益750億円以上＝<strong>利益率 約17.4%</strong>（開示は経常段階）。<strong>10年後に会社が目指す利益率</strong><span class="src src-pub">公開</span></td>
+        </tr>
+        <tr>
+          <td><strong>AI関連プロダクト</strong></td><td>&mdash;（社内相場観）</td>
+          <td class="c">&mdash;</td><td class="c">25%が普通<span class="src src-int">社内</span></td><td class="c">約17〜18%<sup>※6</sup></td>
+          <td class="wide">森さんの相場観。<strong>FDEの営利25%目標はこの水準に合わせている</strong></td>
+        </tr>
+        <tr class="bm-row-goal">
+          <td><strong>FDE（FY30ゴール）</strong></td><td>オプテージ FDEユニット 25名</td>
+          <td class="c">44.4%<span class="src src-hyp">仮置き</span></td><td class="c">25.0%<span class="src src-hyp">仮置き</span></td><td class="c">約17.5%<sup>※6</sup></td>
+          <td class="wide">受託SI大手（10〜12%）の<strong>約2倍</strong>。親会社（10.8%）・自社（13.0%）も大きく上回る。コンサルファーム寄りの水準</td>
+        </tr>
+        <tr>
+          <td><strong>ITコンサル</strong></td><td>野村総合研究所（NRI）</td>
+          <td class="c">&mdash;</td><td class="c">13〜14%<span class="src src-hyp">要精査</span></td><td class="c">約9〜10%<sup>※6</sup></td>
+          <td class="wide">コンサル＋システム開発の複合。開発比率が高いため純コンサルより低い</td>
+        </tr>
+        <tr>
+          <td><strong>戦略・総合コンサル</strong></td><td>ベイカレント・コンサルティング</td>
+          <td class="c">約50%前後<span class="src src-hyp">要精査</span></td><td class="c">約37%<span class="src src-pub">公開</span></td><td class="c">約26%<sup>※6</sup></td>
+          <td class="wide">上流のみ・自社正社員の高稼働・高単価。<strong>人月型で到達しうる利益率の上限に近い実例</strong></td>
+        </tr>
+      </table>
+    </div>
+    <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+    <p class="sim-note"><sup>※6</sup> 当期純利益率のうち出所タグのない値は、<strong>営業利益率 × 0.7（実効税率30%）で機械的に換算した参考値</strong>。実額は各社の営業外損益・税負担で変わるため、役員会資料に載せる場合は各社の開示値で差し替える。</p>
+
+    <div class="cost-notes" style="margin-top:18px;">
+      <div class="cost-note cn-key">
+        <h5>この表から言えること（役員会で使う論理）</h5>
+        <p>①<strong>営利25%は受託SIの相場では出ない</strong>（大手でも10〜12%）。②しかし<strong>コンサル型（上流を有償で売る）に寄せれば到達可能な水準</strong>である実例がある（ベイカレント37%）。③<strong>親会社の営業利益率は10.8%、オプテージ単体は13.0%、ビジョン2035の目標利益率は約17.4%</strong>なので、FDEの営利25%は<strong>グループ・会社の期待をいずれも上回る事業</strong>として提案できる。④逆に言えば、<strong>営利25%は「受託SIの改善」では絶対に届かない数字</strong>であり、<strong>単価・売り方・開発効率の3点を同時に変える</strong>ことが前提条件だと明示する必要がある</p>
+      </div>
+      <div class="cost-note">
+        <h5>なぜ営業利益で管理するのか</h5>
+        <p>売上原価・販管費までは<strong>セクターの意思決定で動かせる</strong>が、法人税等は動かせない。したがって<strong>セクターのKPIは営業利益率</strong>にするのが実務的。当期純利益は「会社の利益にどれだけ乗るか」を示す換算値として、役員会で全社計画と並べるときだけ使う（FDE FY30: 営利1.8億 ≒ 純利益1.26億／17.5%）</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. FY別PL -->
+  <div class="detail-section">
+    <h3>5. FY別のPL推移（ゴール仮説ペーパーv1）</h3>
+    <p class="subtitle">FY27は投資期（赤字）、FY28で黒字転換、FY30で営利25%に到達する設計<span class="src src-hyp">仮置き</span></p>
+    <div class="sim-wrap">
+      <table class="sim-table">
+        <tr><th>PL項目</th><th>FY27</th><th>FY28</th><th>FY29</th><th>FY30</th></tr>
+        <tr><td>単価（人月）</td><td class="c">250万円</td><td class="c">280万円</td><td class="c">300万円</td><td class="c"><strong>320万円</strong></td></tr>
+        <tr><td>× 稼働率</td><td class="c">70%</td><td class="c">72%</td><td class="c">75%</td><td class="c">75%</td></tr>
+        <tr><td>× 人数</td><td class="c"><strong>3名</strong><br>C1・P1・E1＋WL伴走</td><td class="c"><strong>8名</strong><br>C2・P2・E4</td><td class="c"><strong>15名</strong><br>C3・P4・E8</td><td class="c"><strong>25名</strong><br>C5・P7・E13</td></tr>
+        <tr style="background:#f7f8fa;"><td><strong>＝ 売上</strong></td><td class="c"><strong>約0.6億円</strong></td><td class="c"><strong>約1.9億円</strong></td><td class="c"><strong>約4.1億円</strong></td><td class="c"><strong>7.2億円</strong></td></tr>
+        <tr><td>人件費（1,600万円/年 × 人数）</td><td class="c">0.5億円</td><td class="c">1.3億円</td><td class="c">2.4億円</td><td class="c">4.0億円</td></tr>
+        <tr><td>＋ その他（育成投資・WL支援・販管費）</td><td class="c">0.2億円</td><td class="c">0.4億円</td><td class="c">0.9億円</td><td class="c">1.4億円</td></tr>
+        <tr style="background:#f7f8fa;"><td><strong>＝ コスト計</strong></td><td class="c"><strong>0.7億円</strong></td><td class="c"><strong>1.7億円</strong></td><td class="c"><strong>3.3億円</strong></td><td class="c"><strong>5.4億円</strong></td></tr>
+        <tr class="bm-row-self"><td><strong>営業利益</strong></td><td class="c"><strong>▲0.1億円</strong></td><td class="c">0.2億円</td><td class="c">0.8億円</td><td class="c"><strong>1.8億円</strong></td></tr>
+        <tr class="bm-row-goal"><td><strong>営業利益率</strong></td><td class="c">—（投資期）</td><td class="c">約10%</td><td class="c">約18%</td><td class="c"><strong>約25%</strong></td></tr>
+        <tr><td>その年の主題</td><td class="c">型の一周<br><span style="font-size:10px;color:#888;">全フェーズの実測値取得</span></td><td class="c">ユニット複製の初回<br><span style="font-size:10px;color:#888;">型で立ち上がるか</span></td><td class="c">育成の量産化</td><td class="c">定常運転</td></tr>
+      </table>
+    </div>
+    <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+    <p class="sim-note">FY28の営利10%が「インフラ企業のプロダクトの閾値10%」と一致する点は説明に使える（＝2年目で社内の合格ラインに乗る）。FY27の▲0.1億は<strong>3名を育てながら回すための投資</strong>であり、役員会で承認を取る対象はこの投資</p>
+  </div>
+
+  <!-- 6. 論点 -->
+  <div class="detail-section">
+    <h3>6. この数字構造のどこが弱いか ― 論点一覧</h3>
+    <p class="subtitle">PLの式の行を上から順に「この数字は妥当か」と問う。順序は<strong>売上 → 人 → コスト → 利益率</strong>（利益率は全変数の帰結なので最後）</p>
+    <div class="sim-wrap">
+      <table class="sim-table">
+        <tr><th>#</th><th>変数</th><th>理想（仮置き）</th><th>現実</th><th>閉じ方</th></tr>
+        <tr><td class="c"><strong>S-1</strong></td><td>単価（顧客受容）</td><td class="c">320万円</td><td class="c">120〜150万円</td><td class="wide"><strong>PoC-1</strong>: 実顧客との見積もり・契約交渉。リサーチでは閉じない</td></tr>
+        <tr><td class="c"><strong>S-2</strong></td><td>単価の成立条件<br>（AI駆動開発の効率）</td><td class="c">従来比7割人月</td><td class="c">OPT制約下は未知</td><td class="wide"><strong>PoC-2</strong>: 開発フェーズで従来比工数を実測。リサーチでは閉じない</td></tr>
+        <tr><td class="c"><strong>S-3</strong></td><td>稼働率</td><td class="c">75%</td><td class="c">未把握</td><td class="wide">リサーチで閉じる（WL・同業ファームの稼働率実績）</td></tr>
+        <tr><td class="c"><strong>S-4</strong></td><td>案件需要</td><td class="c">年12本規模</td><td class="c">AI案件実績はPoCのみ</td><td class="wide">リサーチで閉じる（顧客別AIニーズ・パイプライン棚卸し）</td></tr>
+        <tr><td class="c"><strong>H-1</strong></td><td>調達（人数）</td><td class="c">FY27に3名／FY30に25名</td><td class="c">コンサルは社内に不在</td><td class="wide"><strong>組織協議</strong>で決着（PoCでもリサーチでも解けない）。9月末までに当たりを付ける</td></tr>
+        <tr><td class="c"><strong>H-2/H-3</strong></td><td>育成・自走</td><td class="c">1年で3ロール各1名</td><td class="c">FDE経験者ゼロ</td><td class="wide"><strong>PoC-3</strong>: 通貫1案件のOJTで実証</td></tr>
+        <tr><td class="c"><strong>H-5</strong></td><td>育成費用</td><td class="c">「その他」に内包</td><td class="c">実績値なし</td><td class="wide">リサーチ＋設計で閉じる（WL支援費・研修相場からの積算）</td></tr>
+        <tr><td class="c"><strong>C-1</strong></td><td>人件費</td><td class="c">1,600万円/年・人</td><td class="c">未把握</td><td class="wide">リサーチで閉じる（現状人件費・グループ会社取引単価・AI人材の市場給与）</td></tr>
+        <tr class="bm-row-self"><td class="c"><strong>P-1</strong></td><td>利益率</td><td class="c">25%</td><td class="c">粗利ほぼゼロ</td><td class="wide">①現状22億の原価構造の分解 ②外部ベンチマーク比較（本ページ第4章）＋ <strong>PoC-4</strong>で実収支を初期実測</td></tr>
+      </table>
+    </div>
+    <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+    <p class="sim-note">閉じ方の整理: <strong>リサーチで閉じる</strong>のが S-3・S-4・H-5・C-1（＋P-1の大半）／<strong>PoCでしか閉じない</strong>のが S-1・S-2・H-2・H-3 ／<strong>組織協議</strong>が H-1。8〜9月の成果物は「答え」ではなく<strong>補正済みのゴール仮説＋論点の全量＋PoC計画書</strong></p>
+  </div>
+
+  <div class="bm-intro">
+    <div class="bmi-h">出所</div>
+    <p><span class="src src-hyp">仮置き</span> FDE化ゴール仮説ペーパー v1（2026-08-01）：PL構造・FY別数字・論点表<br>
+    <span class="src src-int">社内</span> 2026-07-31 目線合わせ：粗利ほぼゼロ・粗利10〜15%・営利25%相場観・営利10%閾値<br>
+    <span class="src src-pub">公開</span> TIS／SCSK／CTC／NTTデータ 2025年3月期・2026年3月期2Q決算、ベイカレント 決算、オプテージ 単体決算・ビジョン2035<br>
+    <span class="src src-hyp">要精査</span> 売上総利益率のレンジ・SES相場・NRIの営利率は概算。役員会資料に載せる前に一次情報で確定する</p>
+  </div>
+</div>
+
+
+<!-- ================================================================ -->
+<!-- PAGE: セクター詳細 準備中                                          -->
+<!-- ================================================================ -->
+<div class="page" id="page-bm-wip">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigateTo('bizmodel')">&#8592; ビジネスモデル地図</button>
+    <h2><span class="pill other">Sector Detail</span> <span id="wipTitle">セクター詳細</span></h2>
+  </div>
+  <div class="wip-box">
+    <div class="wip-icon">&#9744;</div>
+    <h3 id="wipTitle2">詳細ページ 準備中</h3>
+    <p>まず <strong>FDE（AI SI）セクター</strong>のページで全体のデザインと項目立てを固め、そのうえで他セクターの中身を作る方針。<br>各ページの構成は FDE ページと同じ<strong>「0.定義 → 1.売上構造 → 2.コスト構造 → 3.PLブリッジ（営利・純利） → 4.業界ベンチマーク → 5.FY別PL → 6.論点」</strong>で揃える。</p>
+    <div class="wip-plan">
+      <strong>このページに入る予定の内容</strong>
+      <div id="wipPlan" style="margin-top:8px; white-space:pre-line;"></div>
+    </div>
+  </div>
 </div>
 
 
@@ -1993,7 +3269,8 @@ body {
 <!-- ================================================================ -->
 <script>
 (function() {
-  const pages = ['home','orghome','sector','meetings','overview','kawada','shinohara','other','aiwg','deptinfo','people'];
+  // 先頭5件はトップナビ／ボトムナビのボタン順と一致させる（indexで active を付けているため）
+  const pages = ['home','orghome','sector','bizmodel','meetings','overview','kawada','shinohara','other','aiwg','deptinfo','people','bm-fde','bm-wip'];
 
   function navigateTo(pageId) {
     // Hide all pages
@@ -2063,6 +3340,17 @@ body {
 
   // Expose globally
   window.navigateTo = navigateTo;
+
+  // 未作成セクターの「準備中」ページ（タイトルと予定内容を差し替えて表示）
+  window.bmWip = function(title, plan) {
+    var t = document.getElementById('wipTitle');
+    var t2 = document.getElementById('wipTitle2');
+    var p = document.getElementById('wipPlan');
+    if (t) t.textContent = title;
+    if (t2) t2.textContent = title + ' ― 準備中';
+    if (p) p.textContent = plan || '';
+    navigateTo('bm-wip');
+  };
 })();
 </script>
 
