@@ -78,6 +78,9 @@ table.gantt td.wk{border-left:1px dashed #c9d2dc;border-right:1px dashed #c9d2dc
 .g1{background:var(--ph1);} .g2{background:var(--ph2);} .g3{background:var(--ph3);} .g4{background:var(--ph4);}
 .gbody{background:#8a94a3;} .gpol{background:#b8860b;} .gdoc{background:#5b7191;}
 .ggoal{background:var(--gate);clip-path:none;border-radius:4px;margin:4px 3px;padding:6px 6px;}
+table.gantt th.nextm{background:#8a94a3;font-size:11.5px;}
+table.gantt td.wk.nx{background:#f4f6f8;}
+.gbar.gnext{background:#eef0f3;color:var(--slate);clip-path:none;border:1.5px dashed #8a94a3;border-radius:4px;padding:5px 6px;}
 .rm-legend{display:flex;flex-wrap:wrap;gap:12px;font-size:11px;color:var(--text-muted);margin-top:10px;}
 .rm-legend span{display:inline-flex;align-items:center;gap:5px;}
 .rm-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;}
@@ -133,6 +136,8 @@ table.gantt td.wk{border-left:1px dashed #c9d2dc;border-right:1px dashed #c9d2dc
         <th rowspan="2" style="width:210px;">ステップ・検討作業</th>
         <th class="mon" colspan="4">FY26 8月</th>
         <th class="mon" colspan="5">9月</th>
+        <th class="mon nextm" rowspan="2" style="width:86px;">10月</th>
+        <th class="mon nextm" rowspan="2" style="width:86px;">11月〜</th>
       </tr>
       <tr>
         <th>8/3週</th><th>8/10週<br><span style="font-weight:400;font-size:10px;">※8/11祝</span></th><th>8/17週</th><th>8/24週</th>
@@ -145,11 +150,13 @@ table.gantt td.wk{border-left:1px dashed #c9d2dc;border-right:1px dashed #c9d2dc
         <td class="step">事前準備（WL内・8/4 AX定例でアポ依頼）</td>
         <td class="wk"><div class="gbar gbody">依頼リスト</div></td>
         <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+        <td class="wk nx"></td><td class="wk nx"></td>
       </tr>
       <tr>
         <td class="step">稼働体制</td>
         <td class="wk" colspan="3"><div class="gbar gbody">現地常駐（8/6〜8/19）</div></td>
         <td class="wk" colspan="6"><div class="gbar gbody">週2日常駐 ＋ 非常駐日は毎日1h定例</div></td>
+        <td class="wk nx"></td><td class="wk nx"></td>
       </tr>
 
       <!-- 2 検討作業 -->
@@ -158,30 +165,35 @@ table.gantt td.wk{border-left:1px dashed #c9d2dc;border-right:1px dashed #c9d2dc
         <td class="step">① 数字・FDE定義の妥当性整理（空欄埋め・仮説の壁打ち）</td>
         <td class="wk" colspan="3"><div class="gbar g1">壁打ち・空欄埋め → v1.1</div></td>
         <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+        <td class="wk nx"></td><td class="wk nx"></td>
       </tr>
       <tr>
         <td class="step">② 論点を上げ切る（S/H/C/P表のfix）</td>
         <td class="wk"></td>
         <td class="wk" colspan="2"><div class="gbar g2">論点表fix</div></td>
         <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+        <td class="wk nx"></td><td class="wk nx"></td>
       </tr>
       <tr>
         <td class="step">③ リサーチ実行（PoC不要の論点）</td>
         <td class="wk"></td><td class="wk"></td>
         <td class="wk" colspan="4"><div class="gbar g3">OPT側＝原価・パイプライン ／ WL側＝相場・ベンチ → v1.2</div></td>
         <td class="wk"></td><td class="wk"></td><td class="wk"></td>
+        <td class="wk nx"></td><td class="wk nx"></td>
       </tr>
       <tr>
         <td class="step">④ PoC具体案の作成（何を・いつ・誰と・いくらで）</td>
         <td class="wk"></td><td class="wk"></td><td class="wk"></td>
         <td class="wk" colspan="4"><div class="gbar g4">候補顧客・人材・費用・撤退条件 → PoC計画書</div></td>
         <td class="wk"></td><td class="wk"></td>
+        <td class="wk nx"></td><td class="wk nx"></td>
       </tr>
       <tr>
         <td class="step">役員会資料の作成</td>
         <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
         <td class="wk" colspan="2"><div class="gbar gdoc">ドラフト → fix</div></td>
         <td class="wk"></td>
+        <td class="wk nx"></td><td class="wk nx"></td>
       </tr>
 
       <!-- 3 合意形成 -->
@@ -191,17 +203,30 @@ table.gantt td.wk{border-left:1px dashed #c9d2dc;border-right:1px dashed #c9d2dc
         <td class="wk"></td>
         <td class="wk"><div class="gbar gpol">8/14</div></td>
         <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+        <td class="wk nx"></td><td class="wk nx"></td>
       </tr>
       <tr>
         <td class="step">事前ブリーフ（推進部・本部長級）</td>
         <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
         <td class="wk" colspan="2"><div class="gbar gpol">懸念の吸収 → 追認の場づくり</div></td>
         <td class="wk"></td>
+        <td class="wk nx"></td><td class="wk nx"></td>
       </tr>
       <tr>
-        <td class="step"><strong>◆ 役員会（最終ゴール）</strong></td>
+        <td class="step"><strong>◆ 役員会（最終ゴール）→ 投資判断</strong></td>
         <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
-        <td class="wk"><div class="gbar ggoal">◆ 投資判断</div></td>
+        <td class="wk"><div class="gbar ggoal">◆ 役員会</div></td>
+        <td class="wk nx"><div class="gbar gpol">投資判断</div></td>
+        <td class="wk nx"></td>
+      </tr>
+
+      <!-- 4 実行 -->
+      <tr>
+        <td class="sec">4<br>実行</td>
+        <td class="step">PoC開始（PoC-1〜4）</td>
+        <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+        <td class="wk nx"></td>
+        <td class="wk nx"><div class="gbar gnext">PoC開始 ※</div></td>
       </tr>
     </table>
 
@@ -214,12 +239,7 @@ table.gantt td.wk{border-left:1px dashed #c9d2dc;border-right:1px dashed #c9d2dc
       <span><i style="background:#b8860b"></i>合意形成</span>
       <span><i style="background:var(--gate)"></i>◆最終ゴール（9月末 役員会）</span>
     </div>
-
-    <div class="next-strip">
-      <span class="arrow">&#8627;</span>
-      <div class="next-box"><b>10月:</b> 投資意思決定（稟議・予算化・PoC体制の正式確保）＋ FDE以外のアジェンダ（全体戦略・自社サービス）</div>
-      <div class="next-box"><b>11月〜:</b> 8〜9月に作った計画の実行 — PoC通貫1案件でPoC-1〜4（単価受容・開発効率・育成・実収支）を実測</div>
-    </div>
+    <p class="footnote">※ 11月以降のPoCの具体的なマイルストーンは、8〜9月のフェーズ④（PoC計画書）で作成する。10月はあわせてFDE以外のアジェンダ（全体戦略・自社サービス）にも取り組む。</p>
   </div>
   <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
 </section>
