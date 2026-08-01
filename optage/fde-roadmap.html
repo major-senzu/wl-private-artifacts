@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDE化構想 8〜9月ロードマップ（FY26下期 進行計画・詳細版）</title>
+<style>
+:root{
+  --bg:#f7f7f5; --surface:#fff; --border:#d4d4d4; --border-light:#e8e8e8;
+  --text:#111; --text-muted:#444; --text-dim:#999;
+  --slate:#333d4d; --slate-mid:#5b7191;
+  --fde:#c9662a; --fde-bg:#fdf3ea;
+  --ph1:#c9662a; --ph2:#7c3aed; --ph3:#2563eb; --ph4:#059669; --gate:#b91c1c;
+  --nav-h:52px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;font-size:14px;line-height:1.75;-webkit-text-size-adjust:100%;}
+
+.topnav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:var(--slate);color:#fff;display:flex;align-items:center;gap:8px;padding:0 16px;z-index:100;overflow-x:auto;white-space:nowrap;}
+.topnav .brand{font-weight:700;font-size:13px;letter-spacing:.04em;margin-right:8px;opacity:.9;}
+.topnav a.navbtn{display:inline-block;padding:6px 14px;border-radius:6px;font-size:12.5px;font-weight:600;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.35);}
+.topnav a.navbtn:hover{background:rgba(255,255,255,.12);}
+.topnav a.navbtn.active{background:#fff;color:var(--slate);border-color:#fff;}
+
+.layout{display:flex;max-width:1360px;margin:0 auto;padding-top:var(--nav-h);}
+.sidebar{width:250px;flex-shrink:0;position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));overflow-y:auto;padding:26px 8px 40px 20px;}
+.sidebar .toc-title{font-size:11px;font-weight:700;color:var(--text-dim);letter-spacing:.1em;margin-bottom:10px;}
+.sidebar a{display:block;font-size:12.5px;color:var(--text-muted);text-decoration:none;padding:5px 10px;border-left:2px solid var(--border-light);line-height:1.5;}
+.sidebar a:hover{color:var(--fde);}
+.sidebar a.current{color:var(--fde);border-left-color:var(--fde);font-weight:700;background:var(--fde-bg);}
+.content{flex:1;min-width:0;padding:30px 34px 90px;}
+
+.doc-head{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:26px 30px;margin-bottom:30px;}
+.doc-head .label{font-size:11px;font-weight:700;color:var(--fde);letter-spacing:.12em;margin-bottom:8px;}
+.doc-head h1{font-size:21px;line-height:1.5;margin-bottom:10px;}
+.doc-head .meta{font-size:12px;color:var(--text-dim);}
+.doc-head .caution{margin-top:12px;font-size:12px;background:#fffbeb;border:1px solid #f1d9a7;border-radius:6px;padding:8px 12px;color:#7a5c1e;}
+
+section{margin-bottom:46px;scroll-margin-top:calc(var(--nav-h) + 14px);}
+h2{font-size:17px;border-left:5px solid var(--slate);padding:2px 0 2px 12px;margin-bottom:6px;}
+h3{font-size:14.5px;margin:26px 0 6px;color:var(--slate);scroll-margin-top:calc(var(--nav-h) + 14px);}
+h4{font-size:13px;margin:18px 0 6px;color:var(--text-muted);}
+.gov{font-size:13px;color:var(--text-muted);margin-bottom:14px;border-bottom:1px solid var(--border-light);padding-bottom:10px;}
+p{margin-bottom:10px;}
+ul{margin:6px 0 12px 20px;}
+li{margin-bottom:5px;font-size:13px;color:var(--text-muted);}
+strong{color:var(--text);}
+
+.tbl-wrap{overflow-x:auto;margin:10px 0 6px;background:var(--surface);border:1px solid var(--border);border-radius:8px;}
+table.mck{width:100%;border-collapse:collapse;font-size:12.5px;min-width:680px;}
+table.mck th{background:var(--slate);color:#fff;font-weight:700;text-align:left;padding:9px 12px;border-right:1px solid rgba(255,255,255,.15);line-height:1.5;font-size:12px;}
+table.mck td{padding:8px 12px;border-top:1px solid var(--border-light);border-right:1px solid var(--border-light);vertical-align:top;line-height:1.65;color:var(--text-muted);}
+table.mck td:last-child,table.mck th:last-child{border-right:none;}
+table.mck tr:nth-child(even) td{background:#fafaf8;}
+table.mck td.ctr{text-align:center;}
+table.mck tr.accent td{background:var(--fde-bg);}
+table.mck td.hl{color:var(--fde);font-weight:700;}
+table.mck td.dim{color:var(--text-dim);}
+table.mck td.ms{font-weight:700;color:var(--text);}
+.footnote{font-size:11px;color:var(--text-dim);margin:6px 2px 0;line-height:1.7;}
+.keybox{background:var(--fde-bg);border:1.5px solid var(--fde);border-radius:8px;padding:14px 18px;margin:14px 0;font-size:13.5px;line-height:1.9;}
+.keybox strong{color:var(--fde);}
+.notebox{background:#f4f6f8;border:1px solid #c9d2dc;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:12.5px;color:var(--text-muted);}
+.swipe-hint{display:none;text-align:center;font-size:10px;color:var(--text-dim);margin:4px 0 16px;letter-spacing:.04em;}
+
+/* ===== roadmap chart ===== */
+.rm-scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px 18px 14px;margin:12px 0 4px;}
+.rm{min-width:960px;}
+.rm-months{display:grid;grid-template-columns:2fr 2fr 1fr 1fr;gap:4px;margin-bottom:8px;}
+.rm-month{background:var(--slate);color:#fff;text-align:center;font-weight:700;font-size:12.5px;padding:7px 4px;border-radius:5px;}
+.rm-month small{display:block;font-weight:400;font-size:10.5px;opacity:.8;}
+.rm-lane-label{font-size:11px;font-weight:700;color:var(--text-dim);letter-spacing:.06em;margin:10px 0 4px;}
+.rm-row{display:grid;grid-template-columns:repeat(24,1fr);gap:3px;margin-bottom:5px;}
+.rm-bar{border-radius:4px;padding:6px 8px;font-size:11px;font-weight:700;color:#fff;line-height:1.45;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rm-bar small{display:block;font-weight:400;font-size:10px;opacity:.9;}
+.b1{background:var(--ph1);} .b2{background:var(--ph2);} .b3{background:var(--ph3);} .b4{background:var(--ph4);}
+.b-body{background:#8a94a3;} .b-pol{background:#b8860b;}
+.b-next{background:#eef0f3;color:var(--slate);border:1.5px dashed #9aa3af;}
+.rm-gate{background:var(--gate);}
+.rm-legend{display:flex;flex-wrap:wrap;gap:12px;font-size:11px;color:var(--text-muted);margin-top:10px;}
+.rm-legend span{display:inline-flex;align-items:center;gap:5px;}
+.rm-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;}
+
+@media(max-width:900px){
+  .sidebar{display:none;}
+  .content{padding:22px 14px 70px;}
+  .swipe-hint{display:block;}
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <span class="brand">OPTAGE / FDE</span>
+  <a class="navbtn" href="org-chart.html">&#8962; オプテージHome</a>
+  <a class="navbtn" href="fde-goal-paper.html">ゴール仮説ペーパー</a>
+  <a class="navbtn active" href="fde-roadmap.html">8-9月ロードマップ</a>
+</nav>
+
+<div class="layout">
+<aside class="sidebar">
+  <div class="toc-title">CONTENTS</div>
+  <a href="#r1">1. 全体ロードマップ（一枚絵）</a>
+  <a href="#r2">2. フェーズ定義と完了条件</a>
+  <a href="#r3">3. 週次マイルストーン</a>
+  <a href="#r4">4. 常駐2週間のデイリープラン</a>
+  <a href="#r5">5. 10月・11月以降</a>
+</aside>
+
+<main class="content">
+
+<div class="doc-head">
+  <div class="label">OPTAGE × WANDERLUST ── FDE TRANSFORMATION</div>
+  <h1>FDE化構想 8〜9月ロードマップ<br>（FY26下期 進行計画・詳細版）</h1>
+  <div class="meta">2026.08.01 作成 ｜ 前提: 契約期間 8/1〜9/30、8/6(木)から2週間 現地常駐（〜8/19）、以降 週2日常駐＋非常駐日は毎日1h定例、9月末 役員会</div>
+  <div class="caution">8〜9月の成果物は「答え」ではなく <strong>補正済みのゴール仮説＋論点の全量＋PoC計画書</strong>。役員会が判断するのはPoC計画への投資。</div>
+</div>
+
+<!-- ============ 1 ============ -->
+<section id="r1">
+  <h2>1. 全体ロードマップ（一枚絵）</h2>
+  <p class="gov">①ゴールの器が正しいか → ②問いを全部並べる → ③机上で埋まるものを埋める → ④残った問いの検証計画を作る → ◆計画への投資判断 → 実行。</p>
+
+  <div class="rm-scroll"><div class="rm">
+    <div class="rm-months">
+      <div class="rm-month">FY26 8月<small>常駐2週間(8/6-8/19) → 週2常駐＋毎日1h定例</small></div>
+      <div class="rm-month">9月<small>週2常駐＋毎日1h定例 ／ 月末に役員会</small></div>
+      <div class="rm-month">10月<small>投資意思決定</small></div>
+      <div class="rm-month">11月〜<small>実行フェーズ</small></div>
+    </div>
+
+    <div class="rm-lane-label">体制</div>
+    <div class="rm-row">
+      <div class="rm-bar b-body" style="grid-column:1/4;">常駐2週間<small>8/6〜8/19</small></div>
+      <div class="rm-bar b-body" style="grid-column:4/13;">週2日常駐 ＋ 非常駐日は毎日1hの定例</div>
+      <div class="rm-bar b-next" style="grid-column:13/25;">FY27体制の準備 → PoC実行体制</div>
+    </div>
+
+    <div class="rm-lane-label">仕事（4フェーズ）</div>
+    <div class="rm-row">
+      <div class="rm-bar b1" style="grid-column:1/4;">① 数字・FDE定義の妥当性整理<small>空欄埋め・仮説の壁打ち</small></div>
+    </div>
+    <div class="rm-row">
+      <div class="rm-bar b2" style="grid-column:2/4;">② 論点を上げ切る<small>S/H/C/P表のfix</small></div>
+    </div>
+    <div class="rm-row">
+      <div class="rm-bar b3" style="grid-column:3/10;">③ リサーチ実行（PoC不要のもの）<small>OPT側=原価・パイプライン ／ WL側=相場・ベンチマーク</small></div>
+    </div>
+    <div class="rm-row">
+      <div class="rm-bar b4" style="grid-column:4/12;">④ PoC具体案の作成<small>何を・いつ・誰と・いくらで（PoC計画書）</small></div>
+    </div>
+
+    <div class="rm-lane-label">政治・意思決定</div>
+    <div class="rm-row">
+      <div class="rm-bar b-pol" style="grid-column:2/3;">キーマン顔合わせ</div>
+      <div class="rm-bar b-pol" style="grid-column:9/12;">事前ブリーフ<small>推進部・本部長級</small></div>
+      <div class="rm-bar rm-gate" style="grid-column:12/13;">◆役員会</div>
+      <div class="rm-bar b-pol" style="grid-column:13/17;">投資意思決定<small>稟議・予算化・体制確保</small></div>
+      <div class="rm-bar b-next" style="grid-column:17/25;">PoC実行で論点を埋める（PoC-1〜4）</div>
+    </div>
+
+    <div class="rm-legend">
+      <span><i style="background:var(--ph1)"></i>①妥当性整理</span>
+      <span><i style="background:var(--ph2)"></i>②論点上げ切り</span>
+      <span><i style="background:var(--ph3)"></i>③リサーチ</span>
+      <span><i style="background:var(--ph4)"></i>④PoC計画</span>
+      <span><i style="background:#b8860b"></i>政治・合意形成</span>
+      <span><i style="background:var(--gate)"></i>◆意思決定ゲート</span>
+    </div>
+  </div></div>
+  <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+  <p class="footnote">10月は投資意思決定と並行してFDE以外のアジェンダ（全体戦略・自社サービス）に取り組む。11月〜は8〜9月に作った計画の実行。</p>
+</section>
+
+<!-- ============ 2 ============ -->
+<section id="r2">
+  <h2>2. フェーズ定義と完了条件</h2>
+  <p class="gov">各フェーズに完了条件（成果物）を置き、遅延を早期検知する。</p>
+  <div class="tbl-wrap"><table class="mck">
+    <tr><th style="width:15%">フェーズ</th><th style="width:15%">期間</th><th>やること</th><th style="width:26%">完了条件（成果物）</th></tr>
+    <tr><td class="ms">① 妥当性整理</td><td>8/6〜8/19<br>（常駐）</td><td>ペーパーv1を壁打ちにかけ、FY26現状PLの空欄（単価・稼働率・人件費・M365数字）を埋める。FDE定義・セクター分類・ゴール数字の合意</td><td><strong>v1.1</strong>（空欄が実数で埋まり、定義に先方の合意が付いた版）</td></tr>
+    <tr><td class="ms">② 論点上げ切り</td><td>8/13〜8/19<br>（常駐後半）</td><td>S/H/C/P論点表を先方と一緒に叩き、抜けている論点を追加して確定</td><td><strong>論点表fix版</strong>（先方と共同所有の状態）</td></tr>
+    <tr><td class="ms">③ リサーチ</td><td>8/20〜9/12</td><td>リサーチで閉じる論点（S-3稼働率・S-4需要・H-5育成費用・C-1給与・P-1原価分解）を実行</td><td><strong>リサーチ結果 → 数字補正版（v1.2）</strong></td></tr>
+    <tr><td class="ms">④ PoC具体案作成</td><td>8/24〜9/19</td><td>PoC-1〜4を通貫1案件に落とす: 候補顧客・候補人材・スケジュール・費用・成功指標・撤退条件</td><td><strong>PoC計画書</strong>（役員会の意思決定対象）</td></tr>
+    <tr class="accent"><td class="ms">◆ 役員会</td><td>9月末</td><td>「FY27をこのPoC計画の検証に使う」ことの投資判断</td><td><strong>承認</strong></td></tr>
+  </table></div>
+  <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section id="r3">
+  <h2>3. 週次マイルストーン</h2>
+  <p class="gov">週末時点で「何ができているか」で進捗を管理する。祝日（8/11・9/21・9/22）を織り込み済み。</p>
+  <div class="tbl-wrap"><table class="mck">
+    <tr><th style="width:6%">週</th><th style="width:15%">日付</th><th style="width:9%">稼働</th><th>主なアクション</th><th style="width:24%">週末時点のマイルストーン</th></tr>
+    <tr><td class="ctr">W0</td><td>8/3(月)〜8/5(水)</td><td class="ctr">WL内</td><td>ペーパー進化ver準備／ヒアリング設計・依頼リスト確定／<strong>8/4 AX定例</strong>で常駐スケジュールとアポ依頼を通す</td><td class="ms">常駐初日に出す「確認・依頼リスト」完成</td></tr>
+    <tr class="accent"><td class="ctr">W1</td><td>8/6(木)〜8/7(金)</td><td class="ctr"><strong>常駐</strong></td><td>キックオフ壁打ち（森さん・白川さん・寺崎さん）／確認①ゴール数字・確認②セクター分類／データ依頼提出</td><td class="ms">FDE定義・対象範囲の初回合意</td></tr>
+    <tr class="accent"><td class="ctr">W2</td><td>8/10(月)〜8/14(金)<br><span style="font-size:11px;">※8/11 祝</span></td><td class="ctr"><strong>常駐</strong></td><td>現場ヒアリング集中週: SI第1部・第2部（案件・原価）／M365部隊（現業・数字）／営業ライン（顧客AIニーズ）／<strong>SI&amp;AXビジネス推進部キーマン顔合わせ</strong></td><td class="ms">FY26現状PLの空欄が概ね埋まる</td></tr>
+    <tr class="accent"><td class="ctr">W3</td><td>8/17(月)〜8/19(水)</td><td class="ctr"><strong>常駐</strong></td><td>ENOUR平山さんヒアリング／スキル分布・候補人材の当たり／<strong>論点上げ切りセッション</strong>（先方と共同で論点表fix）</td><td class="ms">常駐総括: v1.1＋論点表fix＋PoC候補案件ロングリスト</td></tr>
+    <tr><td class="ctr">W3'</td><td>8/20(木)〜8/21(金)</td><td class="ctr">週2＋定例</td><td>リサーチ着手（分担: OPT側=原価・パイプライン、WL側=市場相場・他社FDE・稼働率ベンチ）</td><td class="ms">リサーチ計画の走り出し</td></tr>
+    <tr><td class="ctr">W4</td><td>8/24(月)〜8/28(金)</td><td class="ctr">週2＋定例</td><td>リサーチ継続／<strong>PoC設計開始</strong>: 候補顧客の絞り込み（3社→2社）・候補人材の非公式打診</td><td class="ms">PoC骨子（誰と・何を・いつ）</td></tr>
+    <tr><td class="ctr">W5</td><td>8/31(月)〜9/4(金)</td><td class="ctr">週2＋定例</td><td>リサーチ一巡 → <strong>数字の補正（v1.2）</strong>／PoC計画書ドラフト（体制・費用・成功指標・撤退条件）</td><td class="ms">v1.2 ＋ PoC計画書ドラフト</td></tr>
+    <tr><td class="ctr">W6</td><td>9/7(月)〜9/11(金)</td><td class="ctr">週2＋定例</td><td>PoC計画の社内すり合わせ（推進部・人材の出し手と）／役員会資料の骨子着手</td><td class="ms">PoC計画に推進部の内諾</td></tr>
+    <tr><td class="ctr">W7</td><td>9/14(月)〜9/18(金)</td><td class="ctr">週2＋定例</td><td><strong>役員会資料ドラフト</strong> → 森さん・菅野部長レビュー／百々副本部長・本部長級への<strong>事前ブリーフ</strong>開始</td><td class="ms">資料ドラフト ＋ キーマンの懸念吸収</td></tr>
+    <tr><td class="ctr">W8</td><td>9/23(水)〜9/25(金)<br><span style="font-size:11px;">※9/21・9/22 祝</span></td><td class="ctr">週2＋定例</td><td>資料fix／事前ブリーフ完了（<strong>役員会を追認の場にする</strong>）</td><td class="ms">役員会前夜の状態完成</td></tr>
+    <tr class="accent"><td class="ctr">W9</td><td>9/28(月)〜9/30(水)</td><td class="ctr">—</td><td><strong>◆役員会: PoC計画への投資判断</strong></td><td class="ms">承認 → 10月へ</td></tr>
+  </table></div>
+  <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section id="r4">
+  <h2>4. 常駐2週間のデイリープラン（例・アポ次第で入れ替え）</h2>
+  <p class="gov">常駐期間の使命は「社内でしか聞けないもの」を固め切ること。WLで進められるものは常駐外に回す。</p>
+
+  <div class="tbl-wrap"><table class="mck">
+    <tr><th style="width:14%">日</th><th>内容</th><th style="width:26%">相手</th></tr>
+    <tr><td class="ms">8/6(木)</td><td>キックオフ: ゴール仮説v1の壁打ち#1（事実の問い中心）／役員会日程・依頼リスト提示</td><td>森さん・白川さん・寺崎さん</td></tr>
+    <tr><td class="ms">8/7(金)</td><td>確認①ゴール数字・確認②セクター分類／FY26現状PLの空欄埋めワーク開始（データ依頼）</td><td>AXソリューション部コア</td></tr>
+    <tr><td class="ms">8/10(月)</td><td>SI第1部・第2部ヒアリング（案件ポートフォリオ・単価・稼働・開発標準）</td><td>SI部部長級・現場</td></tr>
+    <tr><td class="dim">8/11(火)</td><td class="dim">（山の日）</td><td class="dim">—</td></tr>
+    <tr><td class="ms">8/12(水)</td><td>M365部隊ヒアリング（現業の数字・FDE組み込みの当たり）／壁打ち#2: v1修正版</td><td>M365チーム・森さん</td></tr>
+    <tr><td class="ms">8/13(木)</td><td>顧客AIニーズ・案件パイプラインの棚卸し</td><td>営業ライン（森さん経由）</td></tr>
+    <tr><td class="ms">8/14(金)</td><td><strong>SI&amp;AXビジネス推進部キーマン顔合わせ</strong>（KPI・懸念・協力条件を先に聞く）／品質保証・検収プロセスヒアリング</td><td>推進部・品質部門</td></tr>
+    <tr><td class="ms">8/17(月)</td><td>ENOUR平山さんヒアリング（現場発サービス化の実例）／AI-WGスキル分布・候補人材</td><td>平山さん・AI-WG</td></tr>
+    <tr><td class="ms">8/18(火)</td><td>論点表の上げ切りセッション（S/H/C/P表を先方と叩く）※事前に飯野さんレビュー</td><td>森さん・白川さん・寺崎さん</td></tr>
+    <tr class="accent"><td class="ms">8/19(水)</td><td><strong>常駐総括</strong>: v1.1確定・リサーチ分担合意・PoC候補案件ロングリスト・以降の定例設計</td><td>AXソリューション部コア</td></tr>
+  </table></div>
+  <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+
+  <h3>常駐2週間で固め切る「社内でしか聞けない」リスト</h3>
+  <div class="tbl-wrap"><table class="mck">
+    <tr><th style="width:6%">#</th><th>項目</th><th style="width:30%">接続先の論点</th></tr>
+    <tr><td class="ctr">1</td><td>FY26現状PLの実数（単価・稼働率・人数・人件費・M365売上粗利）</td><td>1-1のPL空欄／C-1</td></tr>
+    <tr><td class="ctr">2</td><td>案件ポートフォリオと原価構造（粗利ゼロの要因）</td><td>P-1</td></tr>
+    <tr><td class="ctr">3</td><td>スキル分布・FDE候補人材の当たり</td><td>H-1・H-2</td></tr>
+    <tr><td class="ctr">4</td><td>顧客別AIニーズ・パイプライン</td><td>S-4</td></tr>
+    <tr><td class="ctr">5</td><td>開発標準・品質保証・検収の実態</td><td>S-2（PoC-2の制約条件）</td></tr>
+    <tr><td class="ctr">6</td><td>SI&amp;AXビジネス推進部のKPIと懸念</td><td>H-1（協力条件）</td></tr>
+    <tr><td class="ctr">7</td><td>役員会の日程・形式・キーマン</td><td>逆算スケジュールの起点</td></tr>
+  </table></div>
+  <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
+
+  <div class="notebox"><strong>WL側で並行して進めるもの（常駐外・定例で報告）</strong>: 市場相場（他社FDE単価・AIプロダクト営利）／WLのAI駆動開発効率化実績値の整理／稼働率ベンチマーク／育成カリキュラムの設計たたき</div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section id="r5">
+  <h2>5. 10月・11月以降</h2>
+  <p class="gov">10月＝意思決定と次アジェンダ、11月〜＝8〜9月に作った計画の実行。</p>
+  <div class="tbl-wrap"><table class="mck">
+    <tr><th style="width:14%">期間</th><th>内容</th></tr>
+    <tr><td class="ms">10月</td><td><strong>投資意思決定</strong>（役員会承認 → 稟議・予算化・PoC体制の正式確保＝候補人材のアサイン確定）／並行して<strong>FDE以外のアジェンダ</strong>に取り組む（全体戦略＝寺崎さんライン・自社サービス＝内海さんラインの検討支援）</td></tr>
+    <tr><td class="ms">11月〜</td><td><strong>8〜9月に作った計画の実行フェーズ</strong>: PoC通貫1案件を開始（上流案件→PoC案件→開発案件）し、PoC-1〜4で論点（単価受容・開発効率・育成・実収支）を実測で埋めていく。リサーチ残と型（テンプレ・育成記録）の蓄積も並行</td></tr>
+  </table></div>
+
+  <div class="keybox" style="margin-top:22px;">ゴール・論点・PoCの中身は → <a href="fde-goal-paper.html" style="color:var(--fde);font-weight:700;">FDE化による売上・粗利改善計画（ゴール仮説ペーパー v1）</a></div>
+</section>
+
+</main>
+</div>
+
+<script>
+const links=[...document.querySelectorAll('.sidebar a')];
+const targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+function spy(){
+  let cur=targets[0];
+  for(const t of targets){ if(t.getBoundingClientRect().top<120) cur=t; }
+  links.forEach(a=>a.classList.toggle('current',a.getAttribute('href')==='#'+cur.id));
+}
+document.addEventListener('scroll',spy,{passive:true}); spy();
+</script>
+</body>
+</html>
