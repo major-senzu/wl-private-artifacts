@@ -63,23 +63,28 @@ table.mck td.ms{font-weight:700;color:var(--text);}
 .notebox{background:#f4f6f8;border:1px solid #c9d2dc;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:12.5px;color:var(--text-muted);}
 .swipe-hint{display:none;text-align:center;font-size:10px;color:var(--text-dim);margin:4px 0 16px;letter-spacing:.04em;}
 
-/* ===== roadmap chart ===== */
-.rm-scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px 18px 14px;margin:12px 0 4px;}
-.rm{min-width:960px;}
-.rm-months{display:grid;grid-template-columns:2fr 2fr 1fr 1fr;gap:4px;margin-bottom:8px;}
-.rm-month{background:var(--slate);color:#fff;text-align:center;font-weight:700;font-size:12.5px;padding:7px 4px;border-radius:5px;}
-.rm-month small{display:block;font-weight:400;font-size:10.5px;opacity:.8;}
-.rm-lane-label{font-size:11px;font-weight:700;color:var(--text-dim);letter-spacing:.06em;margin:10px 0 4px;}
-.rm-row{display:grid;grid-template-columns:repeat(24,1fr);gap:3px;margin-bottom:5px;}
-.rm-bar{border-radius:4px;padding:6px 8px;font-size:11px;font-weight:700;color:#fff;line-height:1.45;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.rm-bar small{display:block;font-weight:400;font-size:10px;opacity:.9;}
-.b1{background:var(--ph1);} .b2{background:var(--ph2);} .b3{background:var(--ph3);} .b4{background:var(--ph4);}
-.b-body{background:#8a94a3;} .b-pol{background:#b8860b;}
-.b-next{background:#eef0f3;color:var(--slate);border:1.5px dashed #9aa3af;}
-.rm-gate{background:var(--gate);}
+/* ===== gantt chart ===== */
+.gantt-scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 16px 12px;margin:12px 0 4px;}
+table.gantt{border-collapse:collapse;min-width:1060px;width:100%;font-size:11.5px;}
+table.gantt th{background:var(--slate);color:#fff;font-weight:700;padding:6px 4px;text-align:center;font-size:11px;line-height:1.4;border:1px solid #4a5568;}
+table.gantt th.mon{font-size:12.5px;letter-spacing:.04em;}
+table.gantt th.goalcol{background:var(--gate);}
+table.gantt td{border:1px solid #dfe4ea;padding:0;height:40px;vertical-align:middle;}
+table.gantt td.sec{background:#eef1f5;font-weight:700;text-align:center;width:36px;color:var(--slate);padding:4px 6px;font-size:11px;line-height:1.5;border:1px solid #c9d2dc;}
+table.gantt td.step{background:#f8f9fa;font-weight:600;padding:6px 10px;width:210px;line-height:1.5;color:var(--text);font-size:11.5px;border:1px solid #c9d2dc;}
+table.gantt td.wk{border-left:1px dashed #c9d2dc;border-right:1px dashed #c9d2dc;min-width:76px;background:#fff;}
+.gbar{margin:5px 3px;padding:5px 18px 5px 10px;color:#fff;font-weight:700;font-size:11px;line-height:1.4;clip-path:polygon(0 0,calc(100% - 11px) 0,100% 50%,calc(100% - 11px) 100%,0 100%);text-align:center;white-space:nowrap;overflow:hidden;}
+.gbar small{font-weight:400;font-size:10px;opacity:.92;margin-left:4px;}
+.g1{background:var(--ph1);} .g2{background:var(--ph2);} .g3{background:var(--ph3);} .g4{background:var(--ph4);}
+.gbody{background:#8a94a3;} .gpol{background:#b8860b;} .gdoc{background:#5b7191;}
+.ggoal{background:var(--gate);clip-path:none;border-radius:4px;margin:4px 3px;padding:6px 6px;}
 .rm-legend{display:flex;flex-wrap:wrap;gap:12px;font-size:11px;color:var(--text-muted);margin-top:10px;}
 .rm-legend span{display:inline-flex;align-items:center;gap:5px;}
 .rm-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;}
+.next-strip{display:flex;gap:10px;align-items:stretch;margin-top:12px;flex-wrap:wrap;font-size:11.5px;}
+.next-strip .arrow{align-self:center;color:var(--text-dim);font-size:16px;font-weight:700;}
+.next-box{flex:1;min-width:220px;border:1.5px dashed #9aa3af;border-radius:6px;padding:8px 12px;background:#f8f9fa;color:var(--text-muted);line-height:1.7;}
+.next-box b{color:var(--slate);}
 
 @media(max-width:900px){
   .sidebar{display:none;}
@@ -121,55 +126,102 @@ table.mck td.ms{font-weight:700;color:var(--text);}
   <h2>1. 全体ロードマップ（一枚絵）</h2>
   <p class="gov">①ゴールの器が正しいか → ②問いを全部並べる → ③机上で埋まるものを埋める → ④残った問いの検証計画を作る → ◆計画への投資判断 → 実行。</p>
 
-  <div class="rm-scroll"><div class="rm">
-    <div class="rm-months">
-      <div class="rm-month">FY26 8月<small>常駐2週間(8/6-8/19) → 週2常駐＋毎日1h定例</small></div>
-      <div class="rm-month">9月<small>週2常駐＋毎日1h定例 ／ 月末に役員会</small></div>
-      <div class="rm-month">10月<small>投資意思決定</small></div>
-      <div class="rm-month">11月〜<small>実行フェーズ</small></div>
-    </div>
+  <div class="gantt-scroll">
+    <table class="gantt">
+      <tr>
+        <th rowspan="2" style="width:36px;">区分</th>
+        <th rowspan="2" style="width:210px;">ステップ・検討作業</th>
+        <th class="mon" colspan="4">FY26 8月</th>
+        <th class="mon" colspan="5">9月</th>
+      </tr>
+      <tr>
+        <th>8/3週</th><th>8/10週<br><span style="font-weight:400;font-size:10px;">※8/11祝</span></th><th>8/17週</th><th>8/24週</th>
+        <th>8/31週</th><th>9/7週</th><th>9/14週</th><th>9/21週<br><span style="font-weight:400;font-size:10px;">※祝2日</span></th><th class="goalcol">9/28週<br><span style="font-weight:400;font-size:10px;">役員会</span></th>
+      </tr>
 
-    <div class="rm-lane-label">体制</div>
-    <div class="rm-row">
-      <div class="rm-bar b-body" style="grid-column:1/4;">常駐2週間<small>8/6〜8/19</small></div>
-      <div class="rm-bar b-body" style="grid-column:4/13;">週2日常駐 ＋ 非常駐日は毎日1hの定例</div>
-      <div class="rm-bar b-next" style="grid-column:13/25;">FY27体制の準備 → PoC実行体制</div>
-    </div>
+      <!-- 1 体制・準備 -->
+      <tr>
+        <td class="sec" rowspan="2">1<br>体制・準備</td>
+        <td class="step">事前準備（WL内・8/4 AX定例でアポ依頼）</td>
+        <td class="wk"><div class="gbar gbody">依頼リスト</div></td>
+        <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+      </tr>
+      <tr>
+        <td class="step">稼働体制</td>
+        <td class="wk" colspan="3"><div class="gbar gbody">現地常駐（8/6〜8/19）</div></td>
+        <td class="wk" colspan="6"><div class="gbar gbody">週2日常駐 ＋ 非常駐日は毎日1h定例</div></td>
+      </tr>
 
-    <div class="rm-lane-label">仕事（4フェーズ）</div>
-    <div class="rm-row">
-      <div class="rm-bar b1" style="grid-column:1/4;">① 数字・FDE定義の妥当性整理<small>空欄埋め・仮説の壁打ち</small></div>
-    </div>
-    <div class="rm-row">
-      <div class="rm-bar b2" style="grid-column:2/4;">② 論点を上げ切る<small>S/H/C/P表のfix</small></div>
-    </div>
-    <div class="rm-row">
-      <div class="rm-bar b3" style="grid-column:3/10;">③ リサーチ実行（PoC不要のもの）<small>OPT側=原価・パイプライン ／ WL側=相場・ベンチマーク</small></div>
-    </div>
-    <div class="rm-row">
-      <div class="rm-bar b4" style="grid-column:4/12;">④ PoC具体案の作成<small>何を・いつ・誰と・いくらで（PoC計画書）</small></div>
-    </div>
+      <!-- 2 検討作業 -->
+      <tr>
+        <td class="sec" rowspan="5">2<br>検討作業</td>
+        <td class="step">① 数字・FDE定義の妥当性整理（空欄埋め・仮説の壁打ち）</td>
+        <td class="wk" colspan="3"><div class="gbar g1">壁打ち・空欄埋め → v1.1</div></td>
+        <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+      </tr>
+      <tr>
+        <td class="step">② 論点を上げ切る（S/H/C/P表のfix）</td>
+        <td class="wk"></td>
+        <td class="wk" colspan="2"><div class="gbar g2">論点表fix</div></td>
+        <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+      </tr>
+      <tr>
+        <td class="step">③ リサーチ実行（PoC不要の論点）</td>
+        <td class="wk"></td><td class="wk"></td>
+        <td class="wk" colspan="4"><div class="gbar g3">OPT側＝原価・パイプライン ／ WL側＝相場・ベンチ → v1.2</div></td>
+        <td class="wk"></td><td class="wk"></td><td class="wk"></td>
+      </tr>
+      <tr>
+        <td class="step">④ PoC具体案の作成（何を・いつ・誰と・いくらで）</td>
+        <td class="wk"></td><td class="wk"></td><td class="wk"></td>
+        <td class="wk" colspan="4"><div class="gbar g4">候補顧客・人材・費用・撤退条件 → PoC計画書</div></td>
+        <td class="wk"></td><td class="wk"></td>
+      </tr>
+      <tr>
+        <td class="step">役員会資料の作成</td>
+        <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+        <td class="wk" colspan="2"><div class="gbar gdoc">ドラフト → fix</div></td>
+        <td class="wk"></td>
+      </tr>
 
-    <div class="rm-lane-label">政治・意思決定</div>
-    <div class="rm-row">
-      <div class="rm-bar b-pol" style="grid-column:2/3;">キーマン顔合わせ</div>
-      <div class="rm-bar b-pol" style="grid-column:9/12;">事前ブリーフ<small>推進部・本部長級</small></div>
-      <div class="rm-bar rm-gate" style="grid-column:12/13;">◆役員会</div>
-      <div class="rm-bar b-pol" style="grid-column:13/17;">投資意思決定<small>稟議・予算化・体制確保</small></div>
-      <div class="rm-bar b-next" style="grid-column:17/25;">PoC実行で論点を埋める（PoC-1〜4）</div>
-    </div>
+      <!-- 3 合意形成 -->
+      <tr>
+        <td class="sec" rowspan="3">3<br>合意形成</td>
+        <td class="step">SI&amp;AXビジネス推進部 キーマン顔合わせ</td>
+        <td class="wk"></td>
+        <td class="wk"><div class="gbar gpol">8/14</div></td>
+        <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+      </tr>
+      <tr>
+        <td class="step">事前ブリーフ（推進部・本部長級）</td>
+        <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+        <td class="wk" colspan="2"><div class="gbar gpol">懸念の吸収 → 追認の場づくり</div></td>
+        <td class="wk"></td>
+      </tr>
+      <tr>
+        <td class="step"><strong>◆ 役員会（最終ゴール）</strong></td>
+        <td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td><td class="wk"></td>
+        <td class="wk"><div class="gbar ggoal">◆ 投資判断</div></td>
+      </tr>
+    </table>
 
     <div class="rm-legend">
       <span><i style="background:var(--ph1)"></i>①妥当性整理</span>
       <span><i style="background:var(--ph2)"></i>②論点上げ切り</span>
       <span><i style="background:var(--ph3)"></i>③リサーチ</span>
       <span><i style="background:var(--ph4)"></i>④PoC計画</span>
-      <span><i style="background:#b8860b"></i>政治・合意形成</span>
-      <span><i style="background:var(--gate)"></i>◆意思決定ゲート</span>
+      <span><i style="background:#5b7191"></i>役員会資料</span>
+      <span><i style="background:#b8860b"></i>合意形成</span>
+      <span><i style="background:var(--gate)"></i>◆最終ゴール（9月末 役員会）</span>
     </div>
-  </div></div>
+
+    <div class="next-strip">
+      <span class="arrow">&#8627;</span>
+      <div class="next-box"><b>10月:</b> 投資意思決定（稟議・予算化・PoC体制の正式確保）＋ FDE以外のアジェンダ（全体戦略・自社サービス）</div>
+      <div class="next-box"><b>11月〜:</b> 8〜9月に作った計画の実行 — PoC通貫1案件でPoC-1〜4（単価受容・開発効率・育成・実収支）を実測</div>
+    </div>
+  </div>
   <div class="swipe-hint">&larr; スワイプで全体を表示 &rarr;</div>
-  <p class="footnote">10月は投資意思決定と並行してFDE以外のアジェンダ（全体戦略・自社サービス）に取り組む。11月〜は8〜9月に作った計画の実行。</p>
 </section>
 
 <!-- ============ 2 ============ -->
