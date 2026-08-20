@@ -1310,6 +1310,121 @@ body {
   .plv-arrow { display: none; }
 }
 
+
+/* ===== 業務内容マップページ ===== */
+.dt-hero {
+  max-width: 1180px; margin: 0 auto 22px; padding: 22px 24px;
+  background: #26303c; border-radius: 14px; color: #fff;
+}
+.dt-hero .dth-label {
+  font-family: 'Poppins', sans-serif; font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: #92a6bf; margin-bottom: 9px;
+}
+.dt-hero h1 { font-size: 20px; font-weight: 700; line-height: 1.45; margin-bottom: 11px; }
+.dt-hero p { font-size: 12.5px; line-height: 1.9; color: #ccd6e2; }
+.dt-hero p strong { color: #fff; }
+.dt-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(112px, 1fr)); gap: 9px; margin-top: 18px; }
+.dt-stat { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 9px; padding: 11px 12px; text-align: center; }
+.dt-stat .n { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 700; line-height: 1; }
+.dt-stat .l { font-size: 9.5px; color: #92a6bf; margin-top: 6px; line-height: 1.5; }
+
+.dt-legend {
+  max-width: 1180px; margin: 0 auto 22px; padding: 14px 17px;
+  background: var(--surface); border: 1px solid var(--border-light); border-radius: 10px;
+}
+.dt-legend .dtl-h { font-size: 12px; font-weight: 700; margin-bottom: 10px; }
+.dt-legend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 8px 20px; }
+.dt-legend-item { display: flex; gap: 9px; align-items: baseline; font-size: 11.5px; color: var(--text-muted); line-height: 1.6; }
+
+.dc-lv {
+  flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center;
+  min-width: 19px; height: 19px; padding: 0 5px; border-radius: 5px;
+  font-size: 11px; font-weight: 700; line-height: 1;
+}
+.dc-lv.lv-a { background: #e3f0e7; color: #1e6b45; border: 1px solid #a9cdb8; }
+.dc-lv.lv-b { background: #e8f0fb; color: #2f5fa8; border: 1px solid #b9cdea; }
+.dc-lv.lv-c { background: #fdf3ea; color: #a8501c; border: 1px solid #efc9ab; }
+.dc-lv.lv-d { background: #f4f4f4; color: #8a8a8a; border: 1px solid #dcdcdc; }
+
+.dt-hq { max-width: 1180px; margin: 0 auto 26px; }
+.dt-hq-head {
+  display: flex; align-items: baseline; gap: 11px; flex-wrap: wrap;
+  padding: 12px 16px; background: #1e2733; color: #fff; border-radius: 10px 10px 0 0;
+}
+.dt-hq-head .dth-n {
+  font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 700;
+  background: rgba(255,255,255,.16); border-radius: 5px; padding: 2px 7px;
+}
+.dt-hq-head .dth-name { font-size: 15px; font-weight: 700; }
+.dt-hq-head .dth-meta { font-size: 10.5px; color: #9fb2c9; line-height: 1.6; }
+.dt-hq-head .dth-biz {
+  font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px;
+  background: #f0b27a; color: #4a2a10;
+}
+.dt-hq-head .dth-biz.biz-cost { background: rgba(255,255,255,.16); color: #cdd6e2; }
+.dt-hq-body {
+  background: #f2f3f4; border: 1px solid var(--border-light); border-top: none;
+  border-radius: 0 0 10px 10px; padding: 14px;
+}
+.dt-div {
+  background: #e6e8ea; border-radius: 8px; padding: 10px 12px; margin-bottom: 12px;
+}
+.dt-div:last-child { margin-bottom: 0; }
+.dt-div-h { font-size: 12.5px; font-weight: 700; margin-bottom: 9px; display: flex; gap: 9px; align-items: baseline; flex-wrap: wrap; }
+.dt-div-h .ddh-sub { font-size: 10px; color: #6b7280; font-weight: 400; }
+.dt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 10px; }
+
+.dt-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 9px;
+  padding: 13px 15px;
+}
+.dt-card.dc-new { border-color: var(--hl-new); border-width: 1.5px; background: #fffaf5; }
+.dt-card.dc-wl { border-color: var(--hl-main); border-width: 2px; background: var(--hl-main-bg); }
+.dt-card.dc-unknown { background: #fafafa; border-style: dashed; }
+.dc-path { font-size: 9px; color: var(--text-dim); letter-spacing: 0.02em; margin-bottom: 4px; }
+.dc-top { display: flex; align-items: baseline; gap: 7px; flex-wrap: wrap; margin-bottom: 9px; }
+.dc-name { font-size: 13.5px; font-weight: 700; line-height: 1.35; }
+.dc-tag {
+  font-size: 9px; font-weight: 700; color: #fff; padding: 2px 6px; border-radius: 4px; white-space: nowrap;
+}
+.dc-tag.t-new { background: var(--hl-new); }
+.dc-tag.t-ren { background: #7c6f5f; }
+.dc-tag.t-wl { background: var(--hl-main); }
+.dc-tag.t-poc { background: var(--hl-poc1); }
+.dc-tag.t-poc2 { background: var(--hl-poc2); }
+.dc-body { font-size: 11.5px; line-height: 1.85; color: var(--text-muted); }
+.dc-body strong { color: var(--text); }
+.dc-rows { margin-top: 9px; display: flex; flex-direction: column; gap: 0; }
+.dc-rows .r { display: grid; grid-template-columns: 62px 1fr; gap: 8px; padding: 5px 0; border-top: 1px solid var(--border-light); font-size: 11px; line-height: 1.7; }
+.dc-rows .r .k { color: var(--text-dim); font-weight: 500; }
+.dc-rows .r .v { color: var(--text-muted); }
+.dc-rows .r .v strong { color: var(--text); }
+.dc-src { margin-top: 9px; font-size: 9.5px; color: #8b96a3; line-height: 1.7; word-break: break-all; font-family: 'Poppins', sans-serif; }
+.dc-none { font-size: 11.5px; color: var(--text-dim); line-height: 1.8; }
+
+.dt-diff-tabs { max-width: 1180px; margin: 0 auto 12px; display: flex; gap: 7px; flex-wrap: wrap; }
+.dt-dtab {
+  padding: 7px 13px; border: 1.5px solid var(--border); border-radius: 20px; background: var(--surface);
+  font-size: 11.5px; font-weight: 700; cursor: pointer; color: var(--text-muted);
+}
+.dt-dtab.active { background: #1e2733; color: #fff; border-color: #1e2733; }
+.dt-dpane { display: none; }
+.dt-dpane.active { display: block; }
+.dt-fix {
+  max-width: 1180px; margin: 0 auto 14px; padding: 12px 15px;
+  background: #fbeeee; border: 1.5px solid #d9a3a3; border-radius: 9px;
+  font-size: 12px; line-height: 1.9; color: #6b2020;
+}
+.dt-fix strong { color: #8a2020; }
+.dt-fix .dtf-h { font-weight: 700; margin-bottom: 6px; font-size: 12.5px; }
+
+@media (max-width: 640px) {
+  .dt-hero { padding: 17px 15px; }
+  .dt-hero h1 { font-size: 16.5px; }
+  .dt-grid { grid-template-columns: 1fr; }
+  .dt-hq-body { padding: 10px; }
+}
+
 </style>
 </head>
 <body>
@@ -1320,7 +1435,9 @@ body {
   <button class="nav-btn active" onclick="navigateTo('home')"><span class="nav-icon">&#9632;</span> ホーム</button>
   <button class="nav-btn" onclick="navigateTo('orghome')"><span class="nav-icon">&#9670;</span> 組織図</button>
   <button class="nav-btn" onclick="navigateTo('execs')"><span class="nav-icon">&#9818;</span> 役員マップ</button>
+  <button class="nav-btn" onclick="navigateTo('duties')"><span class="nav-icon">&#9707;</span> 業務内容マップ</button>
   <button class="nav-btn" onclick="navigateTo('fde')"><span class="nav-icon">&#9673;</span> FDE化推進</button>
+  <button class="nav-btn" onclick="navigateTo('pl')"><span class="nav-icon">&#9645;</span> PL構造</button>
   <button class="nav-btn" onclick="navigateTo('bizmodel')"><span class="nav-icon">&#9650;</span> ビジネスモデル地図</button>
   <button class="nav-btn" onclick="navigateTo('meetings')"><span class="nav-icon">&#9202;</span> 会議リスト</button>
 </nav>
@@ -1331,7 +1448,9 @@ body {
     <button class="bnav-btn active" onclick="navigateTo('home')"><span class="bnav-icon">&#9632;</span>ホーム</button>
     <button class="bnav-btn" onclick="navigateTo('orghome')"><span class="bnav-icon">&#9670;</span>組織図</button>
     <button class="bnav-btn" onclick="navigateTo('execs')"><span class="bnav-icon">&#9818;</span>役員</button>
+    <button class="bnav-btn" onclick="navigateTo('duties')"><span class="bnav-icon">&#9707;</span>業務</button>
     <button class="bnav-btn" onclick="navigateTo('fde')"><span class="bnav-icon">&#9673;</span>FDE</button>
+    <button class="bnav-btn" onclick="navigateTo('pl')"><span class="bnav-icon">&#9645;</span>PL</button>
     <button class="bnav-btn" onclick="navigateTo('bizmodel')"><span class="bnav-icon">&#9650;</span>BM地図</button>
     <button class="bnav-btn" onclick="navigateTo('meetings')"><span class="bnav-icon">&#9202;</span>会議</button>
   </div>
@@ -1359,6 +1478,11 @@ body {
       <div class="pc-title">役員人事マップ</div>
       <div class="pc-desc">2026.07.01付 新役員体制 — 社長→本部長→副本部長のレイヤー構造・取締役会・監査役・人事異動ハイライト</div>
     </div>
+    <div class="portal-card" onclick="navigateTo('duties')">
+      <div class="pc-icon">&#9707;</div>
+      <div class="pc-title">業務内容マップ</div>
+      <div class="pc-desc">7本部・7部門・59部の「何をやっているか」を公開情報から復元。hrmos求人36件全件＋ベンダー導入事例＋ISO認証範囲から業務内容・顧客・技術・人物を組織単位で整理。2026.07組織改正の差分（新設16／消滅18）と判明度（&#9678;&#9711;&#9651;&#10005;）つき</div>
+    </div>
     <div class="portal-card" onclick="navigateTo('fde')">
       <div class="pc-icon">&#9673;</div>
       <div class="pc-title">FDE化推進支援</div>
@@ -1368,6 +1492,11 @@ body {
       <div class="pc-icon">&#9650;</div>
       <div class="pc-title">ビジネスモデル地図</div>
       <div class="pc-desc">関西電力グループ → オプテージ → 3事業 → SI＆AX → FDE の5階層地図。全セクターを「事業概要・売上・営利・営利率・純利・成長率・売上構造の式・コスト構造の式」の同じ枠で並べる</div>
+    </div>
+    <div class="portal-card" onclick="navigateTo('pl')">
+      <div class="pc-icon">&#9645;</div>
+      <div class="pc-title">PL構造</div>
+      <div class="pc-desc">本部が背負う数字と2035年目標。関西電力IR・長期ビジョン2035・決算資料から、単体10年推移／セグメント7年推移／FY2026の減益構造／FY2028の「谷」／3事業×本部対応／投資の非対称性を外部一次情報のみで構成。開示の限界マップとクライアントへの問い7本つき</div>
     </div>
     <div class="portal-card" onclick="navigateTo('meetings')">
       <div class="pc-icon">&#9202;</div>
@@ -3099,7 +3228,7 @@ body {
     <p class="lock-error" id="peopleLockError"></p>
   </div>
   <div id="peopleContent" style="display:none;"></div>
-  <script type="application/json" id="peopleEnc">{"s":"mfvx1eozL+XZXeBJY4Hd2w==","i":"p/pxZ2EqHQQmavfw","d":"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"}</script>
+  <script type="application/json" id="peopleEnc">{"s":"WcYxIgKK5lIl1oQCMzE4pA==","i":"iz1eZ/V7LRSMDvWi","d":"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"}</script>
 
 </div>
 
@@ -4041,6 +4170,1011 @@ body {
 
 
 
+
+<!-- ================================================================ -->
+<!-- PAGE: 業務内容マップ                                              -->
+<!-- ================================================================ -->
+<div class="page page-wide" id="page-duties">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigateTo('home')">&#8592; ホーム</button>
+    <h2><span class="pill overview">Duties</span> 業務内容マップ ― 各本部・部門・部・チームは何をやっているか</h2>
+  </div>
+
+  <div class="dt-hero">
+    <div class="dth-label">Optage Inc. / What Each Unit Actually Does</div>
+    <h1>7本部・7部門・59部 ― 全部署の業務内容を公開情報から特定する</h1>
+    <p>
+      オプテージの<strong>部レベルまでの組織構造は公式に100%公開</strong>されている（毎年7月1日付の組織改正プレスに組織図が添付される）。一方で<strong>「その部が何をやっているか」の公式記述はほぼ存在しない</strong>。
+      このページは <strong>hrmos採用サイトの求人36件全件</strong>（「配属予定部署」欄にチーム名まで明記される）、<strong>ベンダー導入事例</strong>（実名＋所属＋役職がフル表記される慣行）、<strong>ISO/ISMS/ITSMS認証の適用範囲ページ</strong>、公式サービスページ、社員インタビューを突き合わせて、<strong>業務内容を組織単位で復元したもの</strong>。
+      <strong>2026年7月1日付の最新組織</strong>に準拠し、判明しなかったものは「&#10005; 不明」と正直に記載している。
+    </p>
+    <div class="dt-stats">
+      <div class="dt-stat"><div class="n">7</div><div class="l">本部・室</div></div>
+      <div class="dt-stat"><div class="n">7</div><div class="l">部門</div></div>
+      <div class="dt-stat"><div class="n">59</div><div class="l">部・PG</div></div>
+      <div class="dt-stat"><div class="n">38</div><div class="l">業務内容 判明<br>（約64%）</div></div>
+      <div class="dt-stat"><div class="n">21</div><div class="l">業務内容 不明</div></div>
+      <div class="dt-stat"><div class="n">16</div><div class="l">2026.07<br>新設・改称</div></div>
+    </div>
+  </div>
+
+  <div class="dt-legend">
+    <div class="dtl-h">判明度の凡例 ― どこまでが事実で、どこからが推定か</div>
+    <div class="dt-legend-grid">
+      <div class="dt-legend-item"><span class="dc-lv lv-a">&#9678;</span><span><strong>確定</strong> ― 公式サイト・公式PR・認証機関の記述で業務が明記されている</span></div>
+      <div class="dt-legend-item"><span class="dc-lv lv-b">&#9711;</span><span><strong>確度高</strong> ― hrmos求人票の職務記述、またはベンダー導入事例に明記</span></div>
+      <div class="dt-legend-item"><span class="dc-lv lv-c">&#9651;</span><span><strong>推定</strong> ― 前身組織・組織上の位置・周辺情報からの推論。要確認</span></div>
+      <div class="dt-legend-item"><span class="dc-lv lv-d">&#10005;</span><span><strong>不明</strong> ― 公開情報に業務記述が一切存在しない。ヒアリング対象</span></div>
+    </div>
+    <div class="dt-legend-grid" style="margin-top:10px; padding-top:10px; border-top:1px solid var(--border-light);">
+      <div class="dt-legend-item"><span class="dc-tag t-new">新設</span><span>2026.07.01付で新設（組織図でオレンジ表示）</span></div>
+      <div class="dt-legend-item"><span class="dc-tag t-ren">改称</span><span>2026.07.01付で名称変更（旧名を併記）</span></div>
+      <div class="dt-legend-item"><span class="dc-tag t-wl">WL窓口</span><span>Wanderlust案件のメイン窓口</span></div>
+      <div class="dt-legend-item"><span class="dc-tag t-poc">PoC1</span><span class="dc-tag t-poc2" style="margin-right:6px;">PoC2</span><span>PoCの対象部署</span></div>
+    </div>
+  </div>
+
+  <div class="dt-fix">
+    <div class="dtf-h">&#9888; 従来の理解に対する訂正（一次情報で確認）</div>
+    <strong>①モバイル事業推進本部は2026.07新設ではない</strong> ― <strong>2024年7月1日付で新設</strong>（「モバイル事業のさらなる成長加速のために」と公式明記）。それまで各部署に散っていたmineo関連機能をほぼ全て集約し、約50名→本部規模約100名に拡大した。2026.07の新設は配下の<strong>モバイル事業アライアンスPGのみ</strong>。<br>
+    <strong>②経営監査室も2026.07新設ではない</strong> ― <strong>2024年7月1日付で新設</strong>（「内部統制強化を図るべく」と公式明記）。2026.07組織図では色付けなし。<br>
+    <strong>③DC技術部は技術本部の直轄</strong>（部門配下ではない）。<strong>④公共ソリューション部は旧「公共営業部」</strong>で、hrmos求人タイトルには今も旧称が残っている。<strong>⑤ネットワーク技術部門の内訳が判明</strong> ― 技術計画部／技術開発部／通信サービス設備部／電力通信設備部／無線鉄塔設備部の5部。
+  </div>
+
+  <div class="dt-diff-tabs">
+    <button class="dt-dtab active" onclick="dtTab('new',this)">2026.07 新設・改称（16）</button>
+    <button class="dt-dtab" onclick="dtTab('gone',this)">2025→2026 で消滅（18）</button>
+    <button class="dt-dtab" onclick="dtTab('map',this)">旧→新 の対応</button>
+  </div>
+
+  <div class="dt-dpane active" id="dtp-new">
+    <div class="table-wrap">
+      <table class="sim-table pl-table">
+        <thead><tr><th>組織</th><th>所属</th><th class="pl-c">区分</th><th class="memo">備考</th></tr></thead>
+        <tbody>
+          <tr><td>法人ソリューション部</td><td>ソリューション部門</td><td class="pl-c"><span class="dc-tag t-new">新設</span></td><td class="memo">旧「営業第1部＋営業第2部」の統合先とみられる（対応関係は非公表）</td></tr>
+          <tr><td>公共ソリューション部</td><td>ソリューション部門</td><td class="pl-c"><span class="dc-tag t-ren">改称</span></td><td class="memo">旧「公共営業部」</td></tr>
+          <tr><td>SI&amp;AXビジネス推進部</td><td>SI&amp;AXビジネス部門</td><td class="pl-c"><span class="dc-tag t-ren">改称</span></td><td class="memo">旧「SIビジネス推進部」。部門名も SI&amp;DX → <strong>SI&amp;AX</strong> に変更</td></tr>
+          <tr><td>SI&amp;AX営業部</td><td>SI&amp;AXビジネス部門</td><td class="pl-c"><span class="dc-tag t-new">新設</span></td><td class="memo">公開記述・求人ともゼロ。<strong>最も情報がない部</strong></td></tr>
+          <tr><td>法人システム部</td><td>SI&amp;AXビジネス部門</td><td class="pl-c"><span class="dc-tag t-ren">改称</span></td><td class="memo">旧「SI第1部」</td></tr>
+          <tr><td>公益システム部</td><td>SI&amp;AXビジネス部門</td><td class="pl-c"><span class="dc-tag t-ren">改称</span></td><td class="memo">旧「SI第2部」</td></tr>
+          <tr class="pl-hot"><td><strong>AXソリューション部</strong></td><td>SI&amp;AXビジネス部門</td><td class="pl-c"><span class="dc-tag t-ren">改称</span></td><td class="memo">旧「DXソリューション部」。<strong>WLのメイン窓口</strong></td></tr>
+          <tr><td>コンシューマ事業統括部</td><td>コンシューマ事業推進本部</td><td class="pl-c"><span class="dc-tag t-new">新設</span></td><td class="memo">業務内容の公開記述なし</td></tr>
+          <tr><td>コンシューマ事業運営部</td><td>コンシューマ事業推進本部</td><td class="pl-c"><span class="dc-tag t-new">新設</span></td><td class="memo">旧「サービス開発部＋メディア運営部」の統合先とみられる（推定）</td></tr>
+          <tr><td>住宅営業部</td><td>コンシューマ事業推進本部</td><td class="pl-c"><span class="dc-tag t-new">新設</span></td><td class="memo">集合住宅・新築分譲マンション向け営業と推定（紐付け未確認）</td></tr>
+          <tr><td>モバイル事業アライアンスPG</td><td>モバイル事業推進本部</td><td class="pl-c"><span class="dc-tag t-new">新設</span></td><td class="memo">MVNE事業拡大・アライアンス開拓。<strong>求人あり＝業務判明</strong></td></tr>
+          <tr><td>DC技術部</td><td>技術本部 <strong>直轄</strong></td><td class="pl-c"><span class="dc-tag t-new">新設</span></td><td class="memo">旧「技術イノベーション部」「DC構築PG」の後継とみられる（推定）</td></tr>
+          <tr><td>技術計画部</td><td>ネットワーク技術部門</td><td class="pl-c"><span class="dc-tag t-ren">改称</span></td><td class="memo">旧「ネットワーク技術計画部」</td></tr>
+          <tr><td>電力通信運用保全部</td><td>運用保全部門</td><td class="pl-c"><span class="dc-tag t-ren">改称</span></td><td class="memo">旧「電力通信運用部＋エリア保全部」の統合とみられる</td></tr>
+          <tr><td>内部統制部</td><td>経営本部</td><td class="pl-c"><span class="dc-tag t-ren">改称</span></td><td class="memo">旧「リスクマネジメント部」（推定）</td></tr>
+          <tr><td>情報セキュリティ部</td><td>経営本部</td><td class="pl-c"><span class="dc-tag t-new">新設</span></td><td class="memo">技術本部の「セキュリティ技術部」とは<strong>別組織</strong>。混同注意</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pl-fn"><strong>色付けなしだが2025年組織図に存在しない組織</strong>: コネクティビティビジネス推進部・サービスプロバイダー営業部。2025.07〜2026.07の間に旧「キャリアビジネス推進部」から再編されたと推測されるが<strong>裏付ける公開記述は見つからず</strong>。会社側の新設・改称マーキングが完全網羅ではない可能性を示す。</p>
+  </div>
+
+  <div class="dt-dpane" id="dtp-gone">
+    <div class="table-wrap">
+      <table class="sim-table pl-table">
+        <thead><tr><th>消滅した組織</th><th>2025年時点の所属</th><th class="memo">推定される行方</th></tr></thead>
+        <tbody>
+          <tr><td>営業第1部 ／ 営業第2部</td><td>ソリューション部門</td><td class="memo">法人ソリューション部への統合・改称（推定）</td></tr>
+          <tr><td>公共営業部</td><td>ソリューション部門</td><td class="memo">公共ソリューション部へ改称（確度高）</td></tr>
+          <tr><td>ICTソリューション部</td><td>ソリューション部門</td><td class="memo">不明（廃止 or 他部吸収）</td></tr>
+          <tr><td>SIビジネス推進部</td><td>SI&amp;DXビジネス部門</td><td class="memo">SI&amp;AXビジネス推進部へ改称</td></tr>
+          <tr><td>SI第1部 ／ SI第2部</td><td>SI&amp;DXビジネス部門</td><td class="memo">法人システム部 ／ 公益システム部へ改称</td></tr>
+          <tr><td>DXソリューション部</td><td>SI&amp;DXビジネス部門</td><td class="memo">AXソリューション部へ改称</td></tr>
+          <tr><td>キャリアビジネス推進部</td><td>ソリューション事業推進本部 直下</td><td class="memo">コネクティビティビジネス推進部への再編（推定・未確証）</td></tr>
+          <tr><td>クラウドサービス最適化PG</td><td>ソリューション事業推進本部 直下</td><td class="memo">プロジェクト終了とみられる</td></tr>
+          <tr><td>サービス開発部 ／ メディア運営部</td><td>コンシューマ事業推進本部</td><td class="memo">コンシューマ事業運営部への統合（推定）</td></tr>
+          <tr><td>技術イノベーション部</td><td>技術本部 直轄</td><td class="memo">DC技術部への改組（推定）</td></tr>
+          <tr><td>ネットワーク技術計画部</td><td>ネットワーク技術部門</td><td class="memo">技術計画部へ改称</td></tr>
+          <tr><td>DC構築プロジェクトグループ</td><td>ネットワーク技術部門</td><td class="memo">DC技術部への機能移管（推定）</td></tr>
+          <tr><td>電力通信運用部 ／ エリア保全部</td><td>運用保全部門</td><td class="memo">電力通信運用保全部へ統合（確度高）</td></tr>
+          <tr><td>リスクマネジメント部</td><td>経営本部</td><td class="memo">内部統制部＋情報セキュリティ部へ機能分割（推定）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="dt-dpane" id="dtp-map">
+    <div class="table-wrap">
+      <table class="sim-table pl-table">
+        <thead><tr><th>旧名称（2025.07）</th><th class="pl-c">&rarr;</th><th>新名称（2026.07）</th><th class="pl-c">確度</th></tr></thead>
+        <tbody>
+          <tr><td>SI第1部</td><td class="pl-c">&rarr;</td><td>法人システム部</td><td class="pl-c"><span class="dc-lv lv-a">&#9678;</span></td></tr>
+          <tr><td>SI第2部</td><td class="pl-c">&rarr;</td><td>公益システム部</td><td class="pl-c"><span class="dc-lv lv-a">&#9678;</span></td></tr>
+          <tr><td>DXソリューション部</td><td class="pl-c">&rarr;</td><td>AXソリューション部</td><td class="pl-c"><span class="dc-lv lv-a">&#9678;</span></td></tr>
+          <tr><td>SIビジネス推進部</td><td class="pl-c">&rarr;</td><td>SI&amp;AXビジネス推進部</td><td class="pl-c"><span class="dc-lv lv-a">&#9678;</span></td></tr>
+          <tr><td>SI&amp;DXビジネス部門</td><td class="pl-c">&rarr;</td><td>SI&amp;AXビジネス部門</td><td class="pl-c"><span class="dc-lv lv-a">&#9678;</span></td></tr>
+          <tr><td>公共営業部</td><td class="pl-c">&rarr;</td><td>公共ソリューション部</td><td class="pl-c"><span class="dc-lv lv-a">&#9678;</span></td></tr>
+          <tr><td>ネットワーク技術計画部</td><td class="pl-c">&rarr;</td><td>技術計画部</td><td class="pl-c"><span class="dc-lv lv-a">&#9678;</span></td></tr>
+          <tr><td>営業第1部 ＋ 営業第2部</td><td class="pl-c">&rarr;</td><td>法人ソリューション部</td><td class="pl-c"><span class="dc-lv lv-c">&#9651;</span></td></tr>
+          <tr><td>リスクマネジメント部</td><td class="pl-c">&rarr;</td><td>内部統制部 ＋ 情報セキュリティ部</td><td class="pl-c"><span class="dc-lv lv-c">&#9651;</span></td></tr>
+          <tr><td>電力通信運用部 ＋ エリア保全部</td><td class="pl-c">&rarr;</td><td>電力通信運用保全部</td><td class="pl-c"><span class="dc-lv lv-b">&#9711;</span></td></tr>
+          <tr><td>サービス開発部 ＋ メディア運営部</td><td class="pl-c">&rarr;</td><td>コンシューマ事業運営部</td><td class="pl-c"><span class="dc-lv lv-c">&#9651;</span></td></tr>
+          <tr><td>技術イノベーション部 ／ DC構築PG</td><td class="pl-c">&rarr;</td><td>DC技術部</td><td class="pl-c"><span class="dc-lv lv-c">&#9651;</span></td></tr>
+          <tr><td>キャリアビジネス推進部</td><td class="pl-c">&rarr;</td><td>コネクティビティビジネス推進部</td><td class="pl-c"><span class="dc-lv lv-c">&#9651;</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pl-fn">オプテージの組織改正プレスは<strong>役員人事の本文＋組織図画像のみ</strong>で構成され、<strong>改正の狙いを文章で説明していない</strong>（2025年・2026年とも）。旧→新の対応関係も非公表のため、上表の△は組織図上の位置・名称類似からの推定。</p>
+  </div>
+
+  <!-- ============ 1. ソリューション事業推進本部 ============ -->
+  <div class="dt-hq">
+    <div class="dt-hq-head">
+      <span class="dth-n">1</span>
+      <span class="dth-name">ソリューション事業推進本部</span>
+      <span class="dth-biz">ビジネスソリューション事業 ― FY2025 推計932億円 &rarr; FY2035 推計2,150億円</span>
+      <span class="dth-meta">本部長2名体制: 河田副社長（代表取締役 副社長執行役員）／篠原本部長（取締役 常務執行役員）&nbsp;|&nbsp; 3部門＋直轄9組織＝22組織</span>
+    </div>
+    <div class="dt-hq-body">
+
+      <div class="dt-div">
+        <div class="dt-div-h">本部 直轄（河田副社長 管轄）<span class="ddh-sub">戦略・コンサル・NW・コネクティビティ・DC・SP営業・パートナー営業・Web3</span></div>
+        <div class="dt-grid">
+
+          <div class="dt-card dc-unknown">
+            <div class="dc-path">ソリューション事業推進本部 / 直轄</div>
+            <div class="dc-top"><span class="dc-name">ソリューション事業戦略部</span><span class="dc-lv lv-d">&#10005;</span></div>
+            <div class="dc-body">部の実在と「本部筆頭直下」という位置づけのみ確定。<strong>業務を明記した公開記述はゼロ</strong>。2019年4月の発足時組織図でも同名部がビジネスコンサルティング部・ソリューション開発部と並列だったことから、本部の事業戦略スタッフ部門と読めるが確証なし。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">チーム</span><span class="v">ソリューション事業企画開発チーム ／ ソリューション事業戦略チーム（<strong>いずれも公開情報に一切登場せず</strong>）</span></div>
+              <div class="r"><span class="k">担当役員</span><span class="v">河田副社長／福智副本部長（国際事業担当・特命）</span></div>
+            </div>
+            <div class="dc-src">出典: 会社案内PDF p.10 ／ k-opti.com/press/2019/img/press22_01.pdf</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">ソリューション事業推進本部 / 直轄</div>
+            <div class="dc-top"><span class="dc-name">ビジネスコンサルティング部</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>約30名体制</strong>。経営層（Cレベル・事業責任者）との対話を起点に、<strong>上流のコンサルティング → システム開発 → インフラ構築 → データセンター運用保守までの一貫「フルサポート」</strong>を提供。DX／GX／管理会計・予実管理／データ分析／ESG・サステナビリティ／サイバーセキュリティのコンサルを担う。<strong>北海道〜沖縄まで民間・公共の両方</strong>を担当。前身企業（関電システムソリューションズ）時代の2010年から活動。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">メニュー</span><span class="v">基幹システム再構築支援／業務改善・BPR支援／経営・事業管理基盤構築支援／GXコンサルティング／Scope3算定支援／エネルギー事業者向けコンサル／DX伴走支援・研修・PoC支援／自治体DX支援・地域社会DX支援・行政経営管理支援／ITインフラコンサル</span></div>
+              <div class="r"><span class="k">チーム</span><span class="v">テクノロジー&amp;デザインチーム（<strong>業務は不明</strong>）</span></div>
+              <div class="r"><span class="k">人物</span><span class="v">下司さん（副本部長 兼 部長・2024年7月就任・前職アーサーアンダーセン）／林口さん（部長）／鵜飼さん（TM）<br><span class="pl-sub">※下司さんは2026.07の副本部長リストに不掲載 → <strong>副本部長には執行役員でない人もいる</strong></span></span></div>
+            </div>
+            <div class="dc-src">出典: toyo.co.jp/magazine/detail/id=42009 (2024/8) ／ optage.co.jp/business/service/consulting/</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">ソリューション事業推進本部 / 直轄</div>
+            <div class="dc-top"><span class="dc-name">ネットワークビジネス推進部</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>ネットワーク関連サービスのサービス企画</strong>。新規サービスの企画立案・マーケティング・データ分析、サービス仕様と事業性評価、業務フロー策定（社内調整）、<strong>約款制定</strong>。法人向けインターネット・VPNサービスの企画開発と運用、技術的対応も担う。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">商材</span><span class="v">インターネット接続（ハイグレード／オフィス／ワイド、オフィスeo光ネット、マルウェア不正通信フィルタリング）／VPN（イーサネットVPNワイド アドバンス、IP-VPN、インターネットVPN、ネットワークエクスチェンジ、OPTAGE Secure Gateway）／専用線（All-Optical Connect、イーサ専用線、WDM専用線、映像伝送）／IP電話（光電話オフィス）／モバイル（ビジネスモバイル、mineo BiZ）／宅内ソリューション</span></div>
+              <div class="r"><span class="k">チーム</span><span class="v">ネットワークビジネス戦略チーム</span></div>
+              <div class="r"><span class="k">人物</span><span class="v">三木さん（SM）／担当役員 江口副本部長</span></div>
+            </div>
+            <div class="dc-src">出典: hrmos.co/pages/optage/jobs/01_2035100010_03 ／ ocx-cloud.net/case-study/optage/ (2025/10)</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">ソリューション事業推進本部 / 直轄</div>
+            <div class="dc-top"><span class="dc-name">コネクティビティビジネス推進部</span><span class="dc-lv lv-c">&#9651;</span></div>
+            <div class="dc-body">部署名を明示した業務説明は<strong>見つからず</strong>。ただし会社の「コネクティビティ」事業内容は公式に判明しており、①自社光ファイバ網を活かした<strong>コネクティビティDCの展開による多様な事業者の集積</strong> ②<strong>国内主要DC間接続回線の構築</strong>による国内データ流通基盤の高度化 ③<strong>国際海底ケーブルプロジェクトへの参画</strong>による海外DC接続強化（長期ビジョン2035）。<span class="pl-sub">※2025年組織図に存在せず2026.07の色付けもなし＝旧「キャリアビジネス推進部」からの再編と推測（未確証）</span></div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">商材</span><span class="v">国内DCI（All-Optical Connect 100G/400G、イーサ専用線10G/100G、ダークファイバー、OC1データセンターコネクト）。対応エリア＝大阪（曽根崎・彩都・南港）／関東／京都（けいはんな）／兵庫（三田）＋志摩ケーブルランディングステーション／グローバルDCI（国際海底ケーブル経由の日本〈関東〉―シンガポール間 100G/400G、<strong>2028年運用開始予定</strong>）</span></div>
+              <div class="r"><span class="k">担当役員</span><span class="v">河田副社長／江口副本部長</span></div>
+            </div>
+            <div class="dc-src">出典: optage.co.jp/business/service/dci/ ／ 会社案内PDF</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">ソリューション事業推進本部 / 直轄</div>
+            <div class="dc-top"><span class="dc-name">データセンタービジネス推進部</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>DC事業の事業戦略・営業戦略の策定と実行</strong>。市場分析・マーケティングで外部環境を捉え、事業計画と営業戦略を企画推進。<strong>データセンターの仕様検討・運用設計</strong>、エグゼクティブ向けプレゼン資料作成。別ポジションでは営業戦略・プロモーション・営業支援、ブランディング、イベントマーケティング。求人ミッションに「<strong>2026年に開設する曽根崎データセンターおよび以降に開設予定の次期DCについて、サービス仕様や運用方法の設計</strong>」と明記。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">施設</span><span class="v"><strong>曽根崎DC（OC1）</strong>＝大阪市中心部の都市型コネクティビティDC・2026年1月29日運用開始・敷地2,239.81㎡・14階建・<strong>最大約1,200ラック</strong>・1ラック10kVA・電力容量7.4MW・キャリアニュートラル・国内大手IX複数接続・AI推論用途／梅田北DC／心斎橋DC（心斎橋POP）／<strong>美浜AIデータセンター</strong>＝福井県美浜町・コンテナ型・GPU学習用途・DLC直接液冷・OC1と100G/400G光接続・原子力由来100%CO2フリー電力</span></div>
+              <div class="r"><span class="k">商材</span><span class="v">ハウジング／ホスティング／マネージメントサービス／ライブオペレーション（遠隔作業指示）</span></div>
+              <div class="r"><span class="k">チーム</span><span class="v">データセンター推進チーム（＋2025年時点で「データセンター企画チーム」）</span></div>
+              <div class="r"><span class="k">人物</span><span class="v">酒井さん（SM）／布本さん・西田さん（企画T）／担当役員 津田副本部長</span></div>
+            </div>
+            <div class="dc-src">出典: hrmos jobs/01_2035100000_03_01・01_2035100020_03_01 ／ ascii.jp/elem/000/004/414/4414366/ (2026/7)</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">ソリューション事業推進本部 / 直轄</div>
+            <div class="dc-top"><span class="dc-name">サービスプロバイダー営業部</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>海外事業者向けの国際通信インフラ営業（英語必須）</strong>。「国際通信インフラ（グローバルDCI）」「国内次世代光ネットワーク（国内DCI）」「コネクティビティデータセンター」の営業活動。接点獲得〜サービス紹介〜提案〜基本契約締結〜受注〜サービス開始までの営業全般、<strong>日本国内に拠点を持つ外資系企業へのアプローチ</strong>、国際イベント参加（海外出張）、Web問い合わせ対応。<strong>大阪・東京の2拠点</strong>で募集。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">顧客</span><span class="v">海外通信事業者・コンテンツ事業者（外資系）</span></div>
+              <div class="r"><span class="k">商材</span><span class="v">ダークファイバー、専用線、AOC、海底ケーブル、データセンター（OC1）</span></div>
+              <div class="r"><span class="k">チーム</span><span class="v">グローバルサービスプロバイダー営業チーム</span></div>
+              <div class="r"><span class="k">担当役員</span><span class="v">河田副社長／福智副本部長（国際事業担当・特命）</span></div>
+            </div>
+            <div class="dc-src">出典: hrmos jobs/01_2025100030_04 ／ 01_2025100030_04_01</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">ソリューション事業推進本部 / 直轄</div>
+            <div class="dc-top"><span class="dc-name">パートナー営業部</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>SIベンダー・ネットワークベンダー・通信事業者に対する回線サービス／データセンターの提案・販売</strong>、およびクラウドサービス・各種ソリューション商材の<strong>リセールパートナーの開拓と拡販</strong>。案内〜提案〜受注〜サービス開始までの営業全般、社内関係部門との調整、技術部門への提案内容相談。<strong>対象エリアは日本全国・東京勤務</strong>。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">チーム</span><span class="v">ICTパートナー営業チーム（＋新卒サイトに「法人パートナー営業チーム」「コネクティビティDC推進チーム（兼務）」の記載）</span></div>
+              <div class="r"><span class="k">位置</span><span class="v">2025年はソリューション部門の内側（営業第1部等と並列）→ <strong>2026年は本部直下に移動</strong>（名称は不変）</span></div>
+              <div class="r"><span class="k">担当役員</span><span class="v">河田副社長／福智副本部長</span></div>
+            </div>
+            <div class="dc-src">出典: hrmos jobs/01_2015300010_04</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">ソリューション事業推進本部 / 直轄（篠原本部長 管轄）</div>
+            <div class="dc-top"><span class="dc-name">クラウドビジネス推進部</span><span class="dc-lv lv-b">&#9711;</span></div>
+            <div class="dc-body"><strong>クラウドサービスの設計・構築・保守・運用</strong>（ISO/IEC 27001 認証の適用範囲部署として公式明記）。クラウド＋ネットワーク＋セキュリティ＋運用をトータル提供する「ハイブリッドインフラソリューション」を担う事業推進部門。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">自社</span><span class="v"><strong>Neutrix Cloud</strong>（大容量ストレージ・データ転送料不要の国産クラウド）／ユーティリティクラウド／医療クラウド（行政ガイドライン準拠）</span></div>
+              <div class="r"><span class="k">再販</span><span class="v"><strong>AWS for OPTAGE ／ Azure for OPTAGE ／ ニフクラ for OPTAGE</strong>（ライセンス提供＋監視・障害対応・運用保守を24時間365日ワンストップ）／Microsoft 365 with OPTAGE／Box</span></div>
+              <div class="r"><span class="k">人物</span><span class="v">高橋さん（部長）／担当役員 西田副本部長</span></div>
+            </div>
+            <div class="dc-src">出典: optage.co.jp/company/authorization/iso.html ／ business/service/cloud/ ／ netone.co.jp/digital-innovation/project/6001.html</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">ソリューション事業推進本部 / 直轄</div>
+            <div class="dc-top"><span class="dc-name">Web3ビジネス プロジェクトグループ</span><span class="dc-lv lv-b">&#9711;</span></div>
+            <div class="dc-body"><strong>法人・金融機関向けWeb3業務基盤（ウォレット等）の提供・支援</strong>。長期ビジョン2035に「金融機関へのブロックチェーンを活用したWeb3業務基盤（ウォレット等）の提供・支援」と明記。国内暗号資産交換業者・銀行・証券・自治体へウォレット／ノードインフラを提供する<strong>「Web3の裏方」ポジション</strong>。Web3に精通したメンバーが弁護士・会計士・税理士と組み、技術＋コンプライアンス面から最適なウォレット構成を提案。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">商材</span><span class="v"><strong>WaaS（Wallet-as-a-Service）</strong>＝Web3ウォレットのSaaS提供（デジタル資産の保管・移転、小規模トークン発行向け）／WaaS＋運用支援（アプリへのウォレット組み込み、大規模トークン発行向け）／エンタープライズウォレット（スマートコントラクト・モニタリング・ノード対応）／エンベデッド・ウォレット／<strong>金融機関向けノードホスティング</strong>（Ethereumステーキング用ノードの構築・運用代行）</span></div>
+              <div class="r"><span class="k">技術</span><span class="v"><strong>Fireblocks</strong>（ゼロトラスト・マルチレイヤーセキュリティ、35以上のブロックチェーン・数千トークン対応）／Japan Open Chain／ステーブルコイン。2026年は<strong>ステーブルコイン活用の新ビジネスモデル創出</strong>に注力。「MoneyX 2026」ゴールドスポンサー</span></div>
+              <div class="r"><span class="k">実装側</span><span class="v">技術本部 プラットフォーム技術部 サービスシステムTがクリプトエンジニア（WEB3アーキテクチャ設計・ノード運用・スマートコントラクト開発）を担う（連携の紐付けは推定）</span></div>
+              <div class="r"><span class="k">担当役員</span><span class="v">河田副社長／百々副本部長</span></div>
+            </div>
+            <div class="dc-src">出典: optage.co.jp/web3/ ／ prtimes.jp/main/html/rd/p/000000142.000051725.html</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="dt-div">
+        <div class="dt-div-h">ソリューション部門<span class="ddh-sub">西田副本部長 管下 ― 顧客セグメント別の直販営業ライン</span></div>
+        <div class="dt-grid">
+
+          <div class="dt-card">
+            <div class="dc-path">ソリューション事業推進本部 / ソリューション部門</div>
+            <div class="dc-top"><span class="dc-name">営業推進部</span><span class="dc-lv lv-b">&#9711;</span></div>
+            <div class="dc-body"><strong>営業イネーブルメント（営業組織の生産性向上・仕組み化）</strong>。社内に蓄積された人脈・接点情報を可視化し、適切な紹介やトップアプローチを可能にして、<strong>営業担当が提案・関係構築に時間を使える状態をつくる</strong>。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">技術</span><span class="v">Sansan（接点情報の可視化）</span></div>
+              <div class="r"><span class="k">チーム</span><span class="v">営業イネーブルメントチーム</span></div>
+              <div class="r"><span class="k">人物</span><span class="v">岡本さん（営業イネーブルメントチーム MGR）</span></div>
+            </div>
+            <div class="dc-src">出典: jp.corp-sansan.com/news/2026/0514.html (2026/5/14)</div>
+          </div>
+
+          <div class="dt-card dc-unknown">
+            <div class="dc-path">ソリューション事業推進本部 / ソリューション部門</div>
+            <div class="dc-top"><span class="dc-name">営業サポート部</span><span class="dc-lv lv-d">&#10005;</span></div>
+            <div class="dc-body">業務記述の公開情報なし。2019年組織図では「ICT事業推進部門」直下に法人営業部・公共営業部・医療営業部・電力営業部と並列で置かれており、<strong>営業ラインを横断支援する位置づけ</strong>と読めるが確証なし。</div>
+            <div class="dc-src">出典: 会社案内PDF p.10（存在のみ）</div>
+          </div>
+
+          <div class="dt-card dc-new">
+            <div class="dc-path">ソリューション事業推進本部 / ソリューション部門</div>
+            <div class="dc-top"><span class="dc-name">法人ソリューション部</span><span class="dc-tag t-new">2026.07 新設</span><span class="dc-lv lv-b">&#9711;</span></div>
+            <div class="dc-body">一般企業・グループ会社に対し、<strong>ICT/ソリューションサービス（クラウド・コンサル・ネットワーク・DC・セキュリティ）を組み合わせた提案型営業</strong>。①<strong>新規開拓</strong>＝Web問い合わせ、ウェビナー参加企業、外部リソースを使った電話・メールマーケティング ②<strong>既存深耕</strong>＝サービス紹介〜提案〜受注〜サービス開始までの営業活動全般、社内関係部門調整、ICTソリューション連携、開始後の継続フォロー、新たな拡販窓口の開拓。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">顧客</span><span class="v">一般企業・関電グループ会社</span></div>
+              <div class="r"><span class="k">商材</span><span class="v">クラウド（AWS・Azure）／ITインフラ（サーバ・NW・セキュリティ）／データセンター</span></div>
+              <div class="r"><span class="k">旧組織</span><span class="v">2025年の「営業第1部／営業第2部」（旧・法人営業部 法人営業第2チーム等）</span></div>
+              <div class="r"><span class="k">FDE</span><span class="v"><strong>AI SIチームのPM・コンサル候補</strong>／岡田SM（法人営業）― ヒアリング対象</span></div>
+            </div>
+            <div class="dc-src">出典: hrmos jobs/01_2015400000_04_01</div>
+          </div>
+
+          <div class="dt-card dc-new">
+            <div class="dc-path">ソリューション事業推進本部 / ソリューション部門</div>
+            <div class="dc-top"><span class="dc-name">公共ソリューション部</span><span class="dc-tag t-ren">2026.07 改称</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>関西圏の自治体ほか公共団体向けにICT/ソリューション（クラウド・コンサル・ネットワーク・DC）を提案・販売する直販型営業</strong>。サービス紹介〜提案〜受注〜開始までの営業活動全般、提案・導入フェーズの社内調整、ICTソリューション/SI/コンサル部門と連携した提案立案、開始後の継続フォロー、課題ヒアリング。<span class="pl-sub">旧「公共営業部」。hrmos求人タイトルには今も旧称が残っている</span></div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">チーム</span><span class="v"><strong>公共ICT推進チーム ／ 自治体営業チーム</strong>（求人本文に明記）</span></div>
+              <div class="r"><span class="k">実案件</span><span class="v"><strong>ガバメントクラウド</strong>（デジタル庁主導の自治体標準化）の入札・提案／宇陀市のガバメントクラウド移行（2025年10月本番稼働、<strong>運用工数40〜50%削減</strong>）／GIGAスクール対応／自治体情報セキュリティ／校務システムのクラウド化／庁内サーバのDR／RPA（UiPath）／AIチャット（Enour）</span></div>
+              <div class="r"><span class="k">顧客</span><span class="v">大阪広域環境施設組合／柏原市／茨木市／宇陀市／奈良県広域消防組合</span></div>
+              <div class="r"><span class="k">技術</span><span class="v">AWS（ガバメントクラウド）／AWS Direct Connect／CloudWatch／Amazon Transcribe／EDR・MDR・SASE／Microsoft 365バックアップ</span></div>
+              <div class="r"><span class="k">人物</span><span class="v">山本さん（自治体営業チーム MGR）／今西さん・泉さん（旧 ICTソリューション部 公共ICTソリューションチーム）</span></div>
+              <div class="r"><span class="k">FDE</span><span class="v"><strong>AI SIチームのPM・コンサル候補</strong>（公共営業）― ヒアリング対象・対象者未定</span></div>
+            </div>
+            <div class="dc-src">出典: hrmos jobs/01_2015700000_04 ／ nhn-techorus.com/c-chorus/case/optage (2026/1/26) ／ optage.co.jp/business/solution/public/</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">ソリューション事業推進本部 / ソリューション部門</div>
+            <div class="dc-top"><span class="dc-name">医療ソリューション部</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>医療機関向けIT全般をワンストップで提供</strong>。電子カルテの選定・導入から、院内ネットワーク・サーバ/クラウド基盤の整備、部門システム／PACS、経営分析システム・AIカルテ、セキュリティ対策（ランサムウェア対策、厚労省ガイドライン準拠のリモート保守）まで。医事会計システム等の病院情報システムの構築・導入・保守、グループウェア・勤怠等の周辺システム、仮想化基盤構築も対応。<strong>約20年の医療情報サービス実績</strong>、クラウド型電子カルテの<strong>契約継続率100%</strong>。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">商材</span><span class="v">電子カルテ「<strong>カルテ Man・Go! ／ Man・Go! for OPTAGE</strong>」（一般病院向け・クラウド/オンプレ両対応）／「<strong>Raporte Lian</strong>」（重心施設向け福祉業務統合型）／医療クラウド（行政ガイドライン準拠）／VPN-SIM（閉域モバイルアクセス）／Enour AI ChatSupport 医療版</span></div>
+              <div class="r"><span class="k">チーム</span><span class="v">医療ソリューションチーム</span></div>
+              <div class="r"><span class="k">顧客</span><span class="v">社会福祉法人養徳会 医療福祉センターきずな 他</span></div>
+              <div class="r"><span class="k">人物</span><span class="v">中山さん（医療ソリューションチーム）</span></div>
+            </div>
+            <div class="dc-src">出典: optage.co.jp/business/solution/medical/ ／ vistanet.jp/cases/optage-medical (2025/5)</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="dt-div">
+        <div class="dt-div-h">SI&amp;AXビジネス部門<span class="ddh-sub">百々副本部長 管下 ― 旧 SI&amp;DXビジネス部門。FDE化の主戦場</span></div>
+        <div class="dt-grid">
+
+          <div class="dt-card dc-new dc-unknown">
+            <div class="dc-path">ソリューション事業推進本部 / SI&amp;AXビジネス部門</div>
+            <div class="dc-top"><span class="dc-name">SI&amp;AXビジネス推進部</span><span class="dc-tag t-ren">2026.07 改称</span><span class="dc-lv lv-d">&#10005;</span></div>
+            <div class="dc-body">部門の筆頭部として法人システム部・公益システム部・プロダクトソリューション部・AXソリューション部を束ねる位置にあるが、<strong>業務記述の公開情報なし</strong>。旧「SIビジネス推進部」。<br><span class="pl-sub">※<strong>「AX」の自社定義を公開している記述は発見できず</strong>。一般にAI Transformationの略だが断定不可。社内組織名としては公式採用済み（SI&amp;AXビジネス部門・AXソリューション部）だが、<strong>対外サービス名・プレスでのAX使用はゼロ</strong>（対外語彙は「AIエージェント導入支援」「生成AI」「DX」）＝AXは社内先行語</span></div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">チーム</span><span class="v">SIビジネス戦略チーム（<strong>業務は不明</strong>）</span></div>
+              <div class="r"><span class="k">FDE</span><span class="v">大谷GM ― <strong>ヒアリング対象</strong>／大井川TM（SIビジネス戦略T）</span></div>
+            </div>
+            <div class="dc-src">出典: 会社案内PDF p.10（存在のみ）</div>
+          </div>
+
+          <div class="dt-card dc-new dc-unknown">
+            <div class="dc-path">ソリューション事業推進本部 / SI&amp;AXビジネス部門</div>
+            <div class="dc-top"><span class="dc-name">SI&amp;AX営業部</span><span class="dc-tag t-new">2026.07 新設</span><span class="dc-lv lv-d">&#10005;</span></div>
+            <div class="dc-body"><strong>公開記述・求人ともゼロ。全ソースで完全にヒットなし＝最も情報がない部</strong>。2026.07新設。名称からSI&amp;AX領域の営業機能を切り出したものと読めるが、従来のソリューション部門の営業ラインとの役割分担が外から一切読めない。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">FDE</span><span class="v">幸里SM（SI営業）― <strong>ヒアリング対象</strong></span></div>
+              <div class="r"><span class="k">論点</span><span class="v">AI・生成AI案件の<strong>外販主管がどこか</strong>を読み解く上で鍵になる部。新設の狙いを直接聞くべき</span></div>
+            </div>
+            <div class="dc-src">出典: 会社案内PDF p.10 ／ press/2026/press_10.html（存在のみ）</div>
+          </div>
+
+          <div class="dt-card dc-new">
+            <div class="dc-path">ソリューション事業推進本部 / SI&amp;AXビジネス部門</div>
+            <div class="dc-top"><span class="dc-name">法人システム部</span><span class="dc-tag t-ren">2026.07 改称</span><span class="dc-tag t-poc">PoC1</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>法人顧客向けシステム構築・再構築案件をPM/PLとして推進</strong>。顧客ニーズのヒアリング、現行業務・システムの調査、あるべき姿の提案からシステム設計・製造・移行まで担当。運用開始後のフォロー、運用保守、機能改善も実施。<strong>社員またはパートナー会社メンバーを配下に10人月程度のプロジェクトを推進</strong>する規模感。大手顧客先に常駐して企画・要件定義〜保守運用の全フェーズを担当するケースあり。<br>組織ミッションに「<strong>グループ会社向け体制において新たな要員投入で属人化を解消</strong>」と明記。<span class="pl-sub">旧「SI第1部」／約40名規模</span></div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">チーム</span><span class="v"><strong>法人システム第1〜第4チーム</strong></span></div>
+              <div class="r"><span class="k">環境</span><span class="v">Eclipse／独自クラウド／社内生成AI環境（OPTAGE Generative AI Chat）</span></div>
+              <div class="r"><span class="k">特徴</span><span class="v">部署全体で「AIを入れて業務を変えていこう」という取り組みがあり、<strong>AI資格学習やGitHub Copilot導入が進行中</strong></span></div>
+              <div class="r"><span class="k">FDE</span><span class="v">大高GM ― <strong>ヒアリング対象</strong>／<strong>AI SIチームのエンジニア候補</strong>。中島さん（AI推進者・第1T）／山下さん・花光さん（第3T）／三根さん（第4T）</span></div>
+            </div>
+            <div class="dc-src">出典: hrmos jobs/01_2055200000_09_01 ／ optage.co.jp/recruit/fresh/people/interview06.html</div>
+          </div>
+
+          <div class="dt-card dc-new">
+            <div class="dc-path">ソリューション事業推進本部 / SI&amp;AXビジネス部門</div>
+            <div class="dc-top"><span class="dc-name">公益システム部</span><span class="dc-tag t-ren">2026.07 改称</span><span class="dc-tag t-poc">PoC1</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>関電グループ会社（約20社）向けの人事給与・勤怠システム</strong>の問合せ対応、アドオン・カスタマイズ開発、保守。新たな関電グループ会社への導入支援。顧客ニーズの直接ヒアリング、現行業務・システム調査、あるべき姿の提案、システム設計、<strong>ベンダーコントロール（製造委託先管理）</strong>。将来的には同システムの業務全般と定期的な環境再構築のPM/PL。<span class="pl-sub">旧「SI第2部」／約40名規模</span></div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">&#9888; 訂正</span><span class="v">「公益＝電力ガス水道の外販」という素朴な解釈は<strong>少なくとも第1Tでは誤り</strong>。求人票に「<strong>関電グループ会社（約20社）向け</strong>人事給与・勤怠システム」と明記＝<strong>グループ内SI</strong>。ただし矢野経済研は電力CISベンダとしてオプテージを列挙しており、第2T以降がグループ外公益を担当する可能性は排除できない → <strong>両論併記のまま要確認</strong></span></div>
+              <div class="r"><span class="k">チーム</span><span class="v"><strong>公益システム第1〜第3チーム</strong></span></div>
+              <div class="r"><span class="k">技術</span><span class="v">Oracle／SQL／ストアドプロシージャ／C#／VB。アプリ領域はJava。個別Copilotは全社標準なし</span></div>
+              <div class="r"><span class="k">特徴</span><span class="v"><strong>顧客リソースのAI利用に非常に大きな許諾パワーが必要</strong>。セキュリティ制約が強い</span></div>
+              <div class="r"><span class="k">FDE</span><span class="v">西GM ― <strong>ヒアリング 8/28</strong>／<strong>AI SIチームのエンジニア候補</strong>。松浦さん（AI-WGリーダー・第2T）／佐藤さん・三谷さん（第1T）／廣井さん・古和さん（第2T）／張さん・河原さん（第3T）</span></div>
+            </div>
+            <div class="dc-src">出典: hrmos jobs/01_2055300000_09_01</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">ソリューション事業推進本部 / SI&amp;AXビジネス部門</div>
+            <div class="dc-top"><span class="dc-name">プロダクトソリューション部</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>クラウド型ERP/CRMおよびローコードソリューションの提案〜導入プロジェクト〜保守サポート</strong>。顧客のビジネス要求/RFPに対するERP・CRM・Power Platformの提案、要件定義とソリューション実装、製品知識と新技術（AI等）の継続習得。<br>組織ミッションに「<strong>売上拡大目標達成のための体制確保。ERP市場の人材が枯渇しているため熟練者よりジュニアクラスを確保して育成</strong>」と明記。<span class="pl-sub">約44名規模・デリバリーのみ</span></div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">チーム</span><span class="v"><strong>CRMソリューションチーム ／ ERPソリューションチーム</strong>（2017年発足）<strong>／ LCD（ローコード）ソリューションチーム</strong></span></div>
+              <div class="r"><span class="k">技術</span><span class="v">Microsoft Dynamics 365（ERP/CRM）／Dynamics 365 Copilot／<strong>Infor M3・Infor CloudSuite</strong>／fusion_place（管理会計）／Collaboflow（ワークフロー）／Microsoft Power Platform／Power Automate／Copilot Studio／WebPerformer／サービス残業防止支援システム／UiPath</span></div>
+              <div class="r"><span class="k">顧客例</span><span class="v">フットウェアメーカーへのInfor M3導入</span></div>
+              <div class="r"><span class="k">人物</span><span class="v">瀧原さん（ERPソリューションチーム・PL）／仲TM（ローコードソリューションT・所属は推定）― <strong>ヒアリング 8/26</strong></span></div>
+            </div>
+            <div class="dc-src">出典: hrmos jobs/01_2055400000_09_02 ／ optage.co.jp/recruit/mid-career/people/takihara.html ／ business/service/application/</div>
+          </div>
+
+          <div class="dt-card dc-wl">
+            <div class="dc-path">ソリューション事業推進本部 / SI&amp;AXビジネス部門</div>
+            <div class="dc-top"><span class="dc-name">AXソリューション部</span><span class="dc-tag t-ren">2026.07 改称</span><span class="dc-tag t-wl">WL窓口</span><span class="dc-tag t-poc2">PoC2</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>サービス開発（パッケージ開発）〜顧客導入〜運用保守までの一貫担当</strong>。重点3領域＝①<strong>既存コンタクトソリューション（Enour）の拡大</strong> ②<strong>新規AI/IoTサービスの開発</strong> ③<strong>生成AIアプリケーションの実装</strong>。サービス企画・フロントSEも含む場合あり。コールセンター向け生成AI活用の推進（「生成AIの活用ループはコンタクトセンターの情報価値の最大化を実現」）。<br>組織改正: DXソリューション部から改称。<strong>AI-SIerとしての事業検証とSIビジネスにおけるAI活用を連動させる位置づけ</strong>。旧ソリューション事業企画開発Tが担っていたAI事業検討機能を融合。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">チーム</span><span class="v"><strong>AXソリューション推進T</strong>（旧 DXソリューション推進T／AIビジネス検討・AI-SIer事業検証・エナー推進）<strong>／第1〜第3T</strong>（エンジニア・維持運用）</span></div>
+              <div class="r"><span class="k">商材</span><span class="v"><strong>Enour（エナー）</strong>シリーズ＝Enour AI ChatSupport（国産自然言語処理エンジン、Excelベースで現場がAI育成可）／Enour ChatSupport（有人チャット、マルチテナント、リアルタイムモニタリング）／<strong>Enour CallAssistant</strong>（通話のリアルタイムテキスト化＋回答レコメンド＋自動要約、QuickQA/QuickSummary搭載）／応対品質評価自動化システム。<strong>導入3〜4社</strong></span></div>
+              <div class="r"><span class="k">技術</span><span class="v">生成AI／IoT／クラウド／RAG／SDSモデル／Dify／社内生成AI環境（ChatGPT・Claude選択可）</span></div>
+              <div class="r"><span class="k">人物</span><span class="v">菅野部長／森TM（推進T統括）／白川さん・内海さん（企画開発Tから完全異動）／大野さん（PF技術部 兼務）・寺崎さん（PF技術部から完全異動）／高見さん・要さん・服部さん（新）／平山さん（第1T・<strong>ENOUR企画開発者</strong>）／ハオディーさん（第2T・Drupal CMS/TypeScript）／小林さん（第3T・AIエージェント開発）／池上さん（Ex）・藤村さん（SM）</span></div>
+              <div class="r"><span class="k">分担</span><span class="v">寺崎さん＝全体戦略（FDEサブ）／白川さん＝FDE（PoC1メイン）／内海さん＝自社サービス（PoC2）</span></div>
+            </div>
+            <div class="dc-src">出典: hrmos jobs/01_2055500000_10_01 ／ optage.co.jp/business/service/application/contactsolution/ ／ tsuzuki.jp/event/event_2025/es573.html</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="dt-div">
+        <div class="dt-div-h">電力ビジネス部門<span class="ddh-sub">土岐副本部長 管下 ― 関西電力・関電送配電向けIT</span></div>
+        <div class="dt-grid">
+
+          <div class="dt-card dc-unknown">
+            <div class="dc-path">ソリューション事業推進本部 / 電力ビジネス部門</div>
+            <div class="dc-top"><span class="dc-name">電力ビジネス推進部</span><span class="dc-lv lv-d">&#10005;</span></div>
+            <div class="dc-body">部署名を明示した業務説明なし。部門の筆頭部という位置づけのみ確定。</div>
+            <div class="dc-rows"><div class="r"><span class="k">担当役員</span><span class="v">土岐副本部長</span></div></div>
+            <div class="dc-src">出典: 会社案内PDF p.10（存在のみ）</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">ソリューション事業推進本部 / 電力ビジネス部門</div>
+            <div class="dc-top"><span class="dc-name">電力ITソリューション部</span><span class="dc-lv lv-c">&#9651;</span></div>
+            <div class="dc-body">部署名を明示した記述はなし。ただし<strong>直系の前身組織「電力IT基盤部」</strong>（Finder構築チーム）の公式記述から領域が判明 ―<strong>関西電力および関電グループ共通ITインフラ（ネットワーク）の要件定義から構築までの一貫対応</strong>。<strong>約3万人のグループ社員</strong>の業務を支える冗長構成の設計・構築。2019年の再編で関電システムソリューションズの情報通信インフラ・情報システム開発機能、関西電力の社内LAN等の通信サービス提供機能がオプテージへ移管された経緯と整合。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">関連実績</span><span class="v">関西電力送配電向け「<strong>停電情報自動応答システム</strong>」をAWS上に構築（音声認識AI・サーバーレス構成。大規模停電時にコンタクトセンターの受付能力を超える問い合わせに対応。2022年4月時点）<span class="pl-sub">※担当部署名は記事に記載なし＝推定</span></span></div>
+              <div class="r"><span class="k">チーム</span><span class="v">電力基盤2チーム（<strong>業務は不明</strong>。確認できたのは旧「Finder構築チーム」のみ）／高尾TM（所属は推定）― <strong>ヒアリング対象</strong></span></div>
+            </div>
+            <div class="dc-src">出典: optage.co.jp/recruit/fresh/people/interview10.html ／ kepco.co.jp/corporate/pr/2019/0131_2j.html ／ optage.co.jp/business/case/company84.html</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ 2. コンシューマ事業推進本部 ============ -->
+  <div class="dt-hq">
+    <div class="dt-hq-head">
+      <span class="dth-n">2</span>
+      <span class="dth-name">コンシューマ事業推進本部</span>
+      <span class="dth-biz">コンシューマ事業 ― FY2025 推計1,372億円（53%）&rarr; FY2035 推計1,505億円（35%）</span>
+      <span class="dth-meta">松本本部長（取締役 常務執行役員・モバイル事業推進本部長 兼務）／髙富副本部長 ＝ コア領域「深化」。<strong>構成比は53%→35%へ大幅低下</strong>する設計</span>
+    </div>
+    <div class="dt-hq-body">
+      <div class="dt-grid">
+
+        <div class="dt-card dc-new dc-unknown">
+          <div class="dc-path">コンシューマ事業推進本部</div>
+          <div class="dc-top"><span class="dc-name">コンシューマ事業統括部</span><span class="dc-tag t-new">2026.07 新設</span><span class="dc-lv lv-d">&#10005;</span></div>
+          <div class="dc-body">業務内容の公開記述なし。名称から本部内の統括・管理機能と読めるが確証なし。</div>
+          <div class="dc-src">出典: 会社案内PDF p.10 ／ press/2026/press_10.html（存在のみ）</div>
+        </div>
+
+        <div class="dt-card">
+          <div class="dc-path">コンシューマ事業推進本部</div>
+          <div class="dc-top"><span class="dc-name">コンシューマ事業戦略部</span><span class="dc-lv lv-a">&#9678;</span></div>
+          <div class="dc-body">通信市場（FTTH）の事業環境・競合動向・顧客動向・自社取り組み評価を踏まえ、<strong>次の柱となる新事業・新サービスの企画開発と成長戦略の検討</strong>。事業戦略の立案・企画・策定、戦略仮説の導出、戦略蓋然性の説明、戦略ストーリー作成、<strong>役員説明</strong>、戦略推進体制の立案。<br>別チームでは一般消費者向けFTTHサービスの企画業務全般（市場調査・分析、新サービス立案・構築計画策定、PM、システム概要設計・仕様調整、パートナー企業調整、販売・プロモーション計画、サポート対応、サービスポートフォリオ整理、サービス戦略策定）。</div>
+          <div class="dc-rows">
+            <div class="r"><span class="k">チーム</span><span class="v"><strong>コンシューマ事業戦略チーム ／ コンシューマプロダクトチーム ／ コンシューマ事業企画チーム</strong></span></div>
+            <div class="r"><span class="k">商材</span><span class="v"><strong>eo光</strong>（eo光ネット ホーム/メゾン/マンションタイプ 1G・5G・10G、eo光 シンプルプラン、<strong>eo光〈type N〉</strong>＝NTT回線利用の光コラボ、eo光電話、eo光テレビ）／<strong>eo電気</strong>／LaLa Call／eo光チャンネル／eoコラム・sumica・Netflix Freaks</div>
+            <div class="r"><span class="k">KPI</span><span class="v">FTTH <strong>170万件</strong>（うち超高速コース30万件）／eo電気 14万件。新規加入者の<strong>9割以上が超高速コース</strong>を選択、超高速コース比率 FY2020 3%→FY2024 18%超</span></div>
+            <div class="r"><span class="k">人物</span><span class="v">赤田さん（部長）／岩佐さん（プロダクトT・新サービス開発）／小出さん（事業企画T・事業計画策定・施策推進・既存顧客対応強化）</span></div>
+          </div>
+          <div class="dc-src">出典: hrmos jobs/02_3010100030_03 ／ 02_3010100060_03 ／ optage.co.jp/recruit/mid-career/cross-talk/work-style.html</div>
+        </div>
+
+        <div class="dt-card dc-new dc-unknown">
+          <div class="dc-path">コンシューマ事業推進本部</div>
+          <div class="dc-top"><span class="dc-name">コンシューマ事業運営部</span><span class="dc-tag t-new">2026.07 新設</span><span class="dc-lv lv-d">&#10005;</span></div>
+          <div class="dc-body">業務内容の公開記述なし。2025年に存在した「<strong>サービス開発部＋メディア運営部</strong>」の統合先と推定されるが、対応関係は非公表。</div>
+          <div class="dc-src">出典: 会社案内PDF p.10（存在のみ）</div>
+        </div>
+
+        <div class="dt-card">
+          <div class="dc-path">コンシューマ事業推進本部</div>
+          <div class="dc-top"><span class="dc-name">ホームセキュリティ事業戦略部</span><span class="dc-lv lv-b">&#9711;</span></div>
+          <div class="dc-body">部の業務記述そのものは非公開だが、<strong>2023年4月の関電セキュリティ・オブ・ソサイエティ（関電SOS）吸収合併で取り込んだホームセキュリティ事業の戦略部門</strong>と位置づけられる。事業内容は公式に判明。</div>
+          <div class="dc-rows">
+            <div class="r"><span class="k">商材</span><span class="v"><strong>関電SOS</strong>（見守る・知らせる・駆けつける。コントローラーが異常検知→監視センター→緊急発進基地から現場出動、必要に応じ警察・消防へ通報）／<strong>MAMOLEO（マモレオ）</strong>＝家ナカ・家ソトの総合みまもり。カメラ・センサー・GPSタグをアプリで確認、もしもの時は警備員がかけつけ。2024年8月1日提供開始・<strong>合併後初の共同事業</strong>・大阪/京都/兵庫/奈良/滋賀・<strong>2026年までに累計6万件目標でeo・mineoに次ぐ第3の柱に育成方針</strong>／<strong>IOPT（アイオプト）</strong>＝不動産向けスマートIoT（QRスキャンで即利用、ワンアプリ操作、シーン設定・音声操作、GPS連動で家電自動ON/OFF）／IOPT CAM（録画欠損しない低遅延・高精彩クラウドカメラ）</span></div>
+            <div class="r"><span class="k">チーム</span><span class="v">ホームセキュリティプロダクトチーム</span></div>
+            <div class="r"><span class="k">人物</span><span class="v">岩本さん（部長）／岡本さん（ホームセキュリティプロダクトチーム）</span></div>
+          </div>
+          <div class="dc-src">出典: k-of.jp/2024/session/simple-way-to-stop-ppap ／ optage.co.jp/press/2024/press_19.html ／ 会社案内PDF p.6</div>
+        </div>
+
+        <div class="dt-card">
+          <div class="dc-path">コンシューマ事業推進本部</div>
+          <div class="dc-top"><span class="dc-name">コンシューマ営業計画部</span><span class="dc-lv lv-b">&#9711;</span></div>
+          <div class="dc-body"><strong>eo光の新サービス・キャンペーンの販売導入調整、自社営業担当向け説明業務</strong>、新サービス拡販につながるキャンペーン企画。</div>
+          <div class="dc-rows">
+            <div class="r"><span class="k">チーム</span><span class="v">営業計画チーム</span></div>
+            <div class="r"><span class="k">人物</span><span class="v">森田さん（営業計画チーム）</span></div>
+          </div>
+          <div class="dc-src">出典: optage.co.jp/recruit/mid-career/cross-talk/work-style.html</div>
+        </div>
+
+        <div class="dt-card">
+          <div class="dc-path">コンシューマ事業推進本部</div>
+          <div class="dc-top"><span class="dc-name">コンシューマ営業部</span><span class="dc-lv lv-a">&#9678;</span></div>
+          <div class="dc-body">①<strong>インサイドセールスチーム</strong>＝電話チャネルを活用した営業活動の中核。<strong>コールセンター運営を基盤に営業活動と申込管理業務の最適化</strong>を担い、受電・架電の営業オペレーション管理・改善、データに基づく課題抽出から施策立案・実行まで一貫推進。<br>②<strong>総合営業チーム</strong>＝新規申込み受付登録業務の統括。UiPathで機器交換業務を自動化し重複転記を削減、<strong>開発期間3〜6か月 → 1〜1.5か月</strong>に短縮。</div>
+          <div class="dc-rows">
+            <div class="r"><span class="k">チーム</span><span class="v"><strong>インサイドセールスチーム ／ 総合営業チーム</strong></span></div>
+            <div class="r"><span class="k">人物</span><span class="v">平野さん（総合営業チーム MGR）</span></div>
+          </div>
+          <div class="dc-src">出典: hrmos jobs/02_3010300050_04 ／ uipath.com/ja/resources/automation-case-studies/optage</div>
+        </div>
+
+        <div class="dt-card dc-new dc-unknown">
+          <div class="dc-path">コンシューマ事業推進本部</div>
+          <div class="dc-top"><span class="dc-name">住宅営業部</span><span class="dc-tag t-new">2026.07 新設</span><span class="dc-lv lv-d">&#10005;</span></div>
+          <div class="dc-body">部署名と業務を紐づける公開記述なし。会社レベルでは集合住宅向け事業が存在 ― eo光ネット マンションタイプ「<strong>光全戸フル10ギガコース</strong>」（関西初、各住戸まで個別の光回線を敷設、<strong>全戸一括契約型</strong>でオーナー/事業主/管理会社と1棟単位契約＝入居者は個別料金不要、2021年1月から新築分譲マンション向け販売開始）、賃貸マンション向けサービス。<strong>ただし部との紐付けは未確認</strong>。</div>
+          <div class="dc-src">出典: 会社案内PDF p.10（存在のみ）</div>
+        </div>
+
+        <div class="dt-card">
+          <div class="dc-path">コンシューマ事業推進本部</div>
+          <div class="dc-top"><span class="dc-name">お客さまサポート部</span><span class="dc-tag t-poc2">PoC2</span><span class="dc-lv lv-a">&#9678;</span></div>
+          <div class="dc-body"><strong>eo光・mineoの既存顧客からの問い合わせ・トラブル対応の統括</strong>。電話・Webでの「お客さまの困りごと解決」、<strong>コンタクトセンター運営の改善</strong>、サービス企画部門との連携、<strong>カスタマーハラスメント対策</strong>（従業員が心身の健康を害されず安心して業務に取り組める環境構築）。「感動していただけるサービス品質」の提供を目標。テクニカル運用チームは顧客向けサポート機能の運用・メンテナンス、<strong>AIの学習と回答精度向上</strong>を担当。</div>
+          <div class="dc-rows">
+            <div class="r"><span class="k">チーム</span><span class="v"><strong>サポート統括チーム ／ テクニカル運用チーム</strong></span></div>
+            <div class="r"><span class="k">技術</span><span class="v">顧客情報統合管理システム（CDP）＋「お客さまカルテ」「応対フロー型ナレッジ」「料金計算ツール」（ベルシステム24・2019年11月導入）／<strong>IBM watsonx Assistant・IBM Watson Discovery</strong>によるバーチャルアシスタント「つなぐ」Web版・LINE版（24時間365日）</span></div>
+            <div class="r"><span class="k">人物</span><span class="v">山縣さん（部長）／江口さん・川尻さん（サポート統括T SM）／福田さん（テクニカル運用T MGR）</span></div>
+            <div class="r"><span class="k">FDE</span><span class="v"><strong>PoC2の対象部門</strong>（コールセンターDX化）。AXソリューション部が連絡窓口を担当</span></div>
+          </div>
+          <div class="dc-src">出典: ibm.com/jp-ja/case-studies/optage (2024/1) ／ solution.bell24.co.jp/ja/case/optage/ ／ proseed.co.jp/case_studies/optage202503/</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 3. モバイル事業推進本部 ============ -->
+  <div class="dt-hq">
+    <div class="dt-hq-head">
+      <span class="dth-n">3</span>
+      <span class="dth-name">モバイル事業推進本部</span>
+      <span class="dth-biz">モバイル事業 ― FY2025 推計285億円（11%）&rarr; FY2035 推計645億円（15%）</span>
+      <span class="dth-meta">松本本部長（兼務）／堀田副本部長 ＝ コア領域「深化」。<strong>2024年7月1日新設</strong>（2026.07新設ではない）</span>
+    </div>
+    <div class="dt-hq-body">
+      <div class="dt-div">
+        <div class="dt-div-h">本部の成り立ち<span class="ddh-sub">公式PRで理由が明記されている稀なケース</span></div>
+        <div class="dc-body" style="padding:0 4px;"><strong>2024年7月1日、「モバイル事業のさらなる成長加速のために」新設</strong>。それまで他部署でmineo関連業務をしていたメンバーが本部に集結し、<strong>mineo関連機能をほぼ全て集約</strong>。約50名 → 本部規模<strong>約100名</strong>に拡大。「責任体制が明確化し、mineo事業全体の視点で一気通貫での事業展開が可能」になったと公式に説明されている。<div class="dc-src">出典: king.mineo.jp/staff_blogs/2666 ／ optage.co.jp/press/2024/press_16.html</div></div>
+      </div>
+      <div class="dt-grid">
+
+        <div class="dt-card">
+          <div class="dc-path">モバイル事業推進本部</div>
+          <div class="dc-top"><span class="dc-name">モバイル事業戦略部</span><span class="dc-lv lv-b">&#9711;</span></div>
+          <div class="dc-body">mineo事業の戦略部門。<strong>事業戦略の立案・推進</strong>。</div>
+          <div class="dc-rows">
+            <div class="r"><span class="k">商材</span><span class="v"><strong>mineo</strong>（au/ドコモ/ソフトバンクの<strong>トリプルキャリアMVNO</strong>、3/7/15/30/50GB、翌月繰越、<strong>パケットシェア・パケットギフト・フリータンク</strong>、全国33店舗でSIM即日受取、mineoアプリ、10分かけ放題／時間無制限かけ放題／10分通話パック、MNP可）／コミュニティサイト<strong>マイネ王</strong>（Q&amp;A・掲示板・アイデアファーム）</span></div>
+            <div class="r"><span class="k">KPI</span><span class="v">MVNO契約 <strong>141万件</strong>（<strong>市場シェアNo.2</strong>）。FY2015の25万件から10年で5.6倍</span></div>
+            <div class="r"><span class="k">チーム</span><span class="v">モバイル事業戦略チーム</span></div>
+            <div class="r"><span class="k">人物</span><span class="v">松田さん（部長）／伊藤さん（モバイル事業戦略T SM）／合田さん（モバイル事業統括T TM）</span></div>
+          </div>
+          <div class="dc-src">出典: king.mineo.jp/staff_blogs/2666 ／ fsi-plusf.jp/business/case/optage.html</div>
+        </div>
+
+        <div class="dt-card">
+          <div class="dc-path">モバイル事業推進本部</div>
+          <div class="dc-top"><span class="dc-name">モバイル事業推進部</span><span class="dc-lv lv-a">&#9678;</span></div>
+          <div class="dc-body">①<strong>モバイル事業運営チーム</strong>＝新規事業「<strong>MVNO Operation Kit（MOK）</strong>」の業務運営設計・スキーム整備・システムへの落とし込み。業務フローの新規設計とプロセス設計、新規構築システムを利用した業務フロー構築、既存の顧客料金システムおよび連携先社内システムとのシステム連携検討、サービス開始に向けた各種テスト対応、開始後の業務運用管理・提携先からの問い合わせ対応・障害時の社内外窓口対応。<br>②<strong>ビジネスモバイル営業チーム</strong>＝法人向けモバイル「<strong>mineo BiZ</strong>」の販売拡大に向けた営業企画（営業戦略・計画策定、B2Bマーケティング、<strong>インサイドセールス立上げ・運営</strong>）と営業計画（販売計画策定、販路開拓、顧客分析、キャンペーン施策立案・実行）。</div>
+          <div class="dc-rows">
+            <div class="r"><span class="k">商材</span><span class="v">MVNO Operation Kit（MOK・<strong>2026年度下期提供開始予定</strong>）／mineo BiZ（閉域網IP-VPN接続メニュー、IoTソリューション〈監視カメラ等〉）／<strong>auとのフルMVNO事業（国内初・2026年1月27日）</strong>＝データ通信・音声/SMS対応</span></div>
+            <div class="r"><span class="k">市場</span><span class="v">法人IoT市場は<strong>FY2030に12,329万回線</strong>（FY2024比150%）を見据える</span></div>
+            <div class="r"><span class="k">チーム</span><span class="v"><strong>モバイル事業運営チーム ／ ビジネスモバイル営業チーム</strong></span></div>
+          </div>
+          <div class="dc-src">出典: hrmos jobs/03_3510200000_03_01 ／ 03_3510200030_04_02</div>
+        </div>
+
+        <div class="dt-card dc-new">
+          <div class="dc-path">モバイル事業推進本部</div>
+          <div class="dc-top"><span class="dc-name">モバイル事業アライアンス プロジェクトグループ</span><span class="dc-tag t-new">2026.07 新設</span><span class="dc-lv lv-a">&#9678;</span></div>
+          <div class="dc-body"><strong>MVNE事業拡大（既存通信事業者へのBSS切替および非通信事業者のMVNO参画推進）に向けたアライアンス先の開拓と企画</strong>。SaaS型BSS PF「MVNO Operation Kit」の提案活動とサービス企画立案（機能課題設計、新規機能検討）、市場調査（事業領域別の市場分析・競合分析）、アライアンススキーム検討、<strong>アライアンスパートナー開拓・契約交渉</strong>、既存パートナーとの関係継続、<strong>アクセラレーションプログラムの運営</strong>、MVNO事業参画における課題解決コンサルティング。</div>
+          <div class="dc-rows">
+            <div class="r"><span class="k">チーム</span><span class="v">モバイル事業アライアンスチーム（<strong>東京・霞が関勤務</strong>）</span></div>
+            <div class="r"><span class="k">対象</span><span class="v">海外・日本全国／日常英会話レベルの英語力が歓迎要件</span></div>
+          </div>
+          <div class="dc-src">出典: hrmos jobs/03_3510100030_03_01 ／ 03_3510100030_04</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 4. 技術本部 ============ -->
+  <div class="dt-hq">
+    <div class="dt-hq-head">
+      <span class="dth-n">4</span>
+      <span class="dth-name">技術本部</span>
+      <span class="dth-biz biz-cost">全社共通機能 ― コストセンター／AI SI人材プール候補</span>
+      <span class="dth-meta">橘本部長（取締役 常務執行役員）／松本佳宏副本部長（技術運営部・ネットワーク技術部門）・前川副本部長（運用保全部門）&nbsp;|&nbsp; 直轄3部＋4部門＝17組織</span>
+    </div>
+    <div class="dt-hq-body">
+
+      <div class="dt-div">
+        <div class="dt-div-h">本部 直轄<span class="ddh-sub">セキュリティ技術部・DC技術部の担当役員はプレスに記載なし＝本部長直轄の可能性（推定）</span></div>
+        <div class="dt-grid">
+
+          <div class="dt-card dc-unknown">
+            <div class="dc-path">技術本部 / 直轄</div>
+            <div class="dc-top"><span class="dc-name">技術運営部</span><span class="dc-lv lv-d">&#10005;</span></div>
+            <div class="dc-body">求人・記事ともゼロ。<strong>2019年4月から2026年7月まで一貫して技術本部直属で名称変更なし</strong>という安定性のみ判明。</div>
+            <div class="dc-rows"><div class="r"><span class="k">担当役員</span><span class="v">松本佳宏副本部長</span></div></div>
+            <div class="dc-src">出典: 会社案内PDF p.10（存在のみ）</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">技術本部 / 直轄</div>
+            <div class="dc-top"><span class="dc-name">セキュリティ技術部</span><span class="dc-lv lv-b">&#9711;</span></div>
+            <div class="dc-body"><strong>CSIRTとしてのセキュリティ業務全般</strong>。セキュリティ戦略・計画策定、セキュリティソリューションの導入企画・構築・運用、<strong>インシデント対応</strong>、社内向けセキュリティ教育・技術支援、セキュリティ審査・監査。ISMS認証（JQA-IM0342、JIS Q 27001:2025、有効期限2028年6月21日）の認証範囲組織として登録され、<strong>マネージドセキュリティサービスを含む範囲</strong>を担う。<br><span class="pl-sub">&#9888; 経営本部の「情報セキュリティ部」（2026.07新設）とは<strong>別組織</strong>。混同注意</span></div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">商材</span><span class="v">マネージドセキュリティサービス（<strong>24時間365日体制で監視・分析</strong>。ゲートウェイ監視・エンドポイント監視）／ゲートウェイセキュリティ（FireEye、CACHATTO）／クライアントセキュリティ（CWAT、ESET）／マネージドセキュリティパック／<strong>ゼロトラスト</strong>（EDR、SWG、IDaaS、SASE、Prisma Access）／SCS評価制度対応（事前診断チェック、簡易アセスメント「クイックアセス」）</span></div>
+            </div>
+            <div class="dc-src">出典: isms.jp/lst/ind/CR_JQA-IM0342.html ／ optage.co.jp/business/service/security/</div>
+          </div>
+
+          <div class="dt-card dc-new">
+            <div class="dc-path">技術本部 / <strong>直轄</strong></div>
+            <div class="dc-top"><span class="dc-name">DC技術部</span><span class="dc-tag t-new">2026.07 新設</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>データセンターの上流設計部門</strong>（部門配下ではなく技術本部の直轄）。<br>①<strong>電気設備</strong>＝基本設計とシステム構成検討、受変電設備・UPS周辺・幹線系統の構成/容量/冗長化検討、運用条件整理とリスク洗い出し、中央監視システム（BMS）の監視項目・IF・連携要件整理、メーカー/ベンダー/施工会社との技術協議・仕様調整、単線結線図・系統図・仕様書・設計条件書の作成レビュー、負荷容量/遮断協調/系統切替/保護方式の計算・検算、信頼性/保守性/拡張性を踏まえた設備方式の比較評価。<br>②<strong>建物機械設備</strong>＝基本設計と設計方針立案、AHU/チラー/冷却水系統/補機類の機器選定と容量検討、<strong>液冷方式（CDU、液冷配管、熱源連携）の適用性検討・比較評価</strong>、空調負荷/熱源容量/搬送動力/冗長構成の計算検算、システム構成図・基本仕様書の作成レビュー、省エネ性・保守性・拡張性を踏まえた方式検討。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">ミッション</span><span class="v">求人原文: 「<strong>DC事業は弊社において成長領域に位置付けられており、今後、ニーズは拡大傾向にあります。ニーズ拡大に対応すべく新設／既存DCの設備更新や新技術設備の導入検討が必要になります。</strong>」</span></div>
+              <div class="r"><span class="k">チーム</span><span class="v">DC設備チーム</span></div>
+              <div class="r"><span class="k">技術</span><span class="v">受変電／UPS／非常用発電／BMS／AHU／チラー／冷却水系統／<strong>液冷（CDU）</strong>／冗長構成（N+1・2N・系統分離）。資格＝電気主任技術者・建築設備士・施工管理技士・技術士</span></div>
+              <div class="r"><span class="k">旧組織</span><span class="v">旧「技術イノベーション部」「DC構築プロジェクトグループ」の後継とみられる（推定）</span></div>
+            </div>
+            <div class="dc-src">出典: hrmos jobs/04_4020300020_05_01 ／ 04_4020300020_05_02</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="dt-div">
+        <div class="dt-div-h">プラットフォーム技術部門<span class="ddh-sub">アジャイル開発・PF整備。AI（GPU）基盤の当事者</span></div>
+        <div class="dt-grid">
+
+          <div class="dt-card dc-wl">
+            <div class="dc-path">技術本部 / プラットフォーム技術部門 / プラットフォーム技術部</div>
+            <div class="dc-top"><span class="dc-name">システム基盤チーム</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>社内システム基盤およびAI（GPU）基盤の設計・構築・運用・保守</strong>。<br>①<strong>約1,600台のサーバを保守</strong>し、顧客管理システム・光ファイバー管理システム・会計システム等の基幹アプリを支える。共通OS設定、仮想サーバ構築、ハイブリッドクラウド活用、運用自動化（IaC）。<br>②<strong>AI系GPU基盤</strong>＝GPUサーバオンプレミス基盤の新規設計・構築およびリソース増設・リプレース、NW機器/GPUサーバ/CPUサーバ/ストレージのバージョンアップ計画・実行・維持運用、パブリッククラウドと自社オンプレ基盤の接続設計・サービス設計支援、検証環境構築、障害対応、基盤利用部門/営業部門/監視部門との業務調整、委託先管理。<br>③法人・公共向けクラウドサービス基盤の設計・構築・運用（サービス基盤リプレースPJのPM等）。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">ミッション</span><span class="v">求人原文: 「<strong>急成長しているAI事業において、新たな取り組みとしてAI（GPU）基盤（技術革新）を遂行するため</strong>」 ― <strong>会社が「AI事業は急成長」と求人で明言している数少ない記述</strong></span></div>
+              <div class="r"><span class="k">技術</span><span class="v">Ubuntu／Docker／Windows・RedHat OS／AWS／Azure／仮想基盤／<strong>GPUサーバ</strong>／IaC</span></div>
+              <div class="r"><span class="k">人物</span><span class="v">小宮さん（MGR）／山本さん（SM）／赤枝さん（リーダー）／河村さん</span></div>
+            </div>
+            <div class="dc-src">出典: hrmos jobs/04_4030100030_05_01 ／ optage.co.jp/recruit/fresh/people/interview07.html ／ psc-smartwork.com/casestudy/2024/04/328.html</div>
+          </div>
+
+          <div class="dt-card dc-wl">
+            <div class="dc-path">技術本部 / プラットフォーム技術部門 / プラットフォーム技術部</div>
+            <div class="dc-top"><span class="dc-name">サービスシステムチーム</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body">①<strong>クリプトエンジニア</strong>＝WEB3・ブロックチェーン全般のシステム開発、WEB3アーキテクチャの設計開発、ブロックチェーンの調査・開発活動、<strong>ノード運用・スマートコントラクト開発</strong>。新規WEB3サービスの開発現場でのセキュリティ設計・構築。<br>②<strong>AIアプリケーションエンジニア</strong>＝AI関連アプリの開発・導入業務全般、エンドユーザー（自社のBtoC/BtoB顧客）向けアプリのフロントエンド・バックエンド開発、新規サービスのサーバ／モバイルアプリの設計・開発・テスト・導入・技術支援、<strong>現オンプレ仮想マシンのAWSへのマイグレーション</strong>（数年スパンのクラウドリフト＋クラウドシフト/ネイティブ化サポート）、AWSインフラ環境の維持運営。<br>③VoIP技術のシステム設計・開発を経て、サーバーシステムの効率化・品質向上と運用自動化の統括。<br><strong>横断的に各部署の困りごとの改善や新規実装を行う役割</strong>。スクラムチーム立ち上げ・運営、開発者向け壁打ち・改善支援、社内アプリ技術支援、新規事業の技術サポート。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">技術</span><span class="v">Solidity等／Python／JAVA／JavaScript／AWS／GCP／Flutter(Dart)／Swift／Kotlin／ChatGPT Enterprise／Copilot系／FastAPI／Docker</span></div>
+              <div class="r"><span class="k">人物</span><span class="v">松田TM／大野MGR（<strong>AX推進T兼務</strong>）／夏原さん／小澤SM<span class="pl-sub">／寺崎さんはAX推進Tへ異動済み</span></span></div>
+              <div class="r"><span class="k">FDE</span><span class="v"><strong>ヒアリング対象</strong>。技術本部側でAI/Web3の実装を担う唯一のチーム＝FDE化の技術供給源候補</span></div>
+            </div>
+            <div class="dc-src">出典: hrmos jobs/04_4030100000_10_01 ／ 04_4030100040_10_03 ／ optage.co.jp/recruit/fresh/people/interview09.html</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="dt-div">
+        <div class="dt-div-h">ネットワーク技術部門<span class="ddh-sub">松本佳宏副本部長 管下 ― 5部構成（内訳が今回判明）</span></div>
+        <div class="dt-grid">
+
+          <div class="dt-card dc-new">
+            <div class="dc-path">技術本部 / ネットワーク技術部門</div>
+            <div class="dc-top"><span class="dc-name">技術計画部</span><span class="dc-tag t-ren">2026.07 改称</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>L3バックボーンネットワークの技術計画・設備計画</strong>。バックボーンの構成検討・収容設計・経路設計、ルータ/BGP/IS-IS/MPLS/SR（Segment Routing）の技術要件整理、トラフィック需要・設備容量・冗長性・可用性を踏まえた<strong>設備増強計画の策定</strong>、インターネット接続・IX接続・ISP基盤の技術検討、サービス拡大に併せたネットワーク構成見直しと設備計画、方式検討資料・設計資料・社内説明資料の作成。サービス主管部門/運用部門/構築部門との技術要件・実現方式検討、設備導入・ネットワーク更改・機能追加における社内外調整、ベンダー・通信キャリア・IX事業者との技術調整。<br><strong>「AIの活用などによるネットワークの高度化・自動化」を推進と明記</strong>。<span class="pl-sub">旧「ネットワーク技術計画部」</span></div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">チーム</span><span class="v">ネットワーク計画チーム</span></div>
+              <div class="r"><span class="k">技術</span><span class="v">ルータ／L3スイッチ／BGP／IS-IS／MPLS／SR・SRv6／インターネット接続／IX接続／ISPバックボーン</span></div>
+            </div>
+            <div class="dc-src">出典: hrmos jobs/04_4040100010_10_01</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">技術本部 / ネットワーク技術部門 / 技術開発部</div>
+            <div class="dc-top"><span class="dc-name">技術開発部（3チーム）</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>&#9679; ネットワーク技術開発チーム</strong> ― 商用ネットワークの開発・構築・運用。商品企画部門とのサービス・プロダクト仕様調整、社内他システムとの連携機能開発・仕様調整、開発ベンダとの仕様調整・PM、ネットワークおよび関連システムの仕様策定、評価検証・設備構築・工程管理・運用、障害対応、新規技術導入に向けた検証・開発。実績＝eo光インターネット網のバックボーン設計構築、マルチベンダでのバックボーン2拠点化、100G化、海外ネットワーク拡張、<strong>自治体向けセキュリティクラウドのDDoS対策サービス開発</strong>、次期法人MPLS網構築における新技術導入。技術＝オプティカルネットワーク／ホームルータ・WiFi・IoT関連設備／仮想化／MPLS／Segment Routing／EVPN／100G。人物＝鶴田さん<br><br>
+            <strong>&#9679; VoIP技術開発チーム</strong> ― <strong>フルMVNOサービスやIP電話サービスを支える音声サービス基盤（IMS/VoIP）の企画・設計・開発</strong>。IMSを中心とした音声サービス基盤の企画設計開発、SIP/VoIP技術を活用した新サービス・新機能の企画導入、<strong>HSS・SBC・音声アプリケーションサーバ等の音声コア設備の設計・構築・検証</strong>、通信事業者・ベンダーとの要件定義/仕様策定/技術調整、商用導入に向けた試験・品質評価・障害分析と継続的改善。ミッション原文「<strong>MVNO事業者ならではの強みを生かし、将来的には複数キャリアを活用した音声フルMVNOサービスの実現を見据え</strong>」。技術＝IMS／SIP／Diameter／VoIP／HSS／SBC／CSCF／LTE・5Gコア／BSS・OSS／プロビジョニングシステム／Kubernetes・Docker・VMware<br><br>
+            <strong>&#9679; モバイル技術開発チーム</strong> ― モバイル端末・SIMに関する開発・構築。企画部門とのサービス・プロダクト仕様調整、モバイル端末開発ベンダとの仕様調整・PM、モバイル端末/SIM/関連システムの仕様策定・評価検証、不具合対応。<strong>5Gネットワークの設計・構築、ローカル5G事業化</strong>（電源設計、工事、VPN構築、無線免許取得）も担当実績あり。技術＝モバイル端末／SIM／SIMプロファイル設計／IMS／5G／ローカル5G。人物＝髙崎さん</div>
+            <div class="dc-src">出典: hrmos jobs/04_4040200000_10_01 ／ 04_4040200020_10 ／ 04_4040200040_10_01 ／ optage.co.jp/recruit/mid-career/people/tsuruta.html ／ takasaki.html</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">技術本部 / ネットワーク技術部門 / 通信サービス設備部</div>
+            <div class="dc-top"><span class="dc-name">通信サービス設備部（3チーム）</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>&#9679; 電源設備チーム</strong> ― <strong>データセンターや通信局舎用電源設備の設計監理および工事監理</strong>。高圧・低圧受変電設備／配電盤設備の建設（設計・工事）、無停電電源設備（EG、UPS）の建設。対象は大型〜小型通信局舎、データセンター局、<strong>山上中継所</strong>。特高から低圧までの受電設備、非常用発電設備、通信用UPSを扱う。ミッション原文「<strong>データセンター事業の展開や既存局舎の老朽化に伴う統合化などの対応に向けて、データセンター局や通信局舎建設、既存局舎設備のリニューアルも進めています。</strong>」<br><br>
+            <strong>&#9679; 局舎設備チーム</strong> ― <strong>通信局舎建物の設計監理および工事監理</strong>（建物設計委託、図面審査、施工図承認、現場重点監理、検収業務等）。ミッション原文「<strong>コロケーションサービスや既存局舎の老朽化に伴う統合化などの対応に向けて、数多くの局舎建屋の建設を目指しております。</strong>」資格＝二級建築士／一級・二級施工管理技士／建築設備士<br><br>
+            <strong>&#9679; 通信設備チーム</strong> ― 通信装置の増設・新装置へのリプレース工事（現地調査・設計・工事調整・遠隔設定）</div>
+            <div class="dc-src">出典: hrmos jobs/04_4040300000_10_01 ／ 04_4040300000_10_02 ／ optage.co.jp/recruit/fresh/people/interview12.html</div>
+          </div>
+
+          <div class="dt-card dc-unknown">
+            <div class="dc-path">技術本部 / ネットワーク技術部門</div>
+            <div class="dc-top"><span class="dc-name">電力通信設備部</span><span class="dc-lv lv-c">&#9651;</span></div>
+            <div class="dc-body">業務記述の公開情報なし。名称と組織上の位置（通信サービス設備部と無線鉄塔設備部の間）から<strong>関西電力・関西電力送配電向け電力通信設備の建設・設備計画側</strong>を担うと推測される。<strong>運用保守側は運用保全部門の電力通信運用保全部が担う分業</strong>と読める（推定）。</div>
+            <div class="dc-src">出典: 会社案内PDF p.10（存在のみ）</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">技術本部 / ネットワーク技術部門</div>
+            <div class="dc-top"><span class="dc-name">無線鉄塔設備部</span><span class="dc-lv lv-b">&#9711;</span></div>
+            <div class="dc-body"><strong>屋外インフラシェアリング事業（鉄塔・電柱等）の設備保有・管理</strong>。関西一円を中心に（東海・北陸まで）<strong>約640カ所の無線鉄塔</strong>、ビル屋上、電柱を保有し、<strong>KDDI（au、UQ）・ソフトバンク・NTTドコモ・楽天モバイル</strong>の携帯事業者および関西民放各社に基地局設備として賃貸。複数事業者による共用で通信設備の設置・運用・保守コストを削減、環境負荷低減にも寄与。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">関連</span><span class="v"><strong>屋内インフラシェアリング（シェアリングDAS）</strong>を2024年4月25日から提供開始（各社の電波を1つのアンテナで送受信し建物内通信環境を改善、ビル・商業施設向け）／モバイル電波環境測定サービス</span></div>
+              <div class="r"><span class="k">位置</span><span class="v">これは<strong>ストック型（賃貸）ビジネス</strong>であり、通信キャリアが顧客。BS事業の「Carrier's Carrier」成長ドライバーに対応する設備側</span></div>
+            </div>
+            <div class="dc-src">出典: optage.co.jp/business/service/tower/ ／ prtimes.jp/main/html/rd/p/000000187.000051725.html</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="dt-div">
+        <div class="dt-div-h">光・アクセス部門<span class="ddh-sub">4部すべて2026.07も存続・変更なし。自社光ファイバ総延長38万km・年間10万件超の工事</span></div>
+        <div class="dt-grid">
+
+          <div class="dt-card">
+            <div class="dc-path">技術本部 / 光・アクセス部門</div>
+            <div class="dc-top"><span class="dc-name">光・アクセス計画部</span><span class="dc-lv lv-b">&#9711;</span></div>
+            <div class="dc-body"><strong>光アクセス設備の計画</strong>。2025大阪・関西万博の通信インフラ案件では<strong>協会への提案・入札段階から関与</strong>し、冗長性・安全性を高めるため<strong>光ファイバの2ルート化</strong>を設計思想として提案・共同設計。部内に<strong>業務改革・DX推進プロジェクトチーム</strong>を置き設計の自動化・業務効率化に取り組む。</div>
+            <div class="dc-rows"><div class="r"><span class="k">チーム</span><span class="v">計画運営チーム ／ 業務改革・DX推進プロジェクトチーム</span></div></div>
+            <div class="dc-src">出典: optage.co.jp/recruit/fresh/about/project-story.html</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">技術本部 / 光・アクセス部門</div>
+            <div class="dc-top"><span class="dc-name">光・アクセス工事部</span><span class="dc-lv lv-b">&#9711;</span></div>
+            <div class="dc-body"><strong>光ファイバの新規ルート敷設可否の検討、設計・工事の方式決定、工事費算定、実施体制の組立て</strong>という工事の実行部門。万博案件では地中への光ファイバ敷設困難に対しルートを何度も設計し直し、より適した材料を採用して解決。協力会社との折衝・現場マネジメント。<strong>架空ルート（電柱）／地中ルート（洞道）の両方</strong>を扱う。</div>
+            <div class="dc-rows"><div class="r"><span class="k">チーム</span><span class="v">法人工事第1チーム</span></div></div>
+            <div class="dc-src">出典: optage.co.jp/recruit/fresh/about/project-story.html</div>
+          </div>
+
+          <div class="dt-card dc-unknown">
+            <div class="dc-path">技術本部 / 光・アクセス部門</div>
+            <div class="dc-top"><span class="dc-name">光・アクセス設計部</span><span class="dc-lv lv-d">&#10005;</span></div>
+            <div class="dc-body">業務記述の公開情報なし。部門内バリューチェーン（計画 → <strong>設計</strong> → 工事 → 設備運用）の「設計」を担う位置づけと読めるが確証なし。</div>
+            <div class="dc-src">出典: 会社案内PDF p.10（存在のみ）</div>
+          </div>
+
+          <div class="dt-card dc-unknown">
+            <div class="dc-path">技術本部 / 光・アクセス部門</div>
+            <div class="dc-top"><span class="dc-name">光・アクセス設備運用部</span><span class="dc-lv lv-d">&#10005;</span></div>
+            <div class="dc-body">業務記述の公開情報なし。会社レベルでは自社光ファイバ網が<strong>架空ルート（電柱）・地中ルート（洞道）を通り局設備に至る構成</strong>、<strong>NTT網とは別の独自回線設備</strong>、<strong>全設備二重化</strong>という事実は公式だが、部との紐付けはなし。</div>
+            <div class="dc-src">出典: 会社案内PDF p.10（存在のみ）</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="dt-div">
+        <div class="dt-div-h">運用保全部門<span class="ddh-sub">前川副本部長 管下 ― 2025年組織図の英称は Service Operations Center</span></div>
+        <div class="dt-grid">
+
+          <div class="dt-card">
+            <div class="dc-path">技術本部 / 運用保全部門</div>
+            <div class="dc-top"><span class="dc-name">運用保全統括部</span><span class="dc-lv lv-b">&#9711;</span></div>
+            <div class="dc-body">統括部固有の業務記述は不明。<strong>部門レベル</strong>では、訓練を積んだメンバーが<strong>7つの専門特化チーム</strong>を構成し24時間365日の運用保全体制を組む。<strong>監視拠点・運用保全体制の2重化とネットワーク構成の多重化</strong>により、監視拠点1（SOC）が機能停止しても監視拠点2（バックアップセンター）へ迅速切替。<br>部内の<strong>監視制御システムチーム</strong>は運用システム全般の開発、監視制御システムの運用保守、<strong>AIを活用したサイレント故障検知システム「Impulse（インパルス）」の導入プロジェクト推進</strong>、ネットワーク監視への機械学習導入、AI・データ分析による故障検知システムの検証・構築。</div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">チーム</span><span class="v">監視制御システムチーム</span></div>
+              <div class="r"><span class="k">人物</span><span class="v">谷岡さん（監視制御システムT MGR・2020年より）／赤井さん（同チーム）</span></div>
+              <div class="r"><span class="k">FDE</span><span class="v">運用保守等を担う技術本部は<strong>インフラ関連人材が多く、業務モチベーションの維持が課題</strong>。この人材層を精鋭化・育成して囲い込み、将来のAI SI／内部DX人材として取り込む構想（社内で議論あり）</span></div>
+            </div>
+            <div class="dc-src">出典: optage.co.jp/recruit/mid-career/cross-talk/technology.html ／ 会社案内PDF p.8</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">技術本部 / 運用保全部門</div>
+            <div class="dc-top"><span class="dc-name">ICT運用保全部（3チーム）</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>&#9679; ICT監視運用チーム</strong> ― <strong>通信ネットワーク設備の監視業務（三交替勤務）</strong>が主業務。副次的に多重伝送設備、IP設備（L2・L3他）、サーバ設備（SIP、メール等）の保守・補修。組織ミッション「個人向け、法人向けサービスに係る情報通信設備の監視、運用、復旧、お客さま対応」。音声サービス設備およびICTソリューションサービス設備機器の監視・運用・保守、<strong>大規模通信インフラの24時間365日安定稼働維持</strong>、監視の高度化やシステム改修によるソリューションサービスの体制強化。<strong>勤務地は兵庫県西宮市</strong><br><br>
+            <strong>&#9679; ファシリティ保全チーム</strong> ― <strong>関西エリアのデータセンターや通信用局舎に設置している電源・空調装置の設備管理およびメンテナンス</strong>。①設備保守＝点検・修繕工事の計画策定、作業指示・現場支援、進捗管理、設備事故時の保守会社への復旧作業指示・現場支援、保守体制の構築維持、業務効率化提案（IT化・デジタル化）、予算・契約・事務手続き ②品質維持＝点検結果・設備事故の原因調査分析による品質管理・改善、技術/構築部門へのフィードバック、設備更新に伴うマニュアル整備、協力会社への技術指導 ③安全管理＝協力会社を含めた現場の安全指導、設備点検・事故対応時の現場立会。ミッションに「<strong>成長領域であるコネクティビティDCを含めた電源・空調の保全体制の強化</strong>」「電源・空調故障の撲滅に向けた効果のある点検計画の策定と予防保全策の実施」「今後の核となるキーマン候補の育成」。勤務地は兵庫県西宮市<br><br>
+            <strong>&#9679; サーバ保全チーム</strong> ― ネットワーク機器の保守・保全、故障対応、在庫管理。工事・監視部門と連携</div>
+            <div class="dc-src">出典: hrmos jobs/04_4070200000_05_01 ／ 04_4070200000_05_02 ／ optage.co.jp/recruit/mid-career/people/yamashita.html</div>
+          </div>
+
+          <div class="dt-card">
+            <div class="dc-path">技術本部 / 運用保全部門</div>
+            <div class="dc-top"><span class="dc-name">ITサービス運用保全部</span><span class="dc-lv lv-b">&#9711;</span></div>
+            <div class="dc-body">ISMS（JQA-IM0342）／<strong>ITSMS（JQA-IT0018、有効期限2029年6月16日）</strong>の認証範囲組織として登録。認証範囲は①<strong>ネットワーク運用・保全</strong> ②<strong>電算機運用・監視</strong> ③<strong>データセンター運用・保全</strong> ④<strong>情報機器の設置・構築・保全</strong> ⑤<strong>ヘルプデスク</strong> ⑥<strong>マネージドセキュリティサービス（セキュリティ監視）</strong>（ISMSはさらに⑦データセンターサービスおよびクラウドサービス関連を追加）。<strong>法人向けIT/DCサービスの運用保全とヘルプデスク</strong>を担う。</div>
+            <div class="dc-rows"><div class="r"><span class="k">方法論</span><span class="v">この部の業務範囲が特定できたのは<strong>ISO認証の適用範囲ページのみ</strong>。求人・事例には登場しない</span></div></div>
+            <div class="dc-src">出典: isms.jp/lst/ind/CR_JQA-IM0342.html ／ isms.jp/itsms/lst/ind/CR_JQA-IT0018.html</div>
+          </div>
+
+          <div class="dt-card dc-new">
+            <div class="dc-path">技術本部 / 運用保全部門</div>
+            <div class="dc-top"><span class="dc-name">電力通信運用保全部</span><span class="dc-tag t-ren">2026.07 改称</span><span class="dc-lv lv-a">&#9678;</span></div>
+            <div class="dc-body"><strong>関西電力・関西電力送配電用の通信設備の保守・運用・設計</strong>。北陸保全チームは勤務地は富山市内だが<strong>実際の作業は「黒部川などの川の傍にある水力発電所等」</strong>で実施。ミッションは「電気事業上、必要不可欠な通信設備の保守、運用、設計業務」「社会インフラを支える重要な設備に関わる業務」。<br>旧エリア保全部 東海保全チーム相当では愛知・岐阜・長野エリアの<strong>電力保安用通信および一般業務連絡用通信の維持管理</strong>、工事引き継ぎと竣工検査立ち会い、障害復旧対応と技術検討、<strong>AI・IoT等のデジタル技術を用いた先進的業務への移行検討</strong>。<span class="pl-sub">旧「電力通信運用部＋エリア保全部」の統合</span></div>
+            <div class="dc-rows">
+              <div class="r"><span class="k">チーム</span><span class="v"><strong>北陸保全チーム</strong>（富山県富山市・北陸事務所）／旧 東海保全チーム</span></div>
+              <div class="r"><span class="k">顧客</span><span class="v">関西電力／関西電力送配電</span></div>
+              <div class="r"><span class="k">人物</span><span class="v">中村さん（旧 エリア保全部 東海保全チーム）</span></div>
+            </div>
+            <div class="dc-src">出典: hrmos jobs/04_4070500100_05 ／ optage.co.jp/recruit/mid-career/people/nakamura.html</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ 5. 経営本部 ============ -->
+  <div class="dt-hq">
+    <div class="dt-hq-head">
+      <span class="dth-n">5</span>
+      <span class="dth-name">経営本部</span>
+      <span class="dth-biz biz-cost">全社共通機能 ― 全社AI/AX戦略の主管</span>
+      <span class="dth-meta">西岡本部長（取締役 常務執行役員）／石川副本部長（経営戦略部・コーポレートITシステム部）・谷口副本部長（内部統制部・経理部・調達部）</span>
+    </div>
+    <div class="dt-hq-body">
+      <div class="dt-grid">
+
+        <div class="dt-card">
+          <div class="dc-path">経営本部</div>
+          <div class="dc-top"><span class="dc-name">経営戦略部</span><span class="dc-lv lv-b">&#9711;</span></div>
+          <div class="dc-body">「<strong>会社の持続的な成長を実現するための戦略を立案し、会社全体を先導する</strong>」（公式採用サイト）。中長期的な成長戦略の推進・実現に向けた検討、<strong>社長直下の経営レベルプロジェクトへの参画</strong>。</div>
+          <div class="dc-rows">
+            <div class="r"><span class="k">チーム</span><span class="v">経営企画チーム ／ 経営管理チーム</span></div>
+            <div class="r"><span class="k">FDE</span><span class="v">全社経営統括部門として<strong>全社AIの取り組みを統括</strong>。ただし<strong>大手コンサルが既に入っており、WLとしては入らない方がよい領域</strong>という社内認識</span></div>
+            <div class="r"><span class="k">担当役員</span><span class="v">石川副本部長</span></div>
+          </div>
+          <div class="dc-src">出典: optage.co.jp/recruit/fresh/jobs/ ／ recruit/fresh/people/interview15.html</div>
+        </div>
+
+        <div class="dt-card dc-new dc-unknown">
+          <div class="dc-path">経営本部</div>
+          <div class="dc-top"><span class="dc-name">内部統制部</span><span class="dc-tag t-ren">2026.07 改称</span><span class="dc-lv lv-d">&#10005;</span></div>
+          <div class="dc-body">業務記述の公開情報なし。2025年の「<strong>リスクマネジメント部</strong>」からの改称／分割と推定される。同時に情報セキュリティ部が新設されているため<strong>機能分割の可能性</strong>あり。参考として2024年7月の組織改正で「内部統制強化を図るべく」経営監査室が新設された経緯は公式。</div>
+          <div class="dc-rows"><div class="r"><span class="k">担当役員</span><span class="v">谷口副本部長</span></div></div>
+          <div class="dc-src">出典: 会社案内PDF p.10 ／ press/2026/press_10.html（存在のみ）</div>
+        </div>
+
+        <div class="dt-card dc-new dc-unknown">
+          <div class="dc-path">経営本部</div>
+          <div class="dc-top"><span class="dc-name">情報セキュリティ部</span><span class="dc-tag t-new">2026.07 新設</span><span class="dc-lv lv-d">&#10005;</span></div>
+          <div class="dc-body">業務記述の公開情報なし。<strong>技術本部の「セキュリティ技術部」とは別組織</strong>。経営本部側に置かれることから、社内の情報セキュリティガバナンス・全社ポリシー側を担うと読めるが確証なし。旧「リスクマネジメント部」からの機能分割と推定。</div>
+          <div class="dc-src">出典: 会社案内PDF p.10 ／ press/2026/press_10.html（存在のみ）</div>
+        </div>
+
+        <div class="dt-card">
+          <div class="dc-path">経営本部</div>
+          <div class="dc-top"><span class="dc-name">経理部</span><span class="dc-lv lv-a">&#9678;</span></div>
+          <div class="dc-body">全社の経理業務。<strong>総従業員約3,000名の経費精算業務</strong>、経費申請・承認システムの運用管理、全社員からの会計処理・経費精算に関する問合せ対応。<strong>月1,200件・平均待ち時間6時間</strong>の状態を生成AIチャットボットで改善し、<strong>FAQ正答率86%</strong>を達成。</div>
+          <div class="dc-rows">
+            <div class="r"><span class="k">チーム</span><span class="v">経理サポートチーム</span></div>
+            <div class="r"><span class="k">技術</span><span class="v">生成AIチャットボット「<strong>ケイリー（kAIly）</strong>」（Azure＋GPT-4.1＋RAG）／Spendia（経費精算）</span></div>
+            <div class="r"><span class="k">人物</span><span class="v">畠さん（MGR）／横田さん（チームマネージャー）／宇野さん（SM）／辻さん</span></div>
+            <div class="r"><span class="k">FDE</span><span class="v"><strong>社内AI活用の成功事例が既に存在する部署</strong>。コーポレートITシステム部が主導したRAG技術検証の横展開先。社内DX案件の参照事例として使える</span></div>
+          </div>
+          <div class="dc-src">出典: classmethod.jp/cases/optage-ai-chatbot/ (2025/11) ／ tisi.jp/casestudy/casestudy_171.html</div>
+        </div>
+
+        <div class="dt-card dc-unknown">
+          <div class="dc-path">経営本部</div>
+          <div class="dc-top"><span class="dc-name">調達部</span><span class="dc-lv lv-d">&#10005;</span></div>
+          <div class="dc-body">新卒サイトの「経理・調達」職種説明に「<strong>資金調達や必要資材の調達、決算報告など、多岐にわたる経理・調達業務</strong>」の記載のみ。部固有の業務記述なし。</div>
+          <div class="dc-rows"><div class="r"><span class="k">担当役員</span><span class="v">谷口副本部長</span></div></div>
+          <div class="dc-src">出典: optage.co.jp/recruit/fresh/jobs/</div>
+        </div>
+
+        <div class="dt-card dc-wl">
+          <div class="dc-path">経営本部</div>
+          <div class="dc-top"><span class="dc-name">コーポレートITシステム部（4チーム）</span><span class="dc-lv lv-a">&#9678;</span></div>
+          <div class="dc-body"><strong>&#9679; DX推進チーム</strong> ― <strong>社内ITヘルプデスクの管轄</strong>（PCのトラブルシューティング、シンクライアント申請など日々の社内問合せ対応）、全社的なデジタル変革推進、社内ナレッジ検索システム（チャットボット）の企画・運用、<strong>生成AIの技術検証（RAG）を主導し他部門（経理部等）への横展開</strong>。技術＝<strong>OPTAGE Generative AI Chat</strong>（2023年7月導入・全従業員約2,900名対象。<strong>公開情報上の正式名はこれ。「オプチャット」は社内通称と思われる</strong>）／RAG／Microsoft Azure／Amazon Bedrock／GPT-4.1／UiPath（全社RPA活用推進の<strong>CoE機能</strong>）。人物＝伊之井さん・高岸さん（チームマネージャ・<strong>ヒアリング対象</strong>）／山谷さん／柳沼さん（CoEリーダー）<br><br>
+          <strong>&#9679; IT基盤・技術支援チーム</strong> ― <strong>社内DWS（Digital Work Style）環境の構築・維持運用</strong>。Windows業務環境のDWS対応、MS365等の各種アプリケーションを含む設計・検証・導入、アカウント/ライセンス管理、維持運用における設定・対応。社内SEとして社内システムに関する支援・対応、課題管理・問合せ対応・障害対応、委託管理。技術＝Microsoft 365／EntraID／Windows<br><br>
+          <strong>&#9679; コンシューマ顧客システムチーム</strong> ― <strong>自社提供サービス（主にeo光・mineo）の業務システム開発および維持運用</strong>。新サービス提供におけるシステム開発の推進、業務システムの安定稼働確保、基幹システムの定期改修、開発PJ推進とマネジメント、業務部門のニーズ調査分析とシステム化構想立案、開発計画策定と仕様調整、進捗/品質/コスト管理、委託先との契約関係業務と業務指示、ユーザ部門へのシステム操作説明・情報活用支援、障害対応。ミッションに「<strong>申込・契約・顧客・サービス制御・請求収納管理といったBSS/OSS機能の担い手</strong>」と明記<br><br>
+          <strong>&#9679; 設備・工事管理システムチーム</strong> ― <strong>通信設備（光ファイバを含む）の管理業務の効率化・高度化の提案からシステム実装まで一貫推進</strong>。①システム企画＝業務部門ヒアリングによる課題ニーズ把握、業務改善やシステム再構築の構想立案、開発計画策定 ②システム開発＝要件定義・仕様調整、PJ推進とマネジメント、社内外ステークホルダー調整 ③維持運用＝システムQA、リリース作業管理、障害対応と再発防止、委託・保守契約の管理と改善提案。実績＝eo光サービス機器の状態・在庫管理システム、関西一円の光ファイバー網管理システム、工程管理システム、顧客情報プラットフォーム整備。技術＝<strong>intra-mart</strong>（ワークフロー/BPM・ローコード）／ハイブリッドアジャイル開発。人物＝勝木さん（MGR）／林さん</div>
+          <div class="dc-rows">
+            <div class="r"><span class="k">FDE</span><span class="v">全社の<strong>AX戦略（社内業務効率化）を主導</strong>。RAG・Dify等の社内生成AI環境を構築し<strong>各本部への旗振り役</strong>。大型案件については当部門に入っているAIコンサルのリソースを他部署にも配分している。<strong>生成AI機能が社内4箇所に分散している中の1つ</strong></span></div>
+            <div class="r"><span class="k">担当役員</span><span class="v">石川副本部長</span></div>
+          </div>
+          <div class="dc-src">出典: hrmos jobs/05_5020100040_08 ／ 05_5020100060_08 ／ 05_5020100070_08 ／ classmethod.jp/cases/optage/ (2024/4) ／ optage-ai-chatbot/ (2025/11) ／ intra-mart.jp/case-study/006465-01.html (2025/8)</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 6-7. 総務室・経営監査室 ============ -->
+  <div class="dt-hq">
+    <div class="dt-hq-head">
+      <span class="dth-n">6</span>
+      <span class="dth-name">総務室 ／ 経営監査室</span>
+      <span class="dth-biz biz-cost">全社共通機能</span>
+      <span class="dth-meta">仲野室長（取締役 執行役員 総務室長／経営監査室担当）</span>
+    </div>
+    <div class="dt-hq-body">
+      <div class="dt-grid">
+
+        <div class="dt-card dc-unknown">
+          <div class="dc-path">総務室</div>
+          <div class="dc-top"><span class="dc-name">総務部</span><span class="dc-lv lv-d">&#10005;</span></div>
+          <div class="dc-body">新卒サイトの職種説明「<strong>社員の労働環境の整備や法務手続き、資産の管理</strong>」のみ。部固有の業務記述なし。</div>
+          <div class="dc-src">出典: optage.co.jp/recruit/fresh/jobs/</div>
+        </div>
+
+        <div class="dt-card">
+          <div class="dc-path">総務室</div>
+          <div class="dc-top"><span class="dc-name">人事労務部</span><span class="dc-lv lv-b">&#9711;</span></div>
+          <div class="dc-body">採用・育成・異動・評価・福利厚生制度の整備。<strong>労務チーム</strong>は各量販店でコンシューマサービス販売を担うスタッフの雇用管理を担当（毎月の給与計算、社会保険・休業休暇の手続き等、<strong>数百名規模</strong>のあらゆる雇用管理を一手に担う）。<strong>人事制度の再構築</strong>（異なるバックグラウンドを持つ企業の統合を経て）、人財データの一元化・可視化、<strong>年1回の役割行動評価＋四半期ごとの上司・部下面談</strong>の運用。</div>
+          <div class="dc-rows">
+            <div class="r"><span class="k">技術</span><span class="v"><strong>タレントパレット</strong>（評価運用、キャリアデザイン面談、教育履歴管理）／AIアドバイス機能（2025年実装）</span></div>
+            <div class="r"><span class="k">チーム</span><span class="v">労務チーム</span></div>
+            <div class="r"><span class="k">FDE</span><span class="v">FDE化の<strong>人材供給・等級設計を議論する際のカウンターパート候補</strong>。等級体系（GM/SM/TM/Ex）と決裁ラインは公開情報では判明度0%＝ヒアリング必須</span></div>
+          </div>
+          <div class="dc-src">出典: optage.co.jp/recruit/fresh/people/interview04.html ／ special.nikkeibp.co.jp/atclh/ONB/26/pa_consul0626/</div>
+        </div>
+
+        <div class="dt-card">
+          <div class="dc-path">経営監査室</div>
+          <div class="dc-top"><span class="dc-name">経営監査部</span><span class="dc-lv lv-c">&#9651;</span></div>
+          <div class="dc-body">具体的業務は不明だが<strong>設置目的は公式に判明</strong> ― <strong>2024年7月1日付組織改正で「内部統制強化を図るべく」経営監査室を新設</strong>。<span class="pl-sub">&#9888; <strong>2026.07新設ではない</strong>。2026.07組織図では色付けなし</span></div>
+          <div class="dc-rows"><div class="r"><span class="k">管掌</span><span class="v">仲野さん（取締役 執行役員 総務室長／経営監査室担当）</span></div></div>
+          <div class="dc-src">出典: optage.co.jp/press/2024/press_16.html</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 不明一覧 ============ -->
+  <div class="detail-section">
+    <h3>&#10005; 業務内容が特定できなかった21組織 ― ヒアリングの主戦場</h3>
+    <p class="subtitle">公開情報に業務記述が<strong>一切存在しない</strong>もの。ここに白川さんの時間を投下すべき</p>
+    <div class="note-grid">
+      <div class="note-box">
+        <h4>ソリューション事業推進本部（6）</h4>
+        <p>ソリューション事業戦略部（＋ソリューション事業企画開発T・ソリューション事業戦略T）／ビジネスコンサルティング部 テクノロジー&amp;デザインT／営業サポート部／<strong>SI&amp;AXビジネス推進部（＋SIビジネス戦略T）</strong>／<strong>SI&amp;AX営業部</strong>／電力ビジネス推進部／電力ITソリューション部 電力基盤2T</p>
+      </div>
+      <div class="note-box">
+        <h4>コンシューマ事業推進本部（3）</h4>
+        <p>コンシューマ事業統括部 ／ コンシューマ事業運営部 ／ 住宅営業部<br><span class="pl-sub">いずれも2026.07新設。新設3部がまとめて不明＝コンシューマ本部の再編意図が外から全く読めない</span></p>
+      </div>
+      <div class="note-box">
+        <h4>技術本部（5）</h4>
+        <p>技術運営部 ／ 電力通信設備部 ／ 光・アクセス設計部 ／ 光・アクセス設備運用部 ／ 運用保全統括部（部固有の業務）</p>
+      </div>
+      <div class="note-box">
+        <h4>経営本部・総務室・経営監査室（5）</h4>
+        <p>内部統制部 ／ 情報セキュリティ部 ／ 調達部 ／ 総務部 ／ 経営監査部（設置目的のみ判明）</p>
+      </div>
+    </div>
+
+    <div class="note-box pl-insight" style="margin-top:14px;">
+      <h4>&#9679; FDE化の観点で最も痛い「不明」は3つ</h4>
+      <p><strong>①SI&amp;AXビジネス推進部・②SI&amp;AX営業部</strong> ― FDE化の主戦場である部門の<strong>司令塔と営業機能がどちらも完全に不明</strong>。2026.07にわざわざ営業部を新設した狙い（従来のソリューション部門の営業ラインとの分担）が読めないと、FDE化の推進主体と受注ルートを設計できない。<br>
+      <strong>③生成AI機能が社内4箇所に分散</strong> ― AXソリューション部／ビジネスコンサルティング部／経営本部 コーポレートITシステム部 DX推進T／技術本部 プラットフォーム技術部。<strong>外販案件の主管と承認ラインが外から読めない</strong>。「御社の生成AI機能はここ4箇所に見えますが、FDE化の主管はどこに置く想定ですか」は、リサーチしていないと出せない問い。</p>
+    </div>
+  </div>
+
+  <!-- ============ 方法論 ============ -->
+  <div class="detail-section">
+    <h3>調査方法論 ― 部署名が公開情報に出る5つの経路</h3>
+    <p class="subtitle">次回の定点観測を効率化するための知見。オプテージは毎年7月1日付で組織改正するため、年1回この手順を回せば部レベルの正解が手に入る</p>
+    <div class="table-wrap">
+      <table class="sim-table pl-table">
+        <thead><tr><th class="pl-qn">#</th><th>経路</th><th class="memo">なぜ有効か・注意点</th></tr></thead>
+        <tbody>
+          <tr class="pl-hot"><td class="pl-qn">1</td><td><strong>hrmos採用サイト（自社ATS）</strong><br><span class="pl-sub">hrmos.co/pages/optage/jobs</span></td><td class="memo">求人タイトルが「業務名/〇〇部　〇〇T」形式で、詳細ページに<strong>「配属予定部署」欄</strong>があり<strong>チーム名まで明記</strong>される。組織ミッションが原文で読める最良のソース。<strong>今回は全36件（営業8／戦略7／技術21）を全件精査</strong>。&#9888; <strong>一般転職サイト（doda/リクナビ等）は転載時に部署名サフィックスを削除しており無価値</strong></td></tr>
+          <tr><td class="pl-qn">2</td><td><strong>ベンダー導入事例記事</strong></td><td class="memo">所属を正式名称でフル表記する慣行があり、<strong>実名＋部＋チーム＋役職</strong>が揃う。クラスメソッド／UiPath／IBM／NHNテコラス／intra-mart／キヤノンITS／東洋ビジネスエンジニアリング／Sansan等。「オプテージ 事例」の定期検索が有効</td></tr>
+          <tr class="pl-hot"><td class="pl-qn">3</td><td><strong>ISO/ISMS/ITSMS認証の適用範囲ページ</strong><br><span class="pl-sub">isms.jp</span></td><td class="memo"><strong>今回この経路だけで特定できた部が2つ</strong>（クラウドビジネス推進部・ITサービス運用保全部）。認証取得組織の「適用範囲」に部署名と業務範囲が列挙される。他社調査でも汎用的に効く見落としがちな経路</td></tr>
+          <tr><td class="pl-qn">4</td><td>セミナー・展示会の登壇者プロフィール</td><td class="memo">ホームセキュリティ事業戦略部長をこの経路で特定</td></tr>
+          <tr><td class="pl-qn">5</td><td>新卒／キャリア採用サイトの社員紹介</td><td class="memo">&#9888; 新卒サイトは<strong>氏名が非掲載</strong>で、部署名は<strong>取材時点の旧称</strong>が残る（ICTソリューション部・電力IT基盤部・ビジネス開発企画部・SIソリューション部門・公共営業部・技術イノベーション部・サービスオペレーションセンター・エリア保全部・次世代事業推進PG等）。旧→新の対応を推定する材料としては有用</td></tr>
+          <tr class="pl-na"><td class="pl-qn">&#10005;</td><td>オプテージ自社プレスリリース／PR TIMES</td><td class="memo"><strong>問い合わせ先部署名が記載されない</strong>ため、この経路では部署名を一切取得できない</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pl-fn"><strong>&#9888; 組織図の罠</strong>: 公式組織図・会社案内PDF・組織改正プレスの組織図は<strong>すべて画像／画像PDFでテキスト層がない</strong>。WebFetchやpdftotextでは中身が読めず「情報がない」と誤判定する。<strong>ダウンロードして画像化し、視覚的に読む必要がある</strong>。今回はPDFをpdftoppm/PyMuPDFで150dpi画像化、JPGをPIL拡大クロップしてオレンジマーキングの有無まで精査した。</p>
+  </div>
+
+  <!-- ============ 出所 ============ -->
+  <div class="detail-section">
+    <h3>出所 ― すべて外部一次情報</h3>
+    <p class="subtitle">2026年8月20日時点で取得。2026年7月1日付の最新組織に準拠</p>
+    <div class="pl-src-list">
+      <div class="pl-src"><span class="src src-pub">公開</span> <strong>2026年7月1日付 組織改正・役員人事プレスリリース</strong>（2026年6月24日発表）― 組織図画像は新設・改称部をオレンジでマーキング。<strong>役員の担当組織一覧表が「どの部がどの副本部長の下にあるか」の唯一の公式ソース</strong><br><span class="pl-url">optage.co.jp/press/2026/press_10.html ／ media/1463.jpg</span></div>
+      <div class="pl-src"><span class="src src-pub">公開</span> <strong>2025年7月1日付 組織改正プレスリリース</strong>（差分比較用）<br><span class="pl-url">optage.co.jp/press/2025/press_16.html ／ media/1219.png</span></div>
+      <div class="pl-src"><span class="src src-pub">公開</span> <strong>2024年7月1日付 組織改正プレスリリース</strong>― モバイル事業推進本部・経営監査室の新設理由が明記された唯一の資料<br><span class="pl-url">optage.co.jp/press/2024/press_16.html</span></div>
+      <div class="pl-src"><span class="src src-pub">公開</span> <strong>2026年度 会社案内 p.10「組織体制表」</strong>（2026年7月現在）＋ 現行組織図ページ<br><span class="pl-url">optage.co.jp/company/common/img/company_pf.pdf ／ optage.co.jp/company/organization.html</span></div>
+      <div class="pl-src"><span class="src src-pub">公開</span> <strong>hrmos採用サイト 求人36件（全件精査）</strong>― 「配属予定部署」欄でチーム名まで判明。組織ミッションの原文あり<br><span class="pl-url">hrmos.co/pages/optage/jobs</span></div>
+      <div class="pl-src"><span class="src src-pub">公開</span> <strong>ISMS / ITSMS 認証の適用範囲</strong>（JQA-IM0342 / JQA-IT0018）<br><span class="pl-url">isms.jp/lst/ind/CR_JQA-IM0342.html ／ isms.jp/itsms/lst/ind/CR_JQA-IT0018.html</span></div>
+      <div class="pl-src"><span class="src src-pub">公開</span> <strong>ベンダー導入事例</strong>― クラスメソッド／UiPath／IBM／NHNテコラス／intra-mart／Sansan／ベルシステム24／東洋ビジネスエンジニアリング／プロシード／OCX／VISTA／フィックスターズ 他</div>
+      <div class="pl-src"><span class="src src-pub">公開</span> <strong>公式サービスページ・新卒/キャリア採用サイト・長期ビジョン2035</strong><br><span class="pl-url">optage.co.jp/business/ ／ optage.co.jp/recruit/ ／ optage.co.jp/vision/</span></div>
+      <div class="pl-src"><span class="src src-pub">公開</span> <strong>2019年4月 関電グループ3社再編プレス</strong>― SI部隊の出自（関電システムソリューションズから企業・自治体向け情報システム開発機能が移管）<br><span class="pl-url">kepco.co.jp/corporate/pr/2019/0131_2j.html ／ k-opti.com/press/2019/img/press22_01.pdf</span></div>
+      <div class="pl-src pl-src-na"><span class="src src-na">取得不能</span> <strong>部署別の人員規模・売上・スキル構成</strong>― 公開情報は全社3,017名・2,589億円のみ。部別配分は完全非公開（ビジネスコンサルティング部 約30名／法人システム部 約40名／公益システム部 約40名／プロダクトソリューション部 約44名のみ例外的に判明）</div>
+      <div class="pl-src pl-src-na"><span class="src src-na">取得不能</span> <strong>等級体系（GM / SM / TM / Ex）と決裁ライン</strong>― 判明度0%。TM＝チームマネージャー、SM＝サブマネージャー、Ex＝エキスパート（等級）とは確認できたが、<strong>GMは現行組織での公開用例がゼロ</strong>。序列・権限・稟議の止まる場所はヒアリングのみ</div>
+      <div class="pl-src pl-src-na"><span class="src src-na">取得不能</span> <strong>組織改正の狙い・理由</strong>― オプテージの組織改正プレスは<strong>役員人事の本文＋組織図画像のみ</strong>で構成され、2025年・2026年とも狙いを文章で語っていない（2024年は例外的にモバイル本部・経営監査室の新設理由を明記）</div>
+    </div>
+  </div>
+
+  <div class="pl-foot">
+    最終更新 2026.08.20 ／ 2026年7月1日付の組織に準拠。すべて外部一次情報から取得し、判明度（&#9678;確定 / &#9711;確度高 / &#9651;推定 / &#10005;不明）を組織単位で明示している。<br>
+    オプテージは毎年7月1日付で組織改正しプレスで組織図を公開するため、年1回このページを更新すれば部レベルの正解が維持できる。
+  </div>
+</div>
+
+
 <!-- ================================================================ -->
 <!-- PAGE: PL構造（本部が背負う数字）                                   -->
 <!-- ================================================================ -->
@@ -4680,8 +5814,8 @@ body {
 <!-- ================================================================ -->
 <script>
 (function() {
-  // 先頭6件はトップナビ／ボトムナビのボタン順と一致させる（indexで active を付けているため）
-  const pages = ['home','orghome','execs','fde','bizmodel','meetings','overview','kawada','shinohara','other','aiwg','deptinfo','people','bm-fde','bm-wip','deptdetail'];
+  // 先頭8件はトップナビ／ボトムナビのボタン順と一致させる（indexで active を付けているため）
+  const pages = ['home','orghome','execs','duties','fde','pl','bizmodel','meetings','overview','kawada','shinohara','other','aiwg','deptinfo','people','bm-fde','bm-wip','deptdetail'];
 
   function navigateTo(pageId, hashOverride) {
     // Hide all pages
@@ -4765,6 +5899,15 @@ body {
 
   // Expose globally
   window.navigateTo = navigateTo;
+
+  // 業務内容マップ：組織改正差分のタブ切替
+  window.dtTab = function(key, btn) {
+    document.querySelectorAll('.dt-dpane').forEach(function(p) {
+      p.classList.toggle('active', p.id === 'dtp-' + key);
+    });
+    document.querySelectorAll('.dt-dtab').forEach(function(b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+  };
 
   // 未作成セクターの「準備中」ページ（タイトルと予定内容を差し替えて表示）
   window.bmWip = function(title, plan) {
